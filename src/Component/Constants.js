@@ -18,3 +18,30 @@ export const gender = [
         label:"Female"
     }
 ];
+
+export const species = [
+    {
+        value:"Cow",
+        label:"Cow"
+    },
+    {
+        value:"Goat",
+        label:"Goat"
+    },
+    {
+        value:"Horse",
+        label:"Horse"
+    },
+    {
+        value:"Pig",
+        label:"Pig"
+    },
+    {
+        value:"Rabbit",
+        label:"Rabbit"
+    },
+    {
+        value:"Sheep",
+        label:"Sheep"
+    },
+]

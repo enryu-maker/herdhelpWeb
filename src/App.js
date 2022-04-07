@@ -16,6 +16,8 @@ import AddAnimals from './Screens/Animals/AddAnimals';
 import LoadAlerts from './Screens/Alerts/LoadAlerts';
 import LoadFinance from './Screens/Finance/LoadFinance';
 import Herds from './Screens/Home/Herds';
+import AddMedication from './Screens/Animals/AddMedication';
+
 function App() {
   return (
     <div className="App">
@@ -27,6 +29,7 @@ function App() {
           <Route path="/main" element={<Main/>}/>
           <Route path="/weight" element={<Weight/>}/>
           <Route path="/animals" element={<AddAnimals/>}/>
+          <Route path="/medication" element={<AddMedication/>}/>
           <Route path="/alerts" element={<LoadAlerts/>}/>
           <Route path="/finance" element={<LoadFinance/>}/>
           <Route path="/herds" element={<Herds/>}/>

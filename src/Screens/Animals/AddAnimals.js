@@ -5,7 +5,7 @@ import NavBarMain from "../../Component/Nav/navmain";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
-import { checking, gender } from "../../Component/Constants";
+import { checking, gender , species } from "../../Component/Constants";
 export default function AddAnimals() {
   const [bred, setBred] = useState(false);
   const [valueMS, setValueMS] = useState("");
@@ -118,8 +118,11 @@ export default function AddAnimals() {
               value={valueMS}
               setValue={setValueMS}
               label={"Species*"}
-              options={checking}
+              // options={checking}
+              options={species}
             />
+            
+            {/*  */}
             <DropDown
               value={valueBS}
               setValue={setValueBS}
