@@ -104,7 +104,7 @@ export default function AddMedication(){
             style={{
               margin: 20,
             }}
-          >
+         >
             <DropDown
               value={valueMS}
               setValue={setValueMS}
