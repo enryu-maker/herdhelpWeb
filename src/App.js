@@ -19,9 +19,12 @@ import Herds from './Screens/Home/Herds';
 import AddMedication from './Screens/Animals/AddMedication';
 import Profile from './Component/Profile/profile';
 
+
 function App() {
   return (
+    <>
     <div className="App">
+
       <header className="App-header">
         <Routes>
         <Route path="/" element={<Home/>}/>
@@ -52,6 +55,7 @@ function App() {
         }}>Powered by NerdTech</p>
       </footer> */}
     </div>
+    </>
   );
 }
 

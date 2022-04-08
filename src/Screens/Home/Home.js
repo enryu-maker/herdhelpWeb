@@ -6,6 +6,7 @@ import { IMAGES } from "../../Theme/Image";
 
 
 
+
 export default function Home() {
 // 
 const [bought, setBought] = useState(false);
@@ -19,10 +20,10 @@ const [bought, setBought] = useState(false);
     }}>
       <NavBar page={"home"}/>
     <div style={{display:"flex"}}>
-      <div style={{width:650}}>
+      <div style={{width:400}}>
         
       </div>
-      <div style={{width:700 , height:650 , borderRadius:SIZES.radius, backgroundColor: COLORS.lightGray2 ,
+      <div style={{width:500 , height:650 , borderRadius:SIZES.radius, backgroundColor: COLORS.lightGray2 ,
       padding:30}}>
       <h1 style={{...FONTS.largeTitle,margin:'auto'}}>Herd Help</h1>
 

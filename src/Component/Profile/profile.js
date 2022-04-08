@@ -106,7 +106,6 @@ export default function Profile() {
            backgroundColor:COLORS.white,
            borderRadius: SIZES.radius,
            padding:5
-           
            }}>
                <h4 style={{margin:10,color:COLORS.darkGray,...FONTS.h2}}>Email</h4>
                <h4 style={{margin:10 ,color:COLORS.black,...FONTS.h3}}>
