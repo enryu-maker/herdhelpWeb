@@ -18,6 +18,7 @@ export default function Profile() {
       function renderForm(){
         return(
           <>
+          <div>
             <div
             style={{
               display: "flex",
@@ -145,6 +146,7 @@ export default function Profile() {
                
            </div>
        </div>
+      </div>
       </div>
       </div>
       </div>

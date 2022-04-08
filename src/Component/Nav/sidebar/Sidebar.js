@@ -7,7 +7,7 @@ import { IMAGES } from '../../../Theme/Image'
 function Sidebar() {
 const [sidebar , setSidebar] = useState(false);
 
-const showSidebar = ()=>setSidebar(!sidebar)
+const showSidebar = ()=> setSidebar(!sidebar)
   
 
   return (
