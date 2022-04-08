@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import TextButton from './Component/TextButton';
 import InputForm from './Component/InputForm';
-import react,{useState} from 'react';
+import react,{Profiler, useState} from 'react';
 import Card from './Component/Card';
 import Login from './Screens/Auth/Login';
 import Signup from './Screens/Auth/Signup';
@@ -17,6 +17,7 @@ import LoadAlerts from './Screens/Alerts/LoadAlerts';
 import LoadFinance from './Screens/Finance/LoadFinance';
 import Herds from './Screens/Home/Herds';
 import AddMedication from './Screens/Animals/AddMedication';
+import Profile from './Component/Profile/profile';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <header className="App-header">
         <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/profile" element={<Profile/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Signup/>}/>
           <Route path="/main" element={<Main/>}/>

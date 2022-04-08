@@ -227,7 +227,7 @@ Add Alert
           </div>
       <div>
       <TextButton
-        label={"Alerts"}
+        label={"Add Alerts"}
         icon={IMAGES.add}
         onPress={() => alert(bought)}
         buttonContainerStyle={{

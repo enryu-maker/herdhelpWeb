@@ -44,7 +44,7 @@ function NavBarMain({
           }}>
             Home
             </Link>
-          <Link to="/login" style={{
+          <Link to="/profile" style={{
             color: COLORS.white,
             marginLeft:20,
             textDecorationLine:page=="profile"?"underline":"none",
