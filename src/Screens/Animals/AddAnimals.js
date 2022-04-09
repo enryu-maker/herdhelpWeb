@@ -33,8 +33,76 @@ export default function AddAnimals() {
   const [dataText, setDataText] = React.useState("");
   const [EmailError, setEmailError] = React.useState("");
   const [unit, setUnit] = React.useState(false);
-  const options = ["one", "two", "three"];
-  const defaultOption = options[0];
+  const clear = () => {
+    // setSpcies([])
+    setWeight('');
+    setTag('');
+    setRegistration('');
+    setAge('');
+    setBreed('');
+    setMother('');
+    setFather('');
+    setPrice('');
+    setName('');
+  };
+  const data = JSON.stringify({
+    name: name,
+    tag_number: ` ${id}${valueMS}${tag}`,
+    registration: registration,
+    support_tag: tag,
+    gender: valueBS,
+    species: valueMS,
+    birth_date: dobt,
+    mother_supporttag:mother!=""?mother:"",
+    mother_tagnumber:mother!=""?`${id}${valueMS}${mother}`:"" ,
+    father_supporttag:father!=""?father:"",
+    father_tagnumber:father!=""? `${id}${valueMS}${father}`:"" ,
+    breed: Breed,
+    weight: unit==true?weight: Math.round(weight/0.45359237),
+    weight_kg:unit==false?weight: Math.round(weight*0.45359237),
+    bred: bred,
+    age: age,
+    vaccinated: vaccinated,
+    vaccination_date: vaccinateddatet,
+    price: price,
+    bought: bought,
+    status: 'Alive',
+  });
+  async function postAnimal() {
+    setLoading(true);
+    if(isEnableSignIn())
+    {await axiosIns
+      .post('animals/', data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(response => {
+        if (response.status == 201) {
+          clear();
+          setLoading(false);
+          setValidation(true);
+          setShow(true);
+          setDataText('Animal added');
+        }
+      })
+      .catch(
+        err => {
+        setEmailError("No subscription found, please purchase a subscription for access to animals")
+        setLoading(false)
+        setValidation(false)
+        setShow(false)}
+      );}
+    else{
+      setEmailError("Required Fields cannot be empty")
+      setLoading(false)
+    }
+  }
+  React.useEffect(() => {
+    setId(global.id);
+    setAnimals(global.species);
+    setUnit(global.unit)
+  }, []);
   function renderHeader() {
     return <NavBarMain />;
   }
@@ -291,7 +359,173 @@ export default function AddAnimals() {
               </div>
             </div>
           </>
-        ) : null}
+        ) : (
+          <div
+              style={{
+                display: "flex",
+                flexFlow: "row",
+              }}
+            >
+              <div
+                style={{
+                  margin: 20,
+                }}
+              >
+                <InputForm
+                  prependComponent={
+                    <img
+                      src={IMAGES.calender}
+                      style={{
+                        height: 25,
+                        width: 25,
+                        margin: 10,
+                        alignSelf: "center",
+                      }}
+                    />
+                  }
+                  type={"date"}
+                  value={dobt}
+                  label={"Date of Birth"}
+                  onChange={(event) => {
+                    setDobt(event.target.value);
+                  }}
+                />
+                <InputForm
+                  prependComponent={
+                    <img
+                      src={IMAGES.weight}
+                      style={{
+                        height: 25,
+                        width: 25,
+                        margin: 10,
+                        alignSelf: "center",
+                      }}
+                    />
+                  }
+                  type={"text"}
+                  value={weight}
+                  label={"Weight"}
+                  onChange={(event) => {
+                    setWeight(event.target.value);
+                  }}
+                />
+                <InputForm
+                  prependComponent={
+                    <img
+                      src={IMAGES.tag}
+                      style={{
+                        height: 25,
+                        width: 25,
+                        margin: 10,
+                        alignSelf: "center",
+                      }}
+                    />
+                  }
+                  type={"text"}
+                  value={mother}
+                  label={"Mother Tag"}
+                  onChange={(event) => {
+                    setMother(event.target.value);
+                  }}
+                />
+                <InputForm
+                  prependComponent={
+                    <img
+                      src={IMAGES.tag}
+                      style={{
+                        height: 25,
+                        width: 25,
+                        margin: 10,
+                        alignSelf: "center",
+                      }}
+                    />
+                  }
+                  type={"text"}
+                  value={father}
+                  label={"Father Tag"}
+                  onChange={(event) => {
+                    setFather(event.target.value);
+                  }}
+                />
+              </div>
+
+              <div
+                style={{
+                  margin: 20,
+                }}
+              >
+                <DropDown
+                  value={vaccinated}
+                  setValue={setVaccinated}
+                  label={"Vaccinated"}
+                  options={checking}
+                />
+                {
+                  vaccinated? 
+                  <InputForm
+                  prependComponent={
+                    <img
+                      src={IMAGES.calender}
+                      style={{
+                        height: 25,
+                        width: 25,
+                        margin: 10,
+                        alignSelf: "center",
+                      }}
+                    />
+                  }
+                  type={"date"}
+                  value={vaccinateddate}
+                  label={"Date of Vaccination"}
+                  onChange={(event) => {
+                    setVaccinateddate(event.target.value);
+                  }}
+                />:null
+                }
+                <InputForm
+                  prependComponent={
+                    <img
+                      src={IMAGES.dog}
+                      style={{
+                        height: 25,
+                        width: 25,
+                        margin: 10,
+                        alignSelf: "center",
+                      }}
+                    />
+                  }
+                  type={"text"}
+                  value={Breed}
+                  label={"Breed"}
+                  onChange={(event) => {
+                    setBreed(event.target.value);
+                  }}
+                />
+                <InputForm
+                  prependComponent={
+                    <img
+                      src={IMAGES.name}
+                      style={{
+                        height: 25,
+                        width: 25,
+                        margin: 10,
+                        alignSelf: "center",
+                      }}
+                    />
+                  }
+                  type={"text"}
+                  value={registration}
+                  label={"Registration"}
+                  onChange={(event) => {
+                    setRegistration(event.target.value);
+                  }}
+                />
+
+              </div>
+            </div>
+        ) 
+        
+        }
       </div>
     );
   }

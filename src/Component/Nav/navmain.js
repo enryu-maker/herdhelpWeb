@@ -40,7 +40,7 @@ function NavBarMain({
           <Link to="/main" style={{
             color: COLORS.white,
             marginLeft:20,
-            textDecorationLine:page=="home"?"underline":"none",
+            textDecorationLine:page==="home"?"underline":"none",
             ...FONTS.h3,
           }}>
             Home
@@ -48,11 +48,38 @@ function NavBarMain({
           <Link to="/profile" style={{
             color: COLORS.white,
             marginLeft:20,
-            textDecorationLine:page=="profile"?"underline":"none",
+            textDecorationLine:page==="profile"?"underline":"none",
             ...FONTS.h3
 
           }}>
             Profile
+            </Link>
+            <Link to="/report" style={{
+            color: COLORS.white,
+            marginLeft:20,
+            textDecorationLine:page==="report"?"underline":"none",
+            ...FONTS.h3
+
+          }}>
+            Report
+            </Link>
+            <Link to="/history" style={{
+            color: COLORS.white,
+            marginLeft:20,
+            textDecorationLine:page==="history"?"underline":"none",
+            ...FONTS.h3
+
+          }}>
+            WeightHistory
+            </Link>
+            <Link to="/Parents" style={{
+            color: COLORS.white,
+            marginLeft:20,
+            textDecorationLine:page==="parents"?"underline":"none",
+            ...FONTS.h3
+
+          }}>
+            Parents
             </Link>
           <Link to="/" style={{
             color: COLORS.white,
@@ -65,7 +92,7 @@ function NavBarMain({
             </Link>
         </div>
       </nav>
-      <Sidebar/>
+      {/* <Sidebar/> */}
     </>
   );
 }
