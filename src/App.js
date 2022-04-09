@@ -18,6 +18,7 @@ import LoadFinance from './Screens/Finance/LoadFinance';
 import Herds from './Screens/Home/Herds';
 import AddMedication from './Screens/Animals/AddMedication';
 import Profile from './Component/Profile/profile';
+import Report from './Screens/Report/Report';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/alerts" element={<LoadAlerts/>}/>
           <Route path="/finance" element={<LoadFinance/>}/>
           <Route path="/herds" element={<Herds/>}/>
+          <Route path='/report' element={<Report/>}/>
         </Routes>
       </header>
       
