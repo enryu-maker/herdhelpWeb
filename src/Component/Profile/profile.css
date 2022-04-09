@@ -1,0 +1,28 @@
+.edit_profile{
+    text-decoration: none;
+    color: blueviolet;
+    border-bottom: 1px solid black;
+}
+
+.edit_profile img{
+    transform: rotate(-90deg);
+}
+
+.profile-form{
+    
+    /* margin: auto; */
+    margin: 0 auto;
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* position: absolute; */
+}
+.edit_form{
+    margin: 0;
+    padding: 0;
+    position: sticky;
+    margin-right: 10px;
+    /* position: absolute; */
+    /* margin: auto; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}

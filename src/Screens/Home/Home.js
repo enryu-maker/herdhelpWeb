@@ -16,14 +16,16 @@ const [bought, setBought] = useState(false);
   return (
     <>
     <div style={{
-      flex:1
+      flex:1,
+      justifyContent:"space-between",
+      alignItems:"center"
     }}>
       <NavBar page={"home"}/>
     <div style={{display:"flex"}}>
-      <div style={{width:400}}>
+      <div style={{width:500}}>
         
       </div>
-      <div style={{width:500 , height:650 , borderRadius:SIZES.radius, backgroundColor: COLORS.lightGray2 ,
+      <div style={{width:620 , height:650 , borderRadius:SIZES.radius, backgroundColor: COLORS.lightGray2 ,
       padding:30}}>
       <h1 style={{...FONTS.largeTitle,margin:'auto'}}>Herd Help</h1>
 
@@ -38,7 +40,8 @@ const [bought, setBought] = useState(false);
           // icon={IMAGES.add}
           onPress={() => alert(bought)}
           buttonContainerStyle={{
-            marginBottom:50
+            marginBottom:50,
+            margin:10
           }}
         />
           <TextButton
@@ -46,7 +49,7 @@ const [bought, setBought] = useState(false);
           // icon={IMAGES.add}
           onPress={() => alert(bought)}
           buttonContainerStyle={{
-            marginBottom:50
+            marginBottom:50,margin:10
           }}
         />
           </div>

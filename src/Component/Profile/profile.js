@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
+import './profile.css'
 import NavBarMain from "../../Component/Nav/navmain";
 import { IMAGES } from '../../Theme/Image';
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import InputForm from "../../Component/InputForm";
+import TextButton from "../../Component/TextButton";
+import { Link } from 'react-router-dom';
 
 export default function Profile() {
   // 
@@ -12,18 +15,32 @@ export default function Profile() {
   const options = ["one", "two", "three"];
   const defaultOption = options[0];
     // 
+// const [edit_profile , setProfile] = useState(false);
+// const edit_pannel = ()=> setProfile(!edit_profile) 
+
+
+const [show , setShow] = useState(false)
+//const [sidebar , setSidebar] = useState(false);
+
+// const showSidebar = ()=> setSidebar(!sidebar)
+
+
     function renderHeader(){
         return<NavBarMain/>;
       }
       function renderForm(){
         return(
           <>
-          <div>
+          <div style={{width:"100%", height:"auto" , display:"flex"}}>
+
+
+
+
             <div
             style={{
               display: "flex",
               flexFlow: "row",
-            }}
+            }} className='profile-form'
           >
             <div
       style={{
@@ -32,14 +49,26 @@ export default function Profile() {
           width: 900,
         padding: 7,
         borderRadius: SIZES.radius,
+       
         // marginTop: 50,
         // marginBottom: 50, 
         margin:20,
       }}>
+        <div style={{display:"flex"
+      , justifyContent:"space-between",alignItems:"center" , width:800 , margin:"auto"}}>
         <p style={{
                   ...FONTS.largeTitle,
                   alignSelf: "center",}}
                   >My Account</p>
+
+<TextButton
+className='edit_profile'
+        label={"Edit"}
+        icon={IMAGES.right}
+        onPress={()=> setShow(true)}
+      />
+        {/* <Link to={'/profile-edit'} className='edit_profile' onClick={()=> setShow(true)} >Edit <img src={IMAGES.down} style={{width:20}}/></Link>  */}
+        </div>
       <div style={{
           display: "flex",
           flexFlow: "row",
@@ -149,8 +178,61 @@ export default function Profile() {
       </div>
       </div>
       </div>
+     
+     <div className='edit_form'> {
+  show?<div style={{
+    width:300,
+    backgroundColor: COLORS.lightGray2,
+          minHeight: 300,
+          padding:10,
+          // paddingLeft: 10,
+          // paddingRight:10,
+          // paddingBottom:10,
+          borderRadius: SIZES.radius,
+          margin:'20px 50px -10px',
+  }} className='edit_form' >
+    <p
+            style={{
+              ...FONTS.largeTitle,
+              alignSelf: "center",
+            }}
+          >
+            Edit  Account
+          </p>
+    <InputForm
+        type={Text}
+        label={"Full Name"}
+        />
+    <InputForm
+        type={Number}
+        label={"Phone Number"}
+        />
+    <InputForm
+        type={Text}
+        label={"Farm Name"}
+        />
+    <InputForm
+        type={Text}
+        label={"Address"}
+        />
+        <TextButton
+        label={"Save"}
+        icon={IMAGES.update}
+        onPress={()=> setShow(false)}
+      />
+        
+  </div>
+  :null
+}</div>
+
+
+
+
       </div>
-      </> )}
+      
+      
+      </> 
+)}
 
 
 

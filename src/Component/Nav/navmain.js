@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, FONTS } from "../../Theme/Theme";
 import "./Navbar.css";
-import Sidebar from "./sidebar/Sidebar";
 
 function NavBarMain({
   page,
@@ -92,7 +91,7 @@ function NavBarMain({
             </Link>
         </div>
       </nav>
-      {/* <Sidebar/> */}
+
     </>
   );
 }
