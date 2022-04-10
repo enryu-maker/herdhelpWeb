@@ -15,18 +15,20 @@ const [tire_1 , setTire] = useState(true) ;
         return <NavBarMain />;
       }
       function renderForm() {
+        
         return (
-          <div
+            <div
             style={{
-              backgroundColor: COLORS.lightGray2,
-              minHeight: 300,
-              //   width:450,
-              padding: "0 20px",
-              borderRadius: SIZES.radius,
-              marginTop: 0,
-              marginBottom: 10,
+                backgroundColor: COLORS.lightGray2,
+                minHeight: 300,
+                //   width:450,
+                padding: "0 20px",
+                borderRadius: SIZES.radius,
+                marginTop: 0,
+                marginBottom: 10,
             }}
-          >
+            >
+                <p style={{color:COLORS.red}}>NO Active Subscription , Please Purchase the Tire</p>
               <div>
             <p
               style={{
@@ -80,7 +82,7 @@ const [tire_1 , setTire] = useState(true) ;
                 alignSelf: "left",
               }}> Tier 2 </p>
                     <h3>$19.99 / month</h3>
-                    <h4>Animal Limit : 50</h4>
+                    <h4>Animal Limit : 100</h4>
                     
                     
                     <button value={tire_1} style={{ width:70,...FONTS.body2,margin:'auto 0' , height:40, border:"none" , background:COLORS.Primary , borderRadius:SIZES.radius, cursor:"pointer"}}
@@ -105,7 +107,7 @@ const [tire_1 , setTire] = useState(true) ;
                 alignSelf: "left",
               }}> Tier 3 </p>
                     <h3>$29.99 / month</h3>
-                    <h4>Animal Limit : 50</h4>
+                    <h4>Animal Limit : 200</h4>
                     
                     
                     <button value={tire_1} style={{ width:70,...FONTS.body2,margin:'auto 0' , height:40, border:"none" , background:COLORS.Primary , borderRadius:SIZES.radius, cursor:"pointer"}}
@@ -129,8 +131,8 @@ const [tire_1 , setTire] = useState(true) ;
                 ...FONTS.body1,
                 alignSelf: "left",
               }}> Tier 4 </p>
-                    <h3>$39.99 / month</h3>
-                    <h4>Animal Limit : 50</h4>
+                    <h3>$49.99 / month</h3>
+                    <h4>Animal Limit : 500</h4>
                     
                     
                     <button value={tire_1} style={{ width:70, ...FONTS.body2,margin:'auto 0' , height:40, border:"none" , background:COLORS.Primary , borderRadius:SIZES.radius, cursor:"pointer"}}
@@ -154,8 +156,8 @@ const [tire_1 , setTire] = useState(true) ;
                 ...FONTS.body1,
                 alignSelf: "left",
               }}> Tier 5 </p>
-                    <h3>$49.99 / month</h3>
-                    <h4>Animal Limit : 50</h4>
+                    <h3>$99.99 / month</h3>
+                    <h4>Animal Limit : 1000</h4>
                     
                     
                     <button value={tire_1} style={{ width:70,...FONTS.body2,margin:'auto 0' , height:40, border:"none" , background:COLORS.Primary , borderRadius:SIZES.radius, cursor:"pointer"}}
