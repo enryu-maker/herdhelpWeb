@@ -1,23 +1,37 @@
-import React from "react";
+import React,{  useState }  from "react";
 import { Link } from "react-router-dom";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, FONTS } from "../../Theme/Theme";
 import "./Navbar.css";
 
+
 function NavBarMain({
   page,
   navStyle
 }) {
+  // const {nav , setNavbar} = useState(false);
+  
+  
+  // const changeBackground = () => {
+  //   if(window.scrollY >= 75 ){
+  //     setNavbar(true)
+  //   }else(
+  //     setNavbar(false)
+  //   )
+  // }
+  // window.addEventListener( `scroll`,changeBackground);
   return (
     <>
       <nav style={{
         display:"flex",
-        backgroundColor:COLORS.Primary,
+        backgroundColor:COLORS.white,
         alignSelf:"center",
         height:75,
         maxWidth:"100%",
         ...navStyle
-      }}>
+      }}className='nav'
+      //  className={nav ? 'nav active': 'nav'}
+      >
         <Link to="/main">
           <img
             src={IMAGES.herdhelp}
@@ -37,7 +51,7 @@ function NavBarMain({
           }}
         >
           <Link to="/main" style={{
-            color: COLORS.white,
+            color: COLORS.Primary,
             marginLeft:20,
             textDecorationLine:page==="home"?"underline":"none",
             ...FONTS.h3,
@@ -45,7 +59,7 @@ function NavBarMain({
             Home
             </Link>
           <Link to="/profile" style={{
-            color: COLORS.white,
+            color: COLORS.Primary,
             marginLeft:20,
             textDecorationLine:page==="profile"?"underline":"none",
             ...FONTS.h3
@@ -54,7 +68,7 @@ function NavBarMain({
             Profile
             </Link>
             <Link to="/report" style={{
-            color: COLORS.white,
+            color: COLORS.Primary,
             marginLeft:20,
             textDecorationLine:page==="report"?"underline":"none",
             ...FONTS.h3
@@ -63,7 +77,7 @@ function NavBarMain({
             Report
             </Link>
             <Link to="/history" style={{
-            color: COLORS.white,
+            color: COLORS.Primary,
             marginLeft:20,
             textDecorationLine:page==="history"?"underline":"none",
             ...FONTS.h3
@@ -72,7 +86,7 @@ function NavBarMain({
             WeightHistory
             </Link>
             <Link to="/Parents" style={{
-            color: COLORS.white,
+            color: COLORS.Primary,
             marginLeft:20,
             textDecorationLine:page==="parents"?"underline":"none",
             ...FONTS.h3
@@ -81,7 +95,7 @@ function NavBarMain({
             Parents
             </Link>
           <Link to="/" style={{
-            color: COLORS.white,
+            color: COLORS.Primary,
             textDecorationLine:"none",
             ...FONTS.h3,
             marginLeft:20

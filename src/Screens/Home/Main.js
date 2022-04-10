@@ -13,7 +13,8 @@ export default function Main() {
     <div style={{
       display:"flex",
       alignSelf:"center",
-      justifyContent:"center"
+      justifyContent:"center",
+      backgroundColor:COLORS.layout
     }}>
       <div
         style={{

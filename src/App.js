@@ -19,6 +19,8 @@ import Herds from './Screens/Home/Herds';
 import AddMedication from './Screens/Animals/AddMedication';
 import Profile from './Component/Profile/profile';
 import Report from './Screens/Report/Report';
+import Parents from './Screens/Parents/Parents';
+import Subscription from './Component/Subscription/Subscription';
 
 
 function App() {
@@ -40,6 +42,8 @@ function App() {
           <Route path="/finance" element={<LoadFinance/>}/>
           <Route path="/herds" element={<Herds/>}/>
           <Route path='/report' element={<Report/>}/>
+          <Route path='/parents' element={<Parents/>} />
+          <Route path='/subscription' element={<Subscription/>}/>
         </Routes>
       </header>
       

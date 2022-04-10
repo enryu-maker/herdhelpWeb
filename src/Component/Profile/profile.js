@@ -66,6 +66,7 @@ className='edit_profile'
         label={"Edit"}
         icon={IMAGES.right}
         onPress={()=> setShow(true)}
+      
       />
         {/* <Link to={'/profile-edit'} className='edit_profile' onClick={()=> setShow(true)} >Edit <img src={IMAGES.down} style={{width:20}}/></Link>  */}
         </div>

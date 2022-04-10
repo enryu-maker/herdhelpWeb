@@ -16,8 +16,11 @@
 } */
 
 nav{
-    background: var(--color-primary1);
+    /* background: var(--color-primary1); */
     /* padding: 0.4; */
+    position: sticky;
+    z-index: 999;
+    top: 0;
     display: flex;
     padding: 0.2% 4%;            /* spacing all sides*/
     justify-content: space-between;
@@ -54,4 +57,8 @@ nav img.logo{
 }
 .nav-links ul li:hover::after{
     width: 100%;
+}
+
+.nav.active{
+    background:linear-gradient(rgba(160, 157, 157, 0.6),rgba(223, 223, 223, 0.6));
 }

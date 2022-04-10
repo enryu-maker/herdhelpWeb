@@ -12,7 +12,7 @@ function NavBar({
     <>
       <nav style={{
         // display:"flex",
-        backgroundColor:COLORS.Primary,
+        backgroundColor:COLORS.white,
         alignSelf:"center",
         height:75,
         maxWidth:"100%",
@@ -37,7 +37,7 @@ function NavBar({
           }}
         >
           <Link to="/" style={{
-            color: COLORS.white,
+            color: COLORS.Primary,
             marginLeft:20,
             textDecorationLine:page=="home"?"underline":"none",
             ...FONTS.h3,
@@ -47,7 +47,7 @@ function NavBar({
             Home
             </Link>
           <Link to="/login" style={{
-            color: COLORS.white,
+            color: COLORS.Primary,
             marginLeft:20,
             textDecorationLine:page=="login"?"underline":"none",
             ...FONTS.h3
@@ -56,7 +56,7 @@ function NavBar({
             Login
             </Link>
           <Link to="/register" style={{
-            color: COLORS.white,
+            color: COLORS.Primary,
             textDecorationLine:page=="register"?"underline":"none",
             ...FONTS.h3,
             marginLeft:20

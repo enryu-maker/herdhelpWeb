@@ -1,12 +1,7 @@
 .edit_profile{
-    text-decoration: none;
-    color: blueviolet;
-    border-bottom: 1px solid black;
+    cursor: pointer;
 }
 
-.edit_profile img{
-    transform: rotate(-90deg);
-}
 
 .profile-form{
     

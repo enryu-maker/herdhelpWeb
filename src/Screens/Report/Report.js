@@ -23,7 +23,6 @@ function renderHeader() {
             background:COLORS.layout,
             borderRadius:SIZES.radius,
             padding:20,
-            margin:20,
             }}>
         <div>
             <p
@@ -35,12 +34,12 @@ function renderHeader() {
           Report
         </p>
         </div>
-        <div className='cards' style={{margin:"auto"}}>
+        <div className='cards' style={{margin:"auto", padding:20 , width:1200 , backgroundColor:COLORS.lightGray1,borderRadius:SIZES.radius}}>
         {ReportData.map((item , index) => {
             return(<>
                 {/* <Link to={item.path}> */}
                 <div className='report_card' style={{
-                    background:COLORS.lightGray2,
+                    background:COLORS.white,
                     borderRadius:SIZES.radius
                 }}>
                     <span className='reportcard_icon'>{item.icon}</span>
