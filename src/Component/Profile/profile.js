@@ -31,7 +31,7 @@ const [show , setShow] = useState(false)
       function renderForm(){
         return(
           <>
-          <div style={{width:"100%", height:"auto" , display:"flex"}}>
+          <div style={{width:"100%", height:"Auto" , display:"flex" , backgroundColor:COLORS.layout}}>
 
 
 

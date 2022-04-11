@@ -21,6 +21,8 @@ import Profile from './Component/Profile/profile';
 import Report from './Screens/Report/Report';
 import Parents from './Screens/Parents/Parents';
 import Subscription from './Component/Subscription/Subscription';
+import Weighthistory from './Screens/Report/weighthistory';
+import Terms from './Screens/Terms/terms';
 
 
 function App() {
@@ -43,23 +45,25 @@ function App() {
           <Route path="/herds" element={<Herds/>}/>
           <Route path='/report' element={<Report/>}/>
           <Route path='/parents' element={<Parents/>} />
+          <Route path='/weighthistory' element={<Weighthistory/>}/>
           <Route path='/subscription' element={<Subscription/>}/>
+          <Route path='/terms-and-condition' element={<Terms/>} />
         </Routes>
       </header>
       
-      {/* <footer style={{
-        backgroundColor:COLORS.black,
+      <footer style={{
+        backgroundColor:COLORS.layout,
         height:40,
         position:"fixed",
         bottom:0,
         width:"100%",
-        marginTop:80
+        // transform:"rotate(90deg)",
       }}>
         <p style={{
           ...FONTS.h3,
-          color:COLORS.white
+          color:COLORS.black
         }}>Powered by NerdTech</p>
-      </footer> */}
+      </footer>
     </div>
     </>
   );
