@@ -72,7 +72,6 @@ function NavBarMain({
             marginLeft:20,
             textDecorationLine:page==="report"?"underline":"none",
             ...FONTS.h3
-
           }}>
             Report
             </Link>
@@ -81,7 +80,6 @@ function NavBarMain({
             marginLeft:20,
             textDecorationLine:page==="history"?"underline":"none",
             ...FONTS.h3
-
           }}>
             WeightHistory
             </Link>
@@ -90,7 +88,6 @@ function NavBarMain({
             marginLeft:20,
             textDecorationLine:page==="parents"?"underline":"none",
             ...FONTS.h3
-
           }}>
             Parents
             </Link>
@@ -99,7 +96,6 @@ function NavBarMain({
             textDecorationLine:"none",
             ...FONTS.h3,
             marginLeft:20
-
           }}>
             Logout
             </Link>
