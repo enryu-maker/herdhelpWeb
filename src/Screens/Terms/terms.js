@@ -3,13 +3,7 @@ import NavBarMain from "../../Component/Nav/navmain";
 import { COLORS, FONTS } from '../../Theme/Theme';
 
 export default  function Terms() {
- // 
-// const [valueMS, setValueMS] = useState("");
-// const [tag, setTag] = useState("");
-// const [bought, setBought] = useState(false);
-const options = ["one", "two", "three"];
-// const defaultOption = options[0];
-// 
+  
 function renderHeader(){
   return<NavBarMain/>;
 }
@@ -32,7 +26,7 @@ function renderForm(){
                 <p style={{
                     ...FONTS.h3
                 }}>
-                This privacy policy discloses the privacy practices for <a href='#none' style={{textDecoration:"none" , ...FONTS.body3}}> www.Apnimandi.pk</a>
+                This privacy policy discloses the privacy practices for <a href='https://herdhelp.com' style={{textDecoration:"none" , ...FONTS.body3}}> herdhelp.com</a>
                 
                 . This privacy policy applies solely to information collected by this web site. It will notify you of the following:
                 </p>
@@ -116,7 +110,7 @@ function renderForm(){
                 <p style={{
                     ...FONTS.body3
                 }}>
-                  Our Privacy Policy may change from time to time and all updates will be posted on this page. If you feel that we are not abiding by this privacy policy, you should contact us immediately via email <a href='#none'>support@apnimandi.co </a>
+                  Our Privacy Policy may change from time to time and all updates will be posted on this page. If you feel that we are not abiding by this privacy policy, you should contact us immediately via email <a href='mailto:contact@herdhelp.com'>contact@herdhelp.com </a>
                 </p>
                 </div>
 
@@ -132,8 +126,8 @@ function renderForm(){
                   If there are any questions regarding this Privacy Policy, you may contact us using the information below. 
                 </p>
                 <div style={{textDecoration:"none"}}>
-                <li><a>Tel: +92300 2237969</a></li>
-                <li><a>Email: support@apnimandi.co </a></li>
+                <li><a href='tel: +1(251) 747-8563' style={{textDecoration:"none",color:COLORS.Primary}} >Tel: +1(251) 747-8563 </a></li>
+                <li><a href='mailto: contact@herdhelp.com' style={{textDecoration:"none",color:COLORS.Primary}} >Email: contact@herdhelp.com </a></li>
                 </div>
                 </div>
         </div>
