@@ -23,6 +23,7 @@ import Parents from './Screens/Parents/Parents';
 import Subscription from './Component/Subscription/Subscription';
 import Weighthistory from './Screens/Report/weighthistory';
 import Terms from './Screens/Terms/terms';
+import Footer from './Component/Footer/Footer';
 
 
 function App() {
@@ -51,20 +52,8 @@ function App() {
         </Routes>
       </header>
       
-      <footer style={{
-        backgroundColor:COLORS.layout,
-        height:40,
-        position:"fixed",
-        bottom:0,
-        width:"100%",
-        // transform:"rotate(90deg)",
-      }}>
-        <p style={{
-          ...FONTS.h3,
-          color:COLORS.black
-        }}>Powered by NerdTech</p>
-      </footer>
     </div>
+     <Footer/>
     </>
   );
 }

@@ -14,6 +14,31 @@ const [tag, setTag] = useState("");
 const [bought, setBought] = useState(false);
 const options = ["one", "two", "three"];
 const defaultOption = options[0];
+
+
+//
+/* const [alert, setAlerts] = React.useState([]);
+  const [species, setSpcies] = React.useState([]);
+  const [id, setId] = React.useState(null);
+  const [loading, setLoading] = React.useState(false);
+
+  async function loadFinance() {
+    let {data} = await axiosIns.get('alerts/');
+    setLoading(true);
+    return data;
+  }
+  React.useEffect(() => {
+    setId(global.id);
+    setSpcies(global.species);
+    loadFinance().then(data => {
+      setAlerts(data);
+      // console.log(data)
+    });
+  }, [alert]);
+  function delAlert(id){
+    axiosIns.delete(`alerts/${id}`).then(()=>{alert("Alert deleted sucessfully")})
+   } */
+
 // 
 function renderHeader(){
   return<NavBarMain/>;

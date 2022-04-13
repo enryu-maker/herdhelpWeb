@@ -6,7 +6,7 @@ import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
 import {species } from "../../Component/Constants";
-
+// import axiosIns from '../../helpers/helpers';
 
 export default function Parents() {
 // 
@@ -15,7 +15,38 @@ const [tag, setTag] = useState("");
 const [bought, setBought] = useState(false);
 const options = ["one", "two", "three"];
 const defaultOption = options[0];
-// 
+//
+/*  React.useEffect(() => {
+    setId(global.id);
+    setSpecies(global.species);
+    setTagl(global.tags)
+
+  }, []);
+  const onChangeSpec = value => {
+    setAnimal(value);
+  };
+  async function findChildren() {
+
+      setLoading(true);
+      try {
+        let {data} = await axiosIns.get(
+          `reports/getchildren/${id}${animal}${tag}`,
+        );
+        if (data.length > 0 && data != undefined) {
+          setBabies(data)
+          setTag('');
+          setLoading(false);
+          return data;
+        } else {
+          setLoading(false);
+          setErr('babies Not found');
+        }
+      } catch (e) {
+        setLoading(false);
+        setErr('Server Error');
+      }
+    }*/ 
+//
 
     function renderHeader(){
         return<NavBarMain/>;

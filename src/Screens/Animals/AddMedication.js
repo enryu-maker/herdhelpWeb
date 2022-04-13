@@ -6,6 +6,8 @@ import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
 import { checking, gender , species } from "../../Component/Constants";
+// import axiosIns from '../../helpers/helpers';
+
 
 export default function AddMedication(){
     // 
@@ -38,7 +40,99 @@ export default function AddMedication(){
     const options = ["one", "two", "three"];
     const defaultOption = options[0];
     // 
-
+// axios
+/* 
+function addMedical() {
+    setLoading(true),
+    axiosIns
+      .post(
+        'medication/',
+        {
+          tag_number:!cond?`${global.id}${dataS}${dataT}` : `${global.id}${species}${tag}`,
+          medication_name: med,
+          medication_date: treatt,
+          dosage: dos,
+          disease: Dis,
+          withdrawal: withdraw,
+          withdrawal_date: datet!=""? datet:null,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      )
+      .then(response => {
+        if (response.status == 201) {
+          setLoading(false)
+          showMessage({
+            message: "Medication Added",
+            type: "default",
+            backgroundColor: COLORS.Primary,
+            color:COLORS.white,
+            titleStyle:{
+              alignSelf:"center",
+              ...FONTS.h3
+            },
+            animationDuration:250,
+            icon:"success",
+            style:{
+              justifyContent:"center"
+            }
+          });
+          clear()
+        } else {
+          setLoading(false),
+          showMessage({
+            message: "Animal Not Added",
+            type: "default",
+            backgroundColor: COLORS.red,
+            color:COLORS.white,
+            titleStyle:{
+              alignSelf:"center",
+              ...FONTS.h3
+            },
+            animationDuration:250,
+            icon:"danger",
+            style:{
+              justifyContent:"center"
+            }
+          });
+        }
+      })
+      .catch(err => {
+        setLoading(false)
+        showMessage({
+          message: `${err.response.data.msg}`,
+          type: "default",
+          backgroundColor: COLORS.red,
+          color:COLORS.white,
+          titleStyle:{
+            alignSelf:"center",
+            ...FONTS.h3
+          },
+          animationDuration:250,
+          icon:"danger",
+          style:{
+            justifyContent:"center"
+          }
+        });
+      });
+  }
+  React.useEffect(() => {
+    setId(global.id);
+    setAnimals(global.species);
+    let {cond} = route.params
+    setCond(cond)
+    if (!cond){
+      let {tag} = route.params
+      setDataT(tag)
+      let{species} = route.params
+      setDataS(species)
+    }
+  }, []);*/
+// 
+// 
     
     function renderHeader(){
         return<NavBarMain/>;

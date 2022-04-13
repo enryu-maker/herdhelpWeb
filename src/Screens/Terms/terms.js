@@ -21,7 +21,13 @@ function renderForm(){
             // padding:0,
             minHeight:100,
             minWidth:100,
-            backgroundColor:COLORS.lightGray1,
+            backgroundColor: '#f8f9d2',
+            backgroundImage: 'linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%)',
+            // backgroundColor:"#f9d29d",
+            // backgroundImage : "linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%)",
+            // background:'linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%)',
+            // backgroundBlendMode: 'normal,color-burn',
+            
             textAlign:'left',
             padding:'10px 0px 50px 50px',
         }}>
