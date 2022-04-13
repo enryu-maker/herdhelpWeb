@@ -56,7 +56,5 @@ export const IMAGES={
     paid:require("../assets/Logo/paid.png"),
     card:require("../assets/Logo/credit-cards.png"),
     sack:require("../assets/Logo/sack.png"),
-    img1:require("../assets/back1.jpg"),
-    img2:require("../assets/img2.jpg"),
-    img3:require("../assets/wild1.jpeg"),
+    
 }
