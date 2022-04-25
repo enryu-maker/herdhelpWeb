@@ -5,6 +5,10 @@ import { IMAGES } from "../../Theme/Image";
 // import axiosIns from '../../helpers/helpers';
 // import { Link } from "react-router-dom";
 import NavBarMain from "../../Component/Nav/navmain";
+import './Home.css'
+
+
+
 export default function Main() {
 
   //
@@ -69,25 +73,44 @@ export default function Main() {
 */
   //
 
+
+
+
+
+
+
   return (
     <div style={{
-      flex:1
+      flex:1,
+      
+      justifyContent:"center",
     }}>
     <NavBarMain page={'home'}/>
     <div style={{
       display:"flex",
-      alignSelf:"center",
+      // alignSelf:"center",
       justifyContent:"center",
-      backgroundColor:COLORS.layout,
+      // backgroundColor:COLORS.Primary,
+      background:"#f5c5b9",
+      // "#f5f1e8"
+      // width:"1300px",
+      // height:"400px",
+      // borderRadius:"200px 200px 100px 100px",
+ 
+
 
     }}>
       <div
         style={{
-          marginTop:50,
-          backgroundColor: COLORS.lightGray1,
+          marginTop:20,
+          background: COLORS.layout  , //"#f5f1e8"
+          backgroundImage : "linear-gradient(315deg, #f9d39d6b 60%, #f5f1e8 0%)",
           borderRadius: SIZES.radius,
-          marginBottom:80,
-           
+          marginBottom:50,
+          padding:20,
+           width:"fit-content",
+           minHeight:530,
+           boxShadow:"10px -3px 20px 2px #f5c5d9"
         }}
       >
         <div
@@ -99,7 +122,7 @@ export default function Main() {
           <ButtonCard 
           label={'My Herds'}
           link={'/herds'}
-          img={IMAGES.heart}
+          img={IMAGES.heart} 
           />
           <ButtonCard 
           label={'Add Animals'}
