@@ -126,12 +126,12 @@ export default function Main() {
               <div style={{width:300  }}>
               {/* <p>email</p> */}
               <p>Total No. Animal = <output>60</output></p>
-              <p>No. Cow = <output>60</output></p>
-              <p>No. Goat = <output>60</output></p>
-              <p>No. Horse = <output>60</output></p>
-              <p>No. Pig = <output>60</output></p>
-              <p>No. Rabbit = <output>60</output></p>
-              <p>No. Sheep = <output>60</output></p>
+              <p>No. Cow = <output>10</output></p>
+              <p>No. Goat = <output>10</output></p>
+              <p>No. Horse = <output>10</output></p>
+              <p>No. Pig = <output>10</output></p>
+              <p>No. Rabbit = <output>10</output></p>
+              <p>No. Sheep = <output>10</output></p>
               </div>
             </div>
        
