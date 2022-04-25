@@ -21,14 +21,18 @@ const [bought, setBought] = useState(false);
       alignItems:"center"
     }}>
       <NavBar page={"home"}/>
-    <div style={{display:"flex" , backgroundColor:COLORS.layout}}>
+    <div style={{display:"flex" ,
+    //  backgroundColor:COLORS.layout
+     }}>
       
       <div style={{width:650 , height:500 , borderRadius:SIZES.radius, 
-      // backgroundColor: COLORS.lightGray2 ,
-      padding:30 , justifyContent:"center", alignItems:"center" , margin:20  , paddingTop:100 }}>
+      backgroundColor: COLORS.lightGray2 ,
+        // backgroundColor:"#eae7dc" ,
+      borderRadius:SIZES.radius ,
+      padding:30 , justifyContent:"center", alignItems:"center" , margin:20  , paddingTop:10 }}>
       <div style={{display:"flex", flexDirection:"column" ,
       //  justifyContent:"center" ,alignItems:"center", 
-      textAlign:"left" }}>
+      textAlign:"left" ,paddingLeft:30}}>
       <h1 style={{...FONTS.largeTitle}}>Herd Help</h1>
 
           <p style={{...FONTS.body2, marginTop:30 ,textAlign:"left" }}> Driven by cutting edge technology, we source fresh produce from farmers and wholesaler, pass it through multiple QC and Disinfection stages and deliver it at your doorstep, in Multan.</p>
@@ -58,8 +62,8 @@ const [bought, setBought] = useState(false);
           </div>
       </div>
       </div>
-      <div style={{width:650 ,borderRadius:SIZES.radius, 
-        // backgroundColor: COLORS.lightGray2 , 
+      <div style={{width:550 ,borderRadius:SIZES.radius, 
+        backgroundColor: COLORS.lightGray2 , 
         margin:20}}>
         
       </div>

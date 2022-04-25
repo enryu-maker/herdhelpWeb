@@ -39,8 +39,8 @@ export default function AddMedication(){
     const [unit, setUnit] = React.useState(false);
     const options = ["one", "two", "three"];
     const defaultOption = options[0];
-    // 
-// axios
+    //
+  // axios
 /* 
 function addMedical() {
     setLoading(true),

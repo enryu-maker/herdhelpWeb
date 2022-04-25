@@ -25,7 +25,7 @@ function Footer() {
        
          <img src={IMAGES.logo} style={{width:100}} />
           <p style={{...FONTS.body4 ,marginLeft:"-100px"}}>
-            &copy;{new Date().getFullYear()} NerdTech | All right reserved | <Link to={'/terms-and-condition'} style={{textDecoration:'none', color:COLORS.black, }}>Terms of Serivce | Privacy</Link> 
+            &copy;{new Date().getFullYear()} NerdTech | All right reserved | <Link to={'/terms-and-condition'} style={{textDecoration:'none', color:COLORS.black } } >Terms of Serivce | Privacy</Link> 
            </p>
       
       </footer></>

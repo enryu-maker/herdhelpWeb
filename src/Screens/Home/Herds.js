@@ -20,7 +20,7 @@ export default function Herds() {
             padding:20,
             borderRadius:SIZES.radius
         }} > herds</div>
-            )}  
+)}
 
 
 

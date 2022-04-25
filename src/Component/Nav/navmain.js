@@ -9,14 +9,14 @@ function NavBarMain({
   page,
   navStyle
 }) {
-  // const {nav , setNavbar} = useState(false);
+  // var {nav , setNavbar} = useState(true);
   
   
   // const changeBackground = () => {
   //   if(window.scrollY >= 75 ){
-  //     setNavbar(true)
+  //     setNavbar=(true)
   //   }else(
-  //     setNavbar(false)
+  //     setNavbar=(false)
   //   )
   // }
   // window.addEventListener( `scroll`,changeBackground);
@@ -26,10 +26,11 @@ function NavBarMain({
         display:"flex",
         backgroundColor:COLORS.white,
         alignSelf:"center",
-        height:75,
+        height:58,
         maxWidth:"100%",
         ...navStyle
-      }}className='nav'
+      }}
+      className='nav'
       //  className={nav ? 'nav active': 'nav'}
       >
         <Link to="/main">

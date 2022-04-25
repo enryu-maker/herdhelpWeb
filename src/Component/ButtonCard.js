@@ -17,23 +17,26 @@ export default function ButtonCard({
       <Link
         style={{
           backgroundColor: COLORS.Primary,
-          height: 250,
+          height: 200,
+          padding:10,
           margin: SIZES.padding+10,
           borderRadius: SIZES.radius,
           display:"flex",
           flexDirection:"column",
           borderWidth: 0,
-        justifyContent: "space-evenly",
+          justifyContent: "space-evenly",
           shadowColor: COLORS.Primary,
           shadowOffset: { width: 0, height: 0 },
           shadowOpacity: 0.5,
           shadowRadius: 10,
           elevation: 2,
-          width: 250,
+          width: 200,
           textDecorationLine:"none",
-          ...container
+          ...container,
+          boxShadow:"10px -4px 15px 7px  #93b8a3",
         }}
-        to={link}
+        className='buttoncard'
+        to={link} 
       >
           
           <img src={img} alt={alt} style={{

@@ -7,8 +7,6 @@ import { IMAGES } from "../../Theme/Image";
 import NavBarMain from "../../Component/Nav/navmain";
 import './Home.css'
 
-
-
 export default function Main() {
 
   //
@@ -91,7 +89,7 @@ export default function Main() {
       // alignSelf:"center",
       justifyContent:"center",
       // backgroundColor:COLORS.Primary,
-      background:"#f5c5b9",
+      // background:"#f5c5b9",
       // "#f5f1e8"
       // width:"1300px",
       // height:"400px",
@@ -110,9 +108,34 @@ export default function Main() {
           padding:20,
            width:"fit-content",
            minHeight:530,
-           boxShadow:"10px -3px 20px 2px #f5c5d9"
+           boxShadow:"10px -10px 20px 4px #f5c5d9",
+           display: "flex",
+          flexFlow: "row",
         }}
       >
+       
+          <div style={{minWidth:300 , 
+            minHeight:500 ,
+            backgroundColor:COLORS.lightGray1,
+            borderRadius:SIZES.radius, 
+            padding:20,margin:"auto",
+            } }>
+              
+              <p style={{}}><img src={IMAGES.login} alt='' style={{width:50 , margin:"0px 10px"}} />User name</p>
+              <hr style={{width:200 }} />
+              <div style={{width:300  }}>
+              {/* <p>email</p> */}
+              <p>Total No. Animal = <output>60</output></p>
+              <p>No. Cow = <output>60</output></p>
+              <p>No. Goat = <output>60</output></p>
+              <p>No. Horse = <output>60</output></p>
+              <p>No. Pig = <output>60</output></p>
+              <p>No. Rabbit = <output>60</output></p>
+              <p>No. Sheep = <output>60</output></p>
+              </div>
+            </div>
+       
+        <div>
         <div
           style={{
             display: "flex",
@@ -158,6 +181,7 @@ export default function Main() {
 
           img={IMAGES.bell}
           />
+        </div>
         </div>
       </div>
     </div>
