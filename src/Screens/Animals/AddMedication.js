@@ -11,6 +11,11 @@ import { checking, gender , species } from "../../Component/Constants";
 
 export default function AddMedication(){
     // 
+    const [medicationR , setmedicationR ] = useState("");
+    const [ medicine , setmedicine] = useState("");
+    const [ dosage , setdosage] = useState("");
+
+
     const [bred, setBred] = useState(false);
     const [valueMS, setValueMS] = useState("");
     const [valueBS, setValueBS] = useState("");
@@ -39,6 +44,42 @@ export default function AddMedication(){
     const [unit, setUnit] = React.useState(false);
     const options = ["one", "two", "three"];
     const defaultOption = options[0];
+
+    const clear = () => {
+     // setSpcies([])
+     setWeight('');
+     setTag('');
+     setRegistration('');
+     setAge('');
+     setBreed('');
+     setMother('');
+     setFather('');
+     setPrice('');
+     setName('');
+   };
+   const data = JSON.stringify({
+    //  name: name,
+     tag_number: ` ${id}${valueMS}${tag}`,
+     registration: registration,
+     support_tag: tag,
+     gender: valueBS,
+     species: valueMS,
+     birth_date: dobt,
+     mother_supporttag:mother!=""?mother:"",
+     mother_tagnumber:mother!=""?`${id}${valueMS}${mother}`:"" ,
+     father_supporttag:father!=""?father:"",
+     father_tagnumber:father!=""? `${id}${valueMS}${father}`:"" ,
+     breed: Breed,
+     weight: unit==true?weight: Math.round(weight/0.45359237),
+     weight_kg:unit==false?weight: Math.round(weight*0.45359237),
+     bred: bred,
+     age: age,
+     vaccinated: vaccinated,
+     vaccination_date: vaccinateddatet,
+     price: price,
+     bought: bought,
+     status: 'Alive',
+   });
     //
   // axios
 /* 
@@ -233,10 +274,10 @@ function addMedical() {
                 />
               }
               type={"text"}
-              value={tag}
+              value={medicationR}
               label={"Reason for Medication"}
               onChange={(event) => {
-                setTag(event.target.value);
+                setmedicationR(event.target.value);
               }}
             />
             </div>
@@ -259,10 +300,10 @@ function addMedical() {
                 />
               }
               type={"text"}
-              value={tag}
+              value={medicine}
               label={"Medicine"}
               onChange={(event) => {
-                setTag(event.target.value);
+                setmedicine(event.target.value);
               }}
             />
             </div>
@@ -311,10 +352,10 @@ function addMedical() {
                 />
               }
               type={"text"}
-              value={tag}
+              value={dosage}
               label={"Dosage"}
               onChange={(event) => {
-                setTag(event.target.value);
+                setdosage(event.target.value);
               }}
             />
             </div>
@@ -325,8 +366,8 @@ function addMedical() {
             }}
           >
             <DropDown
-              value={valueMS}
-              setValue={setValueMS}
+              value={valueBS}
+              setValue={setValueBS}
               label={"Withdrawal"}
               // options={checking}
               options={checking}

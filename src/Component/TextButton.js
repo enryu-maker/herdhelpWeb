@@ -35,10 +35,10 @@ export default function TextButton({
             <div style={{
                 margin:10
             }}>
-                <img src={icon} style={{height:25,width:25,color:COLORS.white,alignSelf:"flex-start",...iconStyle}}/> 
+                <img src={icon} style={{height:30,width:30,color:COLORS.white,alignSelf:"flex-start",...iconStyle}}/> 
             </div>
         }
-        <p style={{ color: COLORS.white, ...FONTS.h2, ...labelStyle,alignSelf:"center",letterSpacing:2 }}>
+        <p style={{ color: COLORS.white, ...FONTS.h2, ...labelStyle,alignSelf:"center",letterSpacing:1 }}>
         {label}
         </p>
         </button>

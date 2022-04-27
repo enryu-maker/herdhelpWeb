@@ -56,5 +56,7 @@ export const IMAGES={
     paid:require("../assets/Logo/paid.png"),
     card:require("../assets/Logo/credit-cards.png"),
     sack:require("../assets/Logo/sack.png"),
+    playstore:require("../assets/playstore.png"),
+    appstore:require("../assets/app-store.png")
     
 }

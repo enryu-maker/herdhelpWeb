@@ -57,8 +57,8 @@ export default function InputForm({
             width: 280,
             alignSelf: "center",
             ...inputContainerStyle,
-          }}
-        >
+          }}>
+            
           {prependComponent}
           <input
             style={{

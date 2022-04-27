@@ -44,7 +44,8 @@ const [bought, setBought] = useState(false);
           <div className='buttons'>
           <TextButton
           label={" DOWNLOAD for IOS"}
-          // icon={IMAGES.add}
+          icon={IMAGES.appstore}
+          
           onPress={() => alert(bought)}
           buttonContainerStyle={{
             marginBottom:50,
@@ -53,7 +54,7 @@ const [bought, setBought] = useState(false);
         />
           <TextButton
           label={" DOWNLOAD for ANDROID"}
-          // icon={IMAGES.add}
+          icon={IMAGES.playstore}
           onPress={() => alert(bought)}
           buttonContainerStyle={{
             marginBottom:50,margin:10
@@ -68,8 +69,48 @@ const [bought, setBought] = useState(false);
         
       </div>
     </div>
+
+
+    <div style={{
+      display:'flex',
+      justifyContent:"space-between",
+      alignItems:"center",
+      marginTop:40
+    }}>
+      <div style={{width:"35%" ,
+       height:600 ,
+        backgroundColor:COLORS.lightGray2,
+        margin:'auto',
+        borderRadius:SIZES.radius,
+   }}>
+     <img style={{width:300 , 
+      height: 400 , 
+      border:'none',
+      margin:'50px 50px',
+      position:'absolute',
+      background  :'linear-gradient(35deg, rgba(121, 193, 107, 0.52),rgba(147, 33, 33, 0.5),aqua)'}}
+      src={{}} />
+     <img style={{width:300 , height: 400, position: 'relative',
+      margin: '134px 125px ', 
+      background  :'linear-gradient(123deg, rgba(121, 193, 107, 0.52),rgba(147, 33, 33, 0.5),aqua)'}} />
+
+      </div>
+      <div style={{width:"58%" ,
+       height:400 ,
+       
+        backgroundColor:COLORS.lightGray2,
+        margin:'auto',
+        borderRadius:SIZES.radius,
+       }}>
+         
+
+      </div>
+    </div>
+
     
     </div>
+    
+
     
     </>  
   )
