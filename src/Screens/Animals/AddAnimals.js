@@ -23,7 +23,7 @@ export default function AddAnimals() {
   const [vaccinated, setVaccinated] = useState(false);
   const [vaccinateddate, setVaccinateddate] = useState("");
   const [vaccinateddatet, setVaccinateddatet] = useState(null);
-  const [bought, setBought] = useState(false);
+  const [bought, setBought] = useState('');
   const [loading, setLoading] = React.useState(false);
   const [animals, setAnimals] = React.useState([]);
   const [id, setId] = React.useState("");
@@ -206,6 +206,7 @@ export default function AddAnimals() {
           label={"Purchased*"}
           options={checking}
         />
+       
         {bought ? (
           <>
             <div
@@ -360,6 +361,7 @@ export default function AddAnimals() {
             </div>
           </>
         ) : (
+
           <div
               style={{
                 display: "flex",

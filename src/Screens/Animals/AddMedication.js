@@ -6,7 +6,7 @@ import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
 import { checking, gender , species } from "../../Component/Constants";
-// import axiosIns from '../../helpers/helpers';
+import axiosIns from '../../helpers/helpers';
 
 
 export default function AddMedication(){
@@ -58,7 +58,7 @@ export default function AddMedication(){
      setName('');
    };
    const data = JSON.stringify({
-    //  name: name,
+     name: name,
      tag_number: ` ${id}${valueMS}${tag}`,
      registration: registration,
      support_tag: tag,
@@ -82,7 +82,7 @@ export default function AddMedication(){
    });
     //
   // axios
-/* 
+/*
 function addMedical() {
     setLoading(true),
     axiosIns
@@ -171,7 +171,8 @@ function addMedical() {
       let{species} = route.params
       setDataS(species)
     }
-  }, []);*/
+  }, []);
+  */
 // 
 // 
     

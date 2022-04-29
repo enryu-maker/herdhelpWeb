@@ -10,65 +10,65 @@ import './Home.css'
 export default function Main() {
 
   //
-  /* 
-   const [loading, setLoading] = React.useState(false);
-  const [show, setShow] = React.useState('');
-  const [user, setUser] = React.useState([]);
-  async function fetchanimal() {
-    let {data} = await axiosIns.get('getcategories/');
-    setLoading(true);
-    global.species = data;
-    return data;
-  }
-  async function getWeightUnit() {
-    global.unit = JSON.parse(await AsyncStorage.getItem('weight'));
-    // return data
-  }
-  async function fetchStatus() {
-    let {data} = await axiosIns.get('getstatuses/');
-    setLoading(true);
-    global.stat = data;
-    return data;
-  }
-  async function loadId() {
-    global.id = await AsyncStorage.getItem('id');
-  }
-  async function getALerts() {
-    let {data} = await axiosIns.get('alerts/');
-    return data;
-  }
-  async function checkSubs() {
-    let {data} = await axiosIns.get('subscriptions/isactive/');
-    return data;
-  }
-  async function getAnimals(){
-    let {data} = await axiosIns.get('animaltags/');
-    console.log(data)
-    return data
-  }
-  React.useEffect(() => {
-    fetchStatus();
-    fetchanimal();
-    loadId();
-    getALerts().then(data => {
-      setUser(data);
-    });
-    getWeightUnit();
-    checkSubs().then(data => {
-      global.isActive=data.isactive
-      !data.isactive
-        ? navigation.navigate('Subscription', {
-            msg: 'No Active Subscription Please Purchase the Tier',
-            cond: true,
-          })
-        : null;
-    });
-    getAnimals().then((data)=>{
-      global.tags=data
-    })
-  }, [show]);
- const username = React.useContext(Username)
-*/
+  
+//    const [loading, setLoading] = React.useState(false);
+//   const [show, setShow] = React.useState('');
+//   const [user, setUser] = React.useState([]);
+//   async function fetchanimal() {
+//     let {data} = await axiosIns.get('getcategories/');
+//     setLoading(true);
+//     global.species = data;
+//     return data;
+//   }
+//   async function getWeightUnit() {
+//     global.unit = JSON.parse(await AsyncStorage.getItem('weight'));
+//     // return data
+//   }
+//   async function fetchStatus() {
+//     let {data} = await axiosIns.get('getstatuses/');
+//     setLoading(true);
+//     global.stat = data;
+//     return data;
+//   }
+//   async function loadId() {
+//     global.id = await AsyncStorage.getItem('id');
+//   }
+//   async function getALerts() {
+//     let {data} = await axiosIns.get('alerts/');
+//     return data;
+//   }
+//   async function checkSubs() {
+//     let {data} = await axiosIns.get('subscriptions/isactive/');
+//     return data;
+//   }
+//   async function getAnimals(){
+//     let {data} = await axiosIns.get('animaltags/');
+//     console.log(data)
+//     return data
+//   }
+//   React.useEffect(() => {
+//     fetchStatus();
+//     fetchanimal();
+//     loadId();
+//     getALerts().then(data => {
+//       setUser(data);
+//     });
+//     getWeightUnit();
+//     checkSubs().then(data => {
+//       global.isActive=data.isactive
+//       !data.isactive
+//         ? navigation.navigate('Subscription', {
+//             msg: 'No Active Subscription Please Purchase the Tier',
+//             cond: true,
+//           })
+//         : null;
+//     });
+//     getAnimals().then((data)=>{
+//       global.tags=data
+//     })
+//   }, [show]);
+//  const username = React.useContext(Username)
+
   //
 
 
@@ -86,35 +86,31 @@ export default function Main() {
     <NavBarMain page={'home'}/>
     <div style={{
       display:"flex",
-      // alignSelf:"center",
       justifyContent:"center",
-      // backgroundColor:COLORS.Primary,
-      // background:"#f5c5b9",
-      // "#f5f1e8"
-      // width:"1300px",
-      // height:"400px",
-      // borderRadius:"200px 200px 100px 100px",
+      background:"rgb(195, 231, 154, 0.596)",
+     marginBottom:50,
  
 
 
     }}>
       <div
         style={{
-          marginTop:20,
+          // marginTop:20,
           background: COLORS.layout  , //"#f5f1e8"
           backgroundImage : "linear-gradient(315deg, #f9d39d6b 60%, #f5f1e8 0%)",
           borderRadius: SIZES.radius,
-          marginBottom:50,
+          // marginBottom:50,
+          margin:'40px auto ',
           padding:20,
            width:"fit-content",
            minHeight:530,
-           boxShadow:"10px -10px 20px 4px #f5c5d9",
+           boxShadow:"10px -5px 50px 0.1px black",
            display: "flex",
           flexFlow: "row",
         }}
       >
        
-          <div style={{minWidth:300 , 
+          {/* <div style={{minWidth:300 , 
             minHeight:500 ,
             backgroundColor:COLORS.lightGray1,
             borderRadius:SIZES.radius, 
@@ -123,9 +119,9 @@ export default function Main() {
               
               <p style={{}}><img src={IMAGES.login} alt='' style={{width:50 , margin:"0px 10px"}} />User name</p>
               <hr style={{width:200 }} />
-              <div style={{width:300  }}>
+              <div style={{width:300  }}> */}
               {/* <p>email</p> */}
-              <p>Total No. Animal = <output>60</output></p>
+              {/* <p>Total No. Animal = <output>60</output></p>
               <p>No. Cow = <output>10</output></p>
               <p>No. Goat = <output>10</output></p>
               <p>No. Horse = <output>10</output></p>
@@ -133,7 +129,7 @@ export default function Main() {
               <p>No. Rabbit = <output>10</output></p>
               <p>No. Sheep = <output>10</output></p>
               </div>
-            </div>
+            </div> */}
        
         <div>
         <div

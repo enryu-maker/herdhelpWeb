@@ -33,7 +33,7 @@ export default function ButtonCard({
           width: 200,
           textDecorationLine:"none",
           ...container,
-          boxShadow:"10px -4px 15px 7px  #93b8a3",
+          // boxShadow:"10px -4px 15px 7px  #93b8b3",
         }}
         className='buttoncard'
         to={link} 
