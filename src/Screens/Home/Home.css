@@ -1,8 +1,11 @@
 .buttoncard{
     transition: 0.6s ease;
     box-shadow: 10px -10px 30px 4px rgba(124, 202, 124, 0.87);
-}
 
+}
+.mainbg{
+    background-color: rgba(255, 255, 255, 0.801);
+}
 
 .buttoncard:hover{
     transform: scale(1.1);

@@ -31,7 +31,11 @@ const [show , setShow] = useState(false)
       function renderForm(){
         return(
           <>
-          <div style={{width:"100%", height:"Auto" , marginBottom:50, display:"flex" , backgroundColor:COLORS.layout}}>
+          <div style={{width:"100%", 
+                        height:"Auto" , 
+                        marginBottom:50, 
+                        display:"flex"}} 
+              className='profile-background'  >
 
 
 

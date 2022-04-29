@@ -30,7 +30,7 @@ export default function ButtonCard({
           shadowOpacity: 0.5,
           shadowRadius: 10,
           elevation: 2,
-          width: 200,
+          width: 300, // 200
           textDecorationLine:"none",
           ...container,
           // boxShadow:"10px -4px 15px 7px  #93b8b3",
