@@ -76,7 +76,7 @@ export default function Main() {
 
 
 
-  
+
   return (
     <div style={{
       flex:1,
@@ -87,28 +87,21 @@ export default function Main() {
     <div style={{
       display:"flex",
       justifyContent:"center",
-      background:"rgb(195, 231, 154, 0.596)",
      marginBottom:50,
- 
-
-
-    }}>
+    }} className='mainbg'>
       <div
-        style={{
-          // marginTop:20,
+        style={{// marginTop:20,
           background: COLORS.layout  , //"#f5f1e8"
           backgroundImage : "linear-gradient(315deg, #f9d39d6b 60%, #f5f1e8 0%)",
           borderRadius: SIZES.radius,
           // marginBottom:50,
           margin:'40px auto ',
           padding:20,
-           width:"fit-content",
-           minHeight:530,
-           boxShadow:"10px -5px 50px 0.1px black",
-           display: "flex",
-          flexFlow: "row",
-        }}
-      >
+          width:"fit-content",
+          minHeight:530,
+          boxShadow:"5px -5px 30px 2px rgba(30, 60, 0 ,0.4)",
+          display: "flex",
+          flexFlow: "row",}}>
        
           {/* <div style={{minWidth:300 , 
             minHeight:500 ,
@@ -119,10 +112,10 @@ export default function Main() {
               
               <p style={{}}><img src={IMAGES.login} alt='' style={{width:50 , margin:"0px 10px"}} />User name</p>
               <hr style={{width:200 }} />
-              <div style={{width:300  }}> */}
-              {/* <p>email</p> */}
-              {/* <p>Total No. Animal = <output>60</output></p>
-              <p>No. Cow = <output>10</output></p>
+              <div style={{width:300  }}> 
+              <p>email</p>
+              <p>Total No. Animal = <output>60</output></p>
+              <p>No. Cow= <output>10</output></p>
               <p>No. Goat = <output>10</output></p>
               <p>No. Horse = <output>10</output></p>
               <p>No. Pig = <output>10</output></p>
@@ -132,27 +125,25 @@ export default function Main() {
             </div> */}
        
         <div>
-        <div
-          style={{
+          <div
+            style={{
             display: "flex",
             flexFlow: "row",
-          }}
-        >
+          }}>
           <ButtonCard 
-          label={'My Herds'}
-          link={'/herds'}
-          img={IMAGES.heart} 
+            label={'My Herds'}
+            link={'/herds'}
+            img={IMAGES.heart} 
           />
           <ButtonCard 
-          label={'Add Animals'}
-          link={'/animals'}
-          img={IMAGES.add}
+            label={'Add Animals'}
+            link={'/animals'}
+            img={IMAGES.add}
           />
-
           <ButtonCard 
-          label={'Add Medication'}
-          link={'/medication'}
-          img={IMAGES.med}
+            label={'Add Medication'}
+            link={'/medication'}
+            img={IMAGES.med}
           />
         </div>
         <div
@@ -162,20 +153,19 @@ export default function Main() {
           }}
         >
           <ButtonCard 
-          label={'Update Weight'}
-          img={IMAGES.weight}
-          link={'/weight'}
+            label={'Update Weight'}
+            img={IMAGES.weight}
+            link={'/weight'}
           />
           <ButtonCard 
-          label={'Finance'}
-          link={'/finance'}
-          img={IMAGES.money}
+            label={'Finance'}
+            link={'/finance'}
+            img={IMAGES.money}
           />
           <ButtonCard 
-          label={'Alerts'}
-          link={'/alerts'}
-
-          img={IMAGES.bell}
+            label={'Alerts'}
+            link={'/alerts'}
+            img={IMAGES.bell}   
           />
         </div>
         </div>
