@@ -155,6 +155,9 @@ export default function Login() {
           setPassword(event.target.value);
         }}
       />
+      
+
+
       <TextButton
         label={"Login"}
         icon={IMAGES.log}
@@ -165,8 +168,9 @@ export default function Login() {
             backgroundColor: isEnableSignIn()
               ? COLORS.Primary
               : COLORS.transparentPrimary2,
-        }}
+            }}
       />
+        
       <p style={{ color: COLORS.darkGray, ...FONTS.body3 }}>
         Don't have an account?{" "}
         <Link
@@ -177,6 +181,19 @@ export default function Login() {
           }}
         >
           SIGNUP
+        </Link>
+        <br/>
+        <Link
+        to="/"
+          style={{
+            position:'absolute',
+            // display:'flex',
+            marginTop:'13px',
+            backgroundColor: COLORS.lightGray2,
+            color: COLORS.Primary,
+          }}
+        >
+         Forget Password
         </Link>
       </p>
     </div>

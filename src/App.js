@@ -1,15 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import TextButton from './Component/TextButton';
-import InputForm from './Component/InputForm';
-import react,{Profiler, useState} from 'react';
-import Card from './Component/Card';
 import Login from './Screens/Auth/Login';
 import Signup from './Screens/Auth/Signup';
 import Home from './Screens/Home/Home';
 import { Routes,Route } from "react-router-dom";
-import NavBar from './Component/Nav/Navbar';
-import { COLORS, FONTS } from './Theme/Theme';
 import Main from './Screens/Home/Main';
 import Weight from './Screens/Home/Weight';
 import AddAnimals from './Screens/Animals/AddAnimals';
@@ -24,6 +17,7 @@ import Subscription from './Component/Subscription/Subscription';
 import Weighthistory from './Screens/Report/weighthistory';
 import Terms from './Screens/Terms/terms';
 import Footer from './Component/Footer/Footer';
+// import ForgetPass from './Screens/ForgetPass/forgetPass';
 
 
 function App() {
@@ -49,6 +43,7 @@ function App() {
           <Route path='/weighthistory' element={<Weighthistory/>}/>
           <Route path='/subscription' element={<Subscription/>}/>
           <Route path='/terms-and-condition' element={<Terms/>} />
+          {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
         </Routes>
       </header>
       

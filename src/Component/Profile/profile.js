@@ -15,14 +15,10 @@ export default function Profile() {
   const options = ["one", "two", "three"];
   const defaultOption = options[0];
     // 
-// const [edit_profile , setProfile] = useState(false);
-// const edit_pannel = ()=> setProfile(!edit_profile) 
+
 
 
 const [show , setShow] = useState(false)
-//const [sidebar , setSidebar] = useState(false);
-
-// const showSidebar = ()=> setSidebar(!sidebar)
 
 
     function renderHeader(){

@@ -2,7 +2,7 @@ import React from "react";
 import { COLORS, SIZES } from "../../Theme/Theme";
 import ButtonCard from "../../Component/ButtonCard";
 import { IMAGES } from "../../Theme/Image";
-// import axiosIns from '../../helpers/helpers';
+import axiosIns from '../../helpers/helpers';
 // import { Link } from "react-router-dom";
 import NavBarMain from "../../Component/Nav/navmain";
 import './Home.css'
@@ -67,12 +67,12 @@ export default function Main() {
 //       global.tags=data
 //     })
 //   }, [show]);
-//  const username = React.useContext(Username)
+//  const username = React.useContext(username)
 
-  //
+  
 
-
-
+// 
+// 
 
 
 

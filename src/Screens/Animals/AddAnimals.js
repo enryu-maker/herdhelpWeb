@@ -68,36 +68,36 @@ export default function AddAnimals() {
     bought: bought,
     status: 'Alive',
   });
-  // async function postAnimal() {
-  //   setLoading(true);
-  //   if(isEnableSignIn())
-  //   {await axiosIns
-  //     .post('animals/', data, {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //     })
-  //     .then(response => {
-  //       if (response.status == 201) {
-  //         clear();
-  //         setLoading(false);
-  //         setValidation(true);
-  //         setShow(true);
-  //         setDataText('Animal added');
-  //       }
-  //     })
-  //     .catch(
-  //       err => {
-  //       setEmailError("No subscription found, please purchase a subscription for access to animals")
-  //       setLoading(false)
-  //       setValidation(false)
-  //       setShow(false)}
-  //     );}
-  //   else{
-  //     setEmailError("Required Fields cannot be empty")
-  //     setLoading(false)
-  //   }
-  // }
+  async function postAnimal() {
+    setLoading(true);
+    if(isEnableSignIn())
+    {await axiosIns
+      .post('animals/', data, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(response => {
+        if (response.status == 201) {
+          clear();
+          setLoading(false);
+          setValidation(true);
+          setShow(true);
+          setDataText('Animal added');
+        }
+      })
+      .catch(
+        err => {
+        setEmailError("No subscription found, please purchase a subscription for access to animals")
+        setLoading(false)
+        setValidation(false)
+        setShow(false)}
+      );}
+    else{
+      setEmailError("Required Fields cannot be empty")
+      setLoading(false)
+    }
+  }
   React.useEffect(() => {
     setId(global.id);
     setAnimals(global.species);
