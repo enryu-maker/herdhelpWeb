@@ -17,7 +17,7 @@ export default function ButtonCard({
       <Link
         style={{
           backgroundColor: COLORS.Primary,
-          height: 200,
+          height: 100,  // 200
           padding:10,
           margin: SIZES.padding+10,
           borderRadius: SIZES.radius,
@@ -30,7 +30,7 @@ export default function ButtonCard({
           shadowOpacity: 0.5,
           shadowRadius: 10,
           elevation: 2,
-          width: 300, // 200
+          width: 125, // 200
           textDecorationLine:"none",
           ...container,
           // boxShadow:"10px -4px 15px 7px  #93b8b3",
@@ -40,14 +40,15 @@ export default function ButtonCard({
       >
           
           <img src={img} alt={alt} style={{
-              width:80,
-              height:80,
+              width:30, // 80
+              height:30, // 80
               alignSelf:"center",
               margin:10,
-              ...imgStyle
+              // marginTop:50,
+              // ...imgStyle
           }}/>
           <p style={{
-              ...FONTS.h1,
+              ...FONTS.h3,
               alignSelf:"center",
               color:COLORS.white,
               ...labelStyle,
