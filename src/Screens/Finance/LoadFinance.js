@@ -120,54 +120,6 @@ function Feedcard({Feedname, FeedQty, Feeddate, Feedprice}){
       <div>
 
       </div>
-          {/* <div style={{width:600 , 
-                      height:120, 
-                      borderRadius:16,
-                      position:'absolute',
-                      paddingInline:30,
-                      backgroundColor:COLORS.layout}}>
-                        <p style={{position:'absolute',
-                        width:54,
-                        height:26,
-                        fontSize:22,
-                        display:'flex',
-                        alignItems:'center',
-                        textAlign:'center',
-                        color:COLORS.black,
-                        // top:227
-                      }}>Feed</p>
-                      <p style={{position:'absolute',
-                        width:94,
-                        height:26,
-                        fontSize:18,
-                        top:35,
-                        display:'flex',
-                        alignItems:'center',
-                        textAlign:'center',
-                        color:COLORS.Primary,
-                      }}>QTY:2 Ton</p>
-                      <p style={{position:'absolute',
-                        width:120,
-                        height:26,
-                        fontSize:14,
-                        top:70,
-                        display:'flex',
-                        alignItems:'center',
-                        textAlign:'center',
-                        color:COLORS.black,
-                      }}>Date: 2022-05-25</p>
-                      <p style={{position:'absolute',
-                        width:80,
-                        height:26,
-                        right:5,
-                        fontSize:16,
-                        top:35,
-                        display:'flex',
-                        alignItems:'center',
-                        textAlign:'center',
-                        color:COLORS.Primary,
-                      }}>$1200.00</p>
-                      </div> */}
               <div style={{display:'inline-flex'}}>
               <Feedcard 
               Feedname={'Feed'}
