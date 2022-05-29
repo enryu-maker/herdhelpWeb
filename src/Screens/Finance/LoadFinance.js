@@ -1,170 +1,200 @@
 import React, { useState } from 'react'
-import TextButton from "../../Component/TextButton";
-import InputForm from "../../Component/InputForm";
+// import TextButton from "../../Component/TextButton";
+// import InputForm from "../../Component/InputForm";
 import NavBarMain from "../../Component/Nav/navmain";
-import { IMAGES } from "../../Theme/Image";
+import { IMAGES } from '../../Theme/Image';
+// import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
-import DropDown from "../../Component/DropDown/DropDown";
-import {species } from "../../Component/Constants";
+// import DropDown from "../../Component/DropDown/DropDown";
+// import {species } from "../../Component/Constants";
 
 
 export default function LoadFinance() {
   // 
-const [valueMS, setValueMS] = useState("");
-const [tag, setTag] = useState("");
-const [bought, setBought] = useState(false);
-const options = ["one", "two", "three"];
-const defaultOption = options[0];
+// const [valueMS, setValueMS] = useState("");
+// const [tag, setTag] = useState("");
+// const [bought, setBought] = useState(false);
+// const options = ["one", "two", "three"];
+// const defaultOption = options[0];
   // 
+function Feedcard({Feedname, FeedQty, Feeddate, Feedprice}){
 
-  function renderHeader(){
-    return<NavBarMain/>;
-  }
-  function renderForm(){
-    return(
-      <div
-            style={{
-              display: "flex",
-              flexFlow: "row",
-            }}
-          >
-            <div
-      style={{
-        backgroundColor: COLORS.lightGray2,
-        minHeight: 300,
-          width:590,
-        padding: 20,
-        borderRadius: SIZES.radius,
-        // marginTop: 50,
-        // marginBottom: 50, 
-        margin:20,
-      }}>
-        <p style={{
-                  ...FONTS.largeTitle,
-                  alignSelf: "center",}}
-                  >Finance Details</p>
-      </div>
-  
-      <div
-      style={{
-        backgroundColor: COLORS.lightGray2,
-        minHeight: 300,
-        //   width:450,
-        padding: 20,
-        borderRadius: SIZES.radius,
-        // marginTop: 50,
-        // marginBottom: 50,
-        margin:20, 
-    }}
-      > <p
-      style={{
-      ...FONTS.largeTitle,
-      alignSelf: "center",
-  }}
-  >
-  Add Finance
-  </p>
-        <div>
-        <div>
-            <div
-              style={{
-                margin: 20,
-              }}
-            >
-              <DropDown
-                value={valueMS}
-                setValue={setValueMS}
-                label={"Species*"}
-                // options={checking}
-                options={species}
-              />
-  
-            </div>
-            <div
-              style={{
-                margin: 20,
-              }}
-            >
-              <InputForm
-                prependComponent={
-                  <img
-                    src={IMAGES.tag}
-                    style={{
-                      height: 25,
-                      width: 25,
-                      margin: 10,
-                      alignSelf: "center",
-                    }}
-                  />
-                }
-                type={"text"}
-                value={tag}
-                label={"Quantity*"}
-                onChange={(event) => {
-                  setTag(event.target.value);
-                }}
-              />
-              </div>
-              <div
-              style={{
-                margin: 20,
-              }}
-            >
-              <InputForm
-                prependComponent={
-                  <img
-                    src={IMAGES.money}
-                    style={{
-                      height: 25,
-                      width: 25,
-                      margin: 10,
-                      alignSelf: "center",
-                    }}
-                  />
-                }
-                type={"text"}
-                value={tag}
-                label={"Price*"}
-                onChange={(event) => {
-                  setTag(event.target.value);
-                }}
-              />
-              </div>
-            </div>
-  
-        
-        <div>
-        <TextButton
-          label={"Finance"}
-          icon={IMAGES.add}
-          onPress={() => alert(bought)}
-          buttonContainerStyle={{
-            marginBottom:50
-          }}
-        />
-        </div>
-        </div>
-      </div>
-          </div>
-    )}
+  return(
+  <div style={{width:600 , 
+    height:120, 
+    borderRadius:16,
+    position:'absolute',
+    paddingInline:30,
+    backgroundColor:COLORS.layout,
+    position:'relative',
+    margin:10}}>
+      <p style={{position:'absolute',
+      width:54,
+      height:26,
+      fontSize:22,
+      display:'flex',
+      alignItems:'center',
+      textAlign:'center',
+      color:COLORS.black,
+      // top:227
+    }}>{Feedname}</p>
+    <p style={{position:'absolute',
+      width:94,
+      height:26,
+      fontSize:18,
+      top:35,
+      display:'flex',
+      alignItems:'center',
+      textAlign:'center',
+      color:COLORS.Primary,
+    }}>Qty: { FeedQty } Ton</p>
+    <p style={{position:'absolute',
+      width:120,
+      height:26,
+      fontSize:14,
+      top:70,
+      display:'flex',
+      alignItems:'center',
+      textAlign:'center',
+      color:COLORS.black,
+    }}>{Feeddate}</p>
+    <p style={{position:'absolute',
+      width:80,
+      height:26,
+      right:5,
+      fontSize:16,
+      top:35,
+      display:'flex',
+      alignItems:'center',
+      textAlign:'center',
+      color:COLORS.Primary,
+    }}>${Feedprice}</p>
+    </div>)
+}
   
     return (
+      <>
+      <NavBarMain/>
+<div style={{padding:10}}>
       <div
         style={{
-          flex: 1,
+          justifyContent:'space-between',
+          alignItems:'center',
+          display:'flex',
         }}
       >
-        {renderHeader()}
-        <div
+        <p style={{...FONTS.h2 ,position:'relative', left:30  }}>Finance</p>
+        <button style={{backgroundColor:COLORS.Primary , 
+                        border:'none', 
+                        borderRadius:16 , 
+                        padding:'0px 30px',
+                        display: 'flex',
+                        alignItems:'center',
+                        justifyContent:'space-between',
+                        position:'absolute',
+                        right:30}} >
+            <img src={IMAGES.plus} 
+                  style={{height: 24, 
+                          width: 26,
+                          padding:'3px 13px 3px 3px',
+                          justifyContent:'center',
+                          alignItems:'center',
+                          position:'relative',
+                          display:'flex'
+                          }}/>
+            <p style={{...FONTS.h4 ,
+                      color:COLORS.white  }}>Finance</p>
+                          
+        </button>
+               <div
           style={{
             display: "flex",
             justifyContent: "center",
             alignSelf: "center",
           }}
         >
-          {renderForm()}
+         
         </div>
       </div>
+
+      <div>
+
+      </div>
+          {/* <div style={{width:600 , 
+                      height:120, 
+                      borderRadius:16,
+                      position:'absolute',
+                      paddingInline:30,
+                      backgroundColor:COLORS.layout}}>
+                        <p style={{position:'absolute',
+                        width:54,
+                        height:26,
+                        fontSize:22,
+                        display:'flex',
+                        alignItems:'center',
+                        textAlign:'center',
+                        color:COLORS.black,
+                        // top:227
+                      }}>Feed</p>
+                      <p style={{position:'absolute',
+                        width:94,
+                        height:26,
+                        fontSize:18,
+                        top:35,
+                        display:'flex',
+                        alignItems:'center',
+                        textAlign:'center',
+                        color:COLORS.Primary,
+                      }}>QTY:2 Ton</p>
+                      <p style={{position:'absolute',
+                        width:120,
+                        height:26,
+                        fontSize:14,
+                        top:70,
+                        display:'flex',
+                        alignItems:'center',
+                        textAlign:'center',
+                        color:COLORS.black,
+                      }}>Date: 2022-05-25</p>
+                      <p style={{position:'absolute',
+                        width:80,
+                        height:26,
+                        right:5,
+                        fontSize:16,
+                        top:35,
+                        display:'flex',
+                        alignItems:'center',
+                        textAlign:'center',
+                        color:COLORS.Primary,
+                      }}>$1200.00</p>
+                      </div> */}
+              <div style={{display:'inline-flex'}}>
+              <Feedcard 
+              Feedname={'Feed'}
+              FeedQty={'2'}
+              Feeddate={"2022-05-25"}
+              Feedprice={'1200.00'}/>
+              <Feedcard 
+              Feedname={'Feed'}
+              FeedQty={'2'}
+              Feeddate={"2022-05-25"}
+              Feedprice={'1200.00'}/>
+              </div>
+              <div style={{display:'inline-flex'}}>
+              <Feedcard 
+              Feedname={'Feed'}
+              FeedQty={'2'}
+              Feeddate={"2022-05-25"}
+              Feedprice={'1200.00'}/>
+              <Feedcard 
+              Feedname={'Feed'}
+              FeedQty={'2'}
+              Feeddate={"2022-05-25"}
+              Feedprice={'1200.00'}/>
+              </div>
+      </div>
+      </>
+      
     )
   }
   

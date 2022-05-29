@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, FONTS } from "../../Theme/Theme";
 import "./Navbar.css";
-import sidenav from "./sidenav";
+
 
 
 
@@ -62,16 +62,19 @@ function Sidemenu ({img, label , path}){
 
   return (
     <>
+    <div style={{width:'100%'}}>
+    <div style={{display:'flex' , width:'100%'}}>
     <div>
         <button style={{background:'none' , 
                         border:'none' , 
                         cursor:'pointer'}} 
-                        onClick={()=>{document.getElementById("sidebar").style.left = '0%';}}>
+                        onClick={()=>{document.getElementById("sidebar").style.left = '0%'; }}>
               <img
                 src={IMAGES.menuios}
                 alt="logo"
-                style={{ height: 30, 
-                  width: 30,
+                style={{ height: 20, 
+                  width: 20,
+                  marginLeft:30,
                   background:COLORS.Primary,
                   borderRadius:40,
                   alignSelf:"center",
@@ -248,15 +251,15 @@ function Sidemenu ({img, label , path}){
           <Link to="/herds" style={{
             color: COLORS.black,
             marginInline:'2%',
-            textDecorationLine:page==="home"?"underline":"none",
+            textDecorationColor:page === "/herds" ? 'underline':"none",
             ...FONTS.h3,
           }}>
             Herds
             </Link>
-          <Link to="/finace" style={{
+          <Link to="/finance" style={{
             color: COLORS.black,
             marginInline:'2%',
-            textDecorationLine:page==="profile"?"underline":"none",
+            textDecorationLine:page == "finance"?"underline":"none",
             ...FONTS.h3
 
           }}>
@@ -265,7 +268,7 @@ function Sidemenu ({img, label , path}){
             <Link to="/add" style={{
             color: COLORS.black,
             marginInline:'2%',
-            textDecorationLine:page==="report"?"underline":"none",
+            textDecorationLine:page==="add"?"underline":"none",
             ...FONTS.h3
           }}>
             Add
@@ -273,7 +276,7 @@ function Sidemenu ({img, label , path}){
             <Link to="/alerts" style={{
             color: COLORS.black,
             marginInline:'2%',
-            textDecorationLine:page==="history"?"underline":"none",
+            textDecorationLine:page==="alerts"?"underline":"none",
             ...FONTS.h3
           }}>
             Alerts
@@ -281,14 +284,14 @@ function Sidemenu ({img, label , path}){
             <Link to="/Settings" style={{
             color: COLORS.black,
             marginInline:'2%',
-            textDecorationLine:page==="parents"?"underline":"none",
+            textDecorationLine:page==="Setting"?"underline":"none",
             ...FONTS.h3
           }}>
             Settings
             </Link>
-          <Link to="/" style={{
+          <Link to="/logout" style={{
             color: COLORS.black,
-            textDecorationLine:"none",
+            textDecorationLine:page==="logout"?"underline":"none",
             ...FONTS.h3,
             marginInline:'2%'
           }}>
@@ -310,7 +313,8 @@ function Sidemenu ({img, label , path}){
           />
         </Link>
           </div>
-         
+          </div>
+          </div>
     </>
   );
 }

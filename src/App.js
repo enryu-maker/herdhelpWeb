@@ -17,6 +17,7 @@ import Subscription from './Component/Subscription/Subscription';
 import Weighthistory from './Screens/Report/weighthistory';
 import Terms from './Screens/Terms/terms';
 import Footer from './Component/Footer/Footer';
+import Add from './Screens/Animals/add';
 // import ForgetPass from './Screens/ForgetPass/forgetPass';
 
 
@@ -28,6 +29,7 @@ function App() {
       <header className="App-header">
         <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/add" element={<Add/>}/>
         <Route path="/profile" element={<Profile/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Signup/>}/>

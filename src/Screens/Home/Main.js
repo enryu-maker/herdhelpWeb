@@ -7,7 +7,9 @@ import './Home.css'
 // import { Link, Router } from "react-router-dom";
 // import { Routes,Route } from "react-router-dom";
 import NavBarMain from "../../Component/Nav/navmain";
-// import Sidenav from "../../Component/Nav/sidenav"
+import Card from "../../Component/Card";
+import { IMAGES } from "../../Theme/Image";
+
 
 export default function Main({
   page,
@@ -88,12 +90,52 @@ export default function Main({
 
   return (
 <>
-<div style={{width:'100%'}}>
-    <div style={{display:'flex' , width:'100%'}}>
+
       <NavBarMain/>
+
+      <>
+      <div>
+      <Card
+      img={IMAGES.cow}
+      Name={'My Cow'}
+      numaninmal={'5'} 
+      />
+      <Card
+      img={IMAGES.goat}
+      Name={'My Goat'}
+      numaninmal={'5'} 
+      />
+      <Card
+      img={IMAGES.dog}
+      Name={'My Dog'}
+      numaninmal={'5'} 
+      />
+       <Card
+      img={IMAGES.sheep}
+      Name={'My Sheep'}
+      numaninmal={'5'} 
+      />
       </div>
+
+
+      <div>
+      <Card
+      img={IMAGES.horse}
+      Name={'My Horse'}
+      numaninmal={'5'} 
+      />
+      <Card
+      img={IMAGES.pig}
+      Name={'My Pig'}
+      numaninmal={'5'} 
+      />
+      <Card
+      img={IMAGES.rabbit}
+      Name={'My Rabbit'}
+      numaninmal={'5'} 
+      />
       </div>
-       {/* <Sidenav/> */}
+      </>
     
 </>
 

@@ -62,5 +62,13 @@ export const IMAGES={
     close:require("../assets/Logo/close.png"),
     close2:require("../assets/Logo/close2.png"),
     closegif:require("../assets/Logo/closegif.gif"),
-    
+    cow:require("../assets/animal/cow.png"),
+    dog:require("../assets/animal/dog.png"),
+    goat:require("../assets/animal/goat.png"),
+    horse:require("../assets/animal/horse.png"),
+    pig:require("../assets/animal/pig.png"),
+    rabbit:require("../assets/animal/rabbit.png"),
+    sheep:require("../assets/animal/sheep.png"),
+    plus:require("../assets/Add/plus.png")
+
 }
