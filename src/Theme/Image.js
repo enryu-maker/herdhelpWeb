@@ -7,7 +7,7 @@ export const IMAGES={
     login:require("../assets/Logo/profile-user.png"),
     search:require("../assets/Logo/search.png"),
     filter:require("../assets/Logo/filter.png"),
-    menu:require("../assets/Logo/menu.png"),
+    menu1:require("../assets/Logo/menu.png"),
     bread:require("../assets/animal_logo/newborn.png"),
     purchased:require("../assets/animal_logo/cash.png"),
     menu:require("../assets/Logo/open-menu.png"),
@@ -57,6 +57,10 @@ export const IMAGES={
     card:require("../assets/Logo/credit-cards.png"),
     sack:require("../assets/Logo/sack.png"),
     playstore:require("../assets/playstore.png"),
-    appstore:require("../assets/app-store.png")
+    appstore:require("../assets/app-store.png"),
+    menuios:require("../assets/Logo/menuios.png"),
+    close:require("../assets/Logo/close.png"),
+    close2:require("../assets/Logo/close2.png"),
+    closegif:require("../assets/Logo/closegif.gif"),
     
 }

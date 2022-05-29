@@ -15,14 +15,14 @@
     color: white;
 } */
 
-nav{
-    /* background: var(--color-primary1); */
-    /* padding: 0.4; */
+/* nav{
+    background: var(--color-primary1);
+    padding: 0.4;
     position: sticky;
     z-index: 999;
     top: 0;
     display: flex;
-    padding: 0.2% 4%;            /* spacing all sides*/
+    padding: 0.2% 4%;            spacing all sides
     justify-content: space-between;
 }
 nav img.logo{
@@ -38,13 +38,13 @@ nav img.logo{
     list-style: none;
     display: inline-block;
     padding: 19px 17px;
-    /* position: relative; */
+    position: relative;
 }
 .nav-links ul li a{
     color: rgb(56, 56, 56);
     text-decoration: none;
     font-size: 17px;
-    font-style:'Poppins', sans-serif;/*font family*/
+    font-style:'Poppins', sans-serif;/*font family
 }
 .nav-links ul li::after{
     content: '';
@@ -61,4 +61,15 @@ nav img.logo{
 
 .nav.active{
     background: black;
+} */
+
+.menu{
+    border: none;
+    background: none;
+    transition: 0.5s;
+    border-bottom: 1px soild transparent;
+    
+}
+.menu:hover{
+    border-bottom: 1px solid black;
 }
