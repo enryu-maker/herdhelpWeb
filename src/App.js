@@ -18,6 +18,7 @@ import Weighthistory from './Screens/Report/weighthistory';
 import Terms from './Screens/Terms/terms';
 import Footer from './Component/Footer/Footer';
 import Add from './Screens/Animals/add';
+import Setting from './Screens/Setting/Setting';
 // import ForgetPass from './Screens/ForgetPass/forgetPass';
 
 
@@ -45,6 +46,7 @@ function App() {
           <Route path='/weighthistory' element={<Weighthistory/>}/>
           <Route path='/subscription' element={<Subscription/>}/>
           <Route path='/terms-and-condition' element={<Terms/>} />
+          <Route path='setting' element={<Setting/>}/>
           {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
         </Routes>
       </header>

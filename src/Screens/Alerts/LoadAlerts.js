@@ -40,84 +40,80 @@ const defaultOption = options[0];
    } */
 
 // 
-function renderHeader(){
-  return<NavBarMain/>;
-}
 
-function renderForm(){
-  return(
-    <div
-          style={{
-            display: "flex",
-            flexFlow: "row",
-          }}
-        >
-          <div
-    style={{
-      backgroundColor: COLORS.lightGray2,
-      minHeight: 300,
-        width:590,
-      padding: 20,
-      borderRadius: SIZES.radius,
-      // marginTop: 50,
-      // marginBottom: 50, 
-      margin:20,
-    }}>
-      <p style={{
-                ...FONTS.largeTitle,
-                alignSelf: "center",}}
-                >Alerts</p>
-    </div>
+const [cow , dog , pig ] = useState("")
 
+  return (
+    <>
+    <>
+    <NavBarMain/>
+    </>
+    
     <div
-    style={{
-      backgroundColor: COLORS.lightGray2,
-      minHeight: 300,
-      //   width:450,
-      padding: 20,
-      borderRadius: SIZES.radius,
-      // marginTop: 50,
-      // marginBottom: 50,
-      margin:20, 
-  }}
-    > <p
-    style={{
-    ...FONTS.largeTitle,
-    alignSelf: "center",
-}}
->
-Add Alert
-</p>
-      <div>
+      style={{
+        // flex: 1,
+      }}
+    ><p style={{position:'absolute', left:40}}>Add Alert</p>
+     
       <div
-          style={{
-            display: "flex",
-            flexFlow: "row",
-          }}
-        >
-          <div
-            style={{
-              margin: 20,
-            }}
-          >
-            <DropDown
-              value={valueMS}
-              setValue={setValueMS}
-              label={"Species*"}
-              // options={checking}
-              options={species}
-            />
+        style={{
+          position:'relative',
+          display: 'inline-flex',
+          justifyContent: "center",
+          alignSelf: "center",
+          borderRadius:16,
+          width:400,
+          height:540,
+          top:50,
+          backgroundColor:COLORS.layout
+        }}
+      >
+        {/* <DropDown 
+        label={'heee'}
+        options={species}
+        value={'none'}
+         /> */}
 
+        <div style={{position:'absolute', top:20}}>
+          <div><select style={{margin:20,
+                              alignItems:'center',
+                              border:'none',
+                              background:'none',
+                              display:'flex',
+                              minWidth:280,
+                              height:26,
+                              borderBottom:'1px solid black' }}>
+              
+              <option value={0} >Species</option>
+                <option value={0}>Cow</option>
+                <option value={0}>pig</option>
+                <option value={0}>dog</option>
+              
+              </select>
+            
           </div>
-          <div
-            style={{
-              margin: 20,
-            }}
-          >
-            <InputForm
+          <div>
+            <select style={{margin:20,
+                           alignItems:'center',
+                           border:'none',
+                           background:'none',
+                           display:'flex',
+                           minWidth:280,
+                           height:26,
+                           borderBottom:'1px solid black' }}>
+           
+           <option value={0} >Tags</option>
+             <option value={0}>Cow</option>
+             <option value={0}>pig</option>
+             <option value={0}>dog</option>
+           
+           </select>
+         
+       </div>
+       <InputForm
               prependComponent={
                 <img
-                  src={IMAGES.tag}
+                  src={IMAGES.aler}
                   style={{
                     height: 25,
                     width: 25,
@@ -126,27 +122,13 @@ Add Alert
                   }}
                 />
               }
-              type={"text"}
+              
               value={tag}
-              label={"Tag Number*"}
+              label={"Issue"}
               onChange={(event) => {
                 setTag(event.target.value);
               }}
             />
-            </div>
-          </div>
-
-      <div
-          style={{
-            display: "flex",
-            flexFlow: "row",
-          }}
-        >
-          <div
-            style={{
-              margin: 20,
-            }}
-          >
             <InputForm
               prependComponent={
                 <img
@@ -159,51 +141,14 @@ Add Alert
                   }}
                 />
               }
-              type={"text"}
+              
               value={tag}
-              label={"Issue?*"}
+              label={"What need to be Done?"}
               onChange={(event) => {
                 setTag(event.target.value);
               }}
             />
-          </div>
-          <div
-            style={{
-              margin: 20,
-            }}
-          >
-            <InputForm
-              prependComponent={
-                <img
-                  src={IMAGES.mark}
-                  style={{
-                    height: 25,
-                    width: 25,
-                    margin: 10,
-                    alignSelf: "center",
-                  }}
-                />
-              }
-              type={"text"}
-              value={tag}
-              label={"What need to be Done?*"}
-              onChange={(event) => {
-                setTag(event.target.value);
-              }}
-            />
-            </div>
-          </div>
-          <div
-          style={{
-            display: "flex",
-            flexFlow: "row",
-          }}
-        >
-          <div
-            style={{
-              margin: 20,
-            }}
-          >
+
             <InputForm
                   prependComponent={
                     <img
@@ -217,22 +162,17 @@ Add Alert
                     />
                   }
                   type={"date"}
-                  // value={vaccinateddate}
-                  label={"Date of Alert*"}
-                  // onChange={(event) => {
-                    // setVaccinateddate(event.target.value);
-                  // }}
+                  value={''}
+                  label={"Start of Alert"}
+                  onChange={(event) => {
+                    setValueMS(event.target.value);
+                  }}
                 />
-          </div>
-          <div
-            style={{
-              margin: 20,
-            }}
-          >
-            <InputForm
+
+                <InputForm
                   prependComponent={
                     <img
-                      src={IMAGES.clock}
+                      src={IMAGES.calender}
                       style={{
                         height: 25,
                         width: 25,
@@ -241,46 +181,17 @@ Add Alert
                       }}
                     />
                   }
-                  type={'Time'}
-                  // value={vaccinateddate}
-                  label={"Time of Alert*"}
-                  // onChange={(event) => {
-                    // setVaccinateddate(event.target.value);
-                  // }}
+                  type={"date"}
+                  value={''}
+                  label={"Start of Alert"}
+                  onChange={(event) => {
+                    setValueMS(event.target.value);
+                  }}
                 />
-            </div>
-          </div>
-      <div>
-      <TextButton
-        label={"Add Alerts"}
-        icon={IMAGES.add}
-        onPress={() => alert(bought)}
-        buttonContainerStyle={{
-          marginBottom:50
-        }}
-      />
-      </div>
-      </div>
-    </div>
         </div>
-  )}
 
-  return (
-    <div
-      style={{
-        flex: 1,
-      }}
-    >
-      {renderHeader()}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignSelf: "center",
-        }}
-      >
-        {renderForm()}
       </div>
     </div>
+    </>
   )
 }

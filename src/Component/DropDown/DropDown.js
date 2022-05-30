@@ -16,7 +16,7 @@ export default function DropDown({
   return (
     <div
         style={{
-          ...containerStyle,
+          // ...containerStyle,
           justifyContent: "center",
           alignSelf: "center",
           display:"flex",
@@ -43,11 +43,13 @@ export default function DropDown({
         height: 50,
         paddingHorizontal: SIZES.padding,
         marginTop: 5,
+        border:'none',
         borderRadius: SIZES.radius,
         // backgroundColor: COLORS.white,
         width: 280,
+        border:'none',
         alignSelf: "center",
-        ...inputContainerStyle,
+        // ...inputContainerStyle,
     }}>
       {
         prepandcomponent

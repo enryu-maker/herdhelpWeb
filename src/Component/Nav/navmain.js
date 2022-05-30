@@ -281,7 +281,7 @@ function Sidemenu ({img, label , path}){
           }}>
             Alerts
             </Link>
-            <Link to="/Settings" style={{
+            <Link to="/Setting" style={{
             color: COLORS.black,
             marginInline:'2%',
             textDecorationLine:page==="Setting"?"underline":"none",
