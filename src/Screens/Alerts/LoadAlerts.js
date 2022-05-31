@@ -46,7 +46,8 @@ const [cow , dog , pig ] = useState("")
   return (
     <>
     <>
-    <NavBarMain/>
+    <NavBarMain 
+    page={"alerts"}/>
     </>
     
     <div

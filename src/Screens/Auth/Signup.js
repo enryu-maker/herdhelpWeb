@@ -89,7 +89,7 @@ export default function Signup() {
       <NavBar
       navStyle={{
       }}
-    page={"register"}
+    page={"/register"}
     />
     <div style={{
        display:"flex",

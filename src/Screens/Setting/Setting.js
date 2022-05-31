@@ -6,7 +6,7 @@ import { COLORS, FONTS } from '../../Theme/Theme'
 export default function Setting() {
   return (
    <>
-   <NavBarMain/>
+   <NavBarMain page={'Setting'}/>
    <div style={{display:'block ruby'}}>
         <div style={{width:"80%" , 
     height:80, 

@@ -8,7 +8,8 @@ export default function Herds() {
     const [bought, setBought] = useState(false);
 
     function renderHeader(){
-        return<NavBarMain/>;
+        return<NavBarMain 
+        page={'herds'}/>;
       }
      
       function renderForm(){

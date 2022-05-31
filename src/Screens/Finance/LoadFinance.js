@@ -74,7 +74,7 @@ function Feedcard({Feedname, FeedQty, Feeddate, Feedprice}){
   
     return (
       <>
-      <NavBarMain/>
+      <NavBarMain page={'finance'}/>
 <div style={{padding:10}}>
       <div
         style={{

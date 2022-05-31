@@ -71,5 +71,16 @@ nav img.logo{
     
 }
 .menu:hover{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.btn-navmain{
+    transition: 0.5s;
+    border-radius: 100px;
+    box-shadow: 0px 0px 0px black;
+}
+
+.btn-navmain:hover{
+    transform: scale(1.5);
+    box-shadow: 1px 3px 10px black;
 }

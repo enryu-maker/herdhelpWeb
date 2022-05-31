@@ -58,7 +58,7 @@ function Cards({
 
   return (
     <>
-    <NavBarMain/>
+    <NavBarMain page={'add'}/>
     <div>
         <Cards
         img={IMAGES.add}

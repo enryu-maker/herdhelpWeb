@@ -11,10 +11,11 @@ function NavBar({
   return (
     <>
       <nav style={{
-        // display:"flex",
+        paddingInline:30,
+        display:"flex",justifyContent:'space-between',
         backgroundColor:COLORS.white,
         alignSelf:"center",
-        height:75,
+        height:60,
         maxWidth:"100%",
         ...navStyle
       }}>
@@ -33,37 +34,42 @@ function NavBar({
             display: "flex",
             flexFlow: "row",
             justifyContent:"center",
-            alignSelf:"center"
+            alignSelf:"center",
+            
           }}
         >
           <Link to="/" style={{
-            color: COLORS.Primary,
-            marginLeft:20,
-            textDecorationLine:page=="home"?"underline":"none",
+            color:page === '/' ? COLORS.Primary : 'black',
+            marginLeft:2,
             ...FONTS.h3,
-
+            textDecoration:'none'
 
           }}>
             Home
             </Link>
           <Link to="/login" style={{
-            color: COLORS.Primary,
+            color:page === '/login' ? COLORS.Primary : 'black',
             marginLeft:20,
-            textDecorationLine:page=="login"?"underline":"none",
-            ...FONTS.h3
-
+            ...FONTS.h3,
+            textDecoration:'none'
           }}>
             Login
             </Link>
           <Link to="/register" style={{
-            color: COLORS.Primary,
-            textDecorationLine:page=="register"?"underline":"none",
+              color:page === '/register' ? COLORS.Primary : 'black',
             ...FONTS.h3,
-            marginLeft:20
-
+            marginLeft:20,
+            textDecoration:'none'
           }}>
             Register
             </Link>
+        </div>
+        <div style={{display:'flex',alignSelf:'center' }}>
+          <button style={{background:'none', 
+                          border:'1px solid #57b957',
+                          width:110,
+                          padding:'10px 25px 10px 25px',
+                          fontSize:18}} >Login</button>
         </div>
       </nav>
     </>

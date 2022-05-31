@@ -62,13 +62,14 @@ function Sidemenu ({img, label , path}){
 
   return (
     <>
-    <div style={{width:'100%'}}>
+    <div style={{width:'100%',paddingInline:10}}>
     <div style={{display:'flex' , width:'100%'}}>
     <div>
         <button style={{background:'none' , 
                         border:'none' , 
-                        cursor:'pointer'}} 
-                        onClick={()=>{document.getElementById("sidebar").style.left = '0%'; }}>
+                        cursor:'pointer',
+                      padding:'none'}} 
+                        onClick={()=>{document.getElementById("sidebar").style.left = '0%'; }} className='btn-navmain'>
               <img
                 src={IMAGES.menuios}
                 alt="logo"
@@ -137,9 +138,10 @@ function Sidemenu ({img, label , path}){
           </div>
          <button style={{background:'none' , 
                             border:'none' , 
-                            cursor:'pointer'}} 
+                            cursor:'pointer',
+                          paddig:'none'}} 
                             onClick={()=>{document.getElementById("sidebar").style.left = '-100%';}}
-                            >
+                            className='btn-navmain' >
           <img
             src={IMAGES.close2}
             alt="logo"
@@ -249,49 +251,55 @@ function Sidemenu ({img, label , path}){
           }}
         >
           <Link to="/herds" style={{
-            color: COLORS.black,
+            color:page === 'herds' ? COLORS.Primary : "black",
+            textShadow:page === 'herds' ? '0px 0px 18px black' : 'none',
             marginInline:'2%',
-            textDecorationColor:page === "/herds" ? 'underline':"none",
             ...FONTS.h3,
+            textDecoration:'none',
           }}>
             Herds
             </Link>
           <Link to="/finance" style={{
-            color: COLORS.black,
+            color:page === 'finance' ? COLORS.Primary : "black",
+            textShadow:page === 'finance' ? '0px 0px 18px black' : 'none',
             marginInline:'2%',
-            textDecorationLine:page == "finance"?"underline":"none",
+            textDecoration:'none',            
             ...FONTS.h3
 
           }}>
             finace
             </Link>
             <Link to="/add" style={{
-            color: COLORS.black,
+            color:page === 'add' ? COLORS.Primary : "black",
+            textShadow:page === 'add' ? '0px 0px 18px black' : 'none',
             marginInline:'2%',
-            textDecorationLine:page==="add"?"underline":"none",
+            textDecoration:'none',
             ...FONTS.h3
           }}>
             Add
             </Link>
             <Link to="/alerts" style={{
-            color: COLORS.black,
+            color:page === 'alerts' ? COLORS.Primary : "black",
+            textShadow:page === 'alerts' ? '0px 0px 18px black' : 'none',
             marginInline:'2%',
-            textDecorationLine:page==="alerts"?"underline":"none",
-            ...FONTS.h3
+            textDecoration:'none',
+            ...FONTS.h3,
           }}>
             Alerts
             </Link>
             <Link to="/Setting" style={{
-            color: COLORS.black,
+            color:page === 'Setting' ? COLORS.Primary : "black",
+            textShadow:page === 'Setting' ? '0px 0px 18px black' : 'none',
             marginInline:'2%',
-            textDecorationLine:page==="Setting"?"underline":"none",
-            ...FONTS.h3
+            ...FONTS.h3,
+            textDecoration:'none',
           }}>
             Settings
             </Link>
           <Link to="/logout" style={{
-            color: COLORS.black,
-            textDecorationLine:page==="logout"?"underline":"none",
+            color:page === 'logout' ? COLORS.Primary : "black",
+            textShadow:page === 'logout' ? '0px 0px 18px black' : 'none',
+            textDecoration:'none',
             ...FONTS.h3,
             marginInline:'2%'
           }}>
@@ -300,17 +308,18 @@ function Sidemenu ({img, label , path}){
         </div>
       </nav>
           <div>
-          <Link to="/main">
-          <img
+          <Link to="/profile">
+            <button style={{border:'none', background:'none'}} className='btn-navmain'><img
             src={IMAGES.login}
             alt="logo"
             style={{ height: 43, 
               width: 43,
               alignSelf:"center",
-              marginRight:'20px',
-              paddingTop:'25%'
+              justifyContent:'center',
+              padding:10
             }}
-          />
+          /></button>
+
         </Link>
           </div>
           </div>
