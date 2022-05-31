@@ -9,7 +9,7 @@ export default function add() {
 
 function Cards({
         Name,
-       img,
+        img,
         onPress,
         Path,
       }) {
@@ -22,8 +22,10 @@ function Cards({
                 height: 250,
                 margin: SIZES.padding,
                 borderRadius: SIZES.radius,
+                cursor:"pointer",
                 // flexDirection:"column",
                 borderWidth: 0,
+                boxShadow:'0px 0px 11px -3px black',
                 justifyContent: "space-evenly",
                 shadowColor: COLORS.Primary,
                 shadowOffset: { width: 0, height: 0 },

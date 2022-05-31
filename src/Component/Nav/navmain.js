@@ -32,7 +32,9 @@ function Sidemenu ({img, label , path}){
                       display:'flex', 
                       // margin:"auto",
                       left:40,
-                      // background:'none' , 
+                      // background:'none' ,
+                      backgroundColor:label === 'Logout'?COLORS.gray2 : 'none',
+                      borderRadius:20, 
                       // border:'none', 
                       cursor:'pointer'}} className='menu'> 
           <img src={img}
@@ -44,8 +46,10 @@ function Sidemenu ({img, label , path}){
               // left: 40,
               marginTop:7,
               display:'block',
-          }} /><h3 style={{color:COLORS.white,
-         marginLeft:20 }} >{label}</h3></button></Link>
+          }} />
+          <h3 style={{color:label === 'Logout'? COLORS.red : COLORS.white ,
+                      fontWeight:300,
+                      marginLeft:20 }} >{label}</h3></button></Link>
   </>
   )
 }
@@ -62,7 +66,7 @@ function Sidemenu ({img, label , path}){
 
   return (
     <>
-    <div style={{width:'100%',paddingInline:10}}>
+    <div style={{width:'100%'}}>
     <div style={{display:'flex' , width:'100%'}}>
     <div>
         <button style={{background:'none' , 
@@ -197,33 +201,14 @@ function Sidemenu ({img, label , path}){
                     position: 'relative',
                     width: '100%',}}>
         </hr>
-    <h3 style={{fontSize:20 , 
-                fontWeight:400 , 
-                color:COLORS.white , 
-                textAlign:'left' ,
-                marginLeft:20
-                }}>Herd Overview</h3>
-     <Sidemenu 
-            img={IMAGES.male}
-            label={'Male Animals'}
-            path={'/'}
-            />
-        <Sidemenu 
-            img={IMAGES.female}
-            label={'Female Animals'}
-            path={'/'}
-            />
-     <hr style={{border: '1px solid white',
-                    top: '1%',
-                    position: 'relative',
-                    width: '100%',}}>
-        </hr>
-
+    
+<div style={{position:'absolute', bottom:40, width:'100%'}}>
         <Sidemenu 
             img={IMAGES.logout}
             label={'Logout'}
             path={'/'}
             />
+            </div>
     {/* </div> */}
         
     </div>

@@ -189,6 +189,14 @@ const [cow , dog , pig ] = useState("")
                     setValueMS(event.target.value);
                   }}
                 />
+                <TextButton
+        label={"Add Alerts"}
+        icon={IMAGES.aler}
+        onPress={() => alert(bought)}
+        buttonContainerStyle={{
+          marginBottom:50
+        }}
+      />
         </div>
 
       </div>
