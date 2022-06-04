@@ -92,7 +92,6 @@ export default function Main({
 <>
 
       <NavBarMain/>
-
       <>
       <div>
       <Card

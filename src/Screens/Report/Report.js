@@ -18,12 +18,7 @@ function renderHeader() {
       function renderForm() {
         return (
     <div 
-        className='report' 
-        style={{
-            background:COLORS.layout,
-            borderRadius:SIZES.radius,
-            padding:20,
-            }}>
+        className='report'>
         <div>
             <p
           style={{
