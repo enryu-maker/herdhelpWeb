@@ -5,9 +5,13 @@ import { IMAGES } from "../../Theme/Image";
 import { COLORS, FONTS, SIZES } from "../../Theme/Theme";
 import axios from "axios";
 import { baseURL } from "../../helpers/helpers";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import NavBar from "../../Component/Nav/Navbar";
 import utils from "../../utils/Utils";
+
+ 
+
+
 export default function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -16,6 +20,10 @@ export default function Login() {
   const [EmailError, setEmailError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [EmailErr, setEmailErr] = React.useState("");
+  let navi = useNavigate()
+
+
+
   function isEnableSignIn() {
     return email != "" && password != "";
   }
@@ -40,9 +48,9 @@ export default function Login() {
           if (response.status == 200) {
             console.log(response.data);
             setLoading(false);
+            navi("/main")
           } else {
             setLoading(false);
-
             setEmailErr("User Not Registered");
           }
         })
@@ -68,111 +76,6 @@ export default function Login() {
     }}
   page={"/login"}
   />
-
-
-
-<div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <div style={{
        display:"flex",
@@ -277,6 +180,7 @@ export default function Login() {
               ? COLORS.Primary
               : COLORS.transparentPrimary2,
             }}
+          
       />
         
       <p style={{ color: COLORS.darkGray, ...FONTS.body3 }}>

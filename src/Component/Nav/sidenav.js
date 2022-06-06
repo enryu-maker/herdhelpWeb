@@ -7,8 +7,7 @@ import './Navbar.css'
 export default function sidenav() {
 
 
-
-    function Sidemenu ({img, label , path}){
+    function Sidemenu ({img, label , path }){
             return (
                 <>
                 <Link to={path}  style={{textDecoration:'none' , margin:0, left:20}}>
@@ -91,10 +90,8 @@ export default function sidenav() {
                         top: 60,
                         fontSize:15}} >@jhon</h3>
           </div>
-         <button style={{background:'none' , 
-                            border:'none' , 
-                            cursor:'pointer'}} 
-                            >
+         <button style={{
+                            cursor:'pointer'}} >
           <img
             src={IMAGES.close2}
             alt="logo"
@@ -145,27 +142,13 @@ export default function sidenav() {
             path={'/parents'}
             />
 
+
     <hr style={{border: '1px solid white',
                     top: '1%',
                     position: 'relative',
                     width: '100%',}}>
         </hr>
-    <h3 style={{fontSize:20 , 
-                fontWeight:400 , 
-                color:COLORS.white , 
-                textAlign:'left' ,
-                marginLeft:20
-                }}>Herd Overview</h3>
-     <Sidemenu 
-            img={IMAGES.male}
-            label={'Male Animals'}
-            path={'/'}
-            />
-        <Sidemenu 
-            img={IMAGES.female}
-            label={'Female Animals'}
-            path={'/'}
-            />
+    
      <hr style={{border: '1px solid white',
                     top: '1%',
                     position: 'relative',
@@ -175,7 +158,7 @@ export default function sidenav() {
         <Sidemenu 
             img={IMAGES.logout}
             label={'Logout'}
-            path={'/'}
+            path={'/report'}
             />
     {/* </div> */}
         

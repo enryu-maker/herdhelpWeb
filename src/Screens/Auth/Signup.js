@@ -5,7 +5,7 @@ import { IMAGES } from "../../Theme/Image";
 import { COLORS, FONTS, SIZES } from "../../Theme/Theme";
 import axios from "axios";
 import { baseURL } from "../../helpers/helpers";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../../Component/Nav/Navbar";
 import utils from "../../utils/Utils";
 export default function Signup() {
@@ -21,14 +21,17 @@ export default function Signup() {
     const [show, setShow] = React.useState(false);
     const [validation, setValidation] = React.useState(false);
     const [dataText, setDataText] = React.useState('');
+    const [first, setFirst] = React.useState('');
+    const [last, setLast] = React.useState('');
   const Data = {
     'username': username,
     'password': password,
     'email': email,
   };
+  let navigate = useNavigate()
 
   function isEnableSignIn() {
-    return email != '' && password != '' && username != '';
+    return email != '' && password != '' && username != '' && first!="" && last!="";
   }
   async function signup() {
     if (isEnableSignIn) {
@@ -40,6 +43,8 @@ export default function Signup() {
             username: username,
             password: password,
             email: email,
+            first_name:first,
+            last_name:last,
           },
           {
             headers: {
@@ -57,6 +62,7 @@ export default function Signup() {
             setInterval(() => {
               setShow(false);
             }, 3000);
+            navigate('/login')
             // navigation.navigate('Login');
           } else {
             setLoading(false);
@@ -176,6 +182,54 @@ export default function Signup() {
           setUsername(event.target.value);
         }}
       />
+      {/*  */}
+{/* first name */}
+<InputForm
+        appendComponent={
+          <img
+            src={IMAGES.correct}
+            style={{
+              height: 25,
+              width: 25,
+              margin: 10,
+              alignSelf: "center",
+            }}
+          />
+        }
+        type={"text"}
+        // errorMsg={UserErr}
+        value={first}
+        label={"First name"}
+        placeholder={"Enter your First name"}
+        onChange={()=>{
+          setFirst("text");
+        }}
+      />
+
+      {/* last name */}
+
+      <InputForm
+        appendComponent={
+          <img
+            src={IMAGES.correct}
+            style={{
+              height: 25,
+              width: 25,
+              margin: 10,
+              alignSelf: "center",
+            }}
+          />
+        }
+        type={"text"}
+        // errorMsg={UserErr}
+        value={last}
+        label={"last Name"}
+        placeholder={"Enter your Last name"}
+        onChange={text => {
+          setLast("text");
+        }}
+      />
+      {/*  */}
       <InputForm
         appendComponent={
           <button onClick={()=>{
