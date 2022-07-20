@@ -4,11 +4,12 @@ import InputForm from '../../Component/InputForm'
 import NavBarMain from '../../Component/Nav/navmain'
 import { COLORS } from '../../Theme/Theme'
 import { checking } from "../../Component/Constants";
+import { IMAGES } from "../../Theme/Image";
 
 
 export default function AddFinance() {
 const [bred, setBred] = useState(false);
-
+const [tag, setTag] = useState("");
 
   return (
     <>
@@ -28,6 +29,45 @@ const [bred, setBred] = useState(false);
                   label={"Bred"}
                   options={checking}
                 />
+
+<InputForm
+              prependComponent={
+                <img
+                  src={IMAGES.tag}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    margin: 10,
+                    alignSelf: "center",
+                  }}
+                />
+              }
+              type={"text"}
+              value={tag}
+              label={"Quantity"}
+              onChange={(event) => {
+                setTag(event.target.value);
+              }}
+            />
+            <InputForm
+              prependComponent={
+                <img
+                  src={IMAGES.money}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    margin: 10,
+                    alignSelf: "center",
+                  }}
+                />
+              }
+              type={"text"}
+              value={tag}
+              label={"Price"}
+              onChange={(event) => {
+                setTag(event.target.value);
+              }}
+            />
                     </div>
 
     </div>
