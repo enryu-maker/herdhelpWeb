@@ -1,4 +1,4 @@
-import React,{  useState }  from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, FONTS } from "../../Theme/Theme";
@@ -30,12 +30,9 @@ function Sidemenu ({img, label , path}){
       <button style={{width:'100%', 
                       height:45  , 
                       display:'flex', 
-                      // margin:"auto",
                       left:40,
-                      // background:'none' ,
                       backgroundColor:label === 'Logout'?COLORS.gray2 : 'none',
                       borderRadius:20, 
-                      // border:'none', 
                       cursor:'pointer'}} className='menu'> 
           <img src={img}
           alt="logo"
@@ -43,13 +40,12 @@ function Sidemenu ({img, label , path}){
               width: 28,
               height: 28,
               marginLeft:20,
-              // left: 40,
               marginTop:7,
               display:'block',
           }} />
           <h3 style={{color:label === 'Logout'? COLORS.red : COLORS.white ,
                       fontWeight:300,
-                      marginLeft:20 }} >{label}</h3></button></Link>
+                       marginLeft:20}} >{label}</h3></button></Link>
   </>
   )
 }
@@ -66,7 +62,7 @@ function Sidemenu ({img, label , path}){
 
   return (
     <>
-    <div style={{width:'100%'}}>
+    <div style={{width:'100%' }}>
     <div style={{display:'flex' , width:'100%'}}>
     <div>
         <button style={{background:'none' , 
@@ -77,11 +73,11 @@ function Sidemenu ({img, label , path}){
               <img
                 src={IMAGES.menuios}
                 alt="logo"
-                style={{ height: 20, 
-                  width: 20,
+                style={{ height: 25, 
+                  width: 25,
                   marginLeft:30,
                   background:COLORS.Primary,
-                  borderRadius:40,
+                  borderRadius:30,
                   alignSelf:"center",
                   padding:'10px',
                   margin:10
@@ -143,9 +139,11 @@ function Sidemenu ({img, label , path}){
          <button style={{background:'none' , 
                             border:'none' , 
                             cursor:'pointer',
-                          paddig:'none'}} 
+                          paddig:'none',
+                        display:'flex',
+                      position:'absolute',right:0}} 
                             onClick={()=>{document.getElementById("sidebar").style.left = '-100%';}}
-                            className='btn-navmain' >
+                            className='btn-navmain-close' >
           <img
             src={IMAGES.close2}
             alt="logo"
@@ -206,7 +204,7 @@ function Sidemenu ({img, label , path}){
         <Sidemenu 
             img={IMAGES.logout}
             label={'Logout'}
-            path={'/'}
+            path={'/login'}
             />
             </div>
     {/* </div> */}

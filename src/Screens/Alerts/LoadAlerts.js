@@ -6,6 +6,8 @@ import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
 import {species } from "../../Component/Constants";
+import { Link } from 'react-router-dom';
+// import Card from '../../Component/Card';
 
 export default function LoadAlerts() {
   // 
@@ -41,7 +43,9 @@ const defaultOption = options[0];
 
 // 
 
-const [cow , dog , pig ] = useState("")
+// const [cow , dog , pig ] = useState("")
+
+
 
   return (
     <>
@@ -54,152 +58,11 @@ const [cow , dog , pig ] = useState("")
       style={{
         // flex: 1,
       }}
-    ><p style={{position:'absolute', left:40}}>Add Alert</p>
-     
-      <div
-        style={{
-          position:'relative',
-          display: 'inline-flex',
-          justifyContent: "center",
-          alignSelf: "center",
-          borderRadius:16,
-          width:400,
-          height:540,
-          top:50,
-          backgroundColor:COLORS.layout
-        }}
-      >
-        {/* <DropDown 
-        label={'heee'}
-        options={species}
-        value={'none'}
-         /> */}
+    ><p>Add Alert</p>
 
-        <div style={{position:'absolute', top:20}}>
-          <div><select style={{margin:20,
-                              alignItems:'center',
-                              border:'none',
-                              background:'none',
-                              display:'flex',
-                              minWidth:280,
-                              height:26,
-                              borderBottom:'1px solid black' }}>
-              
-              <option value={0} >Species</option>
-                <option value={0}>Cow</option>
-                <option value={0}>pig</option>
-                <option value={0}>dog</option>
-              
-              </select>
-            
-          </div>
-          <div>
-            <select style={{margin:20,
-                           alignItems:'center',
-                           border:'none',
-                           background:'none',
-                           display:'flex',
-                           minWidth:280,
-                           height:26,
-                           borderBottom:'1px solid black' }}>
-           
-           <option value={0} >Tags</option>
-             <option value={0}>Cow</option>
-             <option value={0}>pig</option>
-             <option value={0}>dog</option>
-           
-           </select>
-         
-       </div>
-       <InputForm
-              prependComponent={
-                <img
-                  src={IMAGES.aler}
-                  style={{
-                    height: 25,
-                    width: 25,
-                    margin: 10,
-                    alignSelf: "center",
-                  }}
-                />
-              }
-              
-              value={tag}
-              label={"Issue"}
-              onChange={(event) => {
-                setTag(event.target.value);
-              }}
-            />
-            <InputForm
-              prependComponent={
-                <img
-                  src={IMAGES.aler}
-                  style={{
-                    height: 25,
-                    width: 25,
-                    margin: 10,
-                    alignSelf: "center",
-                  }}
-                />
-              }
-              
-              value={tag}
-              label={"What need to be Done?"}
-              onChange={(event) => {
-                setTag(event.target.value);
-              }}
-            />
 
-            <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.calender}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"date"}
-                  value={''}
-                  label={"Start of Alert"}
-                  onChange={(event) => {
-                    setValueMS(event.target.value);
-                  }}
-                />
 
-                <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.calender}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"date"}
-                  value={''}
-                  label={"Start of Alert"}
-                  onChange={(event) => {
-                    setValueMS(event.target.value);
-                  }}
-                />
-                <TextButton
-        label={"Add Alerts"}
-        icon={IMAGES.aler}
-        onPress={() => alert(bought)}
-        buttonContainerStyle={{
-          marginBottom:50
-        }}
-      />
-        </div>
-
-      </div>
+      
     </div>
     </>
   )

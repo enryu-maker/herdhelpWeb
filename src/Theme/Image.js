@@ -69,6 +69,8 @@ export const IMAGES={
     pig:require("../assets/animal/pig.png"),
     rabbit:require("../assets/animal/rabbit.png"),
     sheep:require("../assets/animal/sheep.png"),
-    plus:require("../assets/Add/plus.png")
+    plus:require("../assets/Add/plus.png"),
+    male1:require("../assets/Logo/male.png"),
+    female1:require("../assets/Logo/female.png"),
 
 }

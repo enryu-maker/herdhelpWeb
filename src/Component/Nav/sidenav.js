@@ -48,6 +48,7 @@ export default function sidenav() {
                     top: 0, 
                     backgroundColor:COLORS.Primary , 
                     }}> 
+                    <h1>hell</h1>
     <div style={{height:100}}>
     <img
             src={IMAGES.login}
@@ -149,11 +150,6 @@ export default function sidenav() {
                     width: '100%',}}>
         </hr>
     
-     <hr style={{border: '1px solid white',
-                    top: '1%',
-                    position: 'relative',
-                    width: '100%',}}>
-        </hr>
 
         <Sidemenu 
             img={IMAGES.logout}
