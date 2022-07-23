@@ -3,13 +3,14 @@ import DropDown from '../../Component/DropDown/DropDown'
 import InputForm from '../../Component/InputForm'
 import NavBarMain from '../../Component/Nav/navmain'
 import { COLORS } from '../../Theme/Theme'
-import { checking } from "../../Component/Constants";
+import { species } from "../../Component/Constants";
 import { IMAGES } from "../../Theme/Image";
 
 
 export default function AddFinance() {
 const [bred, setBred] = useState(false);
 const [tag, setTag] = useState("");
+const [valueMS, setValueMS] = useState("");
 
   return (
     <>
@@ -24,11 +25,12 @@ const [tag, setTag] = useState("");
                     paddingInline:50}}>
                         
                         <DropDown
-                  value={bred}
-                  setValue={setBred}
-                  label={"Bred"}
-                  options={checking}
-                />
+              value={valueMS}
+              setValue={setValueMS}
+              label={"Species*"}
+              // options={checking}
+              options={species}
+            />
 
 <InputForm
               prependComponent={

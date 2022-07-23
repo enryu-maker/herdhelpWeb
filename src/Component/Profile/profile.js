@@ -27,7 +27,7 @@ const [show , setShow] = useState(false)
       function renderForm(){
         return(
           <>
-          <div style={{width:"100%", 
+          <div style={{width:"155%", 
                         height:"Auto" , 
                         marginBottom:50, 
                         display:"flex"}} 
@@ -186,11 +186,8 @@ className='edit_profile'
     backgroundColor: COLORS.lightGray2,
           minHeight: 300,
           padding:10,
-          // paddingLeft: 10,
-          // paddingRight:10,
-          // paddingBottom:10,
           borderRadius: SIZES.radius,
-          margin:'20px 50px -10px',
+          margin:'20px 35px -10px',
   }} className='edit_form' >
     <p
             style={{

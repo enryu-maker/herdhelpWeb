@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 // import TextButton from "../../Component/TextButton";
 // import InputForm from "../../Component/InputForm";
 import NavBarMain from "../../Component/Nav/navmain";
+import TextButton from '../../Component/TextButton';
 import { IMAGES } from '../../Theme/Image';
 // import { IMAGES } from "../../Theme/Image";
 import { COLORS, FONTS } from "../../Theme/Theme";
@@ -94,6 +95,7 @@ function Feedcard({Feedname, FeedQty, Feeddate, Feedprice}){
                       color:COLORS.white  }}>Finance</p>
                           
         </button></Link>
+        
       </div>
               <div style={{position:"none",}}>
               <div style={{display:'flex'}}>
