@@ -64,13 +64,7 @@ function NavBar({
             Register
             </Link>
         </div>
-        <div style={{display:'flex',alignSelf:'center' }}>
-          <button style={{background:'none', 
-                          border:'1px solid #57b957',
-                          width:110,
-                          padding:'10px 25px 10px 25px',
-                          fontSize:18}} >Login</button>
-        </div>
+        
       </nav>
     </>
   );

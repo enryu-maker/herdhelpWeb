@@ -6,7 +6,7 @@ import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
 import { checking, gender , species } from "../../Component/Constants";
-import axiosIns from "../../helpers/helpers";
+// import axiosIns from "../../helpers/helpers";
 
 
 export default function AddAnimals() {
@@ -72,36 +72,39 @@ export default function AddAnimals() {
     bought: bought,
     status: 'Alive',
   });
-  async function postAnimal() {
-    setLoading(true);
-    if(isEnableSignIn())
-    {await axiosIns
-      .post('animals/', data, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-      .then(response => {
-        if (response.status == 201) {
-          clear();
-          setLoading(false);
-          setValidation(true);
-          setShow(true);
-          setDataText('Animal added');
-        }
-      })
-      .catch(
-        err => {
-        setEmailError("No subscription found, please purchase a subscription for access to animals")
-        setLoading(false)
-        setValidation(false)
-        setShow(false)}
-      );}
-    else{
-      setEmailError("Required Fields cannot be empty")
-      setLoading(false)
-    }
+  function isEnableSignIn(){
+    return true
   }
+  // async function postAnimal() {
+  //   setLoading(true);
+  //   if(isEnableSignIn())
+  //   {await axiosIns
+  //     .post('animals/', data, {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     })
+  //     .then(response => {
+  //       if (response.status == 201) {
+  //         clear();
+  //         setLoading(false);
+  //         setValidation(true);
+  //         setShow(true);
+  //         setDataText('Animal added');
+  //       }
+  //     })
+  //     .catch(
+  //       err => {
+  //       setEmailError("No subscription found, please purchase a subscription for access to animals")
+  //       setLoading(false)
+  //       setValidation(false)
+  //       setShow(false)}
+  //     );}
+  //   else{
+  //     setEmailError("Required Fields cannot be empty")
+  //     setLoading(false)
+  //   }
+  // }
   React.useEffect(() => {
     setId(global.id);
     setAnimals(global.species);

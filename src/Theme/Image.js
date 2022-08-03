@@ -72,5 +72,8 @@ export const IMAGES={
     plus:require("../assets/Add/plus.png"),
     male1:require("../assets/Logo/male.png"),
     female1:require("../assets/Logo/female.png"),
-
+    bred:require("../assets/Logo/bred.png"),
+    flag:require("../assets/Logo/flag.png"),
+    med:require("../assets/Logo/first-aid-kit.png"),
+    gain:require("../assets/Logo/gain.png"),
 }

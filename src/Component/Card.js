@@ -12,6 +12,7 @@ export default function Card({
   img,
   onPress,
   weight_kg,
+  data
 }) {
   return (
     <>
@@ -29,18 +30,18 @@ export default function Card({
           shadowOpacity: 0.5,
           shadowRadius: 10,
           elevation: 2,
-          width: 230,
+          width: 250,
         }}
         onClick={onPress}
       >
           {/* <img src={IMAGES.rightone} style={{ height: 20, width: 20,alignSelf:"center",marginLeft:200,marginTop:10 }} /> */}
-          <img src={img} alt={Name} style={{ height: 80, width: 80,alignSelf:"center"}} />
+          <img src={img} alt={Name} style={{ height: 100, width: 100,alignSelf:"center"}} />
         <div>
             <div style={{
             textAlign:'center'
         }}>
-        <p style={{...FONTS.h4 , margin:20}}>{Name}</p>
-        <p style={{...FONTS.h4 , 
+        <p style={{...FONTS.h3 , margin:20}}>{Name}</p>
+        <p style={{...FONTS.h3 , 
         
             width:70,
             height:30,
@@ -48,7 +49,6 @@ export default function Card({
             borderRadius:30 ,
             display: 'block ruby',
             textAlign: 'center',
-            
             display: 'flex',
             margin:'auto',
             marginTop:10,
@@ -57,7 +57,7 @@ export default function Card({
             alignItems:'center',
             justifyContent:'space-between',
 
-            }}><img src={img} alt={Name} style={{ height: 20, width: 20}}/>X<p>{numaninmal}</p></p>
+            }}><img src={img} alt={Name} style={{ height: 30, width: 30}}/>X<p>{numaninmal}</p></p>
         {/* <p style={{...FONTS.h4}}>{global.unit?`${Weight} lbs`:`${weight_kg} kg`}</p> */}
         </div>
         <div style={{

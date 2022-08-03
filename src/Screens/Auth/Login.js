@@ -8,8 +8,9 @@ import { baseURL } from "../../helpers/helpers";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import NavBar from "../../Component/Nav/Navbar";
 import utils from "../../utils/Utils";
-
- 
+import { useDispatch } from 'react-redux'
+import { storeID } from "../../Store/actions";
+import { Login_Function } from "../../Store/actions";
 
 
 export default function Login() {
@@ -21,7 +22,7 @@ export default function Login() {
   const [loading, setLoading] = React.useState(false);
   const [EmailErr, setEmailErr] = React.useState("");
   let navi = useNavigate()
-
+  const dispatch = useDispatch()
 
 
   function isEnableSignIn() {
@@ -33,7 +34,7 @@ export default function Login() {
 
       await axios
         .post(
-          baseURL + "login/",
+          baseURL + "/login/",
           {
             email: email,
             password: password,
@@ -46,9 +47,12 @@ export default function Login() {
         )
         .then((response) => {
           if (response.status == 200) {
-            console.log(response.data);
+            // console.log(response.data.userid);
+            dispatch(Login_Function(response.data.access))
+            dispatch(storeID(response.data.userid))
             setLoading(false);
             navi("/main")
+
           } else {
             setLoading(false);
             setEmailErr("User Not Registered");
@@ -198,7 +202,8 @@ export default function Login() {
         <Link
         to="/"
           style={{
-            position:'absolute',
+            // position:'absolute',
+            alignSelf:"center",
             // display:'flex',
             marginTop:'13px',
             backgroundColor: COLORS.lightGray2,

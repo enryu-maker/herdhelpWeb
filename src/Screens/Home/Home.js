@@ -8,10 +8,12 @@ import { Link } from 'react-router-dom';
 
 
 
+
 export default function Home() {
 // 
 // const [bought, setBought] = useState(false);
 // 
+
 
 
 

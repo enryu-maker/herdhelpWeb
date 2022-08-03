@@ -4,139 +4,96 @@ import React, { useState } from "react";
 // import { IMAGES } from "../../Theme/Image";
 // import axiosIns from '../../helpers/helpers';
 import './Home.css'
+import { baseURL } from "../../helpers/helpers";
 // import { Link, Router } from "react-router-dom";
 // import { Routes,Route } from "react-router-dom";
 import NavBarMain from "../../Component/Nav/navmain";
 import Card from "../../Component/Card";
 import { IMAGES } from "../../Theme/Image";
-
-
-export default function Main({
-  page,
-  navStyle
-}) {
-
-  //
-  
-//    const [loading, setLoading] = React.useState(false);
-//   const [show, setShow] = React.useState('');
-//   const [user, setUser] = React.useState([]);
-//   async function fetchanimal() {
-//     let {data} = await axiosIns.get('getcategories/');
-//     setLoading(true);
-//     global.species = data;
-//     return data;
-//   }
-//   async function getWeightUnit() {
-//     global.unit = JSON.parse(await AsyncStorage.getItem('weight'));
-//     // return data
-//   }
-//   async function fetchStatus() {
-//     let {data} = await axiosIns.get('getstatuses/');
-//     setLoading(true);
-//     global.stat = data;
-//     return data;
-//   }
-//   async function loadId() {
-//     global.id = await AsyncStorage.getItem('id');
-//   }
-//   async function getALerts() {
-//     let {data} = await axiosIns.get('alerts/');
-//     return data;
-//   }
-//   async function checkSubs() {
-//     let {data} = await axiosIns.get('subscriptions/isactive/');
-//     return data;
-//   }
-//   async function getAnimals(){
-//     let {data} = await axiosIns.get('animaltags/');
-//     console.log(data)
-//     return data
-//   }
-//   React.useEffect(() => {
-//     fetchStatus();
-//     fetchanimal();
-//     loadId();
-//     getALerts().then(data => {
-//       setUser(data);
-//     });
-//     getWeightUnit();
-//     checkSubs().then(data => {
-//       global.isActive=data.isactive
-//       !data.isactive
-//         ? navigation.navigate('Subscription', {
-//             msg: 'No Active Subscription Please Purchase the Tier',
-//             cond: true,
-//           })
-//         : null;
-//     });
-//     getAnimals().then((data)=>{
-//       global.tags=data
-//     })
-//   }, [show]);
-//  const username = React.useContext(username)
-
-  
-
-//
-// 
-
-
-
-// 
-
-
-
-
+import { useSelector, useDispatch } from 'react-redux';
+import { getFcat, getFinance, getHerds, getSpecies } from '../../Store/actions';
+import FlatList from 'flatlist-react';
+export default function Main() {
+  const dispatch = useDispatch()
+  const access = useSelector(state => state.Reducers.authToken)
+  React.useEffect(() => {
+    dispatch(getHerds(access))
+    dispatch(getFinance(access))
+    dispatch(getSpecies(access))
+    dispatch(getFcat(access))
+  }, [])
+  const animal = useSelector(state => state.Reducers.herds)
   return (
-<>
+    <>
 
-      <NavBarMain/>
+      <NavBarMain page={"herds"}/>
       <>
-      <div>
-      <Card
-      img={IMAGES.cow}
-      Name={'My Cow'}
-      numaninmal={'5'} 
-      />
-      <Card
-      img={IMAGES.goat}
-      Name={'My Goat'}
-      numaninmal={'5'} 
-      />
-      <Card
-      img={IMAGES.dog}
-      Name={'My Dog'}
-      numaninmal={'5'} 
-      />
-       <Card
-      img={IMAGES.sheep}
-      Name={'My Sheep'}
-      numaninmal={'5'} 
-      />
-      </div>
+        <ul>
+          <FlatList
+            list={animal}
+            keyExtractor={item => `${item.id}`}
+            // displayGrid
+            renderItem={(item,index) => {
+              return (
+                <>
+                <Card
+                  img={baseURL + item.data[0]?.image}
+                  Name={`My ${item.label}`}
+                  numaninmal={`${item.data?.length}`}
+                  data={item.data}
+                />
+                </>
+              )
+
+            }
+            }
+            renderWhenEmpty={() => <div>List is empty!</div>}
+          />
+        </ul>
+        {/* <div>
+          <Card
+            img={IMAGES.cow}
+            Name={'My Cow'}
+            numaninmal={'5'}
+          />
+          <Card
+            img={IMAGES.goat}
+            Name={'My Goat'}
+            numaninmal={'5'}
+          />
+          <Card
+            img={IMAGES.dog}
+            Name={'My Dog'}
+            numaninmal={'5'}
+          />
+          <Card
+            img={IMAGES.sheep}
+            Name={'My Sheep'}
+            numaninmal={'5'}
+          />
+        </div>
 
 
-      <div>
-      <Card
-      img={IMAGES.horse}
-      Name={'My Horse'}
-      numaninmal={'5'} 
-      />
-      <Card
-      img={IMAGES.pig}
-      Name={'My Pig'}
-      numaninmal={'5'} 
-      />
-      <Card
-      img={IMAGES.rabbit}
-      Name={'My Rabbit'}
-      numaninmal={'5'} 
-      />
-      </div>
+        <div>
+          <Card
+            img={IMAGES.horse}
+            Name={'My Horse'}
+            numaninmal={'5'}
+          />
+          <Card
+            img={IMAGES.pig}
+            Name={'My Pig'}
+            numaninmal={'5'}
+          />
+          <Card
+            img={IMAGES.rabbit}
+            Name={'My Rabbit'}
+            numaninmal={'5'}
+          />
+        </div> */}
       </>
-    
-</>
+
+    </>
 
 
 

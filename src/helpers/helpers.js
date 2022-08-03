@@ -1,17 +1,17 @@
 
 import axios from 'axios';
-export const baseURL = 'https://api-herdhelp-nerdtech-q984k.ondigitalocean.app/'
+import { useSelector } from 'react-redux';
+export const baseURL = 'https://api-nerdtech.herdhelp.com'
 let headers = {};
-
 const axiosIns = axios.create({
-    baseURL: 'https://api-herdhelp-nerdtech-q984k.ondigitalocean.app/',
+    baseURL: 'https://api-nerdtech.herdhelp.com/',
     headers,
 });
 
 axiosIns.interceptors.request.use(
 
     async (config) => {
-        const token = await AsyncStorage.getItem('token');
+        const token = useSelector(state=>state.Reducers.authToken)
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }

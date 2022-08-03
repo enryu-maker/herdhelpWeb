@@ -12,19 +12,20 @@ function Footer() {
         height:40,
         position:"fixed",
         bottom:0,
-        width:"-moz-available",
+        width:"100%",
         display:'flex',
         flexDirection:"row",
         justifyContent:"space-between",
         alignItems:"center",
-        padding:"0 20px",
-        // margin:10,
+        // padding:"20px",
         // transform:"rotate(90deg)",
       }}>
         
        
-         <img src={IMAGES.logo} style={{width:100}} />
-          <p style={{...FONTS.body4 }}>
+         <img src={IMAGES.herdhelp} style={{width:130,
+        paddingLeft:"10px",
+        }} />
+          <p style={{...FONTS.body4,paddingRight:"10px", }}>
             &copy;{new Date().getFullYear()} NerdTech | All right reserved | <Link to={'/terms-and-condition'} style={{textDecoration:'none', color:COLORS.black } } >Terms of Serivce | Privacy</Link> 
            </p>
       

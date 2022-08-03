@@ -1,5 +1,6 @@
 const initialState = {
   authToken: null,
+  id:null,
   unit: null,
   userData: {},
   status: [],
@@ -20,6 +21,11 @@ export default (state = initialState, action) => {
         ...state,
         authToken: action.payload,
       };
+      case 'ID':
+        return {
+          ...state,
+          id: action.payload,
+        };
     case 'UNIT':
       return {
         ...state,

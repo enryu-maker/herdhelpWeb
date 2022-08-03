@@ -23,8 +23,11 @@ import Setting from './Screens/Setting/Setting';
 // import ForgetPass from './Screens/ForgetPass/forgetPass';
 import Male from './Screens/Alerts/Male'
 import Female from './Screens/Alerts/Female';
+import ProtectedRoute from './Protection/Protected';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const access = useSelector(state=>state.Reducers.authToken)
   return (
     <>
     <div className="App">
@@ -36,13 +39,13 @@ function App() {
           <Route path="/profile" element={<Profile/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Signup/>}/>
-          <Route path="/main" element={<Main/>}/>
+          <Route path="/main" element={<ProtectedRoute Component={Main} access={access}/>}/>
           <Route path="/weight" element={<Weight/>}/>
           <Route path="/animals" element={<AddAnimals/>}/>
           <Route path="/medication" element={<AddMedication/>}/>
           <Route path="/alerts" element={<LoadAlerts/>}/>
-          <Route path="/finance" element={<LoadFinance/>}/>
-          <Route path="/addfinance" element={<AddFinance/>}/>
+          <Route path="/finance" element={<ProtectedRoute Component={LoadFinance} access={access}/>}/>
+          <Route path="/addfinance" element={<ProtectedRoute Component={AddFinance} access={access}/>}/>
           <Route path="/herds" element={<Herds/>}/>
           <Route path='/report' element={<Report/>}/>
           <Route path='/parents' element={<Parents/>} />
