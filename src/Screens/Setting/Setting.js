@@ -14,16 +14,16 @@ export default function Setting() {
     // position:'absolute',
     paddingInline:30,
     backgroundColor:COLORS.lightGray1,
-    position:'relative',
+    // position:'relative',
     margin:10}}>
-        <div style={{width:"80%",
+        <div style={{width:"100%",
           display:"flex" , 
-                justifyContent:'space-between',
-                textAlign:'center',
+                justifyContent:'space-around',
+                // textAlign:'center',
                 alignItems:'center',}}>
-            <p style={{ ...FONTS.h2 , fontWeight:300,left:'10%' }}>Weight</p>
+            <p style={{ ...FONTS.h2 , fontWeight:300}}>Weight</p>
             <p>LBS</p>
-            <button style={{background:'none', border:'none' , cursor:"pointer"}}><img style={{right:'10%' ,top:110, width:20, position:'absolute'}} 
+            <button style={{background:'none', border:'none' , cursor:"pointer" , right:30}}><img style={{right:'10%' ,top:110, width:20,}} 
             src={IMAGES.rightone}/></button>
         </div>
         </div>

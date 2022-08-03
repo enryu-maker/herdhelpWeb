@@ -6,6 +6,9 @@ import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
 import { checking, gender , species } from "../../Component/Constants";
+import axiosIns from "../../helpers/helpers";
+
+
 export default function AddAnimals() {
   const [bred, setBred] = useState(false);
   const [valueMS, setValueMS] = useState("");
@@ -45,6 +48,7 @@ export default function AddAnimals() {
     setPrice('');
     setName('');
   };
+  
   const data = JSON.stringify({
     name: name,
     tag_number: ` ${id}${valueMS}${tag}`,
@@ -199,14 +203,14 @@ export default function AddAnimals() {
             />
           </div>
         </div>
-
+            <div>
         <DropDown
           value={bought}
           setValue={setBought}
           label={"Purchased*"}
           options={checking}
         />
-       
+       </div>
         {bought ? (
           <>
             <div

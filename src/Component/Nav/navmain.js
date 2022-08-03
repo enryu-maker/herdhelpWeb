@@ -62,7 +62,7 @@ function Sidemenu ({img, label , path}){
 
   return (
     <>
-    <div style={{width:'100%' }}>
+    <div style={{width:'100%', top:0}}>
     <div style={{display:'flex' , width:'100%'}}>
     <div>
         <button style={{background:'none' , 
@@ -85,16 +85,114 @@ function Sidemenu ({img, label , path}){
               />
           </button>
 
+          
+
+          
+      </div>
+
+      <nav style={{
+        display: 'flex',
+        paddig :'1% 4%',
+        justifyContent:'space-between',
+        width:'100%',
+      }}
+      className='nav'
+      //  className={nav ? 'nav active': 'nav'}
+      >
+        
+        <div
+          style={{
+            flex:1,
+            padding:'1%',
+            fontFamily:'arial'
+          }}
+        >
+          <Link to="/herds" style={{
+            color:page === 'herds' ? COLORS.Primary : "black",
+            textShadow:page === 'herds' ? '0px 0px 18px black' : 'none',
+            marginInline:'2%',
+            ...FONTS.h3,
+            textDecoration:'none',
+          }}>
+            Herds
+            </Link>
+          <Link to="/finance" style={{
+            color:page === 'finance' ? COLORS.Primary : "black",
+            textShadow:page === 'finance' ? '0px 0px 18px black' : 'none',
+            marginInline:'2%',
+            textDecoration:'none',            
+            ...FONTS.h3
+
+          }}>
+            finace
+            </Link>
+            <Link to="/add" style={{
+            color:page === 'add' ? COLORS.Primary : "black",
+            textShadow:page === 'add' ? '0px 0px 18px black' : 'none',
+            marginInline:'2%',
+            textDecoration:'none',
+            ...FONTS.h3
+          }}>
+            Add
+            </Link>
+            <Link to="/alerts" style={{
+            color:page === 'alerts' ? COLORS.Primary : "black",
+            textShadow:page === 'alerts' ? '0px 0px 18px black' : 'none',
+            marginInline:'2%',
+            textDecoration:'none',
+            ...FONTS.h3,
+          }}>
+            Alerts
+            </Link>
+            <Link to="/Setting" style={{
+            color:page === 'Setting' ? COLORS.Primary : "black",
+            textShadow:page === 'Setting' ? '0px 0px 18px black' : 'none',
+            marginInline:'2%',
+            ...FONTS.h3,
+            textDecoration:'none',
+          }}>
+            Settings
+            </Link>
+          <Link to="/logout" style={{
+            color:page === 'logout' ? COLORS.Primary : "black",
+            textShadow:page === 'logout' ? '0px 0px 18px black' : 'none',
+            textDecoration:'none',
+            ...FONTS.h3,
+            marginInline:'2%'
+          }}>
+            Logout
+            </Link>
+        </div>
+      </nav>
+          <div>
+          <Link to="/profile">
+            <button style={{border:'none', background:'none'}} className='btn-navmain'><img
+            src={IMAGES.login}
+            alt="logo"
+            style={{ height: 43, 
+              width: 43,
+              alignSelf:"center",
+              justifyContent:'center',
+              padding:10
+            }}
+          /></button>
+
+        </Link>
+          </div>
+          </div>
+          </div>
+
           {/*  */}
           <>
-    <div style={{ position:' absolute',
+          <div style={{width:'100%' , display:'flex' , position:'fixed' , height:'fit-window' , backgroundColor:COLORS.lightGray1}}></div>
+    <div style={{ position:'fixed',
                     width: 298,
                     height: '100%',
                     left: '-100%',
                     top: 0, 
                     backgroundColor:COLORS.Primary , 
                     }} id='sidebar'> 
-    <div style={{height:100}}>
+    <div style={{height:100 }}>
     <img
             src={IMAGES.login}
             alt="logo"
@@ -212,101 +310,6 @@ function Sidemenu ({img, label , path}){
     </div>
     </>
           {/*  */}
-
-          
-      </div>
-
-      <nav style={{
-        display: 'flex',
-        paddig :'1% 4%',
-        justifyContent:'space-between',
-        width:'100%',
-      }}
-      className='nav'
-      //  className={nav ? 'nav active': 'nav'}
-      >
-        
-        <div
-          style={{
-            flex:1,
-            padding:'1%',
-            fontFamily:'arial'
-          }}
-        >
-          <Link to="/herds" style={{
-            color:page === 'herds' ? COLORS.Primary : "black",
-            textShadow:page === 'herds' ? '0px 0px 18px black' : 'none',
-            marginInline:'2%',
-            ...FONTS.h3,
-            textDecoration:'none',
-          }}>
-            Herds
-            </Link>
-          <Link to="/finance" style={{
-            color:page === 'finance' ? COLORS.Primary : "black",
-            textShadow:page === 'finance' ? '0px 0px 18px black' : 'none',
-            marginInline:'2%',
-            textDecoration:'none',            
-            ...FONTS.h3
-
-          }}>
-            finace
-            </Link>
-            <Link to="/add" style={{
-            color:page === 'add' ? COLORS.Primary : "black",
-            textShadow:page === 'add' ? '0px 0px 18px black' : 'none',
-            marginInline:'2%',
-            textDecoration:'none',
-            ...FONTS.h3
-          }}>
-            Add
-            </Link>
-            <Link to="/alerts" style={{
-            color:page === 'alerts' ? COLORS.Primary : "black",
-            textShadow:page === 'alerts' ? '0px 0px 18px black' : 'none',
-            marginInline:'2%',
-            textDecoration:'none',
-            ...FONTS.h3,
-          }}>
-            Alerts
-            </Link>
-            <Link to="/Setting" style={{
-            color:page === 'Setting' ? COLORS.Primary : "black",
-            textShadow:page === 'Setting' ? '0px 0px 18px black' : 'none',
-            marginInline:'2%',
-            ...FONTS.h3,
-            textDecoration:'none',
-          }}>
-            Settings
-            </Link>
-          <Link to="/logout" style={{
-            color:page === 'logout' ? COLORS.Primary : "black",
-            textShadow:page === 'logout' ? '0px 0px 18px black' : 'none',
-            textDecoration:'none',
-            ...FONTS.h3,
-            marginInline:'2%'
-          }}>
-            Logout
-            </Link>
-        </div>
-      </nav>
-          <div>
-          <Link to="/profile">
-            <button style={{border:'none', background:'none'}} className='btn-navmain'><img
-            src={IMAGES.login}
-            alt="logo"
-            style={{ height: 43, 
-              width: 43,
-              alignSelf:"center",
-              justifyContent:'center',
-              padding:10
-            }}
-          /></button>
-
-        </Link>
-          </div>
-          </div>
-          </div>
     </>
   );
 }
