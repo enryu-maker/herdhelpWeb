@@ -61,17 +61,17 @@ export default function Home() {
 
             <div>
               <h3 style={{
-                position: 'absolute', top: 400, color: COLORS.black,
-                ...FONTS.h2,
+                position: 'absolute', top: 400, color: COLORS.Primary,
+                ...FONTS.h1,
               }}>Download From</h3>
               <button style={{
                 position: 'absolute',
                 top: 500,
                 left: 0,
-                border: 'none',
-                background: COLORS.Primary,
+                // border: 'none',
+                background: COLORS.white,
                 borderRadius: 20,
-                width: 277,
+                width: 270,
                 height: 62,
                 fontSize: 18,
                 cursor: 'pointer',
@@ -79,6 +79,7 @@ export default function Home() {
                 display: 'flex',
                 justifyContent: 'center', gap: 10,
                 ...FONTS.h2,
+                border: '1px solid black',
               }}>
                 <img src={IMAGES.appstore} alt={''}
                   style={{ width: 40 }} />
@@ -88,10 +89,10 @@ export default function Home() {
                 top: 500,
                 left: 300,
                 border: 'none',
-                background: COLORS.Primary,
-                // background:'rgba(255,255,255,0.08)', 
+                background: COLORS.white,
+                border: '1px solid black',
                 borderRadius: 20,
-                width: 277,
+                width: 270,
                 height: 62,
                 fontSize: 18,
                 cursor: 'pointer',
