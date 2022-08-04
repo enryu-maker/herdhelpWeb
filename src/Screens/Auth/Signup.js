@@ -38,7 +38,7 @@ export default function Signup() {
       setLoading(true);
       await axios
         .post(
-          baseURL + 'register/',
+          baseURL + '/register/',
           {
             username: username,
             password: password,
@@ -58,10 +58,7 @@ export default function Signup() {
             setValidation(true);
             setShow(true);
             setDataText('User created');
-            setEmailError('User created');
-            setInterval(() => {
-              setShow(false);
-            }, 3000);
+            alert('User created');
             navigate('/login')
             // navigation.navigate('Login');
           } else {
@@ -106,8 +103,7 @@ export default function Signup() {
       style={{
           
         backgroundColor: COLORS.lightGray2,
-        minHeight:300,
-        width:450,
+        width:650,
         padding:20,
         borderRadius: SIZES.radius,
         marginTop:50,
@@ -138,6 +134,11 @@ export default function Signup() {
       >
         {EmailError}
       </p>
+      <div style={{
+  display:"flex",
+  alignItems:"center",
+  justifyContent:"space-evenly"
+}}>
       <InputForm
         appendComponent={
           <img
@@ -182,8 +183,14 @@ export default function Signup() {
           setUsername(event.target.value);
         }}
       />
+      </div>
       {/*  */}
 {/* first name */}
+<div style={{
+  display:"flex",
+  alignItems:"center",
+  justifyContent:"space-evenly"
+}}>
 <InputForm
         appendComponent={
           <img
@@ -201,8 +208,9 @@ export default function Signup() {
         value={first}
         label={"First name"}
         placeholder={"Enter your First name"}
-        onChange={()=>{
-          setFirst("text");
+        onChange={(e)=>{
+          setFirst(e.target.value);
+
         }}
       />
 
@@ -225,10 +233,16 @@ export default function Signup() {
         value={last}
         label={"last Name"}
         placeholder={"Enter your Last name"}
-        onChange={text => {
-          setLast("text");
+        onChange={e => {
+          setLast(e.target.value);
         }}
       />
+      </div>
+      <div style={{
+  display:"flex",
+  alignItems:"center",
+  justifyContent:"space-evenly"
+}}>
       {/*  */}
       <InputForm
         appendComponent={
@@ -275,6 +289,7 @@ export default function Signup() {
               : COLORS.transparentPrimary2,
         }}
       />
+      </div>
       <p style={{ color: COLORS.darkGray, ...FONTS.body3 }}>
         Already have an account?{" "}
         <Link
