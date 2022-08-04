@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-// import TextButton from "../../Component/TextButton";
-// import InputForm from "../../Component/InputForm";
 import NavBarMain from "../../Component/Nav/navmain";
 import TextButton from '../../Component/TextButton';
 import { IMAGES } from '../../Theme/Image';
-// import { IMAGES } from "../../Theme/Image";
 import { COLORS, FONTS, SIZES } from "../../Theme/Theme";
-// import DropDown from "../../Component/DropDown/DropDown";
-// import {species } from "../../Component/Constants";
 import { useSelector, useDispatch } from 'react-redux';
 import FlatList from 'flatlist-react';
 import Feedcard from './FinanceCard';
@@ -18,6 +13,7 @@ export default function LoadFinance() {
   console.log(finance)
   return (
     <>
+
       <NavBarMain page={'finance'} />
 
       <div
@@ -60,9 +56,11 @@ export default function LoadFinance() {
 
       </div> */}
       <div  style={{
-        //  width:"50%",
-        //  height:"0%",
-        //  position:"fixed"
+          height: 700 ,
+          overflowY:'scroll',
+          overflowX:'hidden',
+          backgroundColor:COLORS.layout,
+          
       }}>
       <ul>
         <FlatList

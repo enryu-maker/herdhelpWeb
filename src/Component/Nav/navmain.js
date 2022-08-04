@@ -32,8 +32,10 @@ function NavBarMain({
             height: 45,
             display: 'flex',
             left: 40,
-            backgroundColor: label === 'Logout' ? COLORS.gray2 : 'none',
-            borderRadius: 20,
+            background:'none',
+            // backgroundColor: label === 'Logout' ? COLORS.gray2 : 'none',
+            border: 'none',
+            borderBottom: '1px solid black', 
             cursor: 'pointer'
           }} className='menu'>
             <img src={img}
@@ -46,9 +48,11 @@ function NavBarMain({
                 display: 'block',
               }} />
             <h3 style={{
-              color: label === 'Logout' ? COLORS.red : COLORS.white,
+              color: label === 'Logout' ? COLORS.red : COLORS.black,
+              // color:COLORS.black,
               fontWeight: 300,
-              marginLeft: 20
+              marginLeft: 20,
+              fontWeight:500
             }} >{label}</h3></button></Link>
       </>
     )
@@ -199,7 +203,8 @@ function NavBarMain({
           height: '100%',
           left: '-100%',
           top: 0,
-          backgroundColor: COLORS.Primary,
+          backgroundColor: COLORS.white,
+          textDecorationColor:COLORS.black
         }} id='sidebar'>
           <div style={{ height: 100 }}>
             <img
@@ -223,7 +228,7 @@ function NavBarMain({
               alignitems: 'center',
               textalign: 'center',
               texttransform: 'capitalize',
-              color: '#FFFFFF',
+              // color: '#FFFFFF',
               textAlign: 'left',
               width: 'fit-content'
             }}>
@@ -263,7 +268,7 @@ function NavBarMain({
               onClick={() => { document.getElementById("sidebar").style.left = '-100%'; }}
               className='btn-navmain-close' >
               <img
-                src={IMAGES.close2}
+                src={IMAGES.close}
                 alt="logo"
                 style={{
                   position: 'absolute',
@@ -275,7 +280,7 @@ function NavBarMain({
               /></button>
           </div>
           <hr style={{
-            border: '1px solid white',
+            border: '1px solid black',
             top: '1%',
             position: 'relative',
             width: '100%',
@@ -299,7 +304,7 @@ function NavBarMain({
             path={'/subscription'}
           />
           <hr style={{
-            border: '1px solid white',
+            border: '1px solid' ,
             top: '1%',
             position: 'relative',
             width: '100%',
@@ -318,7 +323,7 @@ function NavBarMain({
           />
 
           <hr style={{
-            border: '1px solid white',
+            border: '1px solid black',
             top: '1%',
             position: 'relative',
             width: '100%',

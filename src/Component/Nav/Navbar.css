@@ -63,20 +63,6 @@ nav img.logo{
     background: black;
 } */
 
-.menu{
-    border: none;
-    background: none;
-    transition: 0.5s;
-    border-bottom: 1px soild transparent;
-    
-}
-
-.menu:hover{
-    transform: scale(1.1);
-    border-bottom: 1px solid rgb(0, 0, 0);
-    background: linear-gradient(35deg , rgba(116, 252, 89, 0.5),rgba(117, 151, 94, 0.5));
-    
-}
 
 
 .btn-navmain{

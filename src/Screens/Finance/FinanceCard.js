@@ -27,7 +27,8 @@ export default function Feedcard({
           elevation: 2,
         //   width: "35%",
           alignItems:"center",
-          padding:"20px"
+          padding:"20px",
+          marginInline:20
         }}
         onClick={onPress}
       >
