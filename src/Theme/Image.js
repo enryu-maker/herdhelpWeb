@@ -76,4 +76,7 @@ export const IMAGES={
     flag:require("../assets/Logo/flag.png"),
     med:require("../assets/Logo/first-aid-kit.png"),
     gain:require("../assets/Logo/gain.png"),
+    img1:require("../assets/Logo/splash.png"),
+    img2:require("../assets/Logo/log1.png"),
+
 }
