@@ -1,7 +1,7 @@
 import React,{ useState } from 'react'
 import NavBarMain from '../../Component/Nav/navmain'
 import { species } from "../../Component/Constants";
-import { COLORS, SIZES } from '../../Theme/Theme';
+import { COLORS, SIZES , FONTS} from '../../Theme/Theme';
 
 import DropDown from '../../Component/DropDown/DropDown'
 
@@ -31,6 +31,28 @@ export default  function Updatebred() {
          options={species}
         />
 
+<div style={{ 
+          justifyContent: "center",
+          alignSelf: "center",
+          display:"flex",
+          flexFlow:"column",
+          marginBottom:30}}>
+<div
+          style={{
+            width: 284,
+            justifyContent: "space-between",
+            display: "flex",
+            flexFlow: "row",
+            alignSelf: "center",
+            height: 20,
+          }}
+        >
+          <text style={{ color: COLORS.gray, ...FONTS.body4 }}>Tags</text>
+        </div>
+        
+        <div style={{
+            width:284,
+            alignSelf: "center",}}>
         <Select
             components={animatedComponents}
             isMulti
@@ -38,7 +60,8 @@ export default  function Updatebred() {
             options={species}
             className="basic-multi-select"
             classNamePrefix="Tags"
-      />
+      /></div>
+    </div>
     </div>
     
     </>
