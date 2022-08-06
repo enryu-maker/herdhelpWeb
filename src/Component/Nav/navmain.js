@@ -203,7 +203,7 @@ function NavBarMain({
           height: '100%',
           left: '-100%',
           top: 0,
-          backgroundColor: COLORS.white,
+          backgroundColor: COLORS.Primary ,
           textDecorationColor:COLORS.black
         }} id='sidebar'>
           <div style={{ height: 100 }}>
@@ -304,7 +304,7 @@ function NavBarMain({
             path={'/subscription'}
           />
           <hr style={{
-            border: '1px solid' ,
+            border: '1px solid black' ,
             top: '1%',
             position: 'relative',
             width: '100%',

@@ -33,13 +33,15 @@ import Horse from './animalpages/horse';
 import Pig from './animalpages/pig';
 import Rabbit from './animalpages/rabbit';
 import Sheep from './animalpages/sheep';
+import Flag from './Screens/Animals/flaganimal'
+import Updatebred from './Screens/Animals/updatebred';
 
 function App() {
   const access = useSelector(state=>state.Reducers.authToken)
   return (
     <>
     <div className="App">
-
+    
       <header className="App-header">
         <Routes>
           <Route path="/" element={<Home/>}/>
@@ -72,6 +74,9 @@ function App() {
           <Route path='/pig' element={<Pig/>} />
           <Route path='/rabbit' element={<Rabbit />} />
           <Route path='/sheep' element={<Sheep />} />
+
+          <Route path='/Flag' element={<Flag />} />
+          <Route path='/Bred' element={<Updatebred />} />
         </Routes>
       </header>
       

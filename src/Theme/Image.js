@@ -78,5 +78,6 @@ export const IMAGES={
     gain:require("../assets/Logo/gain.png"),
     img1:require("../assets/Logo/splash.png"),
     img2:require("../assets/Logo/log1.png"),
+    setImg:require("../assets/Logo/Combined-Shape.png")
 
 }

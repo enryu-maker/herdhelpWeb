@@ -30,13 +30,13 @@ export default function add() {
       'id': 4,
       'label': 'Update Bred',
       'image': IMAGES.bred,
-      'nav': 'Bred'
+      'nav': '/Bred'
     },
     {
       'id': 5,
       'label': 'Flag Animal',
       'image': IMAGES.flag,
-      'nav': 'Flag'
+      'nav': '/Flag'
     },
   ]
   function Cards({
