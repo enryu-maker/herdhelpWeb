@@ -29,7 +29,9 @@ export default function InputForm({
           alignSelf: "center",
           display:"flex",
           flexFlow:"column",
-          marginBottom:30
+          marginBottom:30,
+          borderWidth:0,
+          borderBottomWidth:12,
         }}
       >
         <div
@@ -65,12 +67,13 @@ export default function InputForm({
               flex: 1,
               ...inputStyle,
               width: "100%",
-              backgroundColor: COLORS.white,
+              
               borderRadius: SIZES.radius,
               borderWidth: 0,
               height: 45,
               alignSelf: "center",
-              paddingLeft:20
+              paddingLeft:20,
+              outline: "none",
             }}
             value={value}
             placeholder={placeholder}
