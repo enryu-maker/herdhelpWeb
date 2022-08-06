@@ -26,6 +26,13 @@ import Female from './Screens/Alerts/Female';
 import ProtectedRoute from './Protection/Protected';
 import { useSelector } from 'react-redux';
 
+import Cow from './animalpages/cow';
+import Goat from './animalpages/goat';
+import Horse from './animalpages/horse';
+import Pig from './animalpages/pig';
+import Rabbit from './animalpages/rabbit';
+import Sheep from './animalpages/sheep';
+
 function App() {
   const access = useSelector(state=>state.Reducers.authToken)
   return (
@@ -56,6 +63,12 @@ function App() {
           <Route path='/male' element={<Male/>}/>
           <Route path='/female' element={<Female/>}/>
            {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
+          <Route path='/cow' element={<Cow />} />
+          <Route path='/goat' element={<Goat />} />
+          <Route path='/horse' element={<Horse/>} />
+          <Route path='/pig' element={<Pig/>} />
+          <Route path='/rabbit' element={<Rabbit />} />
+          <Route path='/sheep' element={<Sheep />} />
         </Routes>
       </header>
       

@@ -41,6 +41,7 @@ export default function Main() {
                   Name={`My ${item.label}`}
                   numaninmal={`${item.data?.length}`}
                   data={item.data}
+                 
                 />
                 </>
               )
@@ -50,47 +51,7 @@ export default function Main() {
             renderWhenEmpty={() => <div>List is empty!</div>}
           />
         </ul>
-        {/* <div>
-          <Card
-            img={IMAGES.cow}
-            Name={'My Cow'}
-            numaninmal={'5'}
-          />
-          <Card
-            img={IMAGES.goat}
-            Name={'My Goat'}
-            numaninmal={'5'}
-          />
-          <Card
-            img={IMAGES.dog}
-            Name={'My Dog'}
-            numaninmal={'5'}
-          />
-          <Card
-            img={IMAGES.sheep}
-            Name={'My Sheep'}
-            numaninmal={'5'}
-          />
-        </div>
-
-
-        <div>
-          <Card
-            img={IMAGES.horse}
-            Name={'My Horse'}
-            numaninmal={'5'}
-          />
-          <Card
-            img={IMAGES.pig}
-            Name={'My Pig'}
-            numaninmal={'5'}
-          />
-          <Card
-            img={IMAGES.rabbit}
-            Name={'My Rabbit'}
-            numaninmal={'5'}
-          />
-        </div> */}
+        
       </>
 
     </>

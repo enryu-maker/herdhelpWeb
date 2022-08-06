@@ -31,6 +31,7 @@ export default function Card({
           shadowRadius: 10,
           elevation: 2,
           width: 250,
+          cursor:'pointer'
         }}
         onClick={onPress}
       >
