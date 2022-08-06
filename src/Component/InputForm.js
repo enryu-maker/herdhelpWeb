@@ -68,17 +68,15 @@ export default function InputForm({
               ...inputStyle,
               width: "100%",
               // backgroundColor: COLORS.white,
-              // borderRadius: SIZES.radius,
+              borderRadius: 'none',
               background:'none',
-              borderTop:'none',borderInline:'none',
-              borderBottom : '1px solid black',
-              
-              borderRadius: SIZES.radius,
-              borderWidth: 0,
+              borderTop:'none',
+              borderInline:'none',
+              borderBottom : '0.9px solid black',
               height: 45,
               alignSelf: "center",
               paddingLeft:20,
-              outline: "none",
+              // outline: "none",
             }}
             value={value}
             placeholder={placeholder}
