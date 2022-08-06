@@ -88,7 +88,7 @@ export default function Login() {
     }}>
     <div
       style={{
-        backgroundColor: COLORS.lightGray2,
+        // backgroundColor: COLORS.lightGray2,
         minHeight:300,
         width:450,
         padding:20,
@@ -192,7 +192,6 @@ export default function Login() {
         <Link
         to="/register"
           style={{
-            backgroundColor: COLORS.lightGray2,
             color: COLORS.Primary,
           }}
         >
@@ -206,7 +205,6 @@ export default function Login() {
             alignSelf:"center",
             // display:'flex',
             marginTop:'13px',
-            backgroundColor: COLORS.lightGray2,
             color: COLORS.Primary,
           }}
         >

@@ -102,7 +102,7 @@ export default function Signup() {
     <div
       style={{
           
-        backgroundColor: COLORS.lightGray2,
+        // backgroundColor: COLORS.lightGray2,
         width:650,
         padding:20,
         borderRadius: SIZES.radius,
@@ -295,7 +295,6 @@ export default function Signup() {
         <Link
         to="/login"
           style={{
-            backgroundColor: COLORS.lightGray2,
             color: COLORS.Primary,
           }}
         >

@@ -24,8 +24,8 @@ export default function TextButton({
             backgroundColor: COLORS.Primary,
             borderRadius:SIZES.radius,
             borderWidth:0,
-            height:55,
-            width:280,
+            height:50,
+            width:220,
             alignSelf:'center',
             ...buttonContainerStyle,
         }}
@@ -35,10 +35,10 @@ export default function TextButton({
             <div style={{
                 margin:10
             }}>
-                <img src={icon} style={{height:30,width:30,color:COLORS.white,alignSelf:"flex-start",...iconStyle}}/> 
+                <img src={icon} style={{height:25,width:25,color:COLORS.white,alignSelf:"flex-start",...iconStyle}}/> 
             </div>
         }
-        <p style={{ color: COLORS.white, ...FONTS.h2, ...labelStyle,alignSelf:"center",letterSpacing:1 }}>
+        <p style={{ color: COLORS.gray, ...FONTS.h2, ...labelStyle,alignSelf:"center",letterSpacing:1 }}>
         {label}
         </p>
         </button>

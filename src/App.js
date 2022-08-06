@@ -25,6 +25,7 @@ import Male from './Screens/Alerts/Male'
 import Female from './Screens/Alerts/Female';
 import ProtectedRoute from './Protection/Protected';
 import { useSelector } from 'react-redux';
+import Info from './Screens/Home/Info';
 
 import Cow from './animalpages/cow';
 import Goat from './animalpages/goat';
@@ -62,6 +63,8 @@ function App() {
           <Route path='/setting' element={<Setting/>}/>
           <Route path='/male' element={<Male/>}/>
           <Route path='/female' element={<Female/>}/>
+          <Route path='/info' element={<Info/>}/>
+
            {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
           <Route path='/cow' element={<Cow />} />
           <Route path='/goat' element={<Goat />} />
