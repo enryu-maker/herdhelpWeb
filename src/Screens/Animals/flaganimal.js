@@ -3,17 +3,16 @@ import DropDown from '../../Component/DropDown/DropDown'
 import NavBarMain from '../../Component/Nav/navmain'
 import { species } from "../../Component/Constants";
 import { COLORS, SIZES } from '../../Theme/Theme';
+import { IMAGES } from '../../Theme/Image';
+import InputForm from '../../Component/InputForm';
 
 export default function Flaganimal() {
 
 const [valueMS, setValueMS] = useState("");
-    
-
-
-  return (
-    <>
-    <NavBarMain/>
+const [name, setName] = useState("");return (
 <>
+  <NavBarMain/>
+  <>
     <div style={{minHeight:200,
           backgroundColor:COLORS.lightGray1,
           borderRadius: SIZES.radius,
@@ -33,9 +32,29 @@ const [valueMS, setValueMS] = useState("");
          // options={checking}
          options={species}
         />
+
+<InputForm
+              prependComponent={
+                <img
+                  src={IMAGES.plus1}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    margin: 10,
+                    alignSelf: "center",
+                  }}
+                />
+              }
+              type={"text"}
+              value={name}
+              label={"Description*"}
+              onChange={(event) => {
+                setName(event.target.value);
+              }}
+            />
     </div>
-    </>
-    </>
+  </>
+</>
   )
 }
 

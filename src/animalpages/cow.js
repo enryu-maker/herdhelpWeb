@@ -24,8 +24,6 @@ export default function cow() {
    idnumber={1001221}
    weight={100}
    />
-
-
     </div>
 
     </>
