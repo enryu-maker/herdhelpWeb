@@ -47,7 +47,7 @@ const [name, setName] = useState("");return (
               }
               type={"text"}
               value={name}
-              label={"Description*"}
+              label={"Description"}
               onChange={(event) => {
                 setName(event.target.value);
               }}
