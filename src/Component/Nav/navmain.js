@@ -118,7 +118,7 @@ function NavBarMain({
                 fontFamily: 'arial'
               }}
             >
-              <Link to="/main" style={{
+              <Link to="/" style={{
                 color: page === 'herds' ? COLORS.Primary : "black",
                 // textShadow:page === 'herds' ? '0px 0px 18px black' : 'none',
                 marginInline: '2%',

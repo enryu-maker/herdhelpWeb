@@ -6,6 +6,8 @@ import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
 import { checking, gender , species } from "../../Component/Constants";
+import Header from "../../Component/Header";
+import { useNavigate } from "react-router-dom";
 // import axiosIns from "../../helpers/helpers";
 
 
@@ -36,6 +38,7 @@ export default function AddAnimals() {
   const [dataText, setDataText] = React.useState("");
   const [EmailError, setEmailError] = React.useState("");
   const [unit, setUnit] = React.useState(false);
+  const navigate = useNavigate()
   const clear = () => {
     // setSpcies([])
     setWeight('');
@@ -126,14 +129,6 @@ export default function AddAnimals() {
           marginBottom: 50,
         }}
       >
-        <p
-          style={{
-            ...FONTS.largeTitle,
-            alignSelf: "center",
-          }}
-        >
-          Add Animal
-        </p>
         <div
           style={{
             display: "flex",
@@ -544,7 +539,35 @@ export default function AddAnimals() {
         flex: 1,
       }}
     >
-      {renderHeader()}
+      <Header 
+      leftcomponent={
+        <>
+          <div style={{
+            display:"flex",
+            justifyContent:"center",
+            height: 40,
+            width: 40,
+            backgroundColor: COLORS.Primary,
+            alignSelf: "center",
+            borderRadius: 20
+          }}
+            onClick={() => {
+              navigate(-1)
+            }}
+          >
+            <img src={IMAGES.back} alt={"back"}
+              style={{
+                height: 25,
+                width: 25,
+                alignSelf: "center",
+              }} />
+          </div>
+        </>
+      }
+      rightcomponent={
+        <div></div>
+      }
+      title={"Add Animal"}/>
       <div
         style={{
           display: "flex",

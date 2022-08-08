@@ -75,7 +75,7 @@ function App() {
                   </> : <>
                     <Route path="/add" element={<Add />} />
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/main" element={<ProtectedRoute Component={Main} access={access} />} />
+                    <Route path="/" element={<ProtectedRoute Component={Main} access={access} />} />
                     <Route path="/weight" element={<Weight />} />
                     <Route path="/animals" element={<AddAnimals />} />
                     <Route path="/medication" element={<AddMedication />} />
@@ -97,6 +97,8 @@ function App() {
                     {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
                     <Route path='/Flag' element={<Flag />} />
                     <Route path='/Bred' element={<Updatebred />} />
+                    <Route path='/load' element={<Loading />} />
+
                   </>
               }
             </Routes>

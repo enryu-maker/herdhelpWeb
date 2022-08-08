@@ -15,6 +15,7 @@ import { IMAGES } from "../../Theme/Image";
 import { useSelector, useDispatch } from 'react-redux';
 import { getFcat, getFinance, getHerds, getSpecies } from '../../Store/actions';
 import FlatList from 'flatlist-react';
+import Loading from "../../Component/Loading";
 export default function Main() {
   const dispatch = useDispatch()
   let navigate = useNavigate()
@@ -55,7 +56,7 @@ export default function Main() {
 
             }
             }
-            renderWhenEmpty={() => <div>List is empty!</div>}
+            renderWhenEmpty={() => (<Loading/> )}
           />
         </ul>
         

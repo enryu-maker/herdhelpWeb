@@ -4,6 +4,7 @@ import { COLORS, FONTS, formatter } from '../../Theme/Theme'
 import InfoCard from '../../Component/InfoCard'
 import { useNavigate, useLocation } from 'react-router-dom';
 import { baseURL } from '../../helpers/helpers';
+import { IMAGES } from '../../Theme/Image';
 export default function Info({
   purchased = false
 }) {
@@ -17,13 +18,24 @@ export default function Info({
         leftcomponent={
           <>
             <div style={{
+              display:"flex",
+              justifyContent:"center",
               height: 40,
               width: 40,
               backgroundColor: COLORS.Primary,
               alignSelf: "center",
               borderRadius: 20
-            }}>
-
+            }}
+              onClick={() => {
+                navigate(-1)
+              }}
+            >
+              <img src={IMAGES.back} alt={"back"}
+                style={{
+                  height: 25,
+                  width: 25,
+                  alignSelf: "center",
+                }} />
             </div>
           </>
         }
@@ -62,9 +74,11 @@ export default function Info({
         marginBottom: "15px"
       }}>
         <div style={{
+          display:"flex",
+        justifyContent: "center",
           height: 120,
           width: 120,
-          backgroundColor: COLORS.lightGray2,
+          // backgroundColor: COLORS.lightGray2,
           borderRadius: 60,
         }}>
           <img src={data.animal_image != null ? baseURL + data.animal_image : baseURL + data.image} alt={data.tag_number}
@@ -73,6 +87,8 @@ export default function Info({
               width: 120,
               alignSelf: "center",
           borderRadius: 60,
+          border: '2px solid rgba(0, 0, 0)',
+
 
             }} />
         </div>
@@ -167,12 +183,12 @@ export default function Info({
           }}>
 
             <InfoCard infostyle={{
-              paddingTop:5
-            }} label={"Vaccinated?"} value={data.vaccinated?"yes":"No"} withDivider={!data.vaccinated?false:true}/>
-           { data.vaccinated?
-            <InfoCard label={"Date"} value={data.vaccination_date} withDivider={false} />
-          :null
-          }
+              paddingTop: 5
+            }} label={"Vaccinated?"} value={data.vaccinated ? "yes" : "No"} withDivider={!data.vaccinated ? false : true} />
+            {data.vaccinated ?
+              <InfoCard label={"Date"} value={data.vaccination_date} withDivider={false} />
+              : null
+            }
           </div>
           <div style={{
             display: "flex",

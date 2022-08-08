@@ -4,6 +4,7 @@ import { COLORS, FONTS } from '../../Theme/Theme'
 import { useNavigate, useLocation } from 'react-router-dom';
 import FlatList from 'flatlist-react';
 import AnimalCard from './AnimalCard';
+import { IMAGES } from '../../Theme/Image';
 export default function Animal() {
     let navigate = useNavigate()
     const { state } = useLocation();
@@ -14,17 +15,24 @@ export default function Animal() {
         leftcomponent={
             <>
               <div style={{
+                display:"flex",
                 height: 40,
                 width: 40,
                 backgroundColor: COLORS.Primary,
                 alignSelf: "center",
-                borderRadius: 20
+                borderRadius: 20,
+                justifyContent:"center"
               }}
               onClick={()=>{
-                this.context.router.goBack()
+                navigate(-1)
               }}
               >
-  
+                <img src={IMAGES.back} alt={"back"}
+            style={{
+              height: 25,
+              width: 25,
+              alignSelf: "center",
+            }} />
               </div>
             </>
           }
