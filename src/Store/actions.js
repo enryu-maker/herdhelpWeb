@@ -2,11 +2,11 @@
 import axiosIns from "../helpers/helpers";
 import axios from "axios";
 import { baseURL } from "../helpers/helpers";
-import { ReactSession }  from 'react-client-session';
+
 
 export const Init = () => {
   return async dispatch => {
-    const token = ReactSession.get("access");
+    const token = localStorage.getItem("access");
     // let token = await AsyncStorage.getItem('token');
     // let id = await AsyncStorage.getItem('id');
     // if (token !== null && id!==null) {
@@ -19,7 +19,7 @@ export const Init = () => {
 }
 
 export const Login_Function = (token) => {
-  ReactSession.set("access", token);
+  localStorage.setItem("access", token);
   return async dispatch => {
     dispatch({
       type: 'LOGIN',
