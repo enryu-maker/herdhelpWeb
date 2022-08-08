@@ -1,6 +1,6 @@
 import React from "react";
 
-import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
+import { COLORS, SIZES, FONTS, formatter } from "../../Theme/Theme";
 
 export default function Feedcard({
     Feedname,
@@ -14,7 +14,7 @@ export default function Feedcard({
       <button
         style={{
           backgroundColor: COLORS.lightGray2,
-          height: 100,
+          height: 145,
           margin: SIZES.padding,
           borderRadius: SIZES.radius,
           flexDirection:"column",
@@ -28,7 +28,7 @@ export default function Feedcard({
         //   width: "35%",
           alignItems:"center",
           padding:"20px",
-          marginInline:20
+          // marginInline:20
         }}
         onClick={onPress}
       >
@@ -81,7 +81,7 @@ export default function Feedcard({
             // justifyContent:"flex-start",
             marginLeft:"20px"
         }}>
-           Price: ${Feedprice}
+           Price: {formatter.format(Feedprice)}
         </p>
         </div>
         

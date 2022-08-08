@@ -56,11 +56,15 @@ export default function LoadFinance() {
 
       </div> */}
       <div  style={{
-          height: 700 ,
+        display:"flex",
+          height: "100vh" ,
           overflowY:'scroll',
-          overflowX:'hidden',
-          backgroundColor:COLORS.layout,
-          
+          width:"40%",
+          overflowX:"hidden",
+          // padding:"20px",
+          // backgroundColor:COLORS.layout,
+          alignSelf:"center",
+          marginBottom:"50px"          
       }}>
       <ul>
         <FlatList

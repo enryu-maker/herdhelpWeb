@@ -12,6 +12,7 @@ const initialState = {
   animal: {},
   med: {},
   fcat: [],
+  reports:[]
 };
 
 export default (state = initialState, action) => {
@@ -90,6 +91,11 @@ export default (state = initialState, action) => {
         ...state,
         fcat: action.payload,
       };
+      case 'REPORT':
+        return {
+          ...state,
+          reports: action.payload,
+        };
     default:
       return state;
   }

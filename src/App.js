@@ -2,7 +2,7 @@ import './App.css';
 import Login from './Screens/Auth/Login';
 import Signup from './Screens/Auth/Signup';
 import Home from './Screens/Home/Home';
-import { Routes,Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Main from './Screens/Home/Main';
 import Weight from './Screens/Home/Weight';
 import AddAnimals from './Screens/Animals/AddAnimals';
@@ -26,7 +26,7 @@ import Female from './Screens/Alerts/Female';
 import ProtectedRoute from './Protection/Protected';
 import { useSelector } from 'react-redux';
 import Info from './Screens/Home/Info';
-
+import Animal from './Screens/Home/Animal';
 import Cow from './animalpages/cow';
 import Goat from './animalpages/goat';
 import Horse from './animalpages/horse';
@@ -37,51 +37,53 @@ import Flag from './Screens/Animals/flaganimal'
 import Updatebred from './Screens/Animals/updatebred';
 
 function App() {
-  const access = useSelector(state=>state.Reducers.authToken)
+  const access = useSelector(state => state.Reducers.authToken)
   return (
     <>
-    <div className="App">
-    
-      <header className="App-header">
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/add" element={<Add/>}/>
-          <Route path="/profile" element={<Profile/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/register" element={<Signup/>}/>
-          <Route path="/main" element={<ProtectedRoute Component={Main} access={access}/>}/>
-          <Route path="/weight" element={<Weight/>}/>
-          <Route path="/animals" element={<AddAnimals/>}/>
-          <Route path="/medication" element={<AddMedication/>}/>
-          <Route path="/alerts" element={<LoadAlerts/>}/>
-          <Route path="/finance" element={<ProtectedRoute Component={LoadFinance} access={access}/>}/>
-          <Route path="/addfinance" element={<ProtectedRoute Component={AddFinance} access={access}/>}/>
-          <Route path="/herds" element={<Herds/>}/>
-          <Route path='/report' element={<Report/>}/>
-          <Route path='/parents' element={<Parents/>} />
-          <Route path='/weighthistory' element={<Weighthistory/>}/>
-          <Route path='/subscription' element={<Subscription/>}/>
-          <Route path='/terms-and-condition' element={<Terms/>} />
-          <Route path='/setting' element={<Setting/>}/>
-          <Route path='/male' element={<Male/>}/>
-          <Route path='/female' element={<Female/>}/>
-          <Route path='/info' element={<Info/>}/>
+      <div className="App">
 
-           {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
-          <Route path='/cow' element={<Cow />} />
-          <Route path='/goat' element={<Goat />} />
-          <Route path='/horse' element={<Horse/>} />
-          <Route path='/pig' element={<Pig/>} />
-          <Route path='/rabbit' element={<Rabbit />} />
-          <Route path='/sheep' element={<Sheep />} />
+        <header className="App-header">
+          <Routes>
+            {
+              access == null ?
+                <>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Signup />} />
+                  <Route path="/*" element={<Login />} />
 
-          <Route path='/Flag' element={<Flag />} />
-          <Route path='/Bred' element={<Updatebred />} />
-        </Routes>
-      </header>
-      
-    </div>
-     <Footer/>
+                </> : <>
+                  <Route path="/add" element={<Add />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/main" element={<ProtectedRoute Component={Main} access={access} />} />
+                  <Route path="/weight" element={<Weight />} />
+                  <Route path="/animals" element={<AddAnimals />} />
+                  <Route path="/medication" element={<AddMedication />} />
+                  <Route path="/alerts" element={<LoadAlerts />} />
+                  <Route path="/finance" element={<ProtectedRoute Component={LoadFinance} access={access} />} />
+                  <Route path="/addfinance" element={<ProtectedRoute Component={AddFinance} access={access} />} />
+                  <Route path="/herds" element={<Herds />} />
+                  <Route path='/report' element={<ProtectedRoute Component={Report} access={access} />} />
+                  <Route path='/parents' element={<Parents />} />
+                  <Route path='/weighthistory' element={<Weighthistory />} />
+                  <Route path='/subscription' element={<Subscription />} />
+                  <Route path='/terms-and-condition' element={<Terms />} />
+                  <Route path='/setting' element={<Setting />} />
+                  <Route path='/male' element={<Male />} />
+                  <Route path='/female' element={<Female />} />
+                  <Route path='/info' element={<ProtectedRoute Component={Info} access={access} />} />
+                  <Route path='/animal' element={<ProtectedRoute Component={Animal} access={access} />} />
+
+                  {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
+                  <Route path='/Flag' element={<Flag />} />
+                  <Route path='/Bred' element={<Updatebred />} />
+                </>
+            }
+          </Routes>
+        </header>
+
+      </div>
+      <Footer />
 
 
 

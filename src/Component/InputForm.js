@@ -27,11 +27,11 @@ export default function InputForm({
           ...containerStyle,
           justifyContent: "center",
           alignSelf: "center",
-          display:"flex",
-          flexFlow:"column",
-          marginBottom:30,
-          borderWidth:0,
-          borderBottomWidth:12,
+          display: "flex",
+          flexFlow: "column",
+          marginBottom: 30,
+          borderWidth: 0,
+          borderBottomWidth: 12,
         }}
       >
         <div
@@ -50,7 +50,7 @@ export default function InputForm({
         <div
           style={{
             display: "inline-flex",
-            flexFlow:"row",
+            flexFlow: "row",
             height: 50,
             paddingHorizontal: SIZES.padding,
             marginTop: 5,
@@ -60,7 +60,7 @@ export default function InputForm({
             alignSelf: "center",
             ...inputContainerStyle,
           }}>
-            
+
           {prependComponent}
           <input
             style={{
@@ -69,13 +69,16 @@ export default function InputForm({
               width: "100%",
               // backgroundColor: COLORS.white,
               borderRadius: 'none',
-              background:'none',
-              borderTop:'none',
-              borderInline:'none',
-              borderBottom : '0.9px solid black',
+              background: 'none',
+              borderTop: 'none',
+              borderInline: 'none',
+              borderBottom: '0.9px solid black',
               height: 45,
               alignSelf: "center",
-              paddingLeft:20,
+              paddingLeft: 20,
+              ...FONTS.h3,
+              outline:"none"
+
               // outline: "none",
             }}
             value={value}

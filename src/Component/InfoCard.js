@@ -4,7 +4,8 @@ import { COLORS, FONTS } from '../Theme/Theme'
 export default function InfoCard({
   label, 
   value, 
-  withDivider = true
+  withDivider = true,
+  infostyle
 }) {
   return (
     <div>
@@ -15,7 +16,8 @@ export default function InfoCard({
                     height: 40,
                     alignItems: 'center',
                     justifyContent:"space-between",
-                    paddingTop:20
+                    paddingTop:20,
+                    ...infostyle
                 }}
             >
                 <p style={{ color: COLORS.gray, ...FONTS.h2,marginLeft:10  }}>{label}</p>

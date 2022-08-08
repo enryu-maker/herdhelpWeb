@@ -4,15 +4,25 @@ import NavBarMain from "../../Component/Nav/navmain";
 import { IMAGES } from '../../Theme/Image';
 import { COLORS, FONTS, SIZES } from '../../Theme/Theme';
 import './report.css'
-
-
-
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { baseURL } from '../../helpers/helpers';
+import FlatList from 'flatlist-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { getReports } from '../../Store/actions';
 
 
 
 export default function Report() {
+  const access = useSelector(state => state.Reducers.authToken)
+  let navigate = useNavigate()
+  const dispatch = useDispatch()
 
-     
+React.useEffect(() => {
+  dispatch(getReports(access))
+  }, []);
+  const reports = useSelector(state => state.Reducers.reports)
+
 function Altcards({
   altname,
   img,
@@ -67,71 +77,29 @@ function Altcards({
 return (
   <>
   <NavBarMain page={'/report'}/>
-    <div
-      style={{
-        flex: 1,
-      }}
-    >
-      
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignSelf: "center",
-        }}
-      >
-{/*  */}
-<Altcards
-img={IMAGES.male1}
-altname={"Male Animal"}
-Path={'/male'} />
+  <ul style={{
+            margin:0,
+            paddingBottom:"50px"
+        }}>
+          <FlatList
+            
+            list={reports}
+            keyExtractor={item => `${item.id}`}
+            renderItem={(item,index) => {
+              return (
+                <>
+                <Altcards 
+                img={item.image}
+                altname={item.name}
+                />
+                </>
+              )
 
-<Altcards
-img={IMAGES.female1}
-altname={"Female Animal"}
-Path={'/female'} />
-
-<Altcards
-img={IMAGES.right}
-altname={"Birth Animal"}
-Path={'/birthanimal'} />
-
-<Altcards
-img={IMAGES.paid}
-altname={"Purchesed Animal"}
-Path={'/purchesedanimal'} />
-{/*  */}      </div>
-
-
-<div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignSelf: "center",
-        }}
-      >
-{/*  */}
-<Altcards
-img={IMAGES.male1}
-altname={"Male Animal"}
-Path={'/male'} />
-
-<Altcards
-img={IMAGES.female1}
-altname={"Female Animal"}
-Path={'/female'} />
-
-<Altcards
-img={IMAGES.right}
-altname={"Birth Animal"}
-Path={'/birthanimal'} />
-
-<Altcards
-img={IMAGES.paid}
-altname={"Purchesed Animal"}
-Path={'/purchesedanimal'} />
-{/*  */}      </div>
-    </div>
+            }
+            }
+            renderWhenEmpty={() => <div>List is empty!</div>}
+          />
+        </ul>
     </>
 )
 }

@@ -1,10 +1,16 @@
 import React from 'react'
 import Header from '../../Component/Header'
-import { COLORS, FONTS } from '../../Theme/Theme'
+import { COLORS, FONTS, formatter } from '../../Theme/Theme'
 import InfoCard from '../../Component/InfoCard'
+import { useNavigate, useLocation } from 'react-router-dom';
+import { baseURL } from '../../helpers/helpers';
 export default function Info({
   purchased = false
 }) {
+  let navigate = useNavigate()
+  const { state } = useLocation();
+  const { data } = state;
+  console.log(data)
   return (
     <div>
       <Header
@@ -61,7 +67,14 @@ export default function Info({
           backgroundColor: COLORS.lightGray2,
           borderRadius: 60,
         }}>
+          <img src={data.animal_image != null ? baseURL + data.animal_image : baseURL + data.image} alt={data.tag_number}
+            style={{
+              height: 120,
+              width: 120,
+              alignSelf: "center",
+          borderRadius: 60,
 
+            }} />
         </div>
       </div>
       {/* Middle Data */}
@@ -81,22 +94,18 @@ export default function Info({
           height: 300,
 
         }}>
-          <InfoCard label={"Name"} value={"Akif"} />
-          <InfoCard label={"Gender"} value={"Male"} />
-          <InfoCard label={"Bred"} value={"Yes"} />
-          <InfoCard label={"Tag Number"} value={"1432"} />
-          <InfoCard label={"Weight"} value={"50"} withDivider={false} />
+          <InfoCard label={"Name"} value={data.name} />
+          <InfoCard label={"Gender"} value={data.gender} />
+          <InfoCard label={"Bred"} value={data.bred ? "Yes" : "No"} />
+          <InfoCard label={"Tag Number"} value={data.support_tag} />
+          <InfoCard label={"Weight"} value={data.weight} withDivider={false} />
         </div>
         <div style={{
-          
-          // height: 300,
-          // width: 350,
           backgroundColor: COLORS.white,
-          paddingBottom:"30px",
+          paddingBottom: "30px",
           justifyContent: "space-between"
         }}>
           <div style={{
-            // height: 120,
             width: 350,
             backgroundColor: COLORS.lightGray2,
             borderRadius: 25,
@@ -104,25 +113,25 @@ export default function Info({
             paddingBottom: 15
           }}>
             {
-              purchased ? (
+              data.bought ? (
                 <>
                   <InfoCard label={"Type"} value={"Purchased"} />
-                  <InfoCard label={"Price"} value={"Male"} withDivider={false} />
+                  <InfoCard label={"Price"} value={formatter.format(data.price)} withDivider={false} />
                 </>
               ) : (
                 <>
                   <InfoCard label={"Type"} value={"Birth"} />
-                  <InfoCard label={"30"} value={"Male"} />
-                  <InfoCard label={"60"} value={"Yes"} />
-                  <InfoCard label={"90"} value={"1432"} />
-                  <InfoCard label={"Date of Birth"} value={"50"}  />
-                  <InfoCard label={"Mother Tag"} value={"50"}/>
-                  <InfoCard label={"Father Tag"} value={"50"} withDivider={false} />
-                  </>
+                  <InfoCard label={"30"} value={data.weight_30} />
+                  <InfoCard label={"60"} value={data.weight_60} />
+                  <InfoCard label={"90"} value={data.weight_90} />
+                  <InfoCard label={"Date of Birth"} value={data.birth_date} />
+                  <InfoCard label={"Mother's Tag"} value={data.mother_supporttag} />
+                  <InfoCard label={"Father's Tag"} value={data.father_supporttag} withDivider={false} />
+                </>
               )
             }
           </div>
-          
+
         </div>
         <div style={{
           // height: 300,
@@ -131,7 +140,7 @@ export default function Info({
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-evenly",
-          paddingBottom:"30px",
+          paddingBottom: "30px",
 
           // padding: 20,
 
@@ -143,10 +152,10 @@ export default function Info({
             borderRadius: 25,
             paddingBottom: 15,
             padding: 15,
-            marginBottom:10
+            marginBottom: 10
           }}>
-            <InfoCard label={"Registration"} value={"yes"} />
-            <InfoCard label={"Breed"} value={"Male"} withDivider={false} />
+            <InfoCard label={"Registration"} value={data.registration} />
+            <InfoCard label={"Breed"} value={data.breed} withDivider={false} />
           </div>
           <div style={{
             // height: 120,
@@ -154,11 +163,16 @@ export default function Info({
             backgroundColor: COLORS.lightGray2,
             borderRadius: 25,
             padding: 15,
-            paddingBottom: 15
+            // paddingBottom: 15
           }}>
 
-            <InfoCard label={"Vaccinated?"} value={"yes"} />
-            <InfoCard label={"Date"} value={"Male"} withDivider={false} />
+            <InfoCard infostyle={{
+              paddingTop:5
+            }} label={"Vaccinated?"} value={data.vaccinated?"yes":"No"} withDivider={!data.vaccinated?false:true}/>
+           { data.vaccinated?
+            <InfoCard label={"Date"} value={data.vaccination_date} withDivider={false} />
+          :null
+          }
           </div>
           <div style={{
             display: "flex",

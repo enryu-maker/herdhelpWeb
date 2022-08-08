@@ -1,6 +1,8 @@
 
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { ReactSession }  from 'react-client-session';
+
 export const baseURL = 'https://api-nerdtech.herdhelp.com'
 let headers = {};
 const axiosIns = axios.create({
@@ -11,9 +13,9 @@ const axiosIns = axios.create({
 axiosIns.interceptors.request.use(
 
     async (config) => {
-        const token = useSelector(state=>state.Reducers.authToken)
-        if (token) {
-            config.headers.Authorization = `Bearer ${token}`;
+        const access = ReactSession.get("access");
+        if (access) {
+            config.headers.Authorization = `Bearer ${access}`;
         }
         return config;
     },

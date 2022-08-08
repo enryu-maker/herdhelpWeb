@@ -57,11 +57,15 @@ export default function DropDown({
       <div style={{
         flex:1,
         justifyContent:"center",
-        alignSelf:"center"
+        alignSelf:"center",
+        ...FONTS.h3
       }}>
 
       
       <Select
+      styles={{
+        ...FONTS.h3
+      }}
       value={value}
       onChange={event=>{
         setValue(event.value)

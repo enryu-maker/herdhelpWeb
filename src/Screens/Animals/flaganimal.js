@@ -5,6 +5,7 @@ import { species } from "../../Component/Constants";
 import { COLORS, SIZES } from '../../Theme/Theme';
 import { IMAGES } from '../../Theme/Image';
 import InputForm from '../../Component/InputForm';
+import Header from '../../Component/Header';
 
 export default function Flaganimal() {
 
@@ -13,6 +14,7 @@ const [name, setName] = useState("");return (
 <>
   <NavBarMain/>
   <>
+  <Header title={"Flag Animal"}/>
     <div style={{minHeight:200,
           backgroundColor:COLORS.lightGray1,
           borderRadius: SIZES.radius,

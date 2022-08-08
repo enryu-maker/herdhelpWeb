@@ -1,95 +1,138 @@
-import React,{ useState } from 'react'
+import React, { useState } from 'react'
 import NavBarMain from '../../Component/Nav/navmain'
 import { species } from "../../Component/Constants";
-import { COLORS, SIZES , FONTS} from '../../Theme/Theme';
+import { COLORS, SIZES, FONTS } from '../../Theme/Theme';
 import { IMAGES } from '../../Theme/Image';
-
+import TextButton from '../../Component/TextButton';
 import DropDown from '../../Component/DropDown/DropDown'
 
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import InputForm from '../../Component/InputForm';
+import Header from '../../Component/Header';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTags } from '../../Store/actions';
 
 
-export default  function Updatebred() {
-    const animatedComponents = makeAnimated();
-    const [valueMS, setValueMS] = useState("");
-    const [dobt, setDobt] = useState(null);
+export default function Updatebred() {
+  const animatedComponents = makeAnimated();
+  const [valueMS, setValueMS] = useState("");
+  const [tag, setTag] = useState([]);
 
+  const [dobt, setDobt] = useState(null);
+
+  const dispatch = useDispatch()
+  React.useEffect(()=>{
+    dispatch(getTags())
+  },[])
+
+  const tags = useSelector(state=>state.Reducers.tags)
+  function finder(list, value) {
+    var dataValue;
+    var final_data = [];
+    list?.map(a => {
+      if (value == a.label) {
+        dataValue = a.data;
+        dataValue.map(a => {
+          if (a.gender === "Female") {
+            final_data.push(a)
+          }
+        })
+      }
+    });
+    return final_data;
+  }
+  console.log(tag)
   return (
     <>
-    <NavBarMain/>
+      <NavBarMain />
 
-    <>
-
-    <div style={{minHeight:200,
-          backgroundColor:COLORS.lightGray1,
-          borderRadius: SIZES.radius,
-          maxWidth:'400px',
-          padding:20, margin:'auto'}}>
-        <DropDown
-         value={valueMS}
-         setValue={setValueMS}
-         label={"Species*"}
-         // options={checking}
-         options={species}
-        />
-
-<div style={{ 
-          justifyContent: "center",
-          alignSelf: "center",
-          display:"flex",
-          flexFlow:"column",
-          marginBottom:30}}>
-<div
-          style={{
-            width: 284,
-            justifyContent: "space-between",
-            display: "flex",
-            flexFlow: "row",
-            alignSelf: "center",
-            height: 20,
-          }}
-        >
-          <text style={{ color: COLORS.gray, ...FONTS.body4 }}>Tags</text>
-        </div>
-        
+      <>
+        <Header title={"Update Bred"} />
         <div style={{
-            width:284,
-            alignSelf: "center",
-            marginBottom:30}}>
-        <Select
-            components={animatedComponents}
-            isMulti
-            name="Tags"
+          minHeight: 200,
+          backgroundColor: COLORS.lightGray2,
+          borderRadius: SIZES.radius,
+          maxWidth: '400px',
+          padding: 20, margin: 'auto'
+        }}>
+          <DropDown
+            value={valueMS}
+            setValue={setValueMS}
+            label={"Species*"}
+            // options={checking}
             options={species}
-            className="basic-multi-select"
-            classNamePrefix="Tags"
-      /></div>
+          />
 
-<InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.calender}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"date"}
-                  value={dobt}
-                  label={"Date of Birth"}
-                  onChange={(event) => {
-                    setDobt(event.target.value);
+          <div style={{
+            justifyContent: "center",
+            alignSelf: "center",
+            display: "flex",
+            flexFlow: "column",
+            marginBottom: 30
+          }}>
+            <div
+              style={{
+                width: 284,
+                justifyContent: "space-between",
+                display: "flex",
+                flexFlow: "row",
+                alignSelf: "center",
+                height: 20,
+              }}
+            >
+              <text style={{ color: COLORS.gray, ...FONTS.body4 }}>Tags</text>
+            </div>
+
+            <div style={{
+              width: 284,
+              alignSelf: "center",
+              marginBottom: 30,
+              ...FONTS.h3
+            }}>
+              <Select
+                components={animatedComponents}
+                isMulti
+                name="Tags"
+                options={finder(tags,valueMS)}
+                className="basic-multi-select"
+                classNamePrefix="Tags"
+                onChange={(e)=>{
+                  setTag(e)
+                }}
+              />
+              </div>
+
+            <InputForm
+              prependComponent={
+                <img
+                  src={IMAGES.calender}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    margin: 10,
+                    alignSelf: "center",
                   }}
                 />
-    </div>
-    </div>
-    
-    </>
+              }
+              type={"date"}
+              value={dobt}
+              label={"Date Bred"}
+              onChange={(event) => {
+                setDobt(event.target.value);
+              }}
+            />
+            <TextButton
+              label={"Update Bred"}
+              icon={IMAGES.update}
+              onPress={() => {
+                // postfinance()
+              }}
+            />
+          </div>
+        </div>
+
+      </>
     </>
   )
 }

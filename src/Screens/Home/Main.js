@@ -5,6 +5,8 @@ import React, { useState } from "react";
 // import axiosIns from '../../helpers/helpers';
 import './Home.css'
 import { baseURL } from "../../helpers/helpers";
+import { useNavigate, useLocation } from 'react-router-dom';
+
 // import { Link, Router } from "react-router-dom";
 // import { Routes,Route } from "react-router-dom";
 import NavBarMain from "../../Component/Nav/navmain";
@@ -15,6 +17,7 @@ import { getFcat, getFinance, getHerds, getSpecies } from '../../Store/actions';
 import FlatList from 'flatlist-react';
 export default function Main() {
   const dispatch = useDispatch()
+  let navigate = useNavigate()
   const access = useSelector(state => state.Reducers.authToken)
   React.useEffect(() => {
     dispatch(getHerds(access))
@@ -38,10 +41,14 @@ export default function Main() {
                 <>
                 <Card
                   img={baseURL + item.data[0]?.image}
-                  Name={`My ${item.label}`}
+                  Name={item.label!="Sheep"?`My ${item.label}s`:`My ${item.label}`}
                   numaninmal={`${item.data?.length}`}
                   data={item.data}
-                 
+                 onPress={()=>{
+                  navigate("/animal",{
+                    state:{data:item}
+                })
+                 }}
                 />
                 </>
               )

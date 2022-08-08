@@ -2,20 +2,24 @@
 import axiosIns from "../helpers/helpers";
 import axios from "axios";
 import { baseURL } from "../helpers/helpers";
+import { ReactSession }  from 'react-client-session';
+
 export const Init = () => {
   return async dispatch => {
+    const token = ReactSession.get("access");
     // let token = await AsyncStorage.getItem('token');
     // let id = await AsyncStorage.getItem('id');
     // if (token !== null && id!==null) {
       dispatch({
         type: 'LOGIN',
-        // payload: token,
+        payload: token,
       })
     // }
   }
 }
 
 export const Login_Function = (token) => {
+  ReactSession.set("access", token);
   return async dispatch => {
     dispatch({
       type: 'LOGIN',
@@ -70,6 +74,20 @@ export const WeightUnit = (cond) => {
         })
       dispatch({
         type: 'HERDS',
+        payload:data.data
+      })
+    }
+  }
+  export const getReports = (token) => {
+    return async dispatch => {
+      let data = await axios.get(baseURL + '/reports',{
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: `Bearer ${token}`
+              },
+        })
+      dispatch({
+        type: 'REPORT',
         payload:data.data
       })
     }
