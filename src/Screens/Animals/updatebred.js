@@ -12,13 +12,13 @@ import InputForm from '../../Component/InputForm';
 import Header from '../../Component/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTags } from '../../Store/actions';
-
+import { useNavigate } from 'react-router-dom';
 
 export default function Updatebred() {
   const animatedComponents = makeAnimated();
   const [valueMS, setValueMS] = useState("");
   const [tag, setTag] = useState([]);
-
+const navigate = useNavigate()
   const [dobt, setDobt] = useState(null);
 
   const dispatch = useDispatch()
@@ -42,13 +42,38 @@ export default function Updatebred() {
     });
     return final_data;
   }
-  console.log(tag)
   return (
     <>
-      <NavBarMain />
-
       <>
-        <Header title={"Update Bred"} />
+      <Header 
+      leftcomponent={
+        <>
+          <div style={{
+            display:"flex",
+            justifyContent:"center",
+            height: 40,
+            width: 40,
+            backgroundColor: COLORS.Primary,
+            alignSelf: "center",
+            borderRadius: 20
+          }}
+            onClick={() => {
+              navigate(-1)
+            }}
+          >
+            <img src={IMAGES.back} alt={"back"}
+              style={{
+                height: 25,
+                width: 25,
+                alignSelf: "center",
+              }} />
+          </div>
+        </>
+      }
+      rightcomponent={
+        <div></div>
+      }
+      title={"Update Bred"}/>
         <div style={{
           minHeight: 200,
           backgroundColor: COLORS.lightGray2,

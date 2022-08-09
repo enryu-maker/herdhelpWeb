@@ -6,15 +6,46 @@ import { COLORS, SIZES } from '../../Theme/Theme';
 import { IMAGES } from '../../Theme/Image';
 import InputForm from '../../Component/InputForm';
 import Header from '../../Component/Header';
+import { useNavigate } from "react-router-dom";
 
 export default function Flaganimal() {
 
 const [valueMS, setValueMS] = useState("");
-const [name, setName] = useState("");return (
+const [name, setName] = useState("");
+const navigate = useNavigate()
+
+return (
 <>
-  <NavBarMain/>
   <>
-  <Header title={"Flag Animal"}/>
+  <Header 
+      leftcomponent={
+        <>
+          <div style={{
+            display:"flex",
+            justifyContent:"center",
+            height: 40,
+            width: 40,
+            backgroundColor: COLORS.Primary,
+            alignSelf: "center",
+            borderRadius: 20
+          }}
+            onClick={() => {
+              navigate(-1)
+            }}
+          >
+            <img src={IMAGES.back} alt={"back"}
+              style={{
+                height: 25,
+                width: 25,
+                alignSelf: "center",
+              }} />
+          </div>
+        </>
+      }
+      rightcomponent={
+        <div></div>
+      }
+      title={"Flag Animal"}/>
     <div style={{minHeight:200,
           backgroundColor:COLORS.lightGray1,
           borderRadius: SIZES.radius,

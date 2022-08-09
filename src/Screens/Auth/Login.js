@@ -50,7 +50,7 @@ export default function Login() {
             dispatch(Login_Function(response.data.access))
             dispatch(storeID(response.data.userid))
             setLoading(false);
-            navi("/main")
+            navi("/")
 
           } else {
             setLoading(false);
