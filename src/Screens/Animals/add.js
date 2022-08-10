@@ -6,7 +6,10 @@ import { IMAGES } from '../../Theme/Image'
 import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
 import FlatList from 'flatlist-react'
 import Sidenav from '../../Component/Nav/sidenav'
+<<<<<<< HEAD
 
+=======
+>>>>>>> d3b9294 (done)
 export default function add() {
   const data = [
     {
@@ -56,17 +59,17 @@ export default function add() {
               height: 250,
               margin: SIZES.padding,
               borderRadius: SIZES.radius,
-              cursor: "pointer",
               // flexDirection:"column",
               borderWidth: 0,
-              boxShadow: '0px 0px 11px -3px black',
               justifyContent: "space-evenly",
               shadowColor: COLORS.Primary,
               shadowOffset: { width: 0, height: 0 },
               shadowOpacity: 0.5,
               shadowRadius: 10,
               elevation: 2,
-              width: 250,
+              width: 230,
+              cursor: 'pointer',
+              boxShadow: '0px 0px 15px -4px #888181',
             }}
             onClick={onPress}
           >
@@ -95,6 +98,7 @@ export default function add() {
 
   return (
     <>
+<<<<<<< HEAD
       <NavBarMain page={'add'} />
       
       <div><Sidenav/>
@@ -117,7 +121,44 @@ export default function add() {
             renderWhenEmpty={() => <div>List is empty!</div>}
           />
         </ul>
+=======
+      <div style={{
+        display: "flex",
+        height: "100vh",
+        width: "100%"
+      }}>
+        <Sidenav />
+        <div style={{
+          width: "90%",
+          float: "right"
+        }}>
+          <NavBarMain page={'add'} />
+          <ul style={{
+            paddingInlineStart: 0
+          }}>
+            <FlatList
+              list={data}
+              keyExtractor={item => `${item.id}`}
+              renderItem={(item, index) => {
+                return (
+                  <>
+                    <Cards
+                      img={item.image}
+                      Name={item.label}
+                      Path={item.nav}
+                    />
+                  </>
+                )
+              }
+              }
+              renderWhenEmpty={() => <div>List is empty!</div>}
+            />
+          </ul>
+        </div>
+>>>>>>> d3b9294 (done)
       </div>
+
+
     </>
   )
 }

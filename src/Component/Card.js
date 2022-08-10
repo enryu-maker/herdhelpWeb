@@ -30,7 +30,7 @@ export default function Card({
           shadowOpacity: 0.5,
           shadowRadius: 10,
           elevation: 2,
-          width: 250,
+          width: 230,
           cursor:'pointer',
           boxShadow: '0px 0px 15px -4px #888181',
         }}

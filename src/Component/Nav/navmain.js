@@ -13,6 +13,7 @@ function NavBarMain({
   navStyle
 }) {
   const user = useSelector(state => state.Reducers.userData)
+<<<<<<< HEAD
   console.log(user)
   // function Sidemenu({ img, label, path }) {
   //   return (
@@ -41,6 +42,35 @@ function NavBarMain({
   //             color: label === 'Logout' ? COLORS.red : COLORS.white,
   //             ...FONTS.h3,
   //             padding: '10px',
+=======
+  function Sidemenu({ img, label, path }) {
+    return (
+      <>
+        <Link to={path} style={{ textDecoration: 'none', margin: 0, left: 20 }}>
+          <button style={{
+            width: '100%',
+            height: 45,
+            display: 'flex',
+            flexDirection:"row",
+            left: 40,
+            background: 'none',
+            // backgroundColor: label === 'Logout' ? COLORS.gray2 : 'none',
+            border: 'none',
+            cursor: 'pointer',
+            // justifyContent:"space-around",
+            alignItems:"center"
+          }}>
+            <img src={img}
+              alt="logo"
+              style={{
+                width: 25,
+                height: 25,
+              }} />
+            <p style={{
+              color: label === 'Logout' ? COLORS.red : COLORS.white,
+              ...FONTS.h3,
+              padding: '10px',
+>>>>>>> d3b9294 (done)
 
 
   //           }}>{label}</p></button></Link>
@@ -102,15 +132,6 @@ function NavBarMain({
               }}>
                 Add
               </Link>
-              {/* <Link to="/report" style={{
-                color: page === 'report' ? COLORS.Primary : "black",
-                // textShadow:page === 'Setting' ? '0px 0px 18px black' : 'none',
-                marginInline: '2%',
-                ...FONTS.h3,
-                textDecoration: 'none',
-              }}>
-                Reports
-              </Link> */}
               <Link to="/alerts" style={{
                 color: page === 'alerts' ? COLORS.Primary : "black",
                 // textShadow:page === 'alerts' ? '0px 0px 18px black' : 'none',
@@ -120,6 +141,16 @@ function NavBarMain({
               }}>
                 Alerts
               </Link>
+              
+              {/* <Link to="/logout" style={{
+            color:page === 'logout' ? COLORS.red : COLORS.red,
+            // textShadow:page === 'logout' ? '0px 0px 18px black' : 'none',
+            textDecoration:'none',
+            ...FONTS.h3,
+            marginInline:'2%'
+          }}>
+            Logout
+            </Link> */}
             </div>
           </nav>
           <div>
@@ -141,6 +172,7 @@ function NavBarMain({
           </div>
         </div>
       </div>
+<<<<<<< HEAD
 
       {/*  */}
       {/* <>
@@ -266,7 +298,10 @@ function NavBarMain({
         </div>
       </>  */}
       {/*  */}
+=======
+>>>>>>> d3b9294 (done)
     </>
+      
   );
 }
 

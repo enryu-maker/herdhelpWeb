@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom'
 import { IMAGES } from '../../Theme/Image'
 import { COLORS, FONTS  } from '../../Theme/Theme'
 import './Navbar.css'
+import { useSelector } from "react-redux";
 
-export default function sidenav() {
+export default function Sidenav() {
+  const user = useSelector(state => state.Reducers.userData)
 
 
   function Sidemenu({ img, label, path }) {
@@ -16,20 +18,35 @@ export default function sidenav() {
             height: 45,
             display: 'flex',
             flexDirection:"row",
+<<<<<<< HEAD
             left: 40,
+=======
+            // left: 40,
+>>>>>>> d3b9294 (done)
             background: 'none',
             // backgroundColor: label === 'Logout' ? COLORS.gray2 : 'none',
             border: 'none',
             cursor: 'pointer',
             // justifyContent:"space-around",
+<<<<<<< HEAD
             alignItems:"center"
           }}>
             {/* <img src={img}
+=======
+            alignItems:"center",
+            paddingLeft:"10px"
+          }}>
+            <img src={img}
+>>>>>>> d3b9294 (done)
               alt="logo"
               style={{
                 width: 25,
                 height: 25,
+<<<<<<< HEAD
               }} /> */}
+=======
+              }} />
+>>>>>>> d3b9294 (done)
             <p style={{
               color: label === 'Logout' ? COLORS.red : COLORS.white,
               ...FONTS.h3,
@@ -40,7 +57,10 @@ export default function sidenav() {
       </>
     )
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> d3b9294 (done)
 
 
 
@@ -50,6 +70,7 @@ export default function sidenav() {
   return (
     <>
         <div style={{
+<<<<<<< HEAD
           position: 'fixed',
           // display: 'flow',
           width: 205,
@@ -61,11 +82,25 @@ export default function sidenav() {
           cursor:"pointer"
           // borderRight:'1px solid black',
           // borderTop:'1px solid black'
+=======
+          position:"sticky",
+          display: 'flex',
+          // justifyContent:"flex-start",
+          backgroundColor: COLORS.Primary,
+          textDecorationColor: COLORS.black,
+          cursor:"pointer",
+          paddingInlineEnd:"40px"
+          // width:"22%"
+>>>>>>> d3b9294 (done)
         }}
         
         >
         <Link to={'/profile'}>
+<<<<<<< HEAD
           <div style={{ height: 100 }}>
+=======
+          <div style={{ height: 100,width:0 }}>
+>>>>>>> d3b9294 (done)
             <img
               src={user?.profile_picture}
               alt="logo"
@@ -82,16 +117,29 @@ export default function sidenav() {
             <div style={{
               lineheight: 26,
               display: 'flex',
+<<<<<<< HEAD
+=======
+              flexDirection:"column",
+>>>>>>> d3b9294 (done)
               alignitems: 'center',
               textalign: 'center',
               texttransform: 'capitalize',
               textAlign: 'left',
+<<<<<<< HEAD
               width: 'fit-content'
+=======
+              // width: 'fit-content',
+              // marginLeft:'30px'
+>>>>>>> d3b9294 (done)
             }}>
               <p style={{
                 position: 'absolute',
                 height: 26,
+<<<<<<< HEAD
                 left: 75,
+=======
+                left: 85,
+>>>>>>> d3b9294 (done)
                 top: 5,
                 ...FONTS.h3,
                 color:COLORS.white
@@ -100,7 +148,11 @@ export default function sidenav() {
                 position: 'absolute',
                 // width: 100,
                 height: 26,
+<<<<<<< HEAD
                 left: 75,
+=======
+                left: 85,
+>>>>>>> d3b9294 (done)
                 top: 24,
                 ...FONTS.h3,
                 color:COLORS.white
@@ -109,7 +161,11 @@ export default function sidenav() {
                 position: 'absolute',
                 // width: 65,
                 height: 26,
+<<<<<<< HEAD
                 left: 75,
+=======
+                left: 85,
+>>>>>>> d3b9294 (done)
                 top: 45,
                 ...FONTS.h3,
                 color:COLORS.white
@@ -117,6 +173,13 @@ export default function sidenav() {
             </div>
           </div>
           </Link>
+<<<<<<< HEAD
+=======
+          <div style={{
+            flexDirection:"column",
+            marginTop:100
+          }}>
+>>>>>>> d3b9294 (done)
           <Sidemenu
             img={IMAGES.file}
             label={'Report'}
@@ -137,7 +200,7 @@ export default function sidenav() {
 
           <Sidemenu
             img={IMAGES.weight}
-            label={'Weight History'}
+            label={'Weight/History'}
             path={'/weighthistory'}
           />
           <Sidemenu
@@ -153,7 +216,11 @@ export default function sidenav() {
             width: '100%',
           }}>
           </hr> */}
+<<<<<<< HEAD
 
+=======
+          </div>
+>>>>>>> d3b9294 (done)
           <div style={{ position: 'absolute', bottom: 40, width: '100%' }}>
           <Sidemenu
               img={IMAGES.setting}
@@ -169,9 +236,14 @@ export default function sidenav() {
           {/* </div> */}
 
         </div>
+<<<<<<< HEAD
         {/*  */}
       </>
     
+=======
+      </>
+
+>>>>>>> d3b9294 (done)
   )
 }
 

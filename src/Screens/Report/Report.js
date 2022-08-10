@@ -10,6 +10,8 @@ import { baseURL } from '../../helpers/helpers';
 import FlatList from 'flatlist-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getReports } from '../../Store/actions';
+import Sidenav from '../../Component/Nav/sidenav';
+import Loading from '../../Component/Loading';
 
 
 
@@ -18,85 +20,98 @@ export default function Report() {
   let navigate = useNavigate()
   const dispatch = useDispatch()
 
-React.useEffect(() => {
-  dispatch(getReports(access))
+  React.useEffect(() => {
+    dispatch(getReports(access))
   }, []);
   const reports = useSelector(state => state.Reducers.reports)
 
-function Altcards({
-  altname,
-  img,
-  onPress,
-  Path,
-}) {
+  function Altcards({
+    altname,
+    img,
+    onPress,
+    Path,
+  }) {
+    return (
+      <>
+        <button
+          style={{
+            backgroundColor: 'rgb(227,227,227)',
+            height: 250,
+            margin: SIZES.padding,
+            borderRadius: SIZES.radius,
+            cursor: "pointer",
+            borderWidth: 0,
+            justifyContent: "space-evenly",
+            boxShadow: '0px 0px 15px -4px #888181',
+            elevation: 2,
+            width: 230,
+          }}
+          onClick={onPress}
+        >
+          {/* <img src={IMAGES.rightone} style={{ height: 20, width: 20,alignSelf:"center",marginLeft:200,marginTop:10 }} /> */}
+          <img src={img} alt={''} style={{ height: 80, width: 80, alignSelf: "center" }} />
+          <div style={{
+            textAlign: 'center'
+          }}>
+            <p style={{ ...FONTS.h3, margin: 20 }}>{altname}</p>
+          </div>
+
+
+
+        </button>
+
+      </>
+    )
+  }
+
+
   return (
     <>
-      <button
-        style={{
-          backgroundColor:'rgb(227,227,227)',
-          height: 250,
-          margin: SIZES.padding,
-          borderRadius: SIZES.radius,
-          cursor:"pointer",
-          borderWidth: 0,
-          justifyContent: "space-evenly",
-          boxShadow: '0px 0px 15px -4px #888181',
-          elevation: 2,
-          width: 250,
-        }}
-        onClick={onPress}
-      >
-          {/* <img src={IMAGES.rightone} style={{ height: 20, width: 20,alignSelf:"center",marginLeft:200,marginTop:10 }} /> */}
-          <img src={img} alt={''} style={{ height: 80, width: 80,alignSelf:"center"}} />
-            <div style={{
-            textAlign:'center'
+      <div style={{
+        display: "flex",
+        height:"100vh",
+        width:"100%",
+        justifyContent:"center"
+      }}>
+        <Sidenav />
+        <div style={{
+          width:"90%",
+          float:"right",
         }}>
-        <p style={{...FONTS.h3 , margin:20}}>{altname}</p>
-        </div>
-        
-
-
-      </button>
-
-    </>
-)}
-
-
-return (
-  <>
-  <NavBarMain page={'report'}/>
-  <div style={{position:'absolute',
-            left:170,
-            width:'auto'}}>
-  <ul style={{
-            paddingInlineStart:0
+          <NavBarMain/>
+        <ul style={{
+          paddingInlineStart: 0,
         }}>
           <FlatList
-            
+
             list={reports}
             keyExtractor={item => `${item.id}`}
-            renderItem={(item,index) => {
+            renderItem={(item, index) => {
               return (
                 <>
-                <Altcards 
-                key={item.id}
-                img={item.image}
-                altname={item.name}
-                onPress={()=>{
-                  navigate('/reportop',{
-                    state: { api: item.api,label:item.name }
-                  })
-                }}
-                />
+                  <Altcards
+                    key={item.id}
+                    img={item.image}
+                    altname={item.name}
+                    onPress={() => {
+                      navigate('/reportop', {
+                        state: { api: item.api, label: item.name }
+                      })
+                    }}
+                  />
                 </>
               )
 
             }
             }
-            renderWhenEmpty={() => <div>List is empty!</div>}
+            renderWhenEmpty={() => (<Loading/> )}
+
           />
-        </ul></div>
+        </ul>
+        </div>
+      </div>
+
     </>
-)
+  )
 }
 

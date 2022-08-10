@@ -16,6 +16,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getFcat, getFinance, getHerds, getSpecies, getTags, UserData } from '../../Store/actions';
 import FlatList from 'flatlist-react';
 import Loading from "../../Component/Loading";
+import Sidenav from "../../Component/Nav/sidenav";
 export default function Main() {
   const dispatch = useDispatch()
   let navigate = useNavigate()
@@ -31,14 +32,23 @@ export default function Main() {
   const animal = useSelector(state => state.Reducers.herds)
   return (
     <>
-
-      <NavBarMain page={"herds"}/>
-      <>
+      <div style={{
+        display:"flex",
+        // justifyContent:"center",
+        height:"100vh",
+        width:"100%",
+        // justifyContent:"center"
+      }}>
+        <Sidenav/>
+        <div style={{
+          width:"90%",
+          float:"right"
+        }}>
+        <NavBarMain page={"herds"}/>
+      
         <ul style={{
             paddingInlineStart:0,
-            position:'absolute',
-            left:170,
-            width:'auto'
+            marginBottom:"30px"
         }}>
           <FlatList
             list={animal}
@@ -66,8 +76,11 @@ export default function Main() {
             renderWhenEmpty={() => (<Loading/> )}
           />
         </ul>
+        </div>
+      </div>
+      
         
-      </>
+    
 
     </>
 
