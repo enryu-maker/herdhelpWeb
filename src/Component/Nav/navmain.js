@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, FONTS } from "../../Theme/Theme";
 import "./Navbar.css";
-
+import { useSelector } from "react-redux";
 
 
 
@@ -12,7 +12,8 @@ function NavBarMain({
   page,
   navStyle
 }) {
-
+  const user = useSelector(state => state.Reducers.userData)
+  console.log(user)
   function Sidemenu({ img, label, path }) {
     return (
       <>
@@ -21,31 +22,28 @@ function NavBarMain({
             width: '100%',
             height: 45,
             display: 'flex',
+            flexDirection:"row",
             left: 40,
-            background:'none',
+            background: 'none',
             // backgroundColor: label === 'Logout' ? COLORS.gray2 : 'none',
             border: 'none',
-            // borderBottom: '1px solid black', 
-            cursor: 'pointer'
-          }} className='menu' id="menu">
-            {/* <img src={img}
+            cursor: 'pointer',
+            // justifyContent:"space-around",
+            alignItems:"center"
+          }}>
+            <img src={img}
               alt="logo"
               style={{
-                width: 28,
-                height: 28,
-                marginLeft: 20,
-                marginTop: 7,
-                display: 'block',
-              }} /> */}
-            <h3 style={{
-              color: label === 'Logout' ? COLORS.red : COLORS.black,
+                width: 25,
+                height: 25,
+              }} />
+            <p style={{
+              color: label === 'Logout' ? COLORS.red : COLORS.white,
+              ...FONTS.h3,
+              padding: '10px',
 
-              // color:COLORS.black,
-              fontWeight: 300,
-              marginLeft: 20,
-              fontWeight:500,
-              
-            }}>{label}</h3></button></Link>
+
+            }}>{label}</p></button></Link>
       </>
     )
   }
@@ -57,32 +55,6 @@ function NavBarMain({
       <div style={{ width: '100%', top: 0 }}>
         <div style={{ display: 'flex', width: '100%' }}>
           <div>
-            {/* <button style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              padding: 'none'
-            }}
-              onClick={() => { document.getElementById("sidebar").style.left = '0%'; }} className='btn-navmain'>
-              <img
-                src={IMAGES.menuios}
-                alt="logo"
-                style={{
-                  height: 25,
-                  width: 25,
-                  marginLeft: 30,
-                  background: COLORS.Primary,
-                  borderRadius: 30,
-                  alignSelf: "center",
-                  padding: '10px',
-                  margin: 10
-                }}
-              />
-            </button> */}
-
-
-
-
           </div>
 
           <nav style={{
@@ -130,7 +102,7 @@ function NavBarMain({
               }}>
                 Add
               </Link>
-              <Link to="/report" style={{
+              {/* <Link to="/report" style={{
                 color: page === 'report' ? COLORS.Primary : "black",
                 // textShadow:page === 'Setting' ? '0px 0px 18px black' : 'none',
                 marginInline: '2%',
@@ -138,7 +110,7 @@ function NavBarMain({
                 textDecoration: 'none',
               }}>
                 Reports
-              </Link>
+              </Link> */}
               <Link to="/alerts" style={{
                 color: page === 'alerts' ? COLORS.Primary : "black",
                 // textShadow:page === 'alerts' ? '0px 0px 18px black' : 'none',
@@ -148,139 +120,98 @@ function NavBarMain({
               }}>
                 Alerts
               </Link>
-              
-              {/* <Link to="/logout" style={{
-            color:page === 'logout' ? COLORS.red : COLORS.red,
-            // textShadow:page === 'logout' ? '0px 0px 18px black' : 'none',
-            textDecoration:'none',
-            ...FONTS.h3,
-            marginInline:'2%'
-          }}>
-            Logout
-            </Link> */}
             </div>
           </nav>
-          <div>
+          {/* <div>
             <Link to="/profile">
               <button style={{ border: 'none', background: 'none' }} className='btn-navmain'><img
-                src={IMAGES.login}
+                src={user.profile_picture}
                 alt="logo"
                 style={{
                   height: 43,
                   width: 43,
                   alignSelf: "center",
                   justifyContent: 'center',
-                  padding: 10
+                  padding: 10,
+                  borderRadius:22
                 }}
               /></button>
 
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/*  */}
       <>
-        
         <div style={{
           position: 'fixed',
-          display:'flow',
-          width: 190,
+          display: 'flow',
+          width: 205,
           height: '100%',
           // left: '0%',
           top: 0,
-          backgroundColor: COLORS.Primary ,
-          textDecorationColor:COLORS.black,
-          borderRight:'1px solid black',
-          borderTop:'1px solid black'
-        }}>
+          backgroundColor: COLORS.Primary,
+          textDecorationColor: COLORS.black,
+          cursor:"pointer"
+          // borderRight:'1px solid black',
+          // borderTop:'1px solid black'
+        }}
+        
+        >
+        <Link to={'/profile'}>
           <div style={{ height: 100 }}>
             <img
-              src={IMAGES.login}
+              src={user?.profile_picture}
               alt="logo"
               style={{
                 position: 'absolute',
-                width: 48,
-                height: 48,
+                width: 60,
+                height: 60,
                 left: 10,
                 top: 19,
+                borderRadius:30
 
               }}
             />
             <div style={{
-              fontfamily: 'Poppins',
-              fontstyle: 'normal',
               lineheight: 26,
-              /* identical to box height, or 162% */
               display: 'flex',
               alignitems: 'center',
               textalign: 'center',
               texttransform: 'capitalize',
-              // color: '#FFFFFF',
               textAlign: 'left',
               width: 'fit-content'
             }}>
-              <h3 style={{
+              <p style={{
                 position: 'absolute',
-                width: 65,
                 height: 26,
                 left: 75,
                 top: 5,
-                fontSize: 15
-              }} >Mr. Jhon</h3>
-              <h3 style={{
+                ...FONTS.h3,
+                color:COLORS.white
+              }} >{user?.fullname}</p>
+              <p style={{
                 position: 'absolute',
-                width: 100,
+                // width: 100,
                 height: 26,
                 left: 75,
                 top: 24,
-                fontSize: 15
-              }} >Robins Farm</h3>
-              <h3 style={{
+                ...FONTS.h3,
+                color:COLORS.white
+              }} >{user?.farm_name}</p>
+              <p style={{
                 position: 'absolute',
-                width: 65,
+                // width: 65,
                 height: 26,
                 left: 75,
-                top: 39,
-                fontSize: 15
-              }} >@jhon</h3>
+                top: 45,
+                ...FONTS.h3,
+                color:COLORS.white
+              }} >@{user?.username}</p>
             </div>
-            {/* <button style={{
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              paddig: 'none',
-              display: 'flex',
-              position: 'absolute', right: 0
-            }}
-              onClick={() => { document.getElementById("sidebar").style.left = '-100%'; }}
-              className='btn-navmain-close' >
-              <img
-                src={IMAGES.close}
-                alt="logo"
-                style={{
-                  position: 'absolute',
-                  width: 33,
-                  height: 33,
-                  right: 20,
-                  top: 19,
-                }}
-              /></button> */}
           </div>
-          {/* <hr style={{
-            border: '1px solid black',
-            top: '1%',
-            position: 'relative',
-            width: '100%',
-          }}>
-          </hr> */}
-
-
-          <Sidemenu
-            img={IMAGES.home}
-            label={'Home'}
-            path={'/main'}
-          />
+          </Link>
           <Sidemenu
             img={IMAGES.file}
             label={'Report'}
@@ -319,6 +250,11 @@ function NavBarMain({
           </hr> */}
 
           <div style={{ position: 'absolute', bottom: 40, width: '100%' }}>
+          <Sidemenu
+              img={IMAGES.setting}
+              label={'Setting'}
+              path={'/setting'}
+            />
             <Sidemenu
               img={IMAGES.logout}
               label={'Logout'}
