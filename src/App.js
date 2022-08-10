@@ -33,8 +33,11 @@ import Updatebred from './Screens/Animals/updatebred';
 import React from 'react';
 import { Init } from './Store/actions';
 import Loading from './Component/Loading';
-
+import Children from './Screens/Children/Children';
+import History from './Screens/Children/History';
+import ReportOP from './Screens/Report/ReportOP';
 function App() {
+  
   const dispatch = useDispatch()
   const [loading, setLoading] = React.useState(true);
   const init = async () => {
@@ -88,11 +91,16 @@ function App() {
                     <Route path='/female' element={<Female />} />
                     <Route path='/info' element={<ProtectedRoute Component={Info} access={access} />} />
                     <Route path='/animal' element={<ProtectedRoute Component={Animal} access={access} />} />
-
                     {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
                     <Route path='/Flag' element={<Flag />} />
                     <Route path='/Bred' element={<Updatebred />} />
                     <Route path='/load' element={<Loading />} />
+                    <Route path='/children' element={<ProtectedRoute Component={Children} access={access} />} />
+                    <Route path='/medhistory' element={<ProtectedRoute Component={History} access={access} />} />
+                    <Route path='/reportop' element={<ProtectedRoute Component={ReportOP} access={access} />} />
+
+
+
 
                   </>
               }

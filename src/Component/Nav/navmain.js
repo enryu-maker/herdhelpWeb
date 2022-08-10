@@ -130,6 +130,15 @@ function NavBarMain({
               }}>
                 Add
               </Link>
+              <Link to="/report" style={{
+                color: page === 'report' ? COLORS.Primary : "black",
+                // textShadow:page === 'Setting' ? '0px 0px 18px black' : 'none',
+                marginInline: '2%',
+                ...FONTS.h3,
+                textDecoration: 'none',
+              }}>
+                Reports
+              </Link>
               <Link to="/alerts" style={{
                 color: page === 'alerts' ? COLORS.Primary : "black",
                 // textShadow:page === 'alerts' ? '0px 0px 18px black' : 'none',
@@ -139,15 +148,7 @@ function NavBarMain({
               }}>
                 Alerts
               </Link>
-              <Link to="/Setting" style={{
-                color: page === 'Setting' ? COLORS.Primary : "black",
-                // textShadow:page === 'Setting' ? '0px 0px 18px black' : 'none',
-                marginInline: '2%',
-                ...FONTS.h3,
-                textDecoration: 'none',
-              }}>
-                Settings
-              </Link>
+              
               {/* <Link to="/logout" style={{
             color:page === 'logout' ? COLORS.red : COLORS.red,
             // textShadow:page === 'logout' ? '0px 0px 18px black' : 'none',

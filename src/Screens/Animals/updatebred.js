@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import NavBarMain from '../../Component/Nav/navmain'
-import { species } from "../../Component/Constants";
 import { COLORS, SIZES, FONTS } from '../../Theme/Theme';
 import { IMAGES } from '../../Theme/Image';
 import TextButton from '../../Component/TextButton';
@@ -12,21 +10,23 @@ import InputForm from '../../Component/InputForm';
 import Header from '../../Component/Header';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTags } from '../../Store/actions';
-
+import { useNavigate } from 'react-router-dom';
 
 export default function Updatebred() {
   const animatedComponents = makeAnimated();
   const [valueMS, setValueMS] = useState("");
   const [tag, setTag] = useState([]);
-
+  const navigate = useNavigate()
   const [dobt, setDobt] = useState(null);
 
   const dispatch = useDispatch()
-  React.useEffect(()=>{
+  React.useEffect(() => {
     dispatch(getTags())
-  },[])
+  }, [])
 
-  const tags = useSelector(state=>state.Reducers.tags)
+  const tags = useSelector(state => state.Reducers.tags)
+  const species = useSelector(state => state.Reducers.cat)
+
   function finder(list, value) {
     var dataValue;
     var final_data = [];
@@ -42,96 +42,140 @@ export default function Updatebred() {
     });
     return final_data;
   }
-  console.log(tag)
   return (
     <>
-      <NavBarMain />
-
       <>
-        <Header title={"Update Bred"} />
-        <div style={{
-          minHeight: 200,
-          backgroundColor: COLORS.lightGray2,
-          borderRadius: SIZES.radius,
-          maxWidth: '400px',
-          padding: 20, margin: 'auto'
-        }}>
-          <DropDown
-            value={valueMS}
-            setValue={setValueMS}
-            label={"Species*"}
-            // options={checking}
-            options={species}
-          />
-
-          <div style={{
-            justifyContent: "center",
-            alignSelf: "center",
-            display: "flex",
-            flexFlow: "column",
-            marginBottom: 30
-          }}>
-            <div
-              style={{
-                width: 284,
-                justifyContent: "space-between",
+        <Header
+          leftcomponent={
+            <>
+              <div style={{
                 display: "flex",
-                flexFlow: "row",
+                justifyContent: "center",
+                height: 40,
+                width: 40,
+                backgroundColor: COLORS.Primary,
                 alignSelf: "center",
-                height: 20,
+                borderRadius: 20
               }}
-            >
-              <text style={{ color: COLORS.gray, ...FONTS.body4 }}>Tags</text>
-            </div>
-
-            <div style={{
-              width: 284,
-              alignSelf: "center",
-              marginBottom: 30,
-              ...FONTS.h3
-            }}>
-              <Select
-                components={animatedComponents}
-                isMulti
-                name="Tags"
-                options={finder(tags,valueMS)}
-                className="basic-multi-select"
-                classNamePrefix="Tags"
-                onChange={(e)=>{
-                  setTag(e)
+                onClick={() => {
+                  navigate(-1)
                 }}
-              />
-              </div>
-
-            <InputForm
-              prependComponent={
-                <img
-                  src={IMAGES.calender}
+              >
+                <img src={IMAGES.back} alt={"back"}
                   style={{
                     height: 25,
                     width: 25,
-                    margin: 10,
                     alignSelf: "center",
-                  }}
-                />
-              }
-              type={"date"}
-              value={dobt}
-              label={"Date Bred"}
-              onChange={(event) => {
-                setDobt(event.target.value);
-              }}
-            />
-            <TextButton
-              label={"Update Bred"}
-              icon={IMAGES.update}
-              onPress={() => {
-                // postfinance()
-              }}
-            />
-          </div>
-        </div>
+                  }} />
+              </div>
+            </>
+          }
+          rightcomponent={
+            <div></div>
+          }
+          title={"Update Bred"} />
+        <div style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          marginTop: "50px",
+        }}>
+          <div style={{
+            paddingTop: "20px",
+            backgroundColor: COLORS.lightGray2,
 
+            width: "80%",
+            borderRadius: SIZES.radius,
+          }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-evenly"
+              }}
+            >
+              <DropDown
+                value={valueMS}
+                setValue={setValueMS}
+                label={"Species*"}
+                // options={checking}
+                options={species}
+              />
+
+              <div style={{
+                justifyContent: "center",
+                alignSelf: "center",
+                display: "flex",
+                flexFlow: "column",
+                // marginBottom: 30
+              }}>
+                <div
+                  style={{
+                    width: 284,
+                    justifyContent: "space-between",
+                    display: "flex",
+                    flexFlow: "row",
+                    alignSelf: "center",
+                    height: 20,
+                  }}
+                >
+                  <text style={{ color: COLORS.gray, ...FONTS.body4 }}>Tags</text>
+                </div>
+
+                <div style={{
+                  width: 284,
+                  alignSelf: "center",
+                  marginBottom: 20,
+                  ...FONTS.h3
+                }}>
+                  <Select
+                    components={animatedComponents}
+                    isMulti
+                    name="Tags"
+                    options={finder(tags, valueMS)}
+                    className="basic-multi-select"
+                    classNamePrefix="Tags"
+                    onChange={(e) => {
+                      setTag(e)
+                    }}
+                  />
+                </div>
+
+
+              </div>
+              <InputForm
+                prependComponent={
+                  <img
+                    src={IMAGES.calender}
+                    style={{
+                      height: 25,
+                      width: 25,
+                      margin: 10,
+                      alignSelf: "center",
+                    }}
+                  />
+                }
+                type={"date"}
+                value={dobt}
+                label={"Date Bred"}
+                onChange={(event) => {
+                  setDobt(event.target.value);
+                }}
+              />
+
+            </div>
+          </div>
+
+        </div>
+        <TextButton
+          label={"Update Bred"}
+          icon={IMAGES.update}
+          onPress={() => {
+            // postfinance()
+          }}
+          buttonContainerStyle={{
+            marginTop: "30px",
+          }}
+        />
       </>
     </>
   )

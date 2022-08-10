@@ -5,9 +5,11 @@ import NavBarMain from "../../Component/Nav/navmain";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
-import { checking, gender , species } from "../../Component/Constants";
+import { checking, gender, species } from "../../Component/Constants";
 import Header from "../../Component/Header";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
+
 // import axiosIns from "../../helpers/helpers";
 
 
@@ -38,6 +40,9 @@ export default function AddAnimals() {
   const [dataText, setDataText] = React.useState("");
   const [EmailError, setEmailError] = React.useState("");
   const [unit, setUnit] = React.useState(false);
+  const species = useSelector(state => state.Reducers.cat)
+
+
   const navigate = useNavigate()
   const clear = () => {
     // setSpcies([])
@@ -51,7 +56,7 @@ export default function AddAnimals() {
     setPrice('');
     setName('');
   };
-  
+
   const data = JSON.stringify({
     name: name,
     tag_number: ` ${id}${valueMS}${tag}`,
@@ -60,13 +65,13 @@ export default function AddAnimals() {
     gender: valueBS,
     species: valueMS,
     birth_date: dobt,
-    mother_supporttag:mother!=""?mother:"",
-    mother_tagnumber:mother!=""?`${id}${valueMS}${mother}`:"" ,
-    father_supporttag:father!=""?father:"",
-    father_tagnumber:father!=""? `${id}${valueMS}${father}`:"" ,
+    mother_supporttag: mother != "" ? mother : "",
+    mother_tagnumber: mother != "" ? `${id}${valueMS}${mother}` : "",
+    father_supporttag: father != "" ? father : "",
+    father_tagnumber: father != "" ? `${id}${valueMS}${father}` : "",
     breed: Breed,
-    weight: unit==true?weight: Math.round(weight/0.45359237),
-    weight_kg:unit==false?weight: Math.round(weight*0.45359237),
+    weight: unit == true ? weight : Math.round(weight / 0.45359237),
+    weight_kg: unit == false ? weight : Math.round(weight * 0.45359237),
     bred: bred,
     age: age,
     vaccinated: vaccinated,
@@ -75,7 +80,7 @@ export default function AddAnimals() {
     bought: bought,
     status: 'Alive',
   });
-  function isEnableSignIn(){
+  function isEnableSignIn() {
     return true
   }
   // async function postAnimal() {
@@ -113,31 +118,28 @@ export default function AddAnimals() {
     setAnimals(global.species);
     setUnit(global.unit)
   }, []);
-  function renderHeader() {
-    return <NavBarMain />;
-  }
+
   function renderForm() {
     return (
-      <div
-        style={{
-          backgroundColor: COLORS.lightGray2,
-          minHeight: 300,
-          //   width:450,
-          padding: 20,
-          borderRadius: SIZES.radius,
-          marginTop: 50,
-          marginBottom: 50,
-        }}
-      >
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        marginTop: "5px",
+      }}>
         <div
           style={{
-            display: "flex",
-            flexFlow: "row",
+            paddingTop: "20px",
+            backgroundColor: COLORS.lightGray2,
+            width: "80%",
+            borderRadius: SIZES.radius,
           }}
         >
           <div
             style={{
-              margin: 20,
+              display: "flex",
+              justifyContent: "space-evenly"
             }}
           >
             <InputForm
@@ -178,12 +180,6 @@ export default function AddAnimals() {
                 setName(event.target.value);
               }}
             />
-          </div>
-          <div
-            style={{
-              margin: 20,
-            }}
-          >
             <DropDown
               value={valueMS}
               setValue={setValueMS}
@@ -191,347 +187,359 @@ export default function AddAnimals() {
               // options={checking}
               options={species}
             />
-            
-            {/*  */}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly"
+            }}
+          >
             <DropDown
               value={valueBS}
               setValue={setValueBS}
               label={"Gender*"}
               options={gender}
             />
+            <DropDown
+              value={bought}
+              setValue={setBought}
+              label={"Purchased*"}
+              options={checking}
+            />
           </div>
         </div>
-            <div>
-        <DropDown
-          value={bought}
-          setValue={setBought}
-          label={"Purchased*"}
-          options={checking}
-        />
-       </div>
-        {bought ? (
-          <>
-            <div
-              style={{
-                display: "flex",
-                flexFlow: "row",
-              }}
-            >
-              <div
-                style={{
-                  margin: 20,
-                }}
-              >
-                <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.money}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"text"}
-                  value={price}
-                  label={"Price"}
-                  onChange={(event) => {
-                    setPrice(event.target.value);
+        <div
+          style={{
+            paddingTop: "20px",
+            backgroundColor: COLORS.lightGray2,
+            width: "80%",
+            borderRadius: SIZES.radius,
+            marginTop: "20px",
+          }}
+        >
+          {
+            bought == "Yes" ?
+              <>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-evenly"
                   }}
-                />
-                <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.age}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"text"}
-                  value={age}
-                  label={"Age"}
-                  onChange={(event) => {
-                    setAge(event.target.value);
-                  }}
-                />
-                <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.weight}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"text"}
-                  value={weight}
-                  label={"Weight"}
-                  onChange={(event) => {
-                    setWeight(event.target.value);
-                  }}
-                />
-                <DropDown
-                  value={bred}
-                  setValue={setBred}
-                  label={"Bred"}
-                  options={checking}
-                />
-              </div>
-
-              <div
-                style={{
-                  margin: 20,
-                }}
-              >
-                <DropDown
-                  value={vaccinated}
-                  setValue={setVaccinated}
-                  label={"Vaccinated"}
-                  options={checking}
-                />
-                {
-                  vaccinated? 
+                >
                   <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.calender}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"date"}
-                  value={vaccinateddate}
-                  label={"Date of Vaccination"}
-                  onChange={(event) => {
-                    setVaccinateddate(event.target.value);
-                  }}
-                />:null
-                }
-                <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.dog}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"text"}
-                  value={Breed}
-                  label={"Breed"}
-                  onChange={(event) => {
-                    setBreed(event.target.value);
-                  }}
-                />
-                <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.name}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"text"}
-                  value={registration}
-                  label={"Registration"}
-                  onChange={(event) => {
-                    setRegistration(event.target.value);
-                  }}
-                />
-
-              </div>
-            </div>
-          </>
-        ) : (
-
-          <div
-              style={{
-                display: "flex",
-                flexFlow: "row",
-              }}
-            >
-              <div
-                style={{
-                  margin: 20,
-                }}
-              >
-                <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.calender}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"date"}
-                  value={dobt}
-                  label={"Date of Birth"}
-                  onChange={(event) => {
-                    setDobt(event.target.value);
-                  }}
-                />
-                <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.weight}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"text"}
-                  value={weight}
-                  label={"Weight"}
-                  onChange={(event) => {
-                    setWeight(event.target.value);
-                  }}
-                />
-                <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.tag}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"text"}
-                  value={mother}
-                  label={"Mother Tag"}
-                  onChange={(event) => {
-                    setMother(event.target.value);
-                  }}
-                />
-                <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.tag}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"text"}
-                  value={father}
-                  label={"Father Tag"}
-                  onChange={(event) => {
-                    setFather(event.target.value);
-                  }}
-                />
-              </div>
-
-              <div
-                style={{
-                  margin: 20,
-                }}
-              >
-                <DropDown
-                  value={vaccinated}
-                  setValue={setVaccinated}
-                  label={"Vaccinated"}
-                  options={checking}
-                />
-                {
-                  vaccinated? 
+                    prependComponent={
+                      <img
+                        src={IMAGES.money}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          margin: 10,
+                          alignSelf: "center",
+                        }}
+                      />
+                    }
+                    type={"text"}
+                    value={price}
+                    label={"Price"}
+                    onChange={(event) => {
+                      setPrice(event.target.value);
+                    }}
+                  />
                   <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.calender}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"date"}
-                  value={vaccinateddate}
-                  label={"Date of Vaccination"}
-                  onChange={(event) => {
-                    setVaccinateddate(event.target.value);
+                    prependComponent={
+                      <img
+                        src={IMAGES.age}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          margin: 10,
+                          alignSelf: "center",
+                        }}
+                      />
+                    }
+                    type={"text"}
+                    value={age}
+                    label={"Age"}
+                    onChange={(event) => {
+                      setAge(event.target.value);
+                    }}
+                  />
+                  <InputForm
+                    prependComponent={
+                      <img
+                        src={IMAGES.weight}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          margin: 10,
+                          alignSelf: "center",
+                        }}
+                      />
+                    }
+                    type={"number"}
+                    value={weight}
+                    label={"Weight"}
+                    onChange={(event) => {
+                      setWeight(event.target.value);
+                    }}
+                  />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-evenly"
                   }}
-                />:null
-                }
-                <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.dog}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
+                >
+                  <DropDown
+                    value={bred}
+                    setValue={setBred}
+                    label={"Bred"}
+                    options={checking}
+                  />
+                  <DropDown
+                    value={vaccinated}
+                    setValue={setVaccinated}
+                    label={"Vaccinated"}
+                    options={checking}
+                  />
+                  {
+                    vaccinated ?
+                      <InputForm
+                        prependComponent={
+                          <img
+                            src={IMAGES.calender}
+                            style={{
+                              height: 25,
+                              width: 25,
+                              margin: 10,
+                              alignSelf: "center",
+                            }}
+                          />
+                        }
+                        type={"date"}
+                        value={vaccinateddate}
+                        label={"Date of Vaccination"}
+                        onChange={(event) => {
+                          setVaccinateddate(event.target.value);
+                        }}
+                      /> : null
                   }
-                  type={"text"}
-                  value={Breed}
-                  label={"Breed"}
-                  onChange={(event) => {
-                    setBreed(event.target.value);
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-evenly"
                   }}
-                />
-                <InputForm
-                  prependComponent={
-                    <img
-                      src={IMAGES.name}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
+                >
+                  <InputForm
+                    prependComponent={
+                      <img
+                        src={IMAGES.dog}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          margin: 10,
+                          alignSelf: "center",
+                        }}
+                      />
+                    }
+                    type={"text"}
+                    value={Breed}
+                    label={"Breed"}
+                    onChange={(event) => {
+                      setBreed(event.target.value);
+                    }}
+                  />
+                  <InputForm
+                    prependComponent={
+                      <img
+                        src={IMAGES.name}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          margin: 10,
+                          alignSelf: "center",
+                        }}
+                      />
+                    }
+                    type={"text"}
+                    value={registration}
+                    label={"# Registration"}
+                    onChange={(event) => {
+                      setRegistration(event.target.value);
+                    }}
+                  />
+                </div>
+              </> :
+              <>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-evenly"
+                  }}
+                >
+                  <InputForm
+                    prependComponent={
+                      <img
+                        src={IMAGES.calender}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          margin: 10,
+                          alignSelf: "center",
+                        }}
+                      />
+                    }
+                    type={"date"}
+                    value={dobt}
+                    label={"Date of Birth"}
+                    onChange={(event) => {
+                      setDobt(event.target.value);
+                    }}
+                  />
+                  <InputForm
+                    prependComponent={
+                      <img
+                        src={IMAGES.weight}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          margin: 10,
+                          alignSelf: "center",
+                        }}
+                      />
+                    }
+                    type={"number"}
+                    value={weight}
+                    label={"Weight"}
+                    onChange={(event) => {
+                      setWeight(event.target.value);
+                    }}
+                  />
+                  <InputForm
+                    prependComponent={
+                      <img
+                        src={IMAGES.tag}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          margin: 10,
+                          alignSelf: "center",
+                        }}
+                      />
+                    }
+                    type={"text"}
+                    value={mother}
+                    label={"Mother's Tag"}
+                    onChange={(event) => {
+                      setMother(event.target.value);
+                    }}
+                  />
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-evenly"
+                  }}
+                >
+                  <InputForm
+                    prependComponent={
+                      <img
+                        src={IMAGES.tag}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          margin: 10,
+                          alignSelf: "center",
+                        }}
+                      />
+                    }
+                    type={"text"}
+                    value={father}
+                    label={"Father's Tag"}
+                    onChange={(event) => {
+                      setFather(event.target.value);
+                    }}
+                  />
+                  <DropDown
+                    value={vaccinated}
+                    setValue={setVaccinated}
+                    label={"Vaccinated"}
+                    options={checking}
+                  />
+                  {
+                    vaccinated ?
+                      <InputForm
+                        prependComponent={
+                          <img
+                            src={IMAGES.calender}
+                            style={{
+                              height: 25,
+                              width: 25,
+                              margin: 10,
+                              alignSelf: "center",
+                            }}
+                          />
+                        }
+                        type={"date"}
+                        value={vaccinateddate}
+                        label={"Date of Vaccination"}
+                        onChange={(event) => {
+                          setVaccinateddate(event.target.value);
+                        }}
+                      /> : null
                   }
-                  type={"text"}
-                  value={registration}
-                  label={"Registration"}
-                  onChange={(event) => {
-                    setRegistration(event.target.value);
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-evenly"
                   }}
-                />
-
-              </div>
-            </div>
-        ) 
-        
-        }
+                >
+                  <InputForm
+                    prependComponent={
+                      <img
+                        src={IMAGES.dog}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          margin: 10,
+                          alignSelf: "center",
+                        }}
+                      />
+                    }
+                    type={"text"}
+                    value={Breed}
+                    label={"Breed"}
+                    onChange={(event) => {
+                      setBreed(event.target.value);
+                    }}
+                  />
+                  <InputForm
+                    prependComponent={
+                      <img
+                        src={IMAGES.name}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          margin: 10,
+                          alignSelf: "center",
+                        }}
+                      />
+                    }
+                    type={"text"}
+                    value={registration}
+                    label={"# Registration"}
+                    onChange={(event) => {
+                      setRegistration(event.target.value);
+                    }}
+                  />
+                </div>
+              </>
+          }
+        </div>
       </div>
-    );
+    )
   }
   return (
     <div
@@ -539,50 +547,43 @@ export default function AddAnimals() {
         flex: 1,
       }}
     >
-      <Header 
-      leftcomponent={
-        <>
-          <div style={{
-            display:"flex",
-            justifyContent:"center",
-            height: 40,
-            width: 40,
-            backgroundColor: COLORS.Primary,
-            alignSelf: "center",
-            borderRadius: 20
-          }}
-            onClick={() => {
-              navigate(-1)
+      <Header
+        leftcomponent={
+          <>
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              height: 40,
+              width: 40,
+              backgroundColor: COLORS.Primary,
+              alignSelf: "center",
+              borderRadius: 20
             }}
-          >
-            <img src={IMAGES.back} alt={"back"}
-              style={{
-                height: 25,
-                width: 25,
-                alignSelf: "center",
-              }} />
-          </div>
-        </>
-      }
-      rightcomponent={
-        <div></div>
-      }
-      title={"Add Animal"}/>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignSelf: "center",
-        }}
-      >
-        {renderForm()}
-      </div>
+              onClick={() => {
+                navigate(-1)
+              }}
+            >
+              <img src={IMAGES.back} alt={"back"}
+                style={{
+                  height: 25,
+                  width: 25,
+                  alignSelf: "center",
+                }} />
+            </div>
+          </>
+        }
+        rightcomponent={
+          <div></div>
+        }
+        title={"Add Animal"} />
+
+      {renderForm()}
       <TextButton
         label={"Add Animal"}
         icon={IMAGES.add}
         onPress={() => alert(bought)}
         buttonContainerStyle={{
-          marginBottom:50
+          marginTop: "20px"
         }}
       />
     </div>

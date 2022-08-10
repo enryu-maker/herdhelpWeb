@@ -5,13 +5,19 @@ import InfoCard from '../../Component/InfoCard'
 import { useNavigate, useLocation } from 'react-router-dom';
 import { baseURL } from '../../helpers/helpers';
 import { IMAGES } from '../../Theme/Image';
+import { useDispatch,useSelector } from 'react-redux';
+import { getMedical } from '../../Store/actions';
 export default function Info({
   purchased = false
 }) {
   let navigate = useNavigate()
   const { state } = useLocation();
   const { data } = state;
-  console.log(data)
+  const dispatch = useDispatch()
+  React.useEffect(()=>{
+    dispatch(getMedical(data.tag_number))
+  },[])
+  const med = useSelector(state=>state.Reducers.med)
   return (
     <div>
       <Header
@@ -203,8 +209,19 @@ export default function Info({
               width: 350,
               backgroundColor: COLORS.Primary,
               borderRadius: 12,
-              justifyContent: "center"
-            }}>
+              justifyContent: "center",
+            justifyContent: "space-evenly",
+            }}
+            onClick={()=>{
+              navigate("/medhistory")
+            }}
+            >
+              <img src={IMAGES.back} alt={"back"}
+                style={{
+                  height: 25,
+                  width: 25,
+                  alignSelf: "center",
+                }} />
               <p style={{
                 ...FONTS.h2,
                 alignSelf: "center",
@@ -212,22 +229,65 @@ export default function Info({
               }}>
                 Medical History
               </p>
+              <p style={{
+                ...FONTS.h2,
+                height: 30,
+                width: 30,
+                backgroundColor: COLORS.white,
+                borderRadius: 15,
+                display:"flex",
+                alignSelf: "center",
+                justifyContent: "center",
+                color:COLORS.Primary,
+              }}
+              >
+                {
+                  med.length
+                }
+              </p>
             </div>
             <div style={{
               height: 50,
               width: 350,
               backgroundColor: COLORS.Primary,
               borderRadius: 12,
-              justifyContent: "center",
+              justifyContent: "space-evenly",
               display: "flex",
+              flexDirection:"row"
+            }}
+            onClick={()=>{
+              navigate("/children")
+            }}
+            >
+              <img src={IMAGES.back} alt={"back"}
+                style={{
+                  height: 25,
+                  width: 25,
+                  alignSelf: "center",
+                }} />
 
-            }}>
               <p style={{
                 ...FONTS.h2,
                 alignSelf: "center",
                 color: COLORS.white
               }}>
                 Babies
+              </p>
+              <p style={{
+                ...FONTS.h2,
+                height: 30,
+                width: 30,
+                backgroundColor: COLORS.white,
+                borderRadius: 15,
+               display:"flex",
+                alignSelf: "center",
+                justifyContent: "center",
+                color:COLORS.Primary
+              }}
+              >
+                {
+                  data.children.length
+                }
               </p>
             </div>
           </div>

@@ -72,7 +72,7 @@ export default function InputForm({
               background: 'none',
               borderTop: 'none',
               borderInline: 'none',
-              borderBottom: '0.9px solid black',
+              borderBottom: '0.9px solid #009A48',
               height: 45,
               alignSelf: "center",
               paddingLeft: 20,

@@ -5,10 +5,11 @@ import NavBarMain from "../../Component/Nav/navmain";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
-import { checking, gender, species } from "../../Component/Constants";
+import { checking} from "../../Component/Constants";
 import axiosIns from '../../helpers/helpers';
 import Header from '../../Component/Header';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 export default function AddMedication() {
   const navigate = useNavigate()
   const [medicationR, setmedicationR] = useState("");
@@ -44,7 +45,10 @@ export default function AddMedication() {
   const [unit, setUnit] = React.useState(false);
   const options = ["one", "two", "three"];
   const defaultOption = options[0];
-
+  
+  const spec = useSelector(state => state.Reducers.cat)
+  const tags = useSelector(state=>state.Reducers.tags)
+  console.log(tags)
   const clear = () => {
     // setSpcies([])
     setWeight('');
@@ -175,139 +179,114 @@ export default function AddMedication() {
     */
   // 
   // 
-
-  function renderHeader() {
-    return <NavBarMain />;
+  function finder(list, value) {
+    var dataValue;
+    list?.map(a => {
+      if (value == a.label) {
+        dataValue = a.data;
+      }
+    });
+    return dataValue;
   }
-
   function renderForm() {
     return (
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        marginTop: "50px",
 
-      <div>
-
+        // height:"70vh"
+      }}>
         <div
           style={{
+            paddingTop: "20px",
             backgroundColor: COLORS.lightGray2,
-            minHeight: 300,
-            //   width:450,
-            padding: 20,
+            // height: 200,
+            width: "80%",
             borderRadius: SIZES.radius,
-            marginTop: 50,
-            marginBottom: 50,
           }}
         >
-
           <div
             style={{
               display: "flex",
-              flexFlow: "row",
+              justifyContent: "space-evenly"
             }}
           >
-            <div
-              style={{
-                margin: 20,
-              }}
-            >
-              <InputForm
-                prependComponent={
-                  <img
-                    src={IMAGES.tag}
-                    style={{
-                      height: 25,
-                      width: 25,
-                      margin: 10,
-                      alignSelf: "center",
-                    }}
-                  />
-                }
-                type={"text"}
-                value={tag}
-                label={"Tag Number*"}
-                onChange={(event) => {
-                  setTag(event.target.value);
-                }}
-              />
-            </div>
-
-            <div
-              style={{
-                margin: 20,
-              }}
-            >
-              <DropDown
+                <DropDown
                 value={valueMS}
                 setValue={setValueMS}
                 label={"Species*"}
                 // options={checking}
-                options={species}
+                options={spec}
+              />
+  
+              <DropDown
+                value={valueBS}
+                setValue={setValueBS}
+                label={"Tags*"}
+                // options={checking}
+                options={finder(tags,valueMS)}
               />
 
-            </div>
+            <InputForm
+              prependComponent={
+                <img
+                  src={IMAGES.disease}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    margin: 10,
+                    alignSelf: "center",
+                  }}
+                />
+              }
+              type={"text"}
+              value={medicationR}
+              label={"Reason for Medication"}
+              onChange={(event) => {
+                setmedicationR(event.target.value);
+              }}
+            />
           </div>
 
+        </div>
+        <div
+          style={{
+            marginTop: "30px",
+            paddingTop: "20px",
+            backgroundColor: COLORS.lightGray2,
+            // height: 200,
+            width: "80%",
+            borderRadius: SIZES.radius,
+          }}
+        >
           <div
             style={{
               display: "flex",
-              flexFlow: "row",
+              justifyContent: "space-evenly"
             }}
           >
-            <div
-              style={{
-                margin: 20,
-              }}>
-              <InputForm
-                prependComponent={
-                  <img
-                    src={IMAGES.disease}
-                    style={{
-                      height: 25,
-                      width: 25,
-                      margin: 10,
-                      alignSelf: "center",
-                    }}
-                  />
-                }
-                type={"text"}
-                value={medicationR}
-                label={"Reason for Medication"}
-                onChange={(event) => {
-                  setmedicationR(event.target.value);
-                }}
-              />
-            </div>
-
-            <div
-              style={{
-                margin: 20,
+            <InputForm
+              prependComponent={
+                <img
+                  src={IMAGES.medicines}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    margin: 10,
+                    alignSelf: "center",
+                  }}
+                />
+              }
+              type={"text"}
+              value={medicine}
+              label={"Medicine"}
+              onChange={(event) => {
+                setmedicine(event.target.value);
               }}
-            >
-              <InputForm
-                prependComponent={
-                  <img
-                    src={IMAGES.medicines}
-                    style={{
-                      height: 25,
-                      width: 25,
-                      margin: 10,
-                      alignSelf: "center",
-                    }}
-                  />
-                }
-                type={"text"}
-                value={medicine}
-                label={"Medicine"}
-                onChange={(event) => {
-                  setmedicine(event.target.value);
-                }}
-              />
-            </div>
-          </div>
-
-
-          <div
-            style={{
-              margin: 20,
-            }}>
+            />
             <InputForm
               prependComponent={
                 <img
@@ -327,12 +306,7 @@ export default function AddMedication() {
                 setVaccinateddate(event.target.value);
               }}
             />
-          </div>
 
-          <div
-            style={{
-              margin: 20,
-            }}>
             <InputForm
               prependComponent={
                 <img
@@ -353,10 +327,10 @@ export default function AddMedication() {
               }}
             />
           </div>
-
           <div
             style={{
-              margin: 20,
+              display: "flex",
+              justifyContent: "space-evenly"
             }}
           >
             <DropDown
@@ -366,20 +340,44 @@ export default function AddMedication() {
               // options={checking}
               options={checking}
             />
+            {
+              valueBS=="Yes"?<InputForm
+              prependComponent={
+                <img
+                  src={IMAGES.calender}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    margin: 10,
+                    alignSelf: "center",
+                  }}
+                />
+              }
+              type={"date"}
+              value={vaccinateddate}
+              label={"Withdrawal Date"}
+              onChange={(event) => {
+                setVaccinateddate(event.target.value);
+              }}
+            />:null
+            }
 
           </div>
         </div>
-
+        <TextButton
+        label={"Add"}
+        icon={IMAGES.med}
+        onPress={() => alert(bought)}
+        buttonContainerStyle={{
+          marginTop: "30px",
+        }}
+      />
       </div>
     )
   }
 
   return (
-    <div
-      style={{
-        flex: 1,
-      }}
-    >
+    <>
       <Header
         leftcomponent={
           <>
@@ -409,24 +407,11 @@ export default function AddMedication() {
           <div></div>
         }
         title={"Add Medication"} />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignSelf: "center",
-        }}
-      >
+      
         {renderForm()}
-      </div>
-      <TextButton
-        label={"Add Medication"}
-        icon={IMAGES.add}
-        onPress={() => alert(bought)}
-        buttonContainerStyle={{
-          marginBottom: 50
-        }}
-      />
-    </div>
+      
+      
+    </>
   );
 
 }

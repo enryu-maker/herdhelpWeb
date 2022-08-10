@@ -1,10 +1,10 @@
 export const checking = [
     {
-        value:true,
+        value:"Yes",
         label:"Yes"
     },
     {
-        value:false,
+        value:"No",
         label:"No"
     }
 ];
