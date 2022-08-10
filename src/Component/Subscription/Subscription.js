@@ -190,6 +190,9 @@ const [tire_1 , setTire] = useState(true) ;
           display: "flex",
           justifyContent: "center",
           alignSelf: "center",
+          position:'absolute',
+            left:210,
+            width:'auto'
         }}
       >
         {renderForm()}
