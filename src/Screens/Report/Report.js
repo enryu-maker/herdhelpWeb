@@ -65,7 +65,9 @@ function Altcards({
 return (
   <>
   <NavBarMain page={'report'}/>
-  
+  <div style={{position:'absolute',
+            left:170,
+            width:'auto'}}>
   <ul style={{
             paddingInlineStart:0
         }}>
@@ -93,7 +95,7 @@ return (
             }
             renderWhenEmpty={() => <div>List is empty!</div>}
           />
-        </ul>
+        </ul></div>
     </>
 )
 }

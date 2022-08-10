@@ -184,10 +184,10 @@ function NavBarMain({
         
         <div style={{
           position: 'fixed',
-          // display:'block',
+          display:'flow',
           width: 190,
           height: '100%',
-          left: '0%',
+          // left: '0%',
           top: 0,
           backgroundColor: COLORS.Primary ,
           textDecorationColor:COLORS.black,
@@ -203,7 +203,7 @@ function NavBarMain({
                 width: 48,
                 height: 48,
                 left: 10,
-                top: 39,
+                top: 19,
 
               }}
             />
@@ -225,7 +225,7 @@ function NavBarMain({
                 width: 65,
                 height: 26,
                 left: 75,
-                top: 25,
+                top: 5,
                 fontSize: 15
               }} >Mr. Jhon</h3>
               <h3 style={{
@@ -233,7 +233,7 @@ function NavBarMain({
                 width: 100,
                 height: 26,
                 left: 75,
-                top: 43,
+                top: 24,
                 fontSize: 15
               }} >Robins Farm</h3>
               <h3 style={{
@@ -241,7 +241,7 @@ function NavBarMain({
                 width: 65,
                 height: 26,
                 left: 75,
-                top: 60,
+                top: 39,
                 fontSize: 15
               }} >@jhon</h3>
             </div>

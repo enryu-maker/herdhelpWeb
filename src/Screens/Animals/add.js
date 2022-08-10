@@ -94,7 +94,9 @@ export default function add() {
   return (
     <>
       <NavBarMain page={'add'} />
-      <div>
+      <div style={{position:'absolute',
+            left:170,
+            width:'auto'}}>
       <ul>
           <FlatList
             list={data}

@@ -34,7 +34,10 @@ export default function Main() {
       <NavBarMain page={"herds"}/>
       <>
         <ul style={{
-            paddingInlineStart:0
+            paddingInlineStart:0,
+            position:'absolute',
+            left:170,
+            width:'auto'
         }}>
           <FlatList
             list={animal}
