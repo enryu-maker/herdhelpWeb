@@ -38,7 +38,8 @@ import Updatebred from './Screens/Animals/updatebred';
 import React from 'react';
 import { Init } from './Store/actions';
 import Loading from './Component/Loading';
-
+import Children from './Screens/Children/Children';
+import History from './Screens/Children/History';
 function App() {
   
   const dispatch = useDispatch()
@@ -99,6 +100,10 @@ function App() {
                     <Route path='/Flag' element={<Flag />} />
                     <Route path='/Bred' element={<Updatebred />} />
                     <Route path='/load' element={<Loading />} />
+                    <Route path='/children' element={<ProtectedRoute Component={Children} access={access} />} />
+                    <Route path='/medhistory' element={<ProtectedRoute Component={History} access={access} />} />
+
+
 
                   </>
               }

@@ -5,7 +5,7 @@ import NavBarMain from "../../Component/Nav/navmain";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
-import { checking, gender, species } from "../../Component/Constants";
+import { checking} from "../../Component/Constants";
 import axiosIns from '../../helpers/helpers';
 import Header from '../../Component/Header';
 import { useNavigate } from 'react-router-dom';
@@ -45,7 +45,10 @@ export default function AddMedication() {
   const [unit, setUnit] = React.useState(false);
   const options = ["one", "two", "three"];
   const defaultOption = options[0];
+  
   const spec = useSelector(state => state.Reducers.cat)
+  const tags = useSelector(state=>state.Reducers.tags)
+  console.log(tags)
   const clear = () => {
     // setSpcies([])
     setWeight('');
@@ -176,7 +179,15 @@ export default function AddMedication() {
     */
   // 
   // 
-
+  function finder(list, value) {
+    var dataValue;
+    list?.map(a => {
+      if (value == a.label) {
+        dataValue = a.data;
+      }
+    });
+    return dataValue;
+  }
   function renderForm() {
     return (
       <div style={{
@@ -203,34 +214,21 @@ export default function AddMedication() {
               justifyContent: "space-evenly"
             }}
           >
-
-            <InputForm
-              prependComponent={
-                <img
-                  src={IMAGES.tag}
-                  style={{
-                    height: 25,
-                    width: 25,
-                    margin: 10,
-                    alignSelf: "center",
-                  }}
-                />
-              }
-              type={"text"}
-              value={tag}
-              label={"Tag Number*"}
-              onChange={(event) => {
-                setTag(event.target.value);
-              }}
-            />
-
-            <DropDown
-              value={valueMS}
-              setValue={setValueMS}
-              label={"Species*"}
-              // options={checking}
-              options={spec}
-            />
+                <DropDown
+                value={valueMS}
+                setValue={setValueMS}
+                label={"Species*"}
+                // options={checking}
+                options={spec}
+              />
+  
+              <DropDown
+                value={valueBS}
+                setValue={setValueBS}
+                label={"Tags*"}
+                // options={checking}
+                options={finder(tags,valueMS)}
+              />
 
             <InputForm
               prependComponent={

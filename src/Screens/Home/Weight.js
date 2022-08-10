@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 import TextButton from "../../Component/TextButton";
 import InputForm from "../../Component/InputForm";
-import NavBarMain from "../../Component/Nav/navmain";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
-import {species } from "../../Component/Constants";
-//import axiosIns from '../../helpers/helpers';
 import Header from '../../Component/Header';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -20,6 +17,7 @@ const [bought, setBought] = useState(false);
 const options = ["one", "two", "three"];
 const navigate = useNavigate()
 const defaultOption = options[0];
+const species = useSelector(state=>state.Reducers.cat)
 const tags = useSelector(state=>state.Reducers.tags)
 function finder(list, value) {
   var dataValue;
