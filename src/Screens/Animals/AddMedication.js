@@ -48,7 +48,6 @@ export default function AddMedication() {
   
   const spec = useSelector(state => state.Reducers.cat)
   const tags = useSelector(state=>state.Reducers.tags)
-  console.log(tags)
   const clear = () => {
     // setSpcies([])
     setWeight('');

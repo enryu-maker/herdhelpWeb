@@ -13,7 +13,7 @@ import NavBarMain from "../../Component/Nav/navmain";
 import Card from "../../Component/Card";
 import { IMAGES } from "../../Theme/Image";
 import { useSelector, useDispatch } from 'react-redux';
-import { getFcat, getFinance, getHerds, getSpecies, getTags } from '../../Store/actions';
+import { getFcat, getFinance, getHerds, getSpecies, getTags, UserData } from '../../Store/actions';
 import FlatList from 'flatlist-react';
 import Loading from "../../Component/Loading";
 export default function Main() {
@@ -26,6 +26,7 @@ export default function Main() {
     dispatch(getSpecies(access))
     dispatch(getFcat(access))
     dispatch(getTags())
+    dispatch(UserData())
   }, [])
   const animal = useSelector(state => state.Reducers.herds)
   return (

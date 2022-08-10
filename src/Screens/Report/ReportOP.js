@@ -14,7 +14,6 @@ export default function ReportOP() {
     async function getData(api) {
         setLoading(true)
         let { data } = await axiosIns.get(api)
-        console.log(data)
         setLoading(false)
         return data
     }
@@ -111,7 +110,7 @@ export default function ReportOP() {
                                 data={item} 
                                 onPress={() => {
                                     navigate("/info", {
-                                        state: { data: item }
+                                        state: { data: item,cond:true }
                                     })
                                 }} />
                             </>

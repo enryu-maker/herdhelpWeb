@@ -10,7 +10,6 @@ import Feedcard from './FinanceCard';
 import AddFinance from './addFinance';
 export default function LoadFinance() {
   const finance = useSelector(state => state.Reducers.finance)
-  console.log(finance)
   return (
     <>
 

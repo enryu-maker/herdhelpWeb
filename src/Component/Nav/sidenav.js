@@ -28,8 +28,10 @@ export default function sidenav() {
                         // left: 40,
                         marginTop:7,
                         display:'block',
-                    }} /><h3 style={{color:COLORS.white,
-                   marginLeft:20 }} >{label}</h3></button></Link>
+                    }} /><p style={{color:COLORS.white,
+                      ...FONTS.h3,
+                   marginLeft:20 }} >{label}</p>
+                   </button></Link>
             </>
             )
     }
@@ -46,7 +48,7 @@ export default function sidenav() {
                     height: '100%',
                     left: '-100%',
                     top: 0, 
-                    backgroundColor:COLORS.Primary , 
+                    backgroundColor:COLORS.white , 
                     }}> 
                     <h1>hell</h1>
     <div style={{height:100}}>
