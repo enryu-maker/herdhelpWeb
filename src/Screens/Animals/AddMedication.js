@@ -372,7 +372,6 @@ export default function AddMedication() {
         onPress={() => alert(bought)}
         buttonContainerStyle={{
           marginTop: "30px",
-          // width:250,
         }}
       />
       </div>

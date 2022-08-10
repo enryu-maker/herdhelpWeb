@@ -7,15 +7,29 @@ import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
 import {species } from "../../Component/Constants";
 //import axiosIns from '../../helpers/helpers';
-
-
+import Header from '../../Component/Header';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 export default function Weight() {
 // 
 const [valueMS, setValueMS] = useState("");
+const [valueBS, setValueBS] = useState("");
+
 const [tag, setTag] = useState("");
 const [bought, setBought] = useState(false);
 const options = ["one", "two", "three"];
+const navigate = useNavigate()
 const defaultOption = options[0];
+const tags = useSelector(state=>state.Reducers.tags)
+function finder(list, value) {
+  var dataValue;
+  list?.map(a => {
+    if (value == a.label) {
+      dataValue = a.data;
+    }
+  });
+  return dataValue;
+}
 //
 /*async function updateWeight(){
     if (tag!="",weight!=0){
@@ -111,43 +125,27 @@ const defaultOption = options[0];
   
  */ 
 //
-function renderHeader(){
-  return<NavBarMain/>;
-}
+
 
 function renderForm(){
   return(
         
     <div
-            style={{
-                backgroundColor: COLORS.lightGray2,
-                minHeight: 300,
-                //   width:450,
-                padding: 20,
-                borderRadius: SIZES.radius,
-                marginTop: 50,
-                marginBottom: 50, 
-            }}
-            >
-                <p
-                style={{
-                ...FONTS.largeTitle,
-                alignSelf: "center",
+          style={{
+            paddingTop: "20px",
+            backgroundColor: COLORS.lightGray2,
+            marginTop: "50px",
+            width: "80%",
+            borderRadius: SIZES.radius,
           }}
         >
-          Update Weight
-        </p>
         <div
           style={{
             display: "flex",
-            flexFlow: "row",
+            justifyContent:"space-evenly"
           }}
         >
-          <div
-            style={{
-              margin: 20,
-            }}
-          >
+          
             <DropDown
               value={valueMS}
               setValue={setValueMS}
@@ -156,39 +154,14 @@ function renderForm(){
               options={species}
             />
 
-          </div>
-            <div
-            style={{
-              margin: 20,
-            }}
-          >
-            <InputForm
-              prependComponent={
-                <img
-                  src={IMAGES.tag}
-                  alt=""
-                  style={{
-                    height: 25,
-                    width: 25,
-                    margin: 10,
-                    alignSelf: "center",
-                  }}
-                />
-              }
-              type={"text"}
-              value={tag}
-              label={"Tag Number*"}
-              onChange={(event) => {
-                setTag(event.target.value);
-              }}
+            <DropDown
+              value={valueBS}
+              setValue={setValueBS}
+              label={"Tags*"}
+              // options={checking}
+              options={finder(tags,valueMS)}
             />
-            </div>
-            </div>
-            <div
-            style={{
-              margin: 2,
-            }}
-          >
+
             <InputForm
               prependComponent={
                 <img
@@ -217,10 +190,38 @@ function renderForm(){
   return (
      <div
       style={{
-        flex: 1,
+        // flex: 1,
       }}
     >
-      {renderHeader()}
+      <Header
+        leftcomponent={
+          <>
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              height: 40,
+              width: 40,
+              backgroundColor: COLORS.Primary,
+              alignSelf: "center",
+              borderRadius: 20
+            }}
+              onClick={() => {
+                navigate(-1)
+              }}
+            >
+              <img src={IMAGES.back} alt={"back"}
+                style={{
+                  height: 25,
+                  width: 25,
+                  alignSelf: "center",
+                }} />
+            </div>
+          </>
+        }
+        rightcomponent={
+          <div></div>
+        }
+        title={"Update Weight"} />
       <div
         style={{
           display: "flex",
@@ -231,11 +232,11 @@ function renderForm(){
         {renderForm()}
       </div>
       <TextButton
-        label={"Update Weight"}
-        icon={IMAGES.add}
+        label={"Update"}
+        icon={IMAGES.update}
         onPress={() => alert(bought)}
         buttonContainerStyle={{
-          marginBottom:50
+          marginTop: "30px",
         }}
       />
     </div>
