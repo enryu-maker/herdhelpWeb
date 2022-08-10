@@ -52,24 +52,16 @@ export default function Sidenav() {
     <>
         <div style={{
           position: 'fixed',
-          // display: 'flow',
-          width: 205,
           height: '100%',
-          // left: '0%',
-          top: 0,
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
           cursor:"pointer",
-          // borderRight:'1px solid black',
-          // borderTop:'1px solid black'
           position:"sticky",
           display: 'flex',
-          // justifyContent:"flex-start",
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
           cursor:"pointer",
-          paddingInlineEnd:"40px"
-          // width:"22%"
+          width:"18%"
         }}
         
         >
@@ -91,15 +83,13 @@ export default function Sidenav() {
             <div style={{
               lineheight: 26,
               display: 'flex',
-
               flexDirection:"column",
               alignitems: 'center',
               textalign: 'center',
               texttransform: 'capitalize',
               textAlign: 'left',
-              width: 'fit-content'
+              width: 'fit-content',
               // width: 'fit-content',
-              // marginLeft:'30px'
             }}>
               <p style={{
                 position: 'absolute',
@@ -133,7 +123,8 @@ export default function Sidenav() {
 
           <div style={{
             flexDirection:"column",
-            marginTop:100
+            marginTop:100,
+            paddingLeft:'15px',
           }}>
 
           <Sidemenu
@@ -156,7 +147,7 @@ export default function Sidenav() {
 
           <Sidemenu
             img={IMAGES.weight}
-            label={'Weight/History'}
+            label={'Weight History'}
             path={'/weighthistory'}
           />
           <Sidemenu
