@@ -33,7 +33,9 @@ export default function Main() {
 
       <NavBarMain page={"herds"}/>
       <>
-        <ul>
+        <ul style={{
+            paddingInlineStart:0
+        }}>
           <FlatList
             list={animal}
             keyExtractor={item => `${item.id}`}

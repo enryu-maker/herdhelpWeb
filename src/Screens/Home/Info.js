@@ -235,10 +235,10 @@ export default function Info({
                 width: 30,
                 backgroundColor: COLORS.white,
                 borderRadius: 15,
-               display:"flex",
+                display:"flex",
                 alignSelf: "center",
                 justifyContent: "center",
-                color:COLORS.Primary
+                color:COLORS.Primary,
               }}
               >
                 {

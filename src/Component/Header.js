@@ -10,7 +10,8 @@ export default function Header({
     <div style={{
       display:"flex",
       flexDirection:"row",
-      justifyContent:"space-evenly"
+      justifyContent:"space-evenly",
+      width:"100%",
     }}>
       {
       leftcomponent

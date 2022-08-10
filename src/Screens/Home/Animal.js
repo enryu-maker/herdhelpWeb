@@ -81,8 +81,7 @@ export default function Animal() {
         }
       />
       <ul style={{
-        margin: 0,
-        paddingBottom: "50px"
+          paddingInlineStart:0,
       }}>
         <FlatList
 

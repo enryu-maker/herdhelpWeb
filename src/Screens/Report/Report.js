@@ -26,12 +26,11 @@ React.useEffect(() => {
 function Altcards({
   altname,
   img,
-  // onPress,
+  onPress,
   Path,
 }) {
   return (
     <>
-    <Link to={Path}>
       <button
         style={{
           backgroundColor:'rgb(227,227,227)',
@@ -39,36 +38,25 @@ function Altcards({
           margin: SIZES.padding,
           borderRadius: SIZES.radius,
           cursor:"pointer",
-          // flexDirection:"column",
           borderWidth: 0,
-          // boxShadow:'0px 0px 11px -3px black',
           justifyContent: "space-evenly",
           boxShadow: '0px 0px 15px -4px #888181',
           elevation: 2,
-          width: 230,
+          width: 250,
         }}
-        // onClick={''}
+        onClick={onPress}
       >
           {/* <img src={IMAGES.rightone} style={{ height: 20, width: 20,alignSelf:"center",marginLeft:200,marginTop:10 }} /> */}
           <img src={img} alt={''} style={{ height: 80, width: 80,alignSelf:"center"}} />
-        <div>
             <div style={{
             textAlign:'center'
         }}>
         <p style={{...FONTS.h3 , margin:20}}>{altname}</p>
-        {/* <p style={{...FONTS.h4}}>{global.unit?`${Weight} lbs`:`${weight_kg} kg`}</p> */}
-        </div>
-        <div style={{
-            display:"flex",
-            flexFlow:"column"
-        }}>
-          {/* <img src={Gender=="Male"? IMAGES.male:IMAGES.female} style={{ height: 50, width: 50,marginTop:25}} /> */}
-        </div>
         </div>
         
 
 
-      </button></Link>
+      </button>
 
     </>
 )}
@@ -76,10 +64,10 @@ function Altcards({
 
 return (
   <>
-  <NavBarMain page={'/report'}/>
+  <NavBarMain page={'report'}/>
+  
   <ul style={{
-            margin:0,
-            paddingBottom:"50px"
+            paddingInlineStart:0
         }}>
           <FlatList
             
@@ -89,8 +77,14 @@ return (
               return (
                 <>
                 <Altcards 
+                key={item.id}
                 img={item.image}
                 altname={item.name}
+                onPress={()=>{
+                  navigate('/reportop',{
+                    state: { api: item.api,label:item.name }
+                  })
+                }}
                 />
                 </>
               )
