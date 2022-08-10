@@ -13,8 +13,6 @@ function NavBarMain({
   navStyle
 }) {
   const user = useSelector(state => state.Reducers.userData)
-<<<<<<< HEAD
-  console.log(user)
   // function Sidemenu({ img, label, path }) {
   //   return (
   //     <>
@@ -42,7 +40,7 @@ function NavBarMain({
   //             color: label === 'Logout' ? COLORS.red : COLORS.white,
   //             ...FONTS.h3,
   //             padding: '10px',
-=======
+
   function Sidemenu({ img, label, path }) {
     return (
       <>
@@ -70,13 +68,12 @@ function NavBarMain({
               color: label === 'Logout' ? COLORS.red : COLORS.white,
               ...FONTS.h3,
               padding: '10px',
->>>>>>> d3b9294 (done)
 
 
-  //           }}>{label}</p></button></Link>
-  //     </>
-  //   )
-  // }
+            }}>{label}</p></button></Link>
+      </>
+    )
+  }
 
 
 
@@ -172,7 +169,7 @@ function NavBarMain({
           </div>
         </div>
       </div>
-<<<<<<< HEAD
+
 
       {/*  */}
       {/* <>
@@ -298,8 +295,7 @@ function NavBarMain({
         </div>
       </>  */}
       {/*  */}
-=======
->>>>>>> d3b9294 (done)
+
     </>
       
   );

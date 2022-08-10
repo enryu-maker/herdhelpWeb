@@ -6,10 +6,6 @@ import { IMAGES } from '../../Theme/Image'
 import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
 import FlatList from 'flatlist-react'
 import Sidenav from '../../Component/Nav/sidenav'
-<<<<<<< HEAD
-
-=======
->>>>>>> d3b9294 (done)
 export default function add() {
   const data = [
     {
@@ -98,30 +94,6 @@ export default function add() {
 
   return (
     <>
-<<<<<<< HEAD
-      <NavBarMain page={'add'} />
-      
-      <div><Sidenav/>
-      <ul>
-          <FlatList
-            list={data}
-            keyExtractor={item => `${item.id}`}
-            renderItem={(item,index) => {
-              return (
-                <>
-                <Cards
-                  img={item.image}
-                  Name={item.label}
-                  Path={item.nav}
-                />
-                </>
-              )
-            }
-            }
-            renderWhenEmpty={() => <div>List is empty!</div>}
-          />
-        </ul>
-=======
       <div style={{
         display: "flex",
         height: "100vh",
@@ -155,7 +127,6 @@ export default function add() {
             />
           </ul>
         </div>
->>>>>>> d3b9294 (done)
       </div>
 
 

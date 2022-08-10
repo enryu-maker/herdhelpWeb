@@ -25,7 +25,7 @@ export default function LoadFinance() {
           float: "right",
 
         }}>
-          <NavBarMain page={"add"} />
+          <NavBarMain page={"finance"} />
           <div
             style={{
               display: 'flex',
