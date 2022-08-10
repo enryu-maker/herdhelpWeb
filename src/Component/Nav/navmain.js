@@ -14,39 +14,39 @@ function NavBarMain({
 }) {
   const user = useSelector(state => state.Reducers.userData)
   console.log(user)
-  function Sidemenu({ img, label, path }) {
-    return (
-      <>
-        <Link to={path} style={{ textDecoration: 'none', margin: 0, left: 20 }}>
-          <button style={{
-            width: '100%',
-            height: 45,
-            display: 'flex',
-            flexDirection:"row",
-            left: 40,
-            background: 'none',
-            // backgroundColor: label === 'Logout' ? COLORS.gray2 : 'none',
-            border: 'none',
-            cursor: 'pointer',
-            // justifyContent:"space-around",
-            alignItems:"center"
-          }}>
-            <img src={img}
-              alt="logo"
-              style={{
-                width: 25,
-                height: 25,
-              }} />
-            <p style={{
-              color: label === 'Logout' ? COLORS.red : COLORS.white,
-              ...FONTS.h3,
-              padding: '10px',
+  // function Sidemenu({ img, label, path }) {
+  //   return (
+  //     <>
+  //       <Link to={path} style={{ textDecoration: 'none', margin: 0, left: 20 }}>
+  //         <button style={{
+  //           width: '100%',
+  //           height: 45,
+  //           display: 'flex',
+  //           flexDirection:"row",
+  //           left: 40,
+  //           background: 'none',
+  //           // backgroundColor: label === 'Logout' ? COLORS.gray2 : 'none',
+  //           border: 'none',
+  //           cursor: 'pointer',
+  //           // justifyContent:"space-around",
+  //           alignItems:"center"
+  //         }}>
+  //           <img src={img}
+  //             alt="logo"
+  //             style={{
+  //               width: 25,
+  //               height: 25,
+  //             }} />
+  //           <p style={{
+  //             color: label === 'Logout' ? COLORS.red : COLORS.white,
+  //             ...FONTS.h3,
+  //             padding: '10px',
 
 
-            }}>{label}</p></button></Link>
-      </>
-    )
-  }
+  //           }}>{label}</p></button></Link>
+  //     </>
+  //   )
+  // }
 
 
 
@@ -122,11 +122,11 @@ function NavBarMain({
               </Link>
             </div>
           </nav>
-          {/* <div>
+          <div>
             <Link to="/profile">
               <button style={{ border: 'none', background: 'none' }} className='btn-navmain'><img
-                src={user.profile_picture}
-                alt="logo"
+                src={IMAGES.user}
+                alt=""
                 style={{
                   height: 43,
                   width: 43,
@@ -138,12 +138,12 @@ function NavBarMain({
               /></button>
 
             </Link>
-          </div> */}
+          </div>
         </div>
       </div>
 
       {/*  */}
-      <>
+      {/* <>
         <div style={{
           position: 'fixed',
           display: 'flow',
@@ -230,7 +230,7 @@ function NavBarMain({
           }}>
           </hr> */}
 
-          <Sidemenu
+          {/* <Sidemenu
             img={IMAGES.weight}
             label={'Weight History'}
             path={'/weighthistory'}
@@ -239,7 +239,7 @@ function NavBarMain({
             img={IMAGES.parents}
             label={'Parents'}
             path={'/parents'}
-          />
+          /> */}
 
           {/* <hr style={{
             border: '1px solid black',
@@ -249,7 +249,7 @@ function NavBarMain({
           }}>
           </hr> */}
 
-          <div style={{ position: 'absolute', bottom: 40, width: '100%' }}>
+          {/* <div style={{ position: 'absolute', bottom: 40, width: '100%' }}>
           <Sidemenu
               img={IMAGES.setting}
               label={'Setting'}
@@ -261,10 +261,10 @@ function NavBarMain({
               path={'/login'}
             />
           </div>
-          {/* </div> */}
+          {/* </div> 
 
         </div>
-      </>
+      </>  */}
       {/*  */}
     </>
   );

@@ -7,34 +7,40 @@ import './Navbar.css'
 export default function sidenav() {
 
 
-    function Sidemenu ({img, label , path }){
-            return (
-                <>
-                <Link to={path}  style={{textDecoration:'none' , margin:0, left:20}}>
-                <button style={{width:'100%', 
-                                height:45  , 
-                                display:'flex', 
-                                // margin:"auto",
-                                left:40,
-                                // background:'none' , 
-                                // border:'none', 
-                                cursor:'pointer'}} className='menu'> 
-                    <img src={img}
-                    alt="logo"
-                    style={{
-                        width: 28,
-                        height: 28,
-                        marginLeft:20,
-                        // left: 40,
-                        marginTop:7,
-                        display:'block',
-                    }} /><p style={{color:COLORS.white,
-                      ...FONTS.h3,
-                   marginLeft:20 }} >{label}</p>
-                   </button></Link>
-            </>
-            )
-    }
+  function Sidemenu({ img, label, path }) {
+    return (
+      <>
+        <Link to={path} style={{ textDecoration: 'none', margin: 0, left: 20 }}>
+          <button style={{
+            width: '100%',
+            height: 45,
+            display: 'flex',
+            flexDirection:"row",
+            left: 40,
+            background: 'none',
+            // backgroundColor: label === 'Logout' ? COLORS.gray2 : 'none',
+            border: 'none',
+            cursor: 'pointer',
+            // justifyContent:"space-around",
+            alignItems:"center"
+          }}>
+            {/* <img src={img}
+              alt="logo"
+              style={{
+                width: 25,
+                height: 25,
+              }} /> */}
+            <p style={{
+              color: label === 'Logout' ? COLORS.red : COLORS.white,
+              ...FONTS.h3,
+              padding: '10px',
+
+
+            }}>{label}</p></button></Link>
+      </>
+    )
+  }
+
 
 
 
@@ -43,125 +49,129 @@ export default function sidenav() {
 
   return (
     <>
-    <div style={{ position:' absolute',
-                    width: 298,
-                    height: '100%',
-                    left: '-100%',
-                    top: 0, 
-                    backgroundColor:COLORS.white , 
-                    }}> 
-                    <h1>hell</h1>
-    <div style={{height:100}}>
-    <img
-            src={IMAGES.login}
-            alt="logo"
-            style={{ position: 'absolute',
-                width: 48,
-                height: 48,
-                left: 28,
-                top: 39,
-                
-            }}
-          />
-          <div style={{fontfamily: 'Poppins',
-                        fontstyle: 'normal',
-                        lineheight: 26,
-                        /* identical to box height, or 162% */
-                        display: 'flex',
-                        alignitems: 'center',
-                        textalign: 'center',
-                        texttransform: 'capitalize',
-                        color: '#FFFFFF',
-                        textAlign:'left',
-                        width:'fit-content'}}>
-          <h3 style={{position: 'absolute',
-                        width: 65,
-                        height: 26,
-                        left: 95,
-                        top: 25,
-                        fontSize:15}} >Mr. Jhon</h3>
-          <h3 style={{position: 'absolute',
-                        width: 100,
-                        height: 26,
-                        left: 95,
-                        top: 43,
-                        fontSize:15}} >Robins Farm</h3>
-          <h3 style={{position: 'absolute',
-                        width: 65,
-                        height: 26,
-                        left: 95,
-                        top: 60,
-                        fontSize:15}} >@jhon</h3>
-          </div>
-         <button style={{
-                            cursor:'pointer'}} >
-          <img
-            src={IMAGES.close2}
-            alt="logo"
-            style={{ position: 'absolute',
-                width: 33,
-                height: 33,
-                right: 20,
+        <div style={{
+          position: 'fixed',
+          // display: 'flow',
+          width: 205,
+          height: '100%',
+          // left: '0%',
+          top: 0,
+          backgroundColor: COLORS.Primary,
+          textDecorationColor: COLORS.black,
+          cursor:"pointer"
+          // borderRight:'1px solid black',
+          // borderTop:'1px solid black'
+        }}
+        
+        >
+        <Link to={'/profile'}>
+          <div style={{ height: 100 }}>
+            <img
+              src={user?.profile_picture}
+              alt="logo"
+              style={{
+                position: 'absolute',
+                width: 60,
+                height: 60,
+                left: 10,
                 top: 19,
-            }}
-          /></button>
-    </div>
-        <hr style={{border: '1px solid white',
-                        top: '1%',
-                        position: 'relative',
-                        width: '100%',}}>
-        </hr>
+                borderRadius:30
 
-   
-            <Sidemenu 
-            img={IMAGES.home}
-            label={'Home'}
-            path={'/main'}
+              }}
             />
-            <Sidemenu 
+            <div style={{
+              lineheight: 26,
+              display: 'flex',
+              alignitems: 'center',
+              textalign: 'center',
+              texttransform: 'capitalize',
+              textAlign: 'left',
+              width: 'fit-content'
+            }}>
+              <p style={{
+                position: 'absolute',
+                height: 26,
+                left: 75,
+                top: 5,
+                ...FONTS.h3,
+                color:COLORS.white
+              }} >{user?.fullname}</p>
+              <p style={{
+                position: 'absolute',
+                // width: 100,
+                height: 26,
+                left: 75,
+                top: 24,
+                ...FONTS.h3,
+                color:COLORS.white
+              }} >{user?.farm_name}</p>
+              <p style={{
+                position: 'absolute',
+                // width: 65,
+                height: 26,
+                left: 75,
+                top: 45,
+                ...FONTS.h3,
+                color:COLORS.white
+              }} >@{user?.username}</p>
+            </div>
+          </div>
+          </Link>
+          <Sidemenu
             img={IMAGES.file}
             label={'Report'}
             path={'/report'}
-            />
-            <Sidemenu 
+          />
+          <Sidemenu
             img={IMAGES.subs}
             label={'Subscription'}
             path={'/subscription'}
-            />
-    <hr style={{border: '1px solid white',
-                    top: '1%',
-                    position: 'relative',
-                    width: '100%',}}>
-        </hr>
+          />
+          {/* <hr style={{
+            border: '1px solid black' ,
+            top: '1%',
+            position: 'relative',
+            width: '100%',
+          }}>
+          </hr> */}
 
-        <Sidemenu 
+          <Sidemenu
             img={IMAGES.weight}
             label={'Weight History'}
             path={'/weighthistory'}
-            />
-        <Sidemenu 
+          />
+          <Sidemenu
             img={IMAGES.parents}
             label={'Parents'}
             path={'/parents'}
+          />
+
+          {/* <hr style={{
+            border: '1px solid black',
+            top: '1%',
+            position: 'relative',
+            width: '100%',
+          }}>
+          </hr> */}
+
+          <div style={{ position: 'absolute', bottom: 40, width: '100%' }}>
+          <Sidemenu
+              img={IMAGES.setting}
+              label={'Setting'}
+              path={'/setting'}
             />
+            <Sidemenu
+              img={IMAGES.logout}
+              label={'Logout'}
+              path={'/login'}
+            />
+          </div>
+          {/* </div> */}
 
-
-    <hr style={{border: '1px solid white',
-                    top: '1%',
-                    position: 'relative',
-                    width: '100%',}}>
-        </hr>
+        </div>
+        {/*  */}
+      </>
     
-
-        <Sidemenu 
-            img={IMAGES.logout}
-            label={'Logout'}
-            path={'/report'}
-            />
-    {/* </div> */}
-        
-    </div>
-    </>
   )
 }
 

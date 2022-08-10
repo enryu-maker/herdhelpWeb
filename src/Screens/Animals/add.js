@@ -5,6 +5,8 @@ import NavBarMain from '../../Component/Nav/navmain'
 import { IMAGES } from '../../Theme/Image'
 import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
 import FlatList from 'flatlist-react'
+import Sidenav from '../../Component/Nav/sidenav'
+
 export default function add() {
   const data = [
     {
@@ -94,9 +96,8 @@ export default function add() {
   return (
     <>
       <NavBarMain page={'add'} />
-      <div style={{position:'absolute',
-            left:170,
-            width:'auto'}}>
+      
+      <div><Sidenav/>
       <ul>
           <FlatList
             list={data}
