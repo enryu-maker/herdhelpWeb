@@ -15,30 +15,27 @@ function renderForm(){
             // padding:0,
             minHeight:100,
             minWidth:100,
-            backgroundColor: '#f8f9d2',
-            backgroundImage: 'linear-gradient(315deg, #f8f9d2 0%, #e8dbfc 74%)',
-            // backgroundColor:"#f9d29d",
-            // backgroundImage : "linear-gradient(315deg, #f9d29d 0%, #ffd8cb 74%)",
-            // background:'linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%)',
-            // backgroundBlendMode: 'normal,color-burn',
+            backgroundColor:COLORS.white,
+
             
             textAlign:'left',
             padding:'10px 0px 50px 50px',
         }}>
             <div>
             <h3 style={{
-                ...FONTS.body1
+                ...FONTS.h1
             }}><b>Herdhelp Privacy Policy</b></h3>
                 <p style={{
                     ...FONTS.h3
                 }}>
-                This privacy policy discloses the privacy practices for <a href='https://herdhelp.com' style={{textDecoration:"none" , ...FONTS.body3}}> herdhelp.com</a>
+                This privacy policy discloses the privacy practices for <a href='https://herdhelp.com' style={{textDecoration:"none",color:COLORS.Primary,...FONTS.h3}}> herdhelp.com</a>
                 
                 . This privacy policy applies solely to information collected by this web site. It will notify you of the following:
                 </p>
 
                 <p style={{
-                    ...FONTS.body3,wordSpacing:2
+                    ...FONTS.body3,
+                    wordSpacing:2
                 }}>
                     1. What personally identifiable information is collected from you through the web site, how it is used and with whom it may be shared.<br/>
                     2. What choices are available to you regarding the use of your data.<br/>
@@ -50,7 +47,7 @@ function renderForm(){
 
                 <div>
             <h3 style={{
-                ...FONTS.body2
+                ...FONTS.h2
             }}><b>Information Collection, Use, and Sharing</b></h3>
                 
 
@@ -82,14 +79,14 @@ function renderForm(){
 
                 <div>
             <h3 style={{
-                ...FONTS.body2
+                ...FONTS.h2
             }}><b>Personal Information / Personally Identifiable Information</b></h3>
                 
 
                 <p style={{
                     ...FONTS.body3
                 }}>
-                    Without the need for further, repeated consents (aside from the acceptance of this Privacy Policy) by the user, Personal Information, Personally Identifiable Information and/or Financial Information shall be collected by the Apnimandi Platform on an ongoing basis, for one or more of the following reasons: 
+                    Without the need for further, repeated consents (aside from the acceptance of this Privacy Policy) by the user, Personal Information, Personally Identifiable Information and/or Financial Information shall be collected by the Herdhelp Platform on an ongoing basis, for one or more of the following reasons: 
 
                 </p>
 
@@ -102,21 +99,21 @@ function renderForm(){
                    <li>To resolve technical issues and troubleshoot problems; </li>
                    <li>To meet legal and regulatory requirements; </li>
                    <li>To provide ongoing service; </li>
-                   <li>To keep users apprised of the Apnimandi Platform’s promotions and offers; </li>
-                   <li>To detect and protect the Apnimandi Platform from error, fraud and other criminal activities; </li>
+                   <li>To keep users apprised of the Herdhelp Platform’s promotions and offers; </li>
+                   <li>To detect and protect the Herdhelp Platform from error, fraud and other criminal activities; </li>
                    <li>Other reasons which, prior to being put into effect, shall be communicated to the users through an update carried out to this Privacy Policy. </li>
                 </p>
                 </div>
                 <div>
-            <h3 style={{
-                ...FONTS.body2
-            }}><b>Policy Updates</b></h3>
+            <p style={{
+                ...FONTS.h2
+            }}><b>Policy Updates</b></p>
                 
 
                 <p style={{
                     ...FONTS.body3
                 }}>
-                  Our Privacy Policy may change from time to time and all updates will be posted on this page. If you feel that we are not abiding by this privacy policy, you should contact us immediately via email <a href='mailto:contact@herdhelp.com'>contact@herdhelp.com </a>
+                  Our Privacy Policy may change from time to time and all updates will be posted on this page. If you feel that we are not abiding by this privacy policy, you should contact us immediately via email <a href='mailto:contact@herdhelp.com' style={{textDecoration:"none",color:COLORS.Primary,...FONTS.body3}}>contact@herdhelp.com </a>
                 </p>
                 </div>
 
@@ -132,8 +129,8 @@ function renderForm(){
                   If there are any questions regarding this Privacy Policy, you may contact us using the information below. 
                 </p>
                 <div style={{textDecoration:"none"}}>
-                <li><a href='tel: +1(251) 747-8563' style={{textDecoration:"none",color:COLORS.Primary}} >Tel: +1(251) 747-8563 </a></li>
-                <li><a href='mailto: contact@herdhelp.com' style={{textDecoration:"none",color:COLORS.Primary}} >Email: contact@herdhelp.com </a></li>
+                <li><a href='tel: +1(251) 747-8563' style={{textDecoration:"none",color:COLORS.Primary,...FONTS.h2}} >Tel: +1(251) 747-8563 </a></li>
+                <li><a href='mailto: contact@herdhelp.com' style={{textDecoration:"none",color:COLORS.Primary,...FONTS.h2}} >Email: contact@herdhelp.com </a></li>
                 </div>
                 </div>
         </div>
@@ -146,7 +143,7 @@ function renderForm(){
           flex: 1,
         }}
       >
-        {renderHeader()}
+        <NavBarMain/>
         <div
           style={{
             display: "flex",

@@ -18,13 +18,9 @@ export default function Sidenav() {
             height: 45,
             display: 'flex',
             flexDirection:"row",
-            left: 40,
-            // left: 40,
             background: 'none',
-            // backgroundColor: label === 'Logout' ? COLORS.gray2 : 'none',
             border: 'none',
             cursor: 'pointer',
-            // justifyContent:"space-around",
             alignItems:"center"
           }}
           onClick={onPress}
@@ -61,7 +57,7 @@ export default function Sidenav() {
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
           cursor:"pointer",
-          width:"18%"
+          width:230
         }}
         
         >
