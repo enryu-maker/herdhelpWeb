@@ -168,7 +168,7 @@ export default function forgetPass({navigation}) {
     return (
       <Header
         leftComponent={
-          <View
+          <div
             style={{
               justifyContent: 'center',
               marginLeft: -15,
@@ -195,7 +195,7 @@ export default function forgetPass({navigation}) {
                 }}
               />
             </TouchableOpacity>
-          </View>
+          </div>
         }
         img={images.herdhelp}
         imgstyle={{
@@ -210,26 +210,26 @@ export default function forgetPass({navigation}) {
   }
   function renderForm() {
     return (
-      <View
+      <div
         style={{
           marginTop: SIZES.radius,
         }}>
-        <Text
+        <p
           style={{
             ...FONTS.h2,
             alignSelf: 'center',
             marginTop: '2%',
           }}>
           Forgot Password?
-        </Text>
-        <Text
+        </p>
+        <p
           style={{
             ...FONTS.body3,
             alignSelf: 'center',
           }}>
           Enter your Registered Email to continue!
-        </Text>
-        <View
+        </p>
+        <div
           style={{
             flex: 1,
             marginTop: SIZES.height > 800 ? SIZES.padding * 1.2 : SIZES.radius,
@@ -250,7 +250,7 @@ export default function forgetPass({navigation}) {
             keyboardType="email-address"
             autoCompleteType="email"
             appendComponent={
-              <View
+              <div
                 style={{
                   justifyContent: 'center',
                 }}>
@@ -269,7 +269,7 @@ export default function forgetPass({navigation}) {
                   }}
                 />:null
             }
-              </View>
+              </div>
             }
           />
           {email != '' && showB1 ? (
@@ -279,14 +279,14 @@ export default function forgetPass({navigation}) {
                   padding: 10,
                 }}
                 onPress={() => getToken()}>
-                <Text
+                <p
                   style={{
                     ...FONTS.h3,
                     alignSelf: 'center',
                     color: COLORS.Primary,
                   }}>
                   Generate OTP
-                </Text>
+                </p>
               </TouchableOpacity>
             ) : (
               <ActivityIndicator
@@ -297,13 +297,13 @@ export default function forgetPass({navigation}) {
               />
             )
           ) : null}
-        </View>
-      </View>
+        </div>
+      </div>
     );
   }
   function hiddenContent1() {
     return (
-      <View
+      <div
         style={{
           flex: 1,
         }}>
@@ -316,7 +316,7 @@ export default function forgetPass({navigation}) {
           returnKeyType={'next'}
           placeholder={'Enter OTP'}
           appendComponent={
-            <View
+            <div
               style={{
                 justifyContent: 'center',
               }}>
@@ -335,7 +335,7 @@ export default function forgetPass({navigation}) {
                   }}
                 />:null
             }
-            </View>
+            </div>
           }
         />
         {token != '' && showB2 ? (
@@ -345,14 +345,14 @@ export default function forgetPass({navigation}) {
                 padding: 10,
               }}
               onPress={() => checkToken()}>
-              <Text
+              <p
                 style={{
                   ...FONTS.h3,
                   alignSelf: 'center',
                   color: COLORS.Primary,
                 }}>
                 Verify Token
-              </Text>
+              </p>
             </TouchableOpacity>
           ) : (
             <ActivityIndicator
@@ -363,12 +363,12 @@ export default function forgetPass({navigation}) {
             />
           )
         ) : null}
-      </View>
+      </div>
     );
   }
   function hiddenContent2() {
     return (
-      <View
+      <div
         style={{
           flex: 1,
           marginTop:40
@@ -422,28 +422,28 @@ export default function forgetPass({navigation}) {
         label={'Set Password'}
       />
         
-      </View>
+      </div>
     );
   }
   return (
-    <View
+    <div
       style={{
         flex: 1,
         backgroundColor: COLORS.white,
       }}>
       {renderHeader()}
-      <KeyboardAwareScrollView
+      {/* <KeyboardAwareScrolldiv
         keyboardDismissMode="interactive"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           marginTop: SIZES.radius,
           // paddingHorizontal: SIZES.padding,
-        }}>
+        }}> */}
         {renderForm()}
         {isEmailvalid ? hiddenContent1() : null}
         {isTokenvalid ? hiddenContent2() : null}
-      </KeyboardAwareScrollView>
+      {/* </KeyboardAwareScrolldiv> */}
       
-    </View>
+    </div>
   );
 }

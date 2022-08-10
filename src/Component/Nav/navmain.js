@@ -101,7 +101,7 @@ function NavBarMain({
                 fontFamily: 'arial'
               }}
             >
-              <Link to="/" style={{
+              <Link to="/home" style={{
                 color: page === 'herds' ? COLORS.Primary : "black",
                 // textShadow:page === 'herds' ? '0px 0px 18px black' : 'none',
                 marginInline: '2%',
@@ -150,23 +150,6 @@ function NavBarMain({
             </Link> */}
             </div>
           </nav>
-          <div>
-            <Link to="/profile">
-              <button style={{ border: 'none', background: 'none' }} className='btn-navmain'><img
-                src={IMAGES.user}
-                alt=""
-                style={{
-                  height: 43,
-                  width: 43,
-                  alignSelf: "center",
-                  justifyContent: 'center',
-                  padding: 10,
-                  borderRadius:22
-                }}
-              /></button>
-
-            </Link>
-          </div>
         </div>
       </div>
 

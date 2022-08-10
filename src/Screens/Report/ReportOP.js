@@ -6,6 +6,7 @@ import FlatList from 'flatlist-react';
 import ReportCard from './ReportCard';
 import { IMAGES } from '../../Theme/Image';
 import axiosIns from '../../helpers/helpers';
+import Loading from '../../Component/Loading';
 export default function ReportOP() {
     const [loading, setLoading] = React.useState(false)
     const [Data, setData] = React.useState([])
@@ -117,7 +118,7 @@ export default function ReportOP() {
                         )
                     }
                     }
-                    renderWhenEmpty={() => <div>List is empty!</div>}
+                    renderWhenEmpty={() =><Loading/>}
                 />
             </ul>
         </div>

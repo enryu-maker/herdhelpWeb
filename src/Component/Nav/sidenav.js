@@ -9,7 +9,7 @@ export default function Sidenav() {
   const user = useSelector(state => state.Reducers.userData)
 
 
-  function Sidemenu({ img, label, path }) {
+  function Sidemenu({ img, label, path, onPress }) {
     return (
       <>
         <Link to={path} style={{ textDecoration: 'none', margin: 0, left: 20 }}>
@@ -26,7 +26,9 @@ export default function Sidenav() {
             cursor: 'pointer',
             // justifyContent:"space-around",
             alignItems:"center"
-          }}>
+          }}
+          onClick={onPress}
+          >
             <img src={img}
               alt="logo"
               style={{
@@ -180,6 +182,9 @@ export default function Sidenav() {
               img={IMAGES.logout}
               label={'Logout'}
               path={'/login'}
+              onPress={()=>{
+                localStorage.clear()
+              }}
             />
           </div>
           {/* </div> */}

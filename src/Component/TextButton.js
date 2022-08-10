@@ -27,6 +27,7 @@ export default function TextButton({
             height:50,
             width:220,
             alignSelf:'center',
+            cursor:"pointer",
             ...buttonContainerStyle,
         }}
         >

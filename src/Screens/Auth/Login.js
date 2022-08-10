@@ -11,7 +11,7 @@ import utils from "../../utils/Utils";
 import { useDispatch } from 'react-redux'
 import { storeID } from "../../Store/actions";
 import { Login_Function } from "../../Store/actions";
-
+import Loading from "../../Component/Loading";
 export default function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -22,8 +22,6 @@ export default function Login() {
   const [EmailErr, setEmailErr] = React.useState("");
   let navi = useNavigate()
   const dispatch = useDispatch()
-
-
   function isEnableSignIn() {
     return email != "" && password != "";
   }
@@ -50,7 +48,7 @@ export default function Login() {
             dispatch(Login_Function(response.data.access))
             dispatch(storeID(response.data.userid))
             setLoading(false);
-            navi("/")
+            navi("/home")
 
           } else {
             setLoading(false);
@@ -72,35 +70,35 @@ export default function Login() {
 
   return (
     <div style={{
-      flex:1,
+      flex: 1,
     }}>
-    <NavBar
-    navStyle={{
-    }}
-  page={"/login"}
-  />
+      <NavBar
+        navStyle={{
+        }}
+        page={"/login"}
+      />
 
-<div style={{
-       display:"flex",
-        justifyContent:"center",
-        alignSelf:"center"
-    }}>
-    <div
-      style={{
-        // backgroundColor: COLORS.lightGray2,
-        minHeight:300,
-        width:450,
-        padding:20,
-        borderRadius: SIZES.radius,
-        marginTop:50,
-        marginBottom:50,
-      }}
-    >
-        <p style={{
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignSelf: "center"
+      }}>
+        <div
+          style={{
+            // backgroundColor: COLORS.lightGray2,
+            minHeight: 300,
+            width: 450,
+            padding: 20,
+            borderRadius: SIZES.radius,
+            marginTop: 50,
+            marginBottom: 50,
+          }}
+        >
+          <p style={{
             ...FONTS.largeTitle,
             alignSelf: 'center',
           }}>LOGIN</p>
-        <p style={{
+          <p style={{
             ...FONTS.h2,
             alignSelf: 'center',
           }}>Let's Sign You In</p>
@@ -108,110 +106,112 @@ export default function Login() {
             ...FONTS.body3,
             alignSelf: 'center',
           }}>
-          Login account to continue!</p>
-      <p
-        style={{
-          color: COLORS.red,
-          ...FONTS.h3,
-        }}
-      >
-        {EmailErr}
-      </p>
-      <InputForm
-        appendComponent={
-          <img
-            src={IMAGES.correct}
+            Login account to continue!</p>
+          <p
             style={{
-              height: 25,
-              width: 25,
-              margin: 10,
-              alignSelf: "center",
+              color: COLORS.red,
+              ...FONTS.h3,
+            }}
+          >
+            {EmailErr}
+          </p>
+          <InputForm
+            appendComponent={
+              <img
+                src={IMAGES.correct}
+                style={{
+                  height: 25,
+                  width: 25,
+                  margin: 10,
+                  alignSelf: "center",
+                }}
+              />
+            }
+            type={"email"}
+            value={email}
+            label={"Email*"}
+            errorMsg={EmailError}
+            placeholder={"Enter your email"}
+            onChange={(event) => {
+              utils.validateEmail(event.target.value, setEmailError)
+              setEmail(event.target.value);
             }}
           />
-        }
-        type={"email"}
-        value={email}
-        label={"Email"}
-        errorMsg={EmailError}
-        placeholder={"Enter your email"}
-        onChange={(event) => {
-          utils.validateEmail(event.target.value,setEmailError)
-          setEmail(event.target.value);
-        }}
-      />
-      <InputForm
-        appendComponent={
-          <button onClick={()=>{
-              setShowPass(!showPass)
-          }}
-          style={{
-              borderWidth:0,
-              backgroundColor:COLORS.white,
-              borderRadius:SIZES.radius
-          }}
-          >
-            <img
-              src={showPass?IMAGES.eye_close:IMAGES.eye}
-              style={{
-                height: 25,
-                width: 25,
-                alignSelf: "center",
-                margin: 10,
+          <InputForm
+            appendComponent={
+              <button onClick={() => {
+                setShowPass(!showPass)
               }}
-            />
-          </button>
-        }
-        value={password}
-        type={showPass ? "text" : "password"}
-        label={"Password"}
-        placeholder={"Enter your password"}
-        onChange={(event) => {
-          setPassword(event.target.value);
-        }}
-      />
-      
-
-
-      <TextButton
-        label={"Login"}
-        icon={IMAGES.log}
-        onPress={() => {
-          login();
-        }}
-        buttonContainerStyle={{
-            backgroundColor: isEnableSignIn()
-              ? COLORS.Primary
-              : COLORS.transparentPrimary2,
+                style={{
+                  borderWidth: 0,
+                  backgroundColor: COLORS.white,
+                  borderRadius: SIZES.radius
+                }}
+              >
+                <img
+                  src={showPass ? IMAGES.eye_close : IMAGES.eye}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    alignSelf: "center",
+                    margin: 3,
+                  }}
+                />
+              </button>
+            }
+            value={password}
+            type={showPass ? "text" : "password"}
+            label={"Password*"}
+            placeholder={"Enter your password"}
+            onChange={(event) => {
+              setPassword(event.target.value);
             }}
-          
-      />
-        
-      <p style={{ color: COLORS.darkGray, ...FONTS.body3 }}>
-        Don't have an account?{" "}
-        <Link
-        to="/register"
-          style={{
-            color: COLORS.Primary,
-          }}
-        >
-          SIGNUP
-        </Link>
-        <br/>
-        <Link
-        to="/"
-          style={{
-            // position:'absolute',
-            alignSelf:"center",
-            // display:'flex',
-            marginTop:'13px',
-            color: COLORS.Primary,
-          }}
-        >
-         Forget Password
-        </Link>
-      </p>
-    </div>
-    </div>
+          />
+
+
+          {
+            loading ? 
+            <Loading /> :
+          <TextButton
+            label={"Login"}
+            icon={IMAGES.log}
+            onPress={()=>{
+              login()
+            }}
+            buttonContainerStyle={{
+              backgroundColor: isEnableSignIn()
+                ? COLORS.Primary
+                : COLORS.transparentPrimary2,
+            }}
+
+          />
+          }
+          <p style={{ color: COLORS.darkGray, ...FONTS.body3 }}>
+            Don't have an account?{" "}
+            <Link
+              to="/register"
+              style={{
+                color: COLORS.Primary,
+              }}
+            >
+              SIGNUP
+            </Link>
+            <br />
+            <Link
+              to="/"
+              style={{
+                // position:'absolute',
+                alignSelf: "center",
+                // display:'flex',
+                marginTop: '13px',
+                color: COLORS.Primary,
+              }}
+            >
+              Forget Password
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

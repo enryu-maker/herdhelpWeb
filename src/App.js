@@ -69,11 +69,11 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Signup />} />
                     <Route path="/*" element={<Login />} />
-
+                    <Route path="/home" element={<ProtectedRoute Component={Main} access={access} />} />
                   </> : <>
                     <Route path="/add" element={<Add />} />
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/" element={<ProtectedRoute Component={Main} access={access} />} />
+                    <Route path="/home" element={<ProtectedRoute Component={Main} access={access} />} />
                     <Route path="/weight" element={<Weight />} />
                     <Route path="/animals" element={<AddAnimals />} />
                     <Route path="/medication" element={<AddMedication />} />
@@ -87,8 +87,7 @@ function App() {
                     <Route path='/subscription' element={<Subscription />} />
                     <Route path='/terms-and-condition' element={<Terms />} />
                     <Route path='/setting' element={<Setting />} />
-                    <Route path='/male' element={<Male />} />
-                    <Route path='/female' element={<Female />} />
+                    <Route path="/login" element={<Login />} />
                     <Route path='/info' element={<ProtectedRoute Component={Info} access={access} />} />
                     <Route path='/animal' element={<ProtectedRoute Component={Animal} access={access} />} />
                     {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
