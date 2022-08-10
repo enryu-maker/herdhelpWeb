@@ -27,12 +27,7 @@ import ProtectedRoute from './Protection/Protected';
 import { useDispatch, useSelector } from 'react-redux';
 import Info from './Screens/Home/Info';
 import Animal from './Screens/Home/Animal';
-import Cow from './animalpages/cow';
-import Goat from './animalpages/goat';
-import Horse from './animalpages/horse';
-import Pig from './animalpages/pig';
-import Rabbit from './animalpages/rabbit';
-import Sheep from './animalpages/sheep';
+
 import Flag from './Screens/Animals/flaganimal'
 import Updatebred from './Screens/Animals/updatebred';
 import React from 'react';

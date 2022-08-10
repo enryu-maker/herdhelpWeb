@@ -1,3 +1,4 @@
+import { hover } from "@testing-library/user-event/dist/hover";
 import React from "react";
 import { Link } from "react-router-dom";
 import { IMAGES } from "../../Theme/Image";
@@ -11,17 +12,6 @@ function NavBarMain({
   page,
   navStyle
 }) {
-  // var {nav , setNavbar} = useState(true);
-
-
-  // const changeBackground = () => {
-  //   if(window.scrollY >= 75 ){
-  //     setNavbar=(true)
-  //   }else(
-  //     setNavbar=(false)
-  //   )
-  // }
-  // window.addEventListener( `scroll`,changeBackground);
 
   function Sidemenu({ img, label, path }) {
     return (
@@ -35,10 +25,10 @@ function NavBarMain({
             background:'none',
             // backgroundColor: label === 'Logout' ? COLORS.gray2 : 'none',
             border: 'none',
-            borderBottom: '1px solid black', 
+            // borderBottom: '1px solid black', 
             cursor: 'pointer'
-          }} className='menu'>
-            <img src={img}
+          }} className='menu' id="menu">
+            {/* <img src={img}
               alt="logo"
               style={{
                 width: 28,
@@ -46,34 +36,28 @@ function NavBarMain({
                 marginLeft: 20,
                 marginTop: 7,
                 display: 'block',
-              }} />
+              }} /> */}
             <h3 style={{
               color: label === 'Logout' ? COLORS.red : COLORS.black,
+
               // color:COLORS.black,
               fontWeight: 300,
               marginLeft: 20,
-              fontWeight:500
-            }} >{label}</h3></button></Link>
+              fontWeight:500,
+              
+            }}>{label}</h3></button></Link>
       </>
     )
   }
 
-  // const sidebar = useState(false)
-  // let openside = document.getElementById('sidebar')
-  // let closeside = document.getElementById('sidebar')
-  // function openSidebar(){
-  //   openside.style.left = '0%';
-  // }
-  // function closeSidebar(){
-  //   closeside.style.left = '-100px';
-  // }
+
 
   return (
     <>
       <div style={{ width: '100%', top: 0 }}>
         <div style={{ display: 'flex', width: '100%' }}>
           <div>
-            <button style={{
+            {/* <button style={{
               background: 'none',
               border: 'none',
               cursor: 'pointer',
@@ -94,7 +78,7 @@ function NavBarMain({
                   margin: 10
                 }}
               />
-            </button>
+            </button> */}
 
 
 
@@ -196,16 +180,19 @@ function NavBarMain({
 
       {/*  */}
       <>
-        <div style={{ width: '100%', display: 'flex', position: 'fixed', height: 'fit-window', backgroundColor: COLORS.lightGray1 }}></div>
+        
         <div style={{
           position: 'fixed',
-          width: 298,
+          // display:'block',
+          width: 190,
           height: '100%',
-          left: '-100%',
+          left: '0%',
           top: 0,
           backgroundColor: COLORS.Primary ,
-          textDecorationColor:COLORS.black
-        }} id='sidebar'>
+          textDecorationColor:COLORS.black,
+          borderRight:'1px solid black',
+          borderTop:'1px solid black'
+        }}>
           <div style={{ height: 100 }}>
             <img
               src={IMAGES.login}
@@ -214,7 +201,7 @@ function NavBarMain({
                 position: 'absolute',
                 width: 48,
                 height: 48,
-                left: 28,
+                left: 10,
                 top: 39,
 
               }}
@@ -236,7 +223,7 @@ function NavBarMain({
                 position: 'absolute',
                 width: 65,
                 height: 26,
-                left: 95,
+                left: 75,
                 top: 25,
                 fontSize: 15
               }} >Mr. Jhon</h3>
@@ -244,7 +231,7 @@ function NavBarMain({
                 position: 'absolute',
                 width: 100,
                 height: 26,
-                left: 95,
+                left: 75,
                 top: 43,
                 fontSize: 15
               }} >Robins Farm</h3>
@@ -252,12 +239,12 @@ function NavBarMain({
                 position: 'absolute',
                 width: 65,
                 height: 26,
-                left: 95,
+                left: 75,
                 top: 60,
                 fontSize: 15
               }} >@jhon</h3>
             </div>
-            <button style={{
+            {/* <button style={{
               background: 'none',
               border: 'none',
               cursor: 'pointer',
@@ -277,15 +264,15 @@ function NavBarMain({
                   right: 20,
                   top: 19,
                 }}
-              /></button>
+              /></button> */}
           </div>
-          <hr style={{
+          {/* <hr style={{
             border: '1px solid black',
             top: '1%',
             position: 'relative',
             width: '100%',
           }}>
-          </hr>
+          </hr> */}
 
 
           <Sidemenu
@@ -303,13 +290,13 @@ function NavBarMain({
             label={'Subscription'}
             path={'/subscription'}
           />
-          <hr style={{
+          {/* <hr style={{
             border: '1px solid black' ,
             top: '1%',
             position: 'relative',
             width: '100%',
           }}>
-          </hr>
+          </hr> */}
 
           <Sidemenu
             img={IMAGES.weight}
@@ -322,13 +309,13 @@ function NavBarMain({
             path={'/parents'}
           />
 
-          <hr style={{
+          {/* <hr style={{
             border: '1px solid black',
             top: '1%',
             position: 'relative',
             width: '100%',
           }}>
-          </hr>
+          </hr> */}
 
           <div style={{ position: 'absolute', bottom: 40, width: '100%' }}>
             <Sidemenu
