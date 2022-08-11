@@ -1,6 +1,6 @@
 const initialState = {
   authToken: null,
-  id:null,
+  id: null,
   unit: null,
   userData: {},
   status: [],
@@ -12,8 +12,9 @@ const initialState = {
   animal: {},
   med: {},
   fcat: [],
-  reports:[],
-  subs:[]
+  reports: [],
+  subs: [],
+  overview: []
 };
 
 export default (state = initialState, action) => {
@@ -23,21 +24,21 @@ export default (state = initialState, action) => {
         ...state,
         authToken: action.payload,
       };
-      case 'ID':
-        return {
-          ...state,
-          id: action.payload,
-        };
+    case 'ID':
+      return {
+        ...state,
+        id: action.payload,
+      };
     case 'UNIT':
       return {
         ...state,
         unit: action.payload,
       };
-      case 'CLEAN':
-        return {
-          ...state,
-          animal: action.payload,
-        };
+    case 'CLEAN':
+      return {
+        ...state,
+        animal: action.payload,
+      };
     case 'HERDS':
       return {
         ...state,
@@ -72,7 +73,7 @@ export default (state = initialState, action) => {
         ...state,
         finance: action.payload,
       };
-      case 'SUBS':
+    case 'SUBS':
       return {
         ...state,
         subs: action.payload,
@@ -97,11 +98,16 @@ export default (state = initialState, action) => {
         ...state,
         fcat: action.payload,
       };
-      case 'REPORT':
-        return {
-          ...state,
-          reports: action.payload,
-        };
+    case 'REPORT':
+      return {
+        ...state,
+        reports: action.payload,
+      };
+    case 'OVERVIEW':
+      return {
+        ...state,
+        overview: action.payload,
+      };
     default:
       return state;
   }

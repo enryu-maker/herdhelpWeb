@@ -73,6 +73,15 @@ export const WeightUnit = (cond) => {
       })
     }
   }
+  export const getOverview = () => {
+    return async dispatch => {
+      let {data} = await axiosIns.get('reports/getoverview/');
+      dispatch({
+        type: 'OVERVIEW',
+        payload:data
+      })
+    }
+  }
   export const getHerds = (token) => {
     return async dispatch => {
       let data = await axios.get(baseURL + '/animals',{

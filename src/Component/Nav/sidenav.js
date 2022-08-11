@@ -4,11 +4,14 @@ import { IMAGES } from '../../Theme/Image'
 import { COLORS, FONTS  } from '../../Theme/Theme'
 import './Navbar.css'
 import { useSelector } from "react-redux";
+import FlatList from 'flatlist-react'
 
 export default function Sidenav({
   active
 }) {
   const user = useSelector(state => state.Reducers.userData)
+  const overview = useSelector(state => state.Reducers.overView)
+
 
 
   function Sidemenu({ img, label, path, onPress }) {
@@ -193,8 +196,31 @@ export default function Sidenav({
           {/* </div> */}
 
         </div>
+        <ul style={{
+          paddingInlineStart: 0,
+        }}>
+          <FlatList
+            list={sub}
+            keyExtractor={item => `${item.id}`}
+            // displayGrid
+            renderItem={(item, index) => {
+              return (
+                <>
+                  {
+
+                    item.label == "Free Tier" ? null :
+                      <SubCard label={item.label} price={item.price} description={item.description} count={item.count} />
+                  }
+                </>
+              )
+
+            }
+            }
+            renderWhenEmpty={() => (<Loading />)}
+          />
+        </ul>
         </div>
-        {/*  */}
+
 
     
       </>

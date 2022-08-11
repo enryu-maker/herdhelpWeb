@@ -97,10 +97,10 @@ export default function Subscription() {
         float: "right",
       }}>
         <NavBarMain />
+        
         <Header title={"Choose Your Subscription Plan"}/>
         <ul style={{
           paddingInlineStart: 0,
-          marginBottom: "30px"
         }}>
           <FlatList
             list={sub}
