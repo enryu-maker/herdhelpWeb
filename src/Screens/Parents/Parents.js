@@ -1,171 +1,85 @@
 import React, { useState } from 'react'
-import TextButton from "../../Component/TextButton";
-import InputForm from "../../Component/InputForm";
-import NavBarMain from "../../Component/Nav/navmain";
-import { IMAGES } from "../../Theme/Image";
-import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
-import DropDown from "../../Component/DropDown/DropDown";
-import {species } from "../../Component/Constants";
-// import axiosIns from '../../helpers/helpers';
-
+import NavBarMain from '../../Component/Nav/navmain'
+import Sidenav from '../../Component/Nav/sidenav'
+import DropDown from '../../Component/DropDown/DropDown'
+import { COLORS, SIZES } from '../../Theme/Theme';
+import { IMAGES } from '../../Theme/Image';
+import InputForm from '../../Component/InputForm';
+import Header from '../../Component/Header';
+import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import TextButton from '../../Component/TextButton';
 export default function Parents() {
-// 
-const [valueMS, setValueMS] = useState("");
-const [tag, setTag] = useState("");
-const [bought, setBought] = useState(false);
-const options = ["one", "two", "three"];
-const defaultOption = options[0];
-//
-/*  React.useEffect(() => {
-    setId(global.id);
-    setSpecies(global.species);
-    setTagl(global.tags)
-
-  }, []);
-  const onChangeSpec = value => {
-    setAnimal(value);
-  };
-  async function findChildren() {
-
-      setLoading(true);
-      try {
-        let {data} = await axiosIns.get(
-          `reports/getchildren/${id}${animal}${tag}`,
-        );
-        if (data.length > 0 && data != undefined) {
-          setBabies(data)
-          setTag('');
-          setLoading(false);
-          return data;
-        } else {
-          setLoading(false);
-          setErr('babies Not found');
-        }
-      } catch (e) {
-        setLoading(false);
-        setErr('Server Error');
+  const [valueMS, setValueMS] = useState("");
+  const [valueBS, setValueBS] = useState("");
+  const [name, setName] = useState("");
+  const navigate = useNavigate()
+  const tags = useSelector(state => state.Reducers.tags)
+  const species = useSelector(state => state.Reducers.cat)
+  function finder(list, value) {
+    var dataValue;
+    list?.map(a => {
+      if (value == a.label) {
+        dataValue = a.data;
       }
-    }*/ 
-//
-
-    function renderHeader(){
-        return<NavBarMain/>;
-      }
-      function renderForm(){
-        return(
-            <div
-            style={{
-                backgroundColor: COLORS.lightGray2,
-                minHeight: 300,
-                //   width:450,
-                padding: 20,
-                borderRadius: SIZES.radius,
-                marginTop: 50,
-                marginBottom: 50, 
-            }}
-            >
-                <p
-                style={{
-                ...FONTS.largeTitle,
-                alignSelf: "center",
-          }}
-        >
-          Parents
-        </p>
-        <div
-          style={{
-            display: "flex",
-            flexFlow: "row",
-          }}
-        >
-          <div
-            style={{
-              margin: 20,
-            }}
-          >
-            <DropDown
-              value={valueMS}
-              setValue={setValueMS}
-              label={"Species*"}
-              // options={checking}
-              options={species}
-            />
-
-          </div>
-            <div
-            style={{
-              margin: 20,
-            }}
-          >
-            <InputForm
-              prependComponent={
-                <img
-                  src={IMAGES.tag}
-                  style={{
-                    height: 25,
-                    width: 25,
-                    margin: 10,
-                    alignSelf: "center",
-                  }}
-                />
-              }
-              type={"text"}
-              value={tag}
-              label={"Tag Number*"}
-              onChange={(event) => {
-                setTag(event.target.value);
-              }}
-            />
-            </div>
-            </div>
-            <div
-            style={{
-              margin: 2,
-            }}
-          >
-            </div>
-            <TextButton
-        label={"List of Babies"}
-        icon={IMAGES.parents}
-        onPress={() => alert(bought)}
-        buttonContainerStyle={{
-          marginBottom:50
-        }}
-      />
-            </div>
-        )
-    }
-
-
-
-
-
-
-
+    });
+    return dataValue;
+  }
   return (
-    <div
-    style={{
-      flex: 1,
-    }}
-  >
-    {renderHeader()}
-    <div
-      style={{
+    <div style={{
+      display: "flex",
+      height: "100vh",
+      width: "100%",
+    }}>
+      <Sidenav active={"Parents"}/>
+      <div style={{
+        width: "90%",
+        float: "right",
         display: "flex",
-        justifyContent: "center",
-        alignSelf: "center",
-      }}
-    >
-      {renderForm()}
-    </div>
-    <TextButton
-        label={"Search Babies"}
+          flexDirection: "column",
+          alignItems: "center",
+      }}>
+        <NavBarMain/>
+        <Header title={"Search Parents"}/>
+        <div style={{
+            paddingTop: "20px",
+            backgroundColor: COLORS.lightGray2,
+            alignSelf:"center",
+            width: "80%",
+            borderRadius: SIZES.radius,
+            justifyContent:"center"
+          }}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-evenly"
+              }}
+            >
+          <DropDown
+            value={valueMS}
+            setValue={setValueMS}
+            label={"Species*"}
+            // options={checking}
+            options={species}
+          />
+          <DropDown
+            value={valueBS}
+            setValue={setValueBS}
+            label={"Tags*"}
+            // options={checking}
+            options={finder(tags,valueMS)}
+          />
+          </div>
+          </div>
+          <TextButton
+        label={"Search"}
         icon={IMAGES.parents}
-        onPress={() => alert(bought)}
+        onPress={() => alert("hi")}
         buttonContainerStyle={{
-          marginBottom:50
+          marginTop: "30px",
         }}
       />
-  </div>
+      </div>
+    </div>
   )
 }

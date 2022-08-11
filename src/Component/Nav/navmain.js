@@ -101,11 +101,11 @@ function NavBarMain({
                 fontFamily: 'arial'
               }}
             >
-              <Link to="/home" style={{
+              <Link to="/" style={{
                 color: page === 'herds' ? COLORS.Primary : "black",
                 // textShadow:page === 'herds' ? '0px 0px 18px black' : 'none',
                 marginInline: '2%',
-                ...FONTS.h3,
+                ...FONTS.h2,
                 textDecoration: 'none',
               }}>
                 Herds
@@ -115,7 +115,7 @@ function NavBarMain({
                 // textShadow:page === 'finance' ? '0px 0px 18px black' : 'none',
                 marginInline: '2%',
                 textDecoration: 'none',
-                ...FONTS.h3
+                ...FONTS.h2
 
               }}>
                 Finance
@@ -125,7 +125,7 @@ function NavBarMain({
                 // textShadow:page === 'add' ? '0px 0px 18px black' : 'none',
                 marginInline: '2%',
                 textDecoration: 'none',
-                ...FONTS.h3
+                ...FONTS.h2
               }}>
                 Add
               </Link>
@@ -134,7 +134,7 @@ function NavBarMain({
                 // textShadow:page === 'alerts' ? '0px 0px 18px black' : 'none',
                 marginInline: '2%',
                 textDecoration: 'none',
-                ...FONTS.h3,
+                ...FONTS.h2,
               }}>
                 Alerts
               </Link>

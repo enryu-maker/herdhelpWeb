@@ -5,7 +5,9 @@ import { COLORS, FONTS  } from '../../Theme/Theme'
 import './Navbar.css'
 import { useSelector } from "react-redux";
 
-export default function Sidenav() {
+export default function Sidenav({
+  active
+}) {
   const user = useSelector(state => state.Reducers.userData)
 
 
@@ -21,7 +23,8 @@ export default function Sidenav() {
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            alignItems:"center"
+            alignItems:"center",
+
           }}
           onClick={onPress}
           >
@@ -38,7 +41,20 @@ export default function Sidenav() {
               padding: '10px',
 
 
-            }}>{label}</p></button></Link>
+            }}>{label}</p>
+            {
+              active==label?
+            
+            <img src={IMAGES.sideback}
+              alt="logo"
+              style={{
+                width: 25,
+                height: 25,
+                marginLeft:180,
+                position:"fixed",
+                justifyContent:"center"
+              }} /> :null}
+            </button></Link>
       </>
     )
   }

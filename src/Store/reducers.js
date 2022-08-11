@@ -12,7 +12,8 @@ const initialState = {
   animal: {},
   med: {},
   fcat: [],
-  reports:[]
+  reports:[],
+  subs:[]
 };
 
 export default (state = initialState, action) => {
@@ -70,6 +71,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         finance: action.payload,
+      };
+      case 'SUBS':
+      return {
+        ...state,
+        subs: action.payload,
       };
     case 'ALERTS':
       return {

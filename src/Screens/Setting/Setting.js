@@ -10,12 +10,11 @@ export default function Setting() {
     <>
       <div style={{
         display: "flex",
-        // justifyContent:"center",
         height: "100vh",
         width: "100%",
 
       }}>
-        <Sidenav />
+        <Sidenav active={"Setting"} />
         <div style={{
           display: "flex",
           flexDirection: "column",

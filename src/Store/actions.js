@@ -64,6 +64,15 @@ export const WeightUnit = (cond) => {
       })
     }
   }
+  export const getSubs = () => {
+    return async dispatch => {
+      let {data} = await axiosIns.get('subscriptions/');
+      dispatch({
+        type: 'SUBS',
+        payload:data
+      })
+    }
+  }
   export const getHerds = (token) => {
     return async dispatch => {
       let data = await axios.get(baseURL + '/animals',{
@@ -190,9 +199,11 @@ export const WeightUnit = (cond) => {
 
 export const Logout = () => {
   return async dispatch => {
+    localStorage.clear()
     // await AsyncStorage.clear();
     dispatch({
-      type: 'LOGOUT'
+      type: 'LOGOUT',
+      payload:null
     })
   }
 }

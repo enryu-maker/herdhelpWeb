@@ -80,4 +80,6 @@ export const IMAGES={
     img2:require("../assets/Logo/log1.png"),
     setImg:require("../assets/Logo/Combined-Shape.png"),
     plus1:require("../assets/Add/plus1.png"),
+    sideback:require("../assets/Logo/play-arrow.png"),
+
 }

@@ -73,7 +73,7 @@ export default function Report() {
         width:"100%",
         justifyContent:"center"
       }}>
-        <Sidenav />
+      <Sidenav active={"Report"}/>
         <div style={{
           width:"90%",
           float:"right",

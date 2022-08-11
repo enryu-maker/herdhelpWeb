@@ -1,204 +1,129 @@
-import React, { useState } from "react";
-import TextButton from "../../Component/TextButton";
-import InputForm from "../../Component/InputForm";
-import NavBarMain from "../../Component/Nav/navmain";
-import { IMAGES } from "../../Theme/Image";
-import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
-import DropDown from "../../Component/DropDown/DropDown";
-import { checking, gender , species } from "../../Component/Constants";
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import NavBarMain from '../Nav/navmain'
+import Sidenav from '../Nav/sidenav'
+import { useNavigate } from 'react-router-dom'
+import FlatList from 'flatlist-react'
+import Loading from '../Loading'
+import { COLORS, FONTS, formatter, SIZES } from '../../Theme/Theme'
+import { IMAGES } from '../../Theme/Image'
+import Header from '../Header'
+import { getSubs, UserData } from '../../Store/actions'
+export default function Subscription() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  React.useEffect(()=>{
+    dispatch(getSubs())
+    dispatch(UserData())
+  },[])
+  const sub = useSelector(state => state.Reducers.subs)
 
-export default  function Subscription() {
-
-const [tire_1 , setTire] = useState(true) ;
-
-    function renderHeader() {
-        return <NavBarMain />;
-      }
-      function renderForm() {
+  function SubCard({ label, price, onPress, description, count }) {
+    return (
+      <>
+        <button
+          style={{
+            backgroundColor: COLORS.lightGray2,
+            height: 250,
+            margin: SIZES.padding,
+            borderRadius: SIZES.radius,
+            // flexDirection:"column",
+            borderWidth: 0,
+            justifyContent: "space-evenly",
+            shadowColor: COLORS.Primary,
+            shadowOffset: { width: 0, height: 0 },
+            shadowOpacity: 0.5,
+            shadowRadius: 10,
+            elevation: 2,
+            width: 230,
+            cursor: 'pointer',
+            boxShadow: '0px 0px 15px -4px #888181',
+            alignItems:"center"
+          }}
+          onClick={onPress}
+        >
+          <p 
+          style={{ 
+            ...FONTS.body3,
+            position:"fixed",
+            marginTop:-30,
+            marginLeft:47,
+            backgroundColor:COLORS.Primary,
+            color:COLORS.white,
+            padding:5,
+            borderRadius:SIZES.base
+            }}>{"Monthly Plan"}</p>
+          <p style={{ ...FONTS.h2, margin: 20 }}>{label}</p>
+          <p style={{ ...FONTS.h2, margin: 20 }}>{formatter.format(price)}</p>
+          <div style={{
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"center",
+            backgroundColor:COLORS.white,
+            alignSelf:"center",
+            height:30,
+            borderRadius:15
+          }}>
+            <img src={IMAGES.cow} style={{
+              height:30,
+              width:30,
+              padding:"5px"
+            }}/>
+          <p style={{ ...FONTS.h3,
+              padding:"5px"
+          
+          }}>X</p>
+          <p style={{ ...FONTS.h3,
+              padding:"5px"
         
-        return (
-            <div
-            style={{
-                backgroundColor: COLORS.lightGray2,
-                minHeight: 300,
-                //   width:450,
-                padding: "0 20px",
-                borderRadius: SIZES.radius,
-                marginTop: 0,
-                marginBottom: 10,
-            }}
-            >
-                <p style={{color:COLORS.red}}>NO Active Subscription , Please Purchase the Tire</p>
-              <div>
-            <p
-              style={{
-                ...FONTS.largeTitle,
-                alignSelf: "center",
-              }}
-            >
-              Subscription
-            </p>
-            <p>Find Which One Is best For You</p>
-            </div>
-
-            <div style={{display:'flex', flexDirection:"column",width:'100%'}}>
-                <div style={{
-                width:950,
-                            Height:50, 
-                            backgroundColor:COLORS.white,
-                            margin:'5px 10px',
-                            padding:'0 40px',
-                            display:'flex',
-                            justifyContent:"space-between",
-                            borderRadius:SIZES.radius
-                            }}>
-                    <p  style={{
-                ...FONTS.body1,
-                alignSelf: "left",
-              }}> Tier 1 </p>
-                    <h3>$9.99 / month</h3>
-                    <h4>Animal Limit : 50</h4>
-                    
-                    
-                    <button value={tire_1} style={{ width:70,...FONTS.body2,margin:'auto 0' , height:40, border:"none" , background:COLORS.Primary , borderRadius:SIZES.radius, cursor:"pointer"}}
-                    >BUY</button>
-                    {/* {tire_1 ? 
-                      <h3>1 x 9.99 </h3> :   <h3>helo</h3>
-                } */}
-                    
-                </div>
-                <div style={{
-                width:950,
-                            Height:50, 
-                            backgroundColor:COLORS.white,
-                            margin:'5px 10px',
-                            padding:'0 40px',
-                            display:'flex',
-                            justifyContent:"space-between",
-                            borderRadius:SIZES.radius
-                            }}>
-                    <p  style={{
-                ...FONTS.body1,
-                alignSelf: "left",
-              }}> Tier 2 </p>
-                    <h3>$19.99 / month</h3>
-                    <h4>Animal Limit : 100</h4>
-                    
-                    
-                    <button value={tire_1} style={{ width:70,...FONTS.body2,margin:'auto 0' , height:40, border:"none" , background:COLORS.Primary , borderRadius:SIZES.radius, cursor:"pointer"}}
-                    >BUY</button>
-                    {/* {tire_1 ? 
-                      <h3>1 x 9.99 </h3> :   <h3>helo</h3>
-                } */}
-                    
-                </div>
-                <div style={{
-                width:950,
-                            Height:50, 
-                            backgroundColor:COLORS.white,
-                            margin:'5px 10px',
-                            padding:'0 40px',
-                            display:'flex',
-                            justifyContent:"space-between",
-                            borderRadius:SIZES.radius
-                            }}>
-                    <p  style={{
-                ...FONTS.body1,
-                alignSelf: "left",
-              }}> Tier 3 </p>
-                    <h3>$29.99 / month</h3>
-                    <h4>Animal Limit : 200</h4>
-                    
-                    
-                    <button value={tire_1} style={{ width:70,...FONTS.body2,margin:'auto 0' , height:40, border:"none" , background:COLORS.Primary , borderRadius:SIZES.radius, cursor:"pointer"}}
-                    >BUY</button>
-                    {/* {tire_1 ? 
-                      <h3>1 x 9.99 </h3> :   <h3>helo</h3>
-                } */}
-                    
-                </div>
-                <div style={{
-                width:950,
-                            Height:50, 
-                            backgroundColor:COLORS.white,
-                            margin:'5px 10px',
-                            padding:'0 40px',
-                            display:'flex',
-                            justifyContent:"space-between",
-                            borderRadius:SIZES.radius
-                            }}>
-                    <p  style={{
-                ...FONTS.body1,
-                alignSelf: "left",
-              }}> Tier 4 </p>
-                    <h3>$49.99 / month</h3>
-                    <h4>Animal Limit : 500</h4>
-                    
-                    
-                    <button value={tire_1} style={{ width:70, ...FONTS.body2,margin:'auto 0' , height:40, border:"none" , background:COLORS.Primary , borderRadius:SIZES.radius, cursor:"pointer"}}
-                    >BUY</button>
-                    {/* {tire_1 ? 
-                      <h3>1 x 9.99 </h3> :   <h3>helo</h3>
-                } */}
-                    
-                </div>
-                <div style={{
-                width:950,
-                            Height:50, 
-                            backgroundColor:COLORS.white,
-                            margin:'5px 10px',
-                            padding:'0 40px',
-                            display:'flex',
-                            justifyContent:"space-between",
-                            borderRadius:SIZES.radius
-                            }}>
-                    <p  style={{
-                ...FONTS.body1,
-                alignSelf: "left",
-              }}> Tier 5 </p>
-                    <h3>$99.99 / month</h3>
-                    <h4>Animal Limit : 1000</h4>
-                    
-                    
-                    <button value={tire_1} style={{ width:70,...FONTS.body2,margin:'auto 0' , height:40, border:"none" , background:COLORS.Primary , borderRadius:SIZES.radius, cursor:"pointer"}}
-                    >BUY</button>
-                    {/* {tire_1 ? 
-                      <h3>1 x 9.99 </h3> :   <h3>helo</h3>
-                } */}
-                    
-                </div>
-            </div>
-            </div>)}
+          }}>{count}</p>
+          </div>
+          <p style={{ ...FONTS.body4, margin: 20 }}>{description}</p>
 
 
-
-
-
-
-
-
-
+        </button>
+      </>
+    )
+  }
   return (
-    <div
-      style={{
-        flex: 1,
-      }}
-    >
-      {renderHeader()}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignSelf: "center",
-          position:'absolute',
-            left:210,
-            width:'auto'
-        }}
-      >
-        {renderForm()}
+    <div style={{
+      display: "flex",
+      height: "100vh",
+      width: "100%",
+    }}>
+      <Sidenav active={"Subscription"}/>
+      <div style={{
+        width: "90%",
+        float: "right",
+      }}>
+        <NavBarMain />
+        <Header title={"Choose Your Subscription Plan"}/>
+        <ul style={{
+          paddingInlineStart: 0,
+          marginBottom: "30px"
+        }}>
+          <FlatList
+            list={sub}
+            keyExtractor={item => `${item.id}`}
+            // displayGrid
+            renderItem={(item, index) => {
+              return (
+                <>
+                  {
+
+                    item.label == "Free Tier" ? null :
+                      <SubCard label={item.label} price={item.price} description={item.description} count={item.count} />
+                  }
+                </>
+              )
+
+            }
+            }
+            renderWhenEmpty={() => (<Loading />)}
+          />
+        </ul>
       </div>
-      
+
     </div>
   )
 }
-

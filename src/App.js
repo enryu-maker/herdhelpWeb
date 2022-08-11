@@ -73,7 +73,7 @@ function App() {
                   </> : <>
                     <Route path="/add" element={<Add />} />
                     <Route path="/profile" element={<Profile />} />
-                    <Route path="/home" element={<ProtectedRoute Component={Main} access={access} />} />
+                    <Route path="/" element={<ProtectedRoute Component={Main} access={access} />} />
                     <Route path="/weight" element={<Weight />} />
                     <Route path="/animals" element={<AddAnimals />} />
                     <Route path="/medication" element={<AddMedication />} />
