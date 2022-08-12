@@ -8,10 +8,8 @@ export default function Loading() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        // height: '100vh',
     }}>
-        
-    <ReactLoading type={'cubes'} color={COLORS.Primary} height={50} width={50} />
+    <ReactLoading type={'cubes'} color={COLORS.Primary} height={50} width={50} />:
     </div>
     </>
   )

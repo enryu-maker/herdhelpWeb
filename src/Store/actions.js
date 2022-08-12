@@ -78,7 +78,7 @@ export const WeightUnit = (cond) => {
       let {data} = await axiosIns.get('reports/getoverview/');
       dispatch({
         type: 'OVERVIEW',
-        payload:data
+        payload:data.animals_overview
       })
     }
   }

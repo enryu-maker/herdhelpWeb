@@ -91,7 +91,7 @@ export default function Animal() {
           renderItem={(item, index) => {
             return (
               <>
-                <AnimalCard data={item} onPress={() => {
+                <AnimalCard key={item.id}  data={item} onPress={() => {
                   navigate("/info", {
                     state: { data: item }
                   })

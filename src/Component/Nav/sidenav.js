@@ -5,13 +5,15 @@ import { COLORS, FONTS  } from '../../Theme/Theme'
 import './Navbar.css'
 import { useSelector } from "react-redux";
 import FlatList from 'flatlist-react'
-
+import { baseURL } from '../../helpers/helpers'
+import LineDivider from '../LineDivider'
+import Loading from '../Loading'
 export default function Sidenav({
   active
 }) {
   const user = useSelector(state => state.Reducers.userData)
-  const overview = useSelector(state => state.Reducers.overView)
-  const [Loading,setLoading]  = React.useState(false)
+  const overview = useSelector(state => state.Reducers.overview)
+  const [loading,setLoading]  = React.useState(false)
 
 
   function Sidemenu({ img, label, path, onPress }) {
@@ -170,15 +172,8 @@ export default function Sidenav({
             label={'Parents'}
             path={'/parents'}
           />
-
-          {/* <hr style={{
-            border: '1px solid black',
-            top: '1%',
-            position: 'relative',
-            width: '100%',
-          }}>
-          </hr> */}
           <div style={{ position: 'absolute', bottom: 40, width: '100%' }}>
+          <LineDivider/>
           <Sidemenu
               img={IMAGES.setting}
               label={'Setting'}
@@ -193,32 +188,74 @@ export default function Sidenav({
               }}
             />
           </div>
-          {/* </div> */}
-
-        </div>
-        <ul style={{
-          paddingInlineStart: 0,
+          <LineDivider/>
+          <p style={{
+                  ...FONTS.h3,
+                  color:COLORS.white,
+                  marginBottom:2
+                }}>
+                  {"Overview"}
+                </p>
+          <div style={{
+              display: "flex",
+              overflowY: 'scroll',
+              flexDirection:"column",
+            height:320,
+            paddingInlineStart:0,
+            // padding:0
         }}>
           <FlatList
-            list={sub}
+            list={overview}
             keyExtractor={item => `${item.id}`}
             // displayGrid
-            renderItem={(item, index) => {
+            renderItem={(item,index) => {
               return (
-                <>
-                  {
+                <div style={{
+                  display:"flex",
+                  alignItems:"center",
+                }}>
+                  <img src={baseURL+item.icon} style={{
+                    height:20,
+                    width:20
+                  }}/>
+                <p style={{
+                  ...FONTS.body4,
+                  color:COLORS.white,
+                  marginLeft:"5px"
 
-                    item.label == "Free Tier" ? null :
-                      <SubCard label={item.label} price={item.price} description={item.description} count={item.count} />
-                  }
-                </>
+                }}>
+                  {item.label}
+                </p>
+                <p style={{
+                  display:"flex",
+                  height:20,
+                  width:20,
+                  backgroundColor:COLORS.white,
+                  color:COLORS.Primary,
+                  ...FONTS.h4,
+                  borderRadius:10,
+                  justifyContent:"center",
+                  alignItems:"center",
+                  marginLeft:"5px"
+
+                }}>
+                  {item.count}
+                </p>
+                
+                </div>
               )
 
             }
             }
-            renderWhenEmpty={() => (<Loading />)}
+            renderWhenEmpty={() => (
+            <Loading />
+            )}
           />
-        </ul>
+        </div>
+        </div>
+        
+         
+
         </div>
 
 

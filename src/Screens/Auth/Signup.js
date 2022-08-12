@@ -21,7 +21,6 @@ export default function Signup() {
   const [loading, setLoading] = React.useState(false);
   const [first, setFirst] = React.useState('');
   const [last, setLast] = React.useState('');
-  console.log(loading)
   const Data = {
     'username': username,
     'password': password,

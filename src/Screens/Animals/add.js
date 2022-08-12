@@ -115,6 +115,7 @@ export default function add() {
                 return (
                   <>
                     <Cards
+                    key={item.id} 
                       img={item.image}
                       Name={item.label}
                       Path={item.nav}

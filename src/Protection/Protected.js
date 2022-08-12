@@ -6,7 +6,6 @@ const ProtectedRoute = ({ Component, access}) => {
   React.useEffect(()=>{
     access === null? navigate('/login') : <Component/>
   },[])
-  console.log(access)
       return( 
         <>
         {access === null? navigate('/login') : <Component/> }

@@ -112,7 +112,7 @@ export default function Subscription() {
                   {
 
                     item.label == "Free Tier" ? null :
-                      <SubCard label={item.label} price={item.price} description={item.description} count={item.count} />
+                      <SubCard key={item.id} label={item.label} price={item.price} description={item.description} count={item.count} />
                   }
                 </>
               )

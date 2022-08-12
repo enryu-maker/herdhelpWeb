@@ -13,10 +13,11 @@ import NavBarMain from "../../Component/Nav/navmain";
 import Card from "../../Component/Card";
 import { IMAGES } from "../../Theme/Image";
 import { useSelector, useDispatch } from 'react-redux';
-import { getFcat, getFinance, getHerds, getSpecies, getSubs, getTags, UserData } from '../../Store/actions';
+import { getFcat, getFinance, getHerds, getOverview, getSpecies, getSubs, getTags, UserData } from '../../Store/actions';
 import FlatList from 'flatlist-react';
 import Loading from "../../Component/Loading";
 import Sidenav from "../../Component/Nav/sidenav";
+import { COLORS } from "../../Theme/Theme";
 export default function Main() {
   const dispatch = useDispatch()
   let navigate = useNavigate()
@@ -29,6 +30,7 @@ export default function Main() {
     dispatch(getTags())
     dispatch(UserData())
     dispatch(getSubs())
+    dispatch(getOverview())
   }, [])
   const animal = useSelector(state => state.Reducers.herds)
   return (
@@ -59,6 +61,7 @@ export default function Main() {
               return (
                 <>
                 <Card
+                key={item.id} 
                   img={baseURL + item.data[0]?.image}
                   Name={item.label!="Sheep"?`My ${item.label}s`:`My ${item.label}`}
                   numaninmal={`${item.data?.length}`}

@@ -57,6 +57,7 @@ export default function LoadFinance() {
                   renderItem={(item, index) => {
                     return (
                       <Feedcard
+                      key={item.id} 
                         Feedname={item.category}
                         FeedQty={item.quantity}
                         Feeddate={item.added_date}

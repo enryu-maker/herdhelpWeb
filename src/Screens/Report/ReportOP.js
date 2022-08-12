@@ -108,6 +108,7 @@ export default function ReportOP() {
                         return (
                             <>
                                 <ReportCard 
+                                key={item.id} 
                                 data={item} 
                                 onPress={() => {
                                     navigate("/info", {
