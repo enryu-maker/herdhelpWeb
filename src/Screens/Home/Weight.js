@@ -9,8 +9,11 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axiosIns from '../../helpers/helpers';
 import Loading from '../../Component/Loading';
+import { useAlert } from 'react-alert'
+import AlertCard from '../../Component/AlertCard';
+
 export default function Weight() {
-  // 
+  const alert = useAlert()
   const [valueMS, setValueMS] = useState("");
   const [valueBS, setValueBS] = useState("");
 
@@ -45,18 +48,22 @@ export default function Weight() {
           },
         }).then((Response) => {
           if (Response.status == 200) {
-            alert("Done")
+            alert.success(<AlertCard msg={"Weight Updated Sucessfully"} type={true}/>)
             setLoading(false)
           }
           else {
+      alert.error(<AlertCard msg={"Internal server error"} type={false}/>)
+
             setLoading(false)
           }
         })
       } catch (err) {
+      alert.error(<AlertCard msg={err.msg} type={false}/>)
         setLoading(false)
       }
     }
     else {
+      alert.error(<AlertCard msg={"Invalid Input"} type={false}/>)
       setLoading(false)
     }
   }

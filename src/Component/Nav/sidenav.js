@@ -14,8 +14,7 @@ import { UserData } from '../../Store/actions'
 // import { useAlert } from 'react-alert'
 // import { render } from 'react-dom'
 import { transitions, positions,types , Provider as AlertProvider } from 'react-alert'
-import AlertTemplate from 'react-alert-template-basic'
-import AlertCard from '../AlertCard'
+
 
 
 
@@ -230,9 +229,7 @@ export default function Sidenav({
           </div>
           <LineDivider/>
         </div>
-        <AlertProvider template={AlertTemplate} {...options}>
-    <AlertCard/>
-    </AlertProvider>
+        
          
 
         </div>
