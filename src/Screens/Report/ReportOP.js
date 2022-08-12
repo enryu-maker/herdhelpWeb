@@ -112,7 +112,7 @@ export default function ReportOP() {
                                 data={item} 
                                 onPress={() => {
                                     navigate("/info", {
-                                        state: { data: item,cond:true }
+                                        state: { data: item, cond:false }
                                     })
                                 }} />
                             </>

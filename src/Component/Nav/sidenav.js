@@ -75,7 +75,7 @@ export default function Sidenav({
               style={{
                 width: 25,
                 height: 25,
-                marginLeft:180,
+                marginLeft:195,
                 position:"fixed",
                 justifyContent:"center"
               }} /> :null}
@@ -98,7 +98,7 @@ export default function Sidenav({
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
           cursor:"pointer",
-          width:230
+          width:250
         }}
         
         >
@@ -106,7 +106,7 @@ export default function Sidenav({
         <Link to={'/profile'}>
           <div style={{ height: 100,width:0 }}>
             <img
-              src={user?.profile_picture}
+              src={user?.profile_picture==null?`https://ui-avatars.com/api/?name=${user?.username}`: user?.profile_picture}
               alt={"Pro"}
               style={{
                 position: 'absolute',

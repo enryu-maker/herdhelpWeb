@@ -28,38 +28,45 @@ import Loading from '../Component/Loading';
 import Children from '../Screens/Children/Children';
 import History from '../Screens/Children/History';
 import ReportOP from '../Screens/Report/ReportOP';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import RootNav from './RootNav';
+import { getFcat, getFinance, getHerds, getSpecies, getTags, UserData } from '../Store/actions';
+
 export default function HomeNav() {
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch(UserData(), getSpecies(), getTags(), getHerds(), getFcat(), getFinance())
+  }, [])
   const access = useSelector(state => state.Reducers.authToken)
   return (
     <Routes>
-        <Route path="/in" element={<Navigate to="/" />} />
-        <Route exact path="/" element={<ProtectedRoute Component={Main} access={access} />} />
-        <Route path="/add" element={<Add />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/weight" element={<Weight />} />
-        <Route path="/animals" element={<AddAnimals />} />
-        <Route path="/medication" element={<AddMedication />} />
-        <Route path="/alerts" element={<ProtectedRoute Component={LoadAlerts} access={access} />} />
-        <Route path="/finance" element={<ProtectedRoute Component={LoadFinance} access={access} />} />
-        <Route path="/addfinance" element={<ProtectedRoute Component={AddFinance} access={access} />} />
-        <Route path='/report' element={<ProtectedRoute Component={Report} access={access} />} />
-        <Route path='/parents' element={<ProtectedRoute Component={Parents} access={access} />} />
-        <Route path='/weighthistory' element={<ProtectedRoute Component={Weighthistory} access={access} />} />
-        <Route path='/subscription' element={<ProtectedRoute Component={Subscription} access={access} />} />
-        <Route path='/terms-and-condition' element={<Terms />} />
-        <Route path='/setting' element={<ProtectedRoute Component={Setting} access={access}  />} />
-        <Route path='/info' element={<ProtectedRoute Component={Info} access={access} />} />
-        <Route path='/animal' element={<ProtectedRoute Component={Animal} access={access} />} />
-        {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
-        <Route path='/Flag' element={<Flag />} />
-        <Route path='/Bred' element={<Updatebred />} />
-        <Route path='/load' element={<Loading />} />
-        <Route path='/children' element={<ProtectedRoute Component={Children} access={access} />} />
-        <Route path='/medhistory' element={<ProtectedRoute Component={History} access={access} />} />
-        <Route path='/reportop' element={<ProtectedRoute Component={ReportOP} access={access} />} />
-        <Route path='/out' element={<RootNav />} />
-        </Routes>
+      <Route path="/in" element={<Navigate to="/" />} />
+      <Route exact path="/" element={<ProtectedRoute Component={Main} access={access} />} />
+      <Route path="/add" element={<Add />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/weight" element={<Weight />} />
+      <Route path="/animals" element={<AddAnimals />} />
+      <Route path="/medication" element={<AddMedication />} />
+      <Route path="/alerts" element={<ProtectedRoute Component={LoadAlerts} access={access} />} />
+      <Route path="/finance" element={<ProtectedRoute Component={LoadFinance} access={access} />} />
+      <Route path="/addfinance" element={<ProtectedRoute Component={AddFinance} access={access} />} />
+      <Route path='/report' element={<ProtectedRoute Component={Report} access={access} />} />
+      <Route path='/parents' element={<ProtectedRoute Component={Parents} access={access} />} />
+      <Route path='/weighthistory' element={<ProtectedRoute Component={Weighthistory} access={access} />} />
+      <Route path='/subscription' element={<ProtectedRoute Component={Subscription} access={access} />} />
+      <Route path='/terms-and-condition' element={<Terms />} />
+      <Route path='/setting' element={<ProtectedRoute Component={Setting} access={access} />} />
+      <Route path='/info' element={<ProtectedRoute Component={Info} access={access} />} />
+      <Route path='/animal' element={<ProtectedRoute Component={Animal} access={access} />} />
+      {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
+      <Route path='/Flag' element={<Flag />} />
+      <Route path='/Bred' element={<Updatebred />} />
+      <Route path='/load' element={<Loading />} />
+      <Route path='/children' element={<ProtectedRoute Component={Children} access={access} />} />
+      <Route path='/medhistory' element={<ProtectedRoute Component={History} access={access} />} />
+      <Route path='/reportop' element={<ProtectedRoute Component={ReportOP} access={access} />} />
+      <Route path='/out' element={<RootNav />} />
+    </Routes>
   )
 }

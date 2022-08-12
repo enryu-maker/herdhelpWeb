@@ -12,7 +12,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { getReports } from '../../Store/actions';
 import Sidenav from '../../Component/Nav/sidenav';
 import Loading from '../../Component/Loading';
-
+import Header from '../../Component/Header';
 
 
 export default function Report() {
@@ -79,11 +79,18 @@ export default function Report() {
           float:"right",
         }}>
           <NavBarMain/>
+          <Header
+          title={"Reports Section"}
+         
+        />
         <ul style={{
+          overflowY: 'scroll',
+          height: "80vh",
           paddingInlineStart: 0,
+          marginInlineStart:"0px",
+          marginBlockStart:"0px"
         }}>
           <FlatList
-
             list={reports}
             keyExtractor={item => `${item.id}`}
             renderItem={(item, index) => {

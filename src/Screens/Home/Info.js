@@ -50,7 +50,7 @@ export default function Info({
         rightcomponent={
           <>
             {
-              cond ?
+              cond==false ?
                 <div></div> :
                 <div style={{
                   display: "flex",
@@ -105,7 +105,8 @@ export default function Info({
                     alignSelf: "center",
                     borderRadius: 60,
                     border: '2px solid rgba(0, 0, 0)',
-                  }} /> :
+                  }} /> 
+                  :
 
                 <img src={animal?.animal_image != null ? baseURL + animal?.animal_image : baseURL + animal?.image} alt={animal?.tag_number}
                   style={{
@@ -123,7 +124,6 @@ export default function Info({
         <div style={{
           display: "flex",
           justifyContent: "space-evenly",
-          alignSelf: "center",
           // alignItems: "center"
         }}>
           {/* Firstblock */}
@@ -132,12 +132,16 @@ export default function Info({
             backgroundColor: COLORS.lightGray2,
             borderRadius: 25,
             padding: 10,
-            height: 300,
+            height: animal?.gender=="Female"?300:250,
 
           }}>
             <InfoCard label={"Name"} value={animal?.name} />
             <InfoCard label={"Gender"} value={animal?.gender} />
-            <InfoCard label={"Bred"} value={animal?.bred ? "Yes" : "No"} />
+            {
+            
+            animal?.gender=="Female"?
+            <InfoCard label={"Bred"} value={animal?.bred ? "Yes" : "No"} />:null
+            }
             <InfoCard label={"Tag Number"} value={animal?.support_tag} />
             <InfoCard label={"Weight"} value={animal?.weight} withDivider={false} />
           </div>

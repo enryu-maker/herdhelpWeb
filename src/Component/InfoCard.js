@@ -23,7 +23,7 @@ export default function InfoCard({
             onClick={onPress}
             >
                 <p style={{ color: COLORS.gray, ...FONTS.h2,marginLeft:10  }}>{label}</p>
-                <p  style={{textAlign: 'right',  ...FONTS.body2, marginRight:20 }}>{value}</p>
+                <p  style={{textAlign: 'right',  ...FONTS.body2, marginRight:5,marginLeft:20 }}>{value}</p>
             </div>
 
             {withDivider &&
