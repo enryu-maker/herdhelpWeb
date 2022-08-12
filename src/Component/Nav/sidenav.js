@@ -187,7 +187,7 @@ export default function Sidenav({
             <Sidemenu
               img={IMAGES.logout}
               label={'Logout'}
-              path={'/loggedout'}
+              path={'/out'}
               onPress={()=>{
                 localStorage.clear()
               }}

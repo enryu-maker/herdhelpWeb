@@ -1,6 +1,6 @@
 import React from 'react'
 import Login from '../Screens/Auth/Login';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Main from '../Screens/Home/Main';
 import Weight from '../Screens/Home/Weight';
 import AddAnimals from '../Screens/Animals/AddAnimals';
@@ -34,23 +34,22 @@ export default function HomeNav() {
   const access = useSelector(state => state.Reducers.authToken)
   return (
     <Routes>
-        <Route path="/home" element={<ProtectedRoute Component={Main} access={access} />} />
+        <Route path="/in" element={<Navigate to="/" />} />
+        <Route exact path="/" element={<ProtectedRoute Component={Main} access={access} />} />
         <Route path="/add" element={<Add />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/weight" element={<Weight />} />
         <Route path="/animals" element={<AddAnimals />} />
         <Route path="/medication" element={<AddMedication />} />
-        <Route path="/alerts" element={<LoadAlerts />} />
+        <Route path="/alerts" element={<ProtectedRoute Component={LoadAlerts} access={access} />} />
         <Route path="/finance" element={<ProtectedRoute Component={LoadFinance} access={access} />} />
         <Route path="/addfinance" element={<ProtectedRoute Component={AddFinance} access={access} />} />
-        <Route path="/herds" element={<Herds />} />
         <Route path='/report' element={<ProtectedRoute Component={Report} access={access} />} />
-        <Route path='/parents' element={<Parents />} />
-        <Route path='/weighthistory' element={<Weighthistory />} />
-        <Route path='/subscription' element={<Subscription />} />
+        <Route path='/parents' element={<ProtectedRoute Component={Parents} access={access} />} />
+        <Route path='/weighthistory' element={<ProtectedRoute Component={Weighthistory} access={access} />} />
+        <Route path='/subscription' element={<ProtectedRoute Component={Subscription} access={access} />} />
         <Route path='/terms-and-condition' element={<Terms />} />
-        <Route path='/setting' element={<Setting />} />
-        <Route path="/login" element={<Login />} />
+        <Route path='/setting' element={<ProtectedRoute Component={Setting} access={access}  />} />
         <Route path='/info' element={<ProtectedRoute Component={Info} access={access} />} />
         <Route path='/animal' element={<ProtectedRoute Component={Animal} access={access} />} />
         {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
@@ -60,7 +59,7 @@ export default function HomeNav() {
         <Route path='/children' element={<ProtectedRoute Component={Children} access={access} />} />
         <Route path='/medhistory' element={<ProtectedRoute Component={History} access={access} />} />
         <Route path='/reportop' element={<ProtectedRoute Component={ReportOP} access={access} />} />
-        <Route path='/loggedout' element={<RootNav />} />
+        <Route path='/out' element={<RootNav />} />
         </Routes>
   )
 }

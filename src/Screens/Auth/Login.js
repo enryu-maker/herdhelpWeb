@@ -47,7 +47,7 @@ export default function Login() {
             dispatch(storeID(response.data.userid))
             dispatch(Login_Function(response.data.access))
             setLoading(false);
-            navi("/home")
+            navi("/in")
 
           } else {
             setLoading(false);
