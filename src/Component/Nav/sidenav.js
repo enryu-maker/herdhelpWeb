@@ -9,6 +9,16 @@ import { baseURL } from '../../helpers/helpers'
 import LineDivider from '../LineDivider'
 import Loading from '../Loading'
 import { UserData } from '../../Store/actions'
+
+
+// import { useAlert } from 'react-alert'
+// import { render } from 'react-dom'
+import { transitions, positions,types , Provider as AlertProvider } from 'react-alert'
+import AlertTemplate from 'react-alert-template-basic'
+import AlertCard from '../AlertCard'
+
+
+
 export default function Sidenav({
   active
 }) {
@@ -19,7 +29,31 @@ export default function Sidenav({
   const user = useSelector(state => state.Reducers.userData)
   const overview = useSelector(state => state.Reducers.overview)
   const [loading,setLoading]  = React.useState(false)
-
+  // const types = {
+  //   // INFO: 'info',
+  //   SUCCESS: 'success',
+  //   // ERROR: 'error'
+  // }
+  // const positions = {
+  //   TOP_LEFT: 'top left',
+  //   TOP_CENTER: 'top center',
+  //   TOP_RIGHT: 'top right',
+  //   MIDDLE_LEFT: 'middle left',
+  //   MIDDLE: 'middle',
+  //   MIDDLE_RIGHT: 'middle right',
+  //   BOTTOM_LEFT: 'bottom left',
+  //   BOTTOM_CENTER: 'bottom center',
+  //   BOTTOM_RIGHT: 'bottom right'
+  // }
+  
+  const options = {
+    offset: '30px',
+    position: positions.TOP_CENTER,
+    timeout: 0,
+    transition: transitions.SCALE,
+    type: types.SUCCESS,
+    
+  }
 
   function Sidemenu({ img, label, path, onPress }) {
     return (
@@ -87,6 +121,7 @@ export default function Sidenav({
         }}
         
         >
+         
         <Link to={'/profile'}>
           <div style={{ height: 100,width:0 }}>
             <img
@@ -195,7 +230,9 @@ export default function Sidenav({
           </div>
           <LineDivider/>
         </div>
-        
+        <AlertProvider template={AlertTemplate} {...options}>
+    <AlertCard/>
+    </AlertProvider>
          
 
         </div>
