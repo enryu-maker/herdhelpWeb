@@ -9,7 +9,7 @@ export default function Loading() {
         alignItems: 'center',
         justifyContent: 'center',
     }}>
-    <ReactLoading type={'cubes'} color={COLORS.Primary} height={50} width={50} />:
+    <ReactLoading type={'cubes'} color={COLORS.Primary} height={50} width={50} />
     </div>
     </>
   )

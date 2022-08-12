@@ -36,6 +36,7 @@ import Loading from './Component/Loading';
 import Children from './Screens/Children/Children';
 import History from './Screens/Children/History';
 import ReportOP from './Screens/Report/ReportOP';
+
 function App() {
   
   const dispatch = useDispatch()
@@ -51,7 +52,7 @@ function App() {
   if (loading) {
     return (
       <div style={{ flex: 1, justifyContent: 'center' }}>
-        {Loading()}
+        <Loading/>
       </div>
     )
   }
@@ -97,10 +98,6 @@ function App() {
                     <Route path='/children' element={<ProtectedRoute Component={Children} access={access} />} />
                     <Route path='/medhistory' element={<ProtectedRoute Component={History} access={access} />} />
                     <Route path='/reportop' element={<ProtectedRoute Component={ReportOP} access={access} />} />
-
-
-
-
                   </>
               }
             </Routes>

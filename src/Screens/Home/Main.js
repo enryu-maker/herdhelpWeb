@@ -50,10 +50,10 @@ export default function Main() {
         <NavBarMain page={"herds"}/>
       
         <div style={{
-              overflowY: 'scroll',
+            overflowY: 'scroll',
             height:"90vh",
             paddingInlineStart:0,
-            // padding:0
+            marginBottom:"50px"
         }}>
           <FlatList
             list={animal}

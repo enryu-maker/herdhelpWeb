@@ -228,7 +228,9 @@ export default function Info({
               justifyContent: "space-evenly",
             }}
               onClick={() => {
-                navigate("/medhistory")
+                navigate("/medhistory",{
+                  state:{data:med}
+              })
               }}
             >
               <img src={IMAGES.back} alt={"back"}
@@ -254,6 +256,7 @@ export default function Info({
                 alignSelf: "center",
                 justifyContent: "center",
                 color: COLORS.Primary,
+              alignItems:"center"
               }}
               >
                 {
@@ -268,7 +271,8 @@ export default function Info({
               borderRadius: 12,
               justifyContent: "space-evenly",
               display: "flex",
-              flexDirection: "row"
+              flexDirection: "row",
+              alignItems:"center"
             }}
               onClick={() => {
                 navigate("/children")
@@ -279,6 +283,7 @@ export default function Info({
                   height: 25,
                   width: 25,
                   alignSelf: "center",
+
                 }} />
 
               <p style={{
@@ -297,7 +302,8 @@ export default function Info({
                 display: "flex",
                 alignSelf: "center",
                 justifyContent: "center",
-                color: COLORS.Primary
+                color: COLORS.Primary,
+              alignItems:"center"
               }}
               >
                 {
