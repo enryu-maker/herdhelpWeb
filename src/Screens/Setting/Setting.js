@@ -11,7 +11,7 @@ import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
 export default function Setting() {
   const [active, setActive] = React.useState("")
   const [Type, setType] = React.useState([])
-  const unit = useSelector(state=>state.Reducers.unit)
+  const unit = useSelector(state => state.Reducers.unit)
   const dispatch = useDispatch()
   const setting = [
     {
@@ -52,7 +52,7 @@ export default function Setting() {
               backgroundColor: COLORS.lightGray2,
               borderRadius: SIZES.padding,
               marginTop: "50px",
-              cursor:"pointer"
+              cursor: "pointer"
             }}>
               <InfoCard label={"Weight"} value={"Lbs"} onPress={() => {
                 setActive(!active)
@@ -68,15 +68,16 @@ export default function Setting() {
                   borderRadius: SIZES.padding,
                   marginLeft: "40px",
                   marginTop: "40px",
-                  paddingTop:"0px",
-                  justifyContent:"center",
-                  alignItems:"center"
+                  paddingTop: "0px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  cursor: "pointer"
                 }}>
                   {
                     Type.map(a => (
-                      <InfoCard label={a.label} value={unit == a.value?"Active":"Inactive"} onPress={()=>{
+                      <InfoCard label={a.label} value={unit == a.value ? "Active" : "Inactive"} onPress={() => {
                         dispatch(WeightUnit(a.value))
-                      }}/>
+                      }} />
                     ))
                   }
 
