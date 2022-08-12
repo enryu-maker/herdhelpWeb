@@ -81,28 +81,18 @@ export const WeightUnit = (cond) => {
       })
     }
   }
-  export const getHerds = (token) => {
+  export const getHerds = () => {
     return async dispatch => {
-      let data = await axios.get(baseURL + '/animals',{
-            headers: {
-                'Content-Type': 'application/json',
-                authorization: `Bearer ${token}`
-              },
-        })
+      let data = await axiosIns.get('animals')
       dispatch({
         type: 'HERDS',
         payload:data.data
       })
     }
   }
-  export const getReports = (token) => {
+  export const getReports = () => {
     return async dispatch => {
-      let data = await axios.get(baseURL + '/reports',{
-            headers: {
-                'Content-Type': 'application/json',
-                authorization: `Bearer ${token}`
-              },
-        })
+      let data = await axiosIns.get('reports/')
       dispatch({
         type: 'REPORT',
         payload:data.data
@@ -120,38 +110,29 @@ export const WeightUnit = (cond) => {
   }
   export const getTags = () => {
     return async dispatch => {
-      let {data} = await axiosIns.get('animaltags/');
+      let {data} = await axiosIns.get('animaltags');
       dispatch({
         type: 'TAGS',
         payload:data
       })
     }
   }
-  export const getSpecies = (token) => {
+  export const getSpecies = () => {
     return async dispatch => {
-      let data = await axios.get(baseURL + '/getcategories',{
-        headers: {
-            'Content-Type': 'application/json',
-            authorization: `Bearer ${token}`
-          },
-    })
+      let {data} = await axiosIns.get('getcategories/');
       dispatch({
         type: 'CATEGORY',
-        payload:data.data
+        payload:data
       })
     }
   }
-  export const getFinance = (token) => {
+  export const getFinance = () => {
     return async dispatch => {
-      let data = await axios.get(baseURL + '/finance',{
-        headers: {
-            'Content-Type': 'application/json',
-            authorization: `Bearer ${token}`
-          },
-    })
+      let {data} = await axiosIns.get('finance');
+      
       dispatch({
         type: 'FINANCE',
-        payload:data.data
+        payload:data
       })
     }
   }
@@ -190,17 +171,12 @@ export const WeightUnit = (cond) => {
       })
     }
   }
-  export const getFcat = (token) => {
+  export const getFcat = () => {
     return async dispatch => {
-      let data = await axios.get(baseURL + '/getfinancecategories',{
-        headers: {
-            'Content-Type': 'application/json',
-            authorization: `Bearer ${token}`
-          },
-    })
+      let {data} = await axiosIns.get(`getfinancecategories`);
       dispatch({
         type: 'FCAT',
-        payload:data.data
+        payload:data
       })
     }
   }

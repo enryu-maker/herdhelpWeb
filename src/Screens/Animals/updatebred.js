@@ -9,12 +9,15 @@ import makeAnimated from 'react-select/animated';
 import InputForm from '../../Component/InputForm';
 import Header from '../../Component/Header';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTags } from '../../Store/actions';
+import { getHerds, getTags } from '../../Store/actions';
 import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
+import axiosIns from '../../helpers/helpers';
 export default function Updatebred() {
   const animatedComponents = makeAnimated();
   const [valueMS, setValueMS] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const [tag, setTag] = useState([]);
   const navigate = useNavigate()
   const [dobt, setDobt] = useState(null);
@@ -26,7 +29,7 @@ export default function Updatebred() {
 
   const tags = useSelector(state => state.Reducers.tags)
   const species = useSelector(state => state.Reducers.cat)
-
+  const id = localStorage.getItem("id")
   function finder(list, value) {
     var dataValue;
     var final_data = [];
@@ -41,6 +44,46 @@ export default function Updatebred() {
       }
     });
     return final_data;
+  }
+  function axiosRequest(tag) {
+    var ls = []
+    tag.map((a, index) => {
+      const v = `animals/${id}${valueMS}${a.value}`
+      ls.push(v)
+    })
+    return (ls)
+  }
+  axiosRequest(tag)
+  async function updateBred() {
+    var final_list = axiosRequest(tag)
+    if (tag != "", dobt != '') {
+      setLoading(true)
+      try {
+        await Promise.all(final_list.map((endpoint) => axiosIns.patch(endpoint, {
+          'bred': true,
+          'bred_date': dobt
+        }, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }))).then(axios.spread((Response) => {
+          if (Response.status == 200) {
+            dispatch(getHerds())
+            alert("done")
+            setLoading(false)
+          }
+          else {
+            setLoading(false)
+          }
+        }))
+      } catch (err) {
+        console.log(err.data)
+        setLoading(false)
+      }
+    }
+    else {
+      setLoading(false)
+    }
   }
   return (
     <>
@@ -100,13 +143,11 @@ export default function Updatebred() {
                 // options={checking}
                 options={species}
               />
-
               <div style={{
                 justifyContent: "center",
                 alignSelf: "center",
                 display: "flex",
                 flexFlow: "column",
-                // marginBottom: 30
               }}>
                 <div
                   style={{
@@ -170,7 +211,7 @@ export default function Updatebred() {
           label={"Update Bred"}
           icon={IMAGES.update}
           onPress={() => {
-            // postfinance()
+            updateBred()
           }}
           buttonContainerStyle={{
             marginTop: "30px",

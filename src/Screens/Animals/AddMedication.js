@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import TextButton from "../../Component/TextButton";
 import InputForm from "../../Component/InputForm";
-import NavBarMain from "../../Component/Nav/navmain";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
@@ -9,175 +8,64 @@ import { checking} from "../../Component/Constants";
 import axiosIns from '../../helpers/helpers';
 import Header from '../../Component/Header';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMedical } from '../../Store/actions';
+import Loading from '../../Component/Loading';
 export default function AddMedication() {
   const navigate = useNavigate()
   const [medicationR, setmedicationR] = useState("");
   const [medicine, setmedicine] = useState("");
   const [dosage, setdosage] = useState("");
-
-
-  const [bred, setBred] = useState(false);
   const [valueMS, setValueMS] = useState("");
   const [valueBS, setValueBS] = useState("");
-  const [age, setAge] = useState(0);
-  const [Breed, setBreed] = useState("");
-  const [tag, setTag] = useState("");
-  const [price, setPrice] = useState(0);
-  const [mother, setMother] = useState("");
-  const [father, setFather] = useState("");
-  const [weight, setWeight] = useState(0);
-  const [name, setName] = useState("");
-  const [dob, setDob] = useState("");
-  const [dobt, setDobt] = useState(null);
-  const [vaccinated, setVaccinated] = useState(false);
   const [vaccinateddate, setVaccinateddate] = useState("");
-  const [vaccinateddatet, setVaccinateddatet] = useState(null);
+  const [withdrawal_date, setwithdrawal_date] = useState(null);
+  const [withdrawal, setwithdrawal] = useState(null);
   const [bought, setBought] = useState(false);
   const [loading, setLoading] = React.useState(false);
-  const [animals, setAnimals] = React.useState([]);
-  const [id, setId] = React.useState("");
-  const [registration, setRegistration] = React.useState("");
-  const [show, setShow] = React.useState(false);
-  const [validation, setValidation] = React.useState(false);
-  const [dataText, setDataText] = React.useState("");
-  const [EmailError, setEmailError] = React.useState("");
-  const [unit, setUnit] = React.useState(false);
-  const options = ["one", "two", "three"];
-  const defaultOption = options[0];
-  
+  const id = localStorage.getItem("id")
+  const dispatch = useDispatch()
   const spec = useSelector(state => state.Reducers.cat)
   const tags = useSelector(state=>state.Reducers.tags)
+  const cond = true
+  const tag_number = true
   const clear = () => {
-    // setSpcies([])
-    setWeight('');
-    setTag('');
-    setRegistration('');
-    setAge('');
-    setBreed('');
-    setMother('');
-    setFather('');
-    setPrice('');
-    setName('');
+    setmedicationR("");
+    setwithdrawal("");
+    setdosage("");
+    setValueMS("");
+    setValueMS("");
   };
-  const data = JSON.stringify({
-    name: name,
-    tag_number: ` ${id}${valueMS}${tag}`,
-    registration: registration,
-    support_tag: tag,
-    gender: valueBS,
-    species: valueMS,
-    birth_date: dobt,
-    mother_supporttag: mother != "" ? mother : "",
-    mother_tagnumber: mother != "" ? `${id}${valueMS}${mother}` : "",
-    father_supporttag: father != "" ? father : "",
-    father_tagnumber: father != "" ? `${id}${valueMS}${father}` : "",
-    breed: Breed,
-    weight: unit == true ? weight : Math.round(weight / 0.45359237),
-    weight_kg: unit == false ? weight : Math.round(weight * 0.45359237),
-    bred: bred,
-    age: age,
-    vaccinated: vaccinated,
-    vaccination_date: vaccinateddatet,
-    price: price,
-    bought: bought,
-    status: 'Alive',
-  });
-  //
-  // axios
-  /*
-  function addMedical() {
-      setLoading(true),
-      axiosIns
-        .post(
-          'medication/',
-          {
-            tag_number:!cond?`${global.id}${dataS}${dataT}` : `${global.id}${species}${tag}`,
-            medication_name: med,
-            medication_date: treatt,
-            dosage: dos,
-            disease: Dis,
-            withdrawal: withdraw,
-            withdrawal_date: datet!=""? datet:null,
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          },
-        )
-        .then(response => {
-          if (response.status == 201) {
-            setLoading(false)
-            showMessage({
-              message: "Medication Added",
-              type: "default",
-              backgroundColor: COLORS.Primary,
-              color:COLORS.white,
-              titleStyle:{
-                alignSelf:"center",
-                ...FONTS.h3
-              },
-              animationDuration:250,
-              icon:"success",
-              style:{
-                justifyContent:"center"
-              }
-            });
-            clear()
-          } else {
-            setLoading(false),
-            showMessage({
-              message: "Animal Not Added",
-              type: "default",
-              backgroundColor: COLORS.red,
-              color:COLORS.white,
-              titleStyle:{
-                alignSelf:"center",
-                ...FONTS.h3
-              },
-              animationDuration:250,
-              icon:"danger",
-              style:{
-                justifyContent:"center"
-              }
-            });
-          }
-        })
-        .catch(err => {
-          setLoading(false)
-          showMessage({
-            message: `${err.response.data.msg}`,
-            type: "default",
-            backgroundColor: COLORS.red,
-            color:COLORS.white,
-            titleStyle:{
-              alignSelf:"center",
-              ...FONTS.h3
-            },
-            animationDuration:250,
-            icon:"danger",
-            style:{
-              justifyContent:"center"
-            }
-          });
-        });
-    }
-    React.useEffect(() => {
-      setId(global.id);
-      setAnimals(global.species);
-      let {cond} = route.params
-      setCond(cond)
-      if (!cond){
-        let {tag} = route.params
-        setDataT(tag)
-        let{species} = route.params
-        setDataS(species)
+  function addmedical(){
+    setLoading(true)
+    axiosIns.post('/medication/',
+    {
+      tag_number:!cond?`${tag_number}` : `${id}${valueMS}${valueBS}`,
+      medication_name: medicine,
+      medication_date: vaccinateddate,
+      dosage: dosage,
+      disease: medicationR,
+      withdrawal: withdrawal=="Yes"?true:false,
+      withdrawal_date: withdrawal_date!=""? withdrawal_date:null
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json'
       }
-    }, []);
-    */
-  // 
-  // 
+    }
+  ).then(response => {
+    if (response.status == 201) {
+      setLoading(false)
+      alert("done")
+      clear()
+    } else {
+      setLoading(false)
+    }
+  })
+  .catch(err => {
+    setLoading(false)
+  });
+  }
   function finder(list, value) {
     var dataValue;
     list?.map(a => {
@@ -195,8 +83,6 @@ export default function AddMedication() {
         alignItems: "center",
         flexDirection: "column",
         marginTop: "50px",
-
-        // height:"70vh"
       }}>
         <div
           style={{
@@ -333,14 +219,13 @@ export default function AddMedication() {
             }}
           >
             <DropDown
-              value={valueBS}
-              setValue={setValueBS}
+              value={withdrawal}
+              setValue={setwithdrawal}
               label={"Withdrawal"}
-              // options={checking}
               options={checking}
             />
             {
-              valueBS=="Yes"?<InputForm
+              withdrawal=="Yes"?<InputForm
               prependComponent={
                 <img
                   src={IMAGES.calender}
@@ -353,24 +238,28 @@ export default function AddMedication() {
                 />
               }
               type={"date"}
-              value={vaccinateddate}
+              value={withdrawal_date}
               label={"Withdrawal Date"}
               onChange={(event) => {
-                setVaccinateddate(event.target.value);
+                setwithdrawal_date(event.target.value);
               }}
             />:null
             }
 
           </div>
         </div>
+        {
+          loading?<Loading/>:
+        
         <TextButton
         label={"Add"}
         icon={IMAGES.med}
-        onPress={() => alert(bought)}
+        onPress={() => addmedical()}
         buttonContainerStyle={{
           marginTop: "30px",
         }}
       />
+  }
       </div>
     )
   }

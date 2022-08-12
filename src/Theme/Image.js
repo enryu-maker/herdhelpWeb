@@ -81,5 +81,5 @@ export const IMAGES={
     setImg:require("../assets/Logo/Combined-Shape.png"),
     plus1:require("../assets/Add/plus1.png"),
     sideback:require("../assets/Logo/play-arrow.png"),
-
+    lbs:require("../assets/Add/lb.png"),
 }
