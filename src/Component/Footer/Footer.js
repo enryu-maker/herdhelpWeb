@@ -23,7 +23,7 @@ function Footer() {
           paddingLeft: "10px",
         }} />
         <p style={{ ...FONTS.body4, paddingRight: "10px", }}>
-          &copy;{new Date().getFullYear()} <a href="https://nerdtech.in" target="_blank"  style={{ textDecoration: 'none', color: COLORS.black }} >NerdTech | All right reserved |</a><Link to={'/terms-and-condition'} style={{ textDecoration: 'none', color: COLORS.black }} > Terms of Service | Privacy</Link>
+          &copy;{new Date().getFullYear()} <a href="https://nerdtech.in" target="_blank"  style={{ textDecoration: 'none', color: COLORS.black }} >NerdTech | All right reserved |</a><Link to={'/terms-and-condition'} style={{ textDecoration: 'none', color: COLORS.black }} > Terms & Service | Privacy</Link>
         </p>
 
       </footer></>

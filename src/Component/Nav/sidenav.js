@@ -8,7 +8,7 @@ import FlatList from 'flatlist-react'
 import { baseURL } from '../../helpers/helpers'
 import LineDivider from '../LineDivider'
 import Loading from '../Loading'
-import { UserData } from '../../Store/actions'
+import { getSpecies, getTags, UserData } from '../../Store/actions'
 
 
 // import { useAlert } from 'react-alert'
@@ -23,28 +23,10 @@ export default function Sidenav({
 }) {
   const dispatch =useDispatch()
   React.useEffect(()=>{
-    dispatch(UserData())
+    dispatch(getSpecies(),getTags(),UserData())
   },[])
   const user = useSelector(state => state.Reducers.userData)
-  const overview = useSelector(state => state.Reducers.overview)
-  const [loading,setLoading]  = React.useState(false)
-  // const types = {
-  //   // INFO: 'info',
-  //   SUCCESS: 'success',
-  //   // ERROR: 'error'
-  // }
-  // const positions = {
-  //   TOP_LEFT: 'top left',
-  //   TOP_CENTER: 'top center',
-  //   TOP_RIGHT: 'top right',
-  //   MIDDLE_LEFT: 'middle left',
-  //   MIDDLE: 'middle',
-  //   MIDDLE_RIGHT: 'middle right',
-  //   BOTTOM_LEFT: 'bottom left',
-  //   BOTTOM_CENTER: 'bottom center',
-  //   BOTTOM_RIGHT: 'bottom right'
-  // }
-  
+  const overview = useSelector(state => state.Reducers.overview)  
   const options = {
     offset: '30px',
     position: positions.TOP_CENTER,
@@ -125,7 +107,7 @@ export default function Sidenav({
           <div style={{ height: 100,width:0 }}>
             <img
               src={user?.profile_picture}
-              alt="logo"
+              alt={"Pro"}
               style={{
                 position: 'absolute',
                 width: 60,

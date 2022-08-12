@@ -16,6 +16,8 @@ import ImageUploading from 'react-images-uploading';
 import Loading from "../../Component/Loading";
 import axios from "axios";
 import moment from 'moment';
+import AlertCard from "../../Component/AlertCard";
+import { useAlert } from "react-alert";
 export default function AddAnimals() {
   const [bred, setBred] = useState(false);
   const [valueMS, setValueMS] = useState("");
@@ -44,6 +46,7 @@ export default function AddAnimals() {
   const dispatch = useDispatch()
   const id = localStorage.getItem("id")
   const navigate = useNavigate()
+  const alert = useAlert()
   const clear = () => {
     // setSpcies([])
     setWeight('');
@@ -63,7 +66,7 @@ export default function AddAnimals() {
     setprofile_pic(imageList);
   };
   const token = useSelector(state => state.Reducers.authToken)
-  
+
   function postAnimal() {
     setLoading(true);
     const formData = new FormData();
@@ -73,8 +76,8 @@ export default function AddAnimals() {
     formData.append('support_tag', tag);
     formData.append('gender', valueBS);
     formData.append('species', valueMS);
-    if(bought=="No"){
-    formData.append('birth_date', dobt);
+    if (bought == "No") {
+      formData.append('birth_date', dobt);
     }
     formData.append('leased', lease);
     formData.append('mother_supporttag', mother != '' ? mother : '');
@@ -120,15 +123,15 @@ export default function AddAnimals() {
       'weight_90_kg',
       unit == false ? weight90 : Math.round(weight90 * 0.45359237),
     );
-    formData.append('bred', bred=="Yes"?true:false);
+    formData.append('bred', bred == "Yes" ? true : false);
     formData.append('age', age);
-    formData.append('vaccinated', vaccinated=="Yes"?true:false);
-    if(vaccinated=="Yes"){
+    formData.append('vaccinated', vaccinated == "Yes" ? true : false);
+    if (vaccinated == "Yes") {
       formData.append('vaccination_date', vaccinateddate);
     }
-  
+
     formData.append('price', price);
-    formData.append('bought', bought=="Yes"?true:false);
+    formData.append('bought', bought == "Yes" ? true : false);
     formData.append('status', 'Alive');
     formData.append('animal_image', profile_pic[0]['file']);
     const config = {
@@ -138,25 +141,26 @@ export default function AddAnimals() {
       },
     };
     if (isEnableSignIn()) {
-      axios.post(baseURL+'/animals/',formData,config)
+      axios.post(baseURL + '/animals/', formData, config)
         .then(response => {
           if (response.status == 201) {
             setLoading(false);
             dispatch(getHerds())
             dispatch(getTags())
             dispatch(getOverview())
-            alert("Done")
+            alert.success(<AlertCard msg={"Animal Added Sucessfully"} type={true} />)
           }
           else {
+            alert.error(<AlertCard msg={"Internal server error"} type={false} />)
             setLoading(false);
-            console.log(response);
           }
         })
         .catch(err => {
           setLoading(false);
-          console.log(err.data);
+          alert.error(<AlertCard msg={err.msg} type={false} />)
         });
     } else {
+      alert.error(<AlertCard msg={"Invalid Input"} type={false} />)
       setLoading(false);
 
     }
@@ -177,7 +181,7 @@ export default function AddAnimals() {
             backgroundColor: COLORS.lightGray2,
             width: "80%",
             borderRadius: SIZES.radius,
-            alignItems:"center"
+            alignItems: "center"
           }}
         >
           <div
@@ -347,7 +351,7 @@ export default function AddAnimals() {
                     options={checking}
                   />
                   {
-                    vaccinated=="Yes" ?
+                    vaccinated == "Yes" ?
                       <InputForm
                         prependComponent={
                           <img
@@ -687,7 +691,7 @@ export default function AddAnimals() {
         overflowY: 'scroll',
         height: "85vh",
         paddingInlineStart: 0,
-        marginBottom:"42px"
+        marginBottom: "42px"
       }}>
         <ImageUploading
           value={profile_pic}
@@ -743,7 +747,7 @@ export default function AddAnimals() {
             <TextButton
               label={"Add Animal"}
               icon={IMAGES.add}
-              onPress={()=>{
+              onPress={() => {
                 postAnimal()
                 // alert(dobt)
               }}

@@ -5,7 +5,8 @@ export default function InfoCard({
   label, 
   value, 
   withDivider = true,
-  infostyle
+  infostyle,
+  onPress
 }) {
   return (
     <div>
@@ -19,6 +20,7 @@ export default function InfoCard({
                     paddingTop:20,
                     ...infostyle
                 }}
+            onClick={onPress}
             >
                 <p style={{ color: COLORS.gray, ...FONTS.h2,marginLeft:10  }}>{label}</p>
                 <p  style={{textAlign: 'right',  ...FONTS.body2, marginRight:20 }}>{value}</p>

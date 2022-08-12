@@ -10,8 +10,11 @@ import TextButton from '../../Component/TextButton';
 import { getHerds } from '../../Store/actions';
 import axiosIns from '../../helpers/helpers';
 import Loading from '../../Component/Loading';
+import { useAlert } from 'react-alert';
+import AlertCard from '../../Component/AlertCard';
 export default function Flaganimal() {
   const dispatch = useDispatch()
+  const alert = useAlert()
   const [loading, setLoading] = useState(false);
   const [valueMS, setValueMS] = useState("");
   const [valueBS, setValueBS] = useState("");
@@ -42,20 +45,22 @@ export default function Flaganimal() {
           },
         }).then((Response) => {
           if (Response.status == 200) {
-            alert("Done")
+            alert.success(<AlertCard msg={"Flag Added Sucessfully"} type={true} />)
             dispatch(getHerds())
             setLoading(false)
           }
           else {
+            alert.error(<AlertCard msg={"Internal server error"} type={false} />)
             setLoading(false)
           }
         })
       } catch (err) {
-        console.log(err)
+        alert.error(<AlertCard msg={err.msg} type={false} />)
         setLoading(false)
       }
     }
     else {
+      alert.error(<AlertCard msg={"Invalid Input"} type={false} />)
       setLoading(false)
     }
   }

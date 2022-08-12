@@ -6,7 +6,9 @@ import { IMAGES } from '../../Theme/Image'
 import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
 import FlatList from 'flatlist-react'
 import Sidenav from '../../Component/Nav/sidenav'
-export default function add() {
+import { useDispatch } from 'react-redux'
+import { getSpecies, getTags } from '../../Store/actions'
+export default function Add() {
   const data = [
     {
       'id': 1,
@@ -40,6 +42,11 @@ export default function add() {
       'nav': '/Flag'
     },
   ]
+  const dispatch = useDispatch()
+  React.useEffect(()=>{
+    dispatch(getSpecies())
+    dispatch(getTags())
+  },[])
   function Cards({
     Name,
     img,
@@ -99,15 +106,19 @@ export default function add() {
         height: "100vh",
         width: "100%"
       }}>
+
         <Sidenav />
         <div style={{
           width: "90%",
           float: "right"
         }}>
           <NavBarMain page={'add'} />
-          <ul style={{
-            paddingInlineStart: 0
-          }}>
+          <div style={{
+            overflowY: 'scroll',
+            height:"90vh",
+            paddingInlineStart:0,
+            marginBottom:"50px"
+        }}>
             <FlatList
               list={data}
               keyExtractor={item => `${item.id}`}
@@ -126,7 +137,7 @@ export default function add() {
               }
               renderWhenEmpty={() => <div>List is empty!</div>}
             />
-          </ul>
+          </div>
         </div>
       </div>
 

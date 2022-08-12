@@ -13,6 +13,8 @@ import { getHerds, getTags } from '../../Store/actions';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import axiosIns from '../../helpers/helpers';
+import AnimalCard from '../../Component/AnimalCard';
+import { useAlert } from 'react-alert';
 export default function Updatebred() {
   const animatedComponents = makeAnimated();
   const [valueMS, setValueMS] = useState("");
@@ -21,7 +23,7 @@ export default function Updatebred() {
   const [tag, setTag] = useState([]);
   const navigate = useNavigate()
   const [dobt, setDobt] = useState(null);
-
+  const alert = useAlert()
   const dispatch = useDispatch()
   React.useEffect(() => {
     dispatch(getTags())
@@ -68,20 +70,23 @@ export default function Updatebred() {
           },
         }))).then(axios.spread((Response) => {
           if (Response.status == 200) {
+            alert.success(<AnimalCard msg={"Bred Updated Sucessfully"} type={true} />)
             dispatch(getHerds())
             alert("done")
             setLoading(false)
           }
           else {
+            alert.error(<AnimalCard msg={"Wrong Format"} type={false} />)
             setLoading(false)
           }
         }))
       } catch (err) {
-        console.log(err.data)
+        alert.error(<AnimalCard msg={err.data} type={false} />)
         setLoading(false)
       }
     }
     else {
+      alert.error(<AnimalCard msg={"Invalid Inputs"} type={false} />)
       setLoading(false)
     }
   }
