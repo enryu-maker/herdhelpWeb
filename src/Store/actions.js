@@ -7,9 +7,6 @@ import { baseURL } from "../helpers/helpers";
 export const Init = () => {
   return async dispatch => {
     const token = localStorage.getItem("access");
-    // let token = await AsyncStorage.getItem('token');
-    // let id = await AsyncStorage.getItem('id');
-    // if (token !== null && id!==null) {
       dispatch({
         type: 'LOGIN',
         payload: token,
@@ -20,6 +17,7 @@ export const Init = () => {
 
 export const Login_Function = (token) => {
   localStorage.setItem("access", token);
+  localStorage.setItem("unit", true);
   return async dispatch => {
     dispatch({
       type: 'LOGIN',
@@ -28,6 +26,7 @@ export const Login_Function = (token) => {
   }
 }
 export const storeID = (id) => {
+  localStorage.setItem("id", id);
   return async dispatch => {
     dispatch({
       type: 'ID',
@@ -37,9 +36,9 @@ export const storeID = (id) => {
 }
 export const WeightUnit = (cond) => {
     return async dispatch => {
-      // if (cond) {
-      //   await AsyncStorage.setItem('unit', cond);
-      // }
+      if (cond) {
+         localStorage.setItem('unit', cond);
+      }
       dispatch({
         type: 'UNIT',
         payload: cond,
@@ -209,7 +208,6 @@ export const WeightUnit = (cond) => {
 export const Logout = () => {
   return async dispatch => {
     localStorage.clear()
-    // await AsyncStorage.clear();
     dispatch({
       type: 'LOGOUT',
       payload:null

@@ -1,7 +1,7 @@
 const initialState = {
   authToken: null,
   id: null,
-  unit: null,
+  unit: true,
   userData: {},
   status: [],
   cat: [],

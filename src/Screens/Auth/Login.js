@@ -44,9 +44,8 @@ export default function Login() {
         )
         .then((response) => {
           if (response.status == 200) {
-            // console.log(response.data.userid);
-            dispatch(Login_Function(response.data.access))
             dispatch(storeID(response.data.userid))
+            dispatch(Login_Function(response.data.access))
             setLoading(false);
             navi("/home")
 

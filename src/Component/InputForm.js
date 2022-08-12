@@ -44,7 +44,7 @@ export default function InputForm({
             height: 20,
           }}
         >
-          <text style={{ color: COLORS.gray, ...FONTS.body4 }}>{label}</text>
+          <text style={{ color: COLORS.black, ...FONTS.body4 }}>{label}</text>
           <text style={{ color: COLORS.red, ...FONTS.body4 }}>{errorMsg}</text>
         </div>
         <div

@@ -3,14 +3,19 @@ import { Link } from 'react-router-dom'
 import { IMAGES } from '../../Theme/Image'
 import { COLORS, FONTS  } from '../../Theme/Theme'
 import './Navbar.css'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import FlatList from 'flatlist-react'
 import { baseURL } from '../../helpers/helpers'
 import LineDivider from '../LineDivider'
 import Loading from '../Loading'
+import { UserData } from '../../Store/actions'
 export default function Sidenav({
   active
 }) {
+  const dispatch =useDispatch()
+  React.useEffect(()=>{
+    dispatch(UserData())
+  },[])
   const user = useSelector(state => state.Reducers.userData)
   const overview = useSelector(state => state.Reducers.overview)
   const [loading,setLoading]  = React.useState(false)
@@ -182,76 +187,13 @@ export default function Sidenav({
             <Sidemenu
               img={IMAGES.logout}
               label={'Logout'}
-              path={'/login'}
+              path={'/loggedout'}
               onPress={()=>{
                 localStorage.clear()
               }}
             />
           </div>
           <LineDivider/>
-          {/* <p style={{
-                  ...FONTS.h3,
-                  color:COLORS.white,
-                  marginBottom:2
-                }}>
-                  {"Overview"}
-                </p>
-          <div style={{
-              display: "flex",
-              overflowY: 'scroll',
-              flexDirection:"column",
-            height:320,
-            paddingInlineStart:0,
-            // padding:0
-        }}>
-          <FlatList
-            list={overview}
-            keyExtractor={item => `${item.id}`}
-            // displayGrid
-            renderItem={(item,index) => {
-              return (
-                <div style={{
-                  display:"flex",
-                  alignItems:"center",
-                }}>
-                  <img src={baseURL+item.icon} style={{
-                    height:20,
-                    width:20
-                  }}/>
-                <p style={{
-                  ...FONTS.h4,
-                  color:COLORS.white,
-                  marginLeft:"5px"
-
-                }}>
-                  {item.label}
-                </p>
-                <p style={{
-                  display:"flex",
-                  height:20,
-                  width:20,
-                  backgroundColor:COLORS.white,
-                  color:COLORS.Primary,
-                  ...FONTS.h4,
-                  borderRadius:10,
-                  justifyContent:"center",
-                  alignItems:"center",
-                  marginLeft:"5px"
-
-                }}>
-                  {item.count}
-                </p>
-                
-                </div>
-              )
-
-            }
-            }
-            renderWhenEmpty={() => (
-            <Loading />
-            )}
-          />
-        </div> */}
         </div>
         
          

@@ -34,7 +34,7 @@ export default function DropDown({
             height: 20,
           }}
         >
-          <text style={{ color: COLORS.gray, ...FONTS.body4 }}>{label}</text>
+          <text style={{ color: COLORS.black, ...FONTS.body4 }}>{label}</text>
         </div>
     <div 
       style={{

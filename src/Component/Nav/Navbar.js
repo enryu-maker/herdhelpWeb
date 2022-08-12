@@ -55,8 +55,8 @@ function NavBar({
           }}>
             Login
             </Link>
-          <Link to="/register" style={{
-              color:page === '/register' ? COLORS.Primary : 'black',
+          <Link to="/signup" style={{
+              color:page === '/signup' ? COLORS.Primary : 'black',
             ...FONTS.h3,
             marginLeft:20,
             textDecoration:'none'

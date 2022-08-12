@@ -12,7 +12,6 @@ export default function AnimalCard({
             <button
                 style={{
                     backgroundColor: COLORS.lightGray2,
-
                     margin: SIZES.padding,
                     borderRadius: SIZES.radius,
                     borderWidth: 0,
@@ -29,6 +28,26 @@ export default function AnimalCard({
                 }}
                 onClick={onPress}
             >
+                {
+          data.flagged?
+        <>
+        <div style={{
+          height:30,
+          width:2,
+          transform: 'rotate(45deg)',
+          backgroundColor:COLORS.red,
+          position:"absolute",
+          marginLeft:15,
+        }}/>
+        <div style={{
+          height:40,
+          width:2,
+          transform: 'rotate(45deg)',
+          backgroundColor:COLORS.red,
+          position:"absolute",
+          marginLeft:20,
+        }}/>
+        </>:null}
                 {/* Imagesection */}
                 <div style={{
                     display:"flex",
