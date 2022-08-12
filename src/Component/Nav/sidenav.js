@@ -189,7 +189,7 @@ export default function Sidenav({
             />
           </div>
           <LineDivider/>
-          <p style={{
+          {/* <p style={{
                   ...FONTS.h3,
                   color:COLORS.white,
                   marginBottom:2
@@ -219,7 +219,7 @@ export default function Sidenav({
                     width:20
                   }}/>
                 <p style={{
-                  ...FONTS.body4,
+                  ...FONTS.h4,
                   color:COLORS.white,
                   marginLeft:"5px"
 
@@ -251,7 +251,7 @@ export default function Sidenav({
             <Loading />
             )}
           />
-        </div>
+        </div> */}
         </div>
         
          

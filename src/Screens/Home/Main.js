@@ -49,9 +49,11 @@ export default function Main() {
         }}>
         <NavBarMain page={"herds"}/>
       
-        <ul style={{
+        <div style={{
+              overflowY: 'scroll',
+            height:"90vh",
             paddingInlineStart:0,
-            marginBottom:"30px"
+            // padding:0
         }}>
           <FlatList
             list={animal}
@@ -79,7 +81,7 @@ export default function Main() {
             }
             renderWhenEmpty={() => (<Loading/> )}
           />
-        </ul>
+        </div>
         </div>
       </div>
       
