@@ -36,7 +36,6 @@ export default function Parents() {
         `reports/getchildren/${id}${valueMS}${valueBS}`,
       );
       if (data.length > 0 && data != undefined) {
-        console.log(data)
         setValueBS('')
         setValueMS('')
         setLoading(false);

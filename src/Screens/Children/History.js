@@ -9,7 +9,6 @@ export default function History() {
   const navigate = useNavigate()
   const { state } = useLocation();
   const { data } = state;
-  console.log(data)
   function MedCard({
     problem,
     solution,

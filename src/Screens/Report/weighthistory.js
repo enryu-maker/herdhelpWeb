@@ -44,7 +44,6 @@ export default function WeightHistory() {
           setValueBS('')
           setValueMS('')
           setLoading(false)
-          console.log(data)
           return data;
         } else {
           setValueBS('')
