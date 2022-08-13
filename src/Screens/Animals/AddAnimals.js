@@ -5,7 +5,7 @@ import NavBarMain from "../../Component/Nav/navmain";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 import DropDown from "../../Component/DropDown/DropDown";
-import { checking, gender } from "../../Component/Constants";
+import { checking } from "../../Component/Constants";
 import Header from "../../Component/Header";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
@@ -66,7 +66,17 @@ export default function AddAnimals() {
     setprofile_pic(imageList);
   };
   const token = useSelector(state => state.Reducers.authToken)
+  const gender = useSelector(state => state.Reducers.gender)
 
+  function finder(list, value) {
+    var dataValue;
+    list?.map(a => {
+      if (value == a.label) {
+        dataValue = a.data;
+      }
+    });
+    return dataValue;
+  }
   function postAnimal() {
     setLoading(true);
     const formData = new FormData();
@@ -133,7 +143,7 @@ export default function AddAnimals() {
     formData.append('price', price);
     formData.append('bought', bought == "Yes" ? true : false);
     formData.append('status', 'Alive');
-    formData.append('animal_image', profile_pic[0]['file']);
+    formData.append('animal_image', profile_pic[0]['file']==[]?null:profile_pic[0]['file']);
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -246,7 +256,7 @@ export default function AddAnimals() {
               value={valueBS}
               setValue={setValueBS}
               label={"Gender*"}
-              options={gender}
+              options={finder(gender,valueMS)}
             />
             <DropDown
               value={bought}

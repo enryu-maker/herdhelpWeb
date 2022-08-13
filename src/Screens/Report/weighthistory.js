@@ -7,10 +7,11 @@ import { IMAGES } from '../../Theme/Image';
 import InputForm from '../../Component/InputForm';
 import Header from '../../Component/Header';
 import { useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import TextButton from '../../Component/TextButton';
 import axiosIns from '../../helpers/helpers';
 import Loading from '../../Component/Loading';
+import { getTags } from '../../Store/actions';
 export default function WeightHistory() {
   const [valueMS, setValueMS] = useState("");
   const [valueBS, setValueBS] = useState("");
@@ -21,9 +22,13 @@ export default function WeightHistory() {
   const tags = useSelector(state => state.Reducers.tags)
   const species = useSelector(state => state.Reducers.cat)
   const id = localStorage.getItem('id')
-
+  const unit = useSelector(state => state.Reducers.unit)
   const [err, setErr] = React.useState('');
   const [loading, setLoading] = React.useState(false);
+  const dispatch =useDispatch()
+  React.useEffect(()=>{
+    dispatch(getTags())
+  },[])
   function finder(list, value) {
     var dataValue;
     list?.map(a => {
@@ -32,6 +37,23 @@ export default function WeightHistory() {
       }
     });
     return dataValue;
+  }
+  function DataGen(data){
+    let finalData = []
+    data.map(a=>{
+      var dict = {};
+      var d = new Date(a.date_from);
+      dict['x'] = d.toLocaleString("default", { month: "short" }) + d.getFullYear()
+      if(unit){
+        dict["y"]=a.weight
+      }
+      else{
+        dict["y"]=a.weight_kg
+      }
+      
+      finalData.push(dict)
+    })
+    return finalData;
   }
   const updateWeight = async () => {
     if (valueBS != '') {
@@ -43,8 +65,9 @@ export default function WeightHistory() {
         if (data.length > 0 && data != undefined) {
           setValueBS('')
           setValueMS('')
+          const final = DataGen(data)
           setLoading(false)
-          return data;
+          return final;
         } else {
           setValueBS('')
           setValueMS('')
@@ -115,8 +138,10 @@ export default function WeightHistory() {
             label={"History"}
             icon={IMAGES.weight}
             onPress={() => {
-              updateWeight().then(data => {
-                setWhist(data)
+              updateWeight().then(final => {
+                navigate('/weightHist',{
+                  state: { data: final }
+                })
               })
             }}
             buttonContainerStyle={{

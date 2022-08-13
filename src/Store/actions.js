@@ -117,6 +117,15 @@ export const WeightUnit = (cond) => {
       })
     }
   }
+  export const getGender = () => {
+    return async dispatch => {
+      let {data} = await axiosIns.get('getanimaltypes/');
+      dispatch({
+        type: 'GENDER',
+        payload:data
+      })
+    }
+  }
   export const getSpecies = () => {
     return async dispatch => {
       let {data} = await axiosIns.get('getcategories/');

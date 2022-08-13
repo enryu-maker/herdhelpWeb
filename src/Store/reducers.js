@@ -14,7 +14,8 @@ const initialState = {
   fcat: [],
   reports: [],
   subs: [],
-  overview: []
+  overview: [],
+  gender: []
 };
 
 export default (state = initialState, action) => {
@@ -52,6 +53,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         status: action.payload,
+      };
+    case 'GENDER':
+      return {
+        ...state,
+        gender: action.payload,
       };
     case 'TAGS':
       return {
