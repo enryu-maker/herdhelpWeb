@@ -15,7 +15,9 @@ import { getSpecies, getTags, UserData } from '../../Store/actions'
 // import { render } from 'react-dom'
 import { transitions, positions,types , Provider as AlertProvider } from 'react-alert'
 
+// import Media from 'react-responsive'
 
+import useMediaQuery from '../useMediaQuery'
 
 
 export default function Sidenav({
@@ -36,9 +38,15 @@ export default function Sidenav({
     
   }
 
+  const matches = useMediaQuery('(min-width:600px),( min-height:1080px)')
+  const matches_mobile = useMediaQuery('(min-width:390px)')
+
+
   function Sidemenu({ img, label, path, onPress }) {
     return (
       <>
+
+
         <Link to={path} style={{ textDecoration: 'none', margin: 0, left: 20 }}>
           <button style={{
             width: '100%',
@@ -84,12 +92,15 @@ export default function Sidenav({
     )
   }
 
-
+ 
+  
   return (
     <>
+    {/* { matches ?  "helo": 'world'} */}
+        
         <div style={{
           position: 'fixed',
-          height: '100%',
+          height:'100%',
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
           cursor:"pointer",
@@ -98,11 +109,14 @@ export default function Sidenav({
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
           cursor:"pointer",
-          width:250
+          width:matches ? "250px" : matches_mobile ? '100px' : '0px' 
         }}
         
         >
+
+  
          
+        
         <Link to={'/profile'}>
           <div style={{ height: 100,width:0 }}>
             <img
@@ -211,11 +225,7 @@ export default function Sidenav({
           </div>
           <LineDivider/>
         </div>
-        
-         
-
         </div>
-
 
     
       </>
