@@ -1,4 +1,5 @@
 import React from "react";
+import useMediaQuery from "../../Component/useMediaQuery";
 import { baseURL } from "../../helpers/helpers";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
@@ -7,6 +8,8 @@ export default function AnimalCard({
     data,
     onPress,
 }) {
+
+    const matches = useMediaQuery('(min-width:810px)')
     return (
         <>
             <button
@@ -21,7 +24,7 @@ export default function AnimalCard({
                     shadowOpacity: 0.5,
                     shadowRadius: 10,
                     elevation: 2,
-                    width: "25%",
+                    width: matches ?   "25%" : "50%",
                     cursor: 'pointer',
                     alignSelf: "center",
                     padding:"5px"

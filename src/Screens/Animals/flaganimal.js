@@ -12,6 +12,7 @@ import axiosIns from '../../helpers/helpers';
 import Loading from '../../Component/Loading';
 import { useAlert } from 'react-alert';
 import AlertCard from '../../Component/AlertCard';
+import useMediaQuery from '../../Component/useMediaQuery';
 export default function Flaganimal() {
   const dispatch = useDispatch()
   const alert = useAlert()
@@ -23,6 +24,7 @@ export default function Flaganimal() {
   const tags = useSelector(state => state.Reducers.tags)
   const species = useSelector(state => state.Reducers.cat)
   const id = localStorage.getItem("id")
+  const matches = useMediaQuery('(min-width:810px)')
   function finder(list, value) {
     var dataValue;
     list?.map(a => {
@@ -111,8 +113,9 @@ export default function Flaganimal() {
           }}>
             <div
               style={{
-                display: "flex",
-                justifyContent: "space-evenly"
+                display: matches ? "flex" : 'grid',
+                justifyContent: matches ? "space-evenly" : 'space-around'
+              
               }}
             >
               <DropDown

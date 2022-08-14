@@ -1,4 +1,5 @@
 import React from "react";
+import useMediaQuery from "../../Component/useMediaQuery";
 
 import { COLORS, SIZES, FONTS, formatter } from "../../Theme/Theme";
 
@@ -9,6 +10,8 @@ export default function Feedcard({
     Feedprice,
     onPress
 }) {
+
+  const matches = useMediaQuery("(min-width:810px)")
   return (
     <>
       <button
@@ -17,7 +20,7 @@ export default function Feedcard({
           height: 145,
           margin: SIZES.padding,
           borderRadius: SIZES.radius,
-          flexDirection:"column",
+          // flexDirection:"column",
           borderWidth: 0,
         //   justifyContent: "space-evenly",
           shadowColor: COLORS.Primary,
@@ -25,30 +28,54 @@ export default function Feedcard({
           shadowOpacity: 0.5,
           shadowRadius: 10,
           elevation: 2,
-        //   width: "35%",
+          width: matches ? '70vh' : "25vh",
           alignItems:"center",
-          padding:"20px",
-          // marginInline:20
+          paddingInline:"20px",
+          // marginInline:20,
+          display:'flex'
         }}
         onClick={onPress}
       >
         <div style={{
-            display:"flex",
-            flexDirection:"row",
-            justifyContent:"space-evenly",
+            display:"flow",
+            width:'100%',
+
+            // flexDirection:"row",
+            // justifyContent:"space-evenly",
             // alignSelf:"center",
-            alignItems:"center"
+            // alignItems:"center"
 
         }}>
         <p style={{
             display:"flex",
             ...FONTS.h2,
             color:COLORS.Primary,
+            textAlign:'start'
             // marginLeft:"20px"
             // justifyContent:"flex-start"
         }}>
             {Feedname}
         </p>
+        {/*  */}
+        <p style={{
+            display:"flex",
+            ...FONTS.h3,
+            color:COLORS.black,
+            // marginLeft:"20px"
+        }}>
+           Qty: {FeedQty}
+        </p>
+        </div>
+        <div style={{
+            display:"flow",
+            // flexDirection:"row",
+            // justifyContent:"space-evenly",
+            // alignSelf:"center"
+            width:'100%'
+
+        }}>
+        
+        {/*  */}
         <p style={{
             display:"flex",
             ...FONTS.h3,
@@ -58,22 +85,7 @@ export default function Feedcard({
         }}>
             Date: {Feeddate}
         </p>
-        </div>
-        <div style={{
-            display:"flex",
-            flexDirection:"row",
-            justifyContent:"space-evenly",
-            alignSelf:"center"
-
-        }}>
-        <p style={{
-            display:"flex",
-            ...FONTS.h3,
-            color:COLORS.black,
-            // marginLeft:"20px"
-        }}>
-           Qty: {FeedQty}
-        </p>
+        {/*  */}
         <p style={{
             display:"flex",
             ...FONTS.h3,

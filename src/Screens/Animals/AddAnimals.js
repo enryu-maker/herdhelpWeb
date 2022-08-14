@@ -18,6 +18,7 @@ import axios from "axios";
 import moment from 'moment';
 import AlertCard from "../../Component/AlertCard";
 import { useAlert } from "react-alert";
+import useMediaQuery from "../../Component/useMediaQuery";
 export default function AddAnimals() {
   const [bred, setBred] = useState(false);
   const [valueMS, setValueMS] = useState("");
@@ -59,6 +60,10 @@ export default function AddAnimals() {
     setPrice('');
     setName('');
   };
+
+  const matches = useMediaQuery('(min-width:810px)')
+
+
   function isEnableSignIn() {
     return true
   }
@@ -176,6 +181,7 @@ export default function AddAnimals() {
     }
   }
 
+
   function renderForm() {
     return (
       <div style={{
@@ -196,8 +202,8 @@ export default function AddAnimals() {
         >
           <div
             style={{
-              display: "flex",
-              justifyContent: "space-evenly"
+              display: matches ? "flex" : 'grid',
+              justifyContent: matches ? "space-evenly" : 'space-around'
             }}
           >
             <InputForm
@@ -280,8 +286,8 @@ export default function AddAnimals() {
               <>
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "space-evenly"
+                    display: matches ? "flex" : 'grid',
+                    justifyContent: matches ? "space-evenly" : 'space-around'
                   }}
                 >
                   <InputForm
@@ -433,8 +439,8 @@ export default function AddAnimals() {
               <>
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "space-evenly"
+                    display: matches ? "flex" : 'grid',
+                    justifyContent: matches ? "space-evenly" : 'space-around'
                   }}
                 >
                   <InputForm
@@ -498,8 +504,8 @@ export default function AddAnimals() {
                 </div>
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "space-evenly"
+                    display: matches ? "flex" : 'grid',
+                    justifyContent: matches ? "space-evenly" : 'space-around'
                   }}
                 >
                   <InputForm

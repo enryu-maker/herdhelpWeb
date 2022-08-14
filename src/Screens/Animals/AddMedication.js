@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMedical } from '../../Store/actions';
 import Loading from '../../Component/Loading';
+import useMediaQuery from '../../Component/useMediaQuery';
 export default function AddMedication() {
   const navigate = useNavigate()
   const [medicationR, setmedicationR] = useState("");
@@ -25,6 +26,8 @@ export default function AddMedication() {
   const [loading, setLoading] = React.useState(false);
   const id = localStorage.getItem("id")
   const dispatch = useDispatch()
+  const matches = useMediaQuery('(min-width:810px)')
+
   const spec = useSelector(state => state.Reducers.cat)
   const tags = useSelector(state=>state.Reducers.tags)
   const cond = true
@@ -95,8 +98,8 @@ export default function AddMedication() {
         >
           <div
             style={{
-              display: "flex",
-              justifyContent: "space-evenly"
+              display: matches ? "flex" : 'grid',
+              justifyContent: matches ? "space-evenly" : 'space-around'
             }}
           >
                 <DropDown
@@ -149,8 +152,8 @@ export default function AddMedication() {
         >
           <div
             style={{
-              display: "flex",
-              justifyContent: "space-evenly"
+              display: matches ? "flex" : 'grid',
+              justifyContent: matches ? "space-evenly" : 'space-around'
             }}
           >
             <InputForm

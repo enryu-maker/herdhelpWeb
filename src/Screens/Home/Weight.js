@@ -11,6 +11,7 @@ import axiosIns from '../../helpers/helpers';
 import Loading from '../../Component/Loading';
 import { useAlert } from 'react-alert'
 import AlertCard from '../../Component/AlertCard';
+import useMediaQuery from '../../Component/useMediaQuery';
 
 export default function Weight() {
   const alert = useAlert()
@@ -24,6 +25,7 @@ export default function Weight() {
   const tags = useSelector(state => state.Reducers.tags)
   const unit = useSelector(state => state.Reducers.unit)
   const id = localStorage.getItem("id")
+  const matches = useMediaQuery('(min-width:810px)')
 
 
   function finder(list, value) {
@@ -85,8 +87,8 @@ export default function Weight() {
       >
         <div
           style={{
-            display: "flex",
-            justifyContent: "space-evenly"
+            display: matches ? "flex" : 'grid',
+            justifyContent: matches ? "space-evenly" : 'space-around'
           }}
         >
 

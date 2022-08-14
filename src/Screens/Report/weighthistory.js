@@ -12,6 +12,7 @@ import TextButton from '../../Component/TextButton';
 import axiosIns from '../../helpers/helpers';
 import Loading from '../../Component/Loading';
 import { getTags } from '../../Store/actions';
+import useMediaQuery from '../../Component/useMediaQuery';
 export default function WeightHistory() {
   const [valueMS, setValueMS] = useState("");
   const [valueBS, setValueBS] = useState("");
@@ -26,6 +27,7 @@ export default function WeightHistory() {
   const [err, setErr] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const dispatch =useDispatch()
+  const matches = useMediaQuery('(min-width:810px)')
   React.useEffect(()=>{
     dispatch(getTags())
   },[])
@@ -113,8 +115,8 @@ export default function WeightHistory() {
         }}>
           <div
             style={{
-              display: "flex",
-              justifyContent: "space-evenly"
+              display: matches ? "flex" : 'grid',
+              justifyContent: matches ? "space-evenly" : 'space-around'
             }}
           >
             <DropDown

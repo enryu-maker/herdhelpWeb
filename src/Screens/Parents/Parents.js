@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import TextButton from '../../Component/TextButton';
 import axiosIns from '../../helpers/helpers';
+import useMediaQuery from '../../Component/useMediaQuery';
 export default function Parents() {
   const [valueMS, setValueMS] = useState("");
   const [valueBS, setValueBS] = useState("");
@@ -20,6 +21,7 @@ export default function Parents() {
   const [err, setErr] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const id = localStorage.getItem('id')
+  const matches = useMediaQuery('(min-width:810px)')
   function finder(list, value) {
     var dataValue;
     list?.map(a => {
@@ -79,8 +81,8 @@ export default function Parents() {
         }}>
           <div
             style={{
-              display: "flex",
-              justifyContent: "space-evenly"
+              display: matches ? "flex" : 'grid',
+              justifyContent: matches ? "space-evenly" : 'space-around'
             }}
           >
             <DropDown

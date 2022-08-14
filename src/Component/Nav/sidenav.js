@@ -38,8 +38,8 @@ export default function Sidenav({
     
   }
 
-  const matches = useMediaQuery('(min-width:600px),( min-height:1080px)')
-  const matches_mobile = useMediaQuery('(min-width:390px)')
+  const matches = useMediaQuery('(min-width:810px)')
+  // const matches_mobile = useMediaQuery('(min-width:390px)')
 
 
   function Sidemenu({ img, label, path, onPress }) {
@@ -96,7 +96,6 @@ export default function Sidenav({
   
   return (
     <>
-    {/* { matches ?  "helo": 'world'} */}
         
         <div style={{
           position: 'fixed',
@@ -109,7 +108,7 @@ export default function Sidenav({
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
           cursor:"pointer",
-          width:matches ? "250px" : matches_mobile ? '100px' : '0px' 
+          width:matches ? "250px" :  "200px" 
         }}
         
         >

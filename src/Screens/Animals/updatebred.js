@@ -15,6 +15,7 @@ import axios from 'axios';
 import axiosIns from '../../helpers/helpers';
 import AnimalCard from '../../Component/AnimalCard';
 import { useAlert } from 'react-alert';
+import useMediaQuery from '../../Component/useMediaQuery';
 export default function Updatebred() {
   const animatedComponents = makeAnimated();
   const [valueMS, setValueMS] = useState("");
@@ -32,6 +33,7 @@ export default function Updatebred() {
   const tags = useSelector(state => state.Reducers.tags)
   const species = useSelector(state => state.Reducers.cat)
   const id = localStorage.getItem("id")
+  const matches = useMediaQuery('(min-width:810px)')
   function finder(list, value) {
     var dataValue;
     var final_data = [];
@@ -137,8 +139,8 @@ export default function Updatebred() {
           }}>
             <div
               style={{
-                display: "flex",
-                justifyContent: "space-evenly"
+                display: matches ? "flex" : 'grid',
+                justifyContent: matches ? "space-evenly" : 'space-around'
               }}
             >
               <DropDown
