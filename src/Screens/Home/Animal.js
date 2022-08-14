@@ -5,10 +5,45 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import FlatList from 'flatlist-react';
 import AnimalCard from './AnimalCard';
 import { IMAGES } from '../../Theme/Image';
+import InputForm from '../../Component/InputForm';
 export default function Animal() {
   let navigate = useNavigate()
+  const [search,setSearch] = React.useState(false)
+  const [searched,setSearched] = React.useState('')
+  const [sep, setSpec] = React.useState('')
+  const [vacc, setVacc] = React.useState('')
+  const [med, setMed] = React.useState('')
+  const [Bred, setBred] = React.useState('')
+
   const { state } = useLocation();
   const { data } = state;
+  function filterList(list) {
+    return list.filter(
+      (listItem) =>
+        (listItem.tag_number
+          .toString()
+          .toLowerCase()
+          .includes(searched.toString().toLowerCase()) ||
+        listItem.name.toString().toLowerCase().includes(searched.toString().toLowerCase()) ||
+        listItem.weight.toString().includes(searched.toString().toLowerCase()) ||
+        listItem.gender.toString().toLowerCase().includes(searched.toString().toLowerCase())) 
+        &&
+        (listItem.species
+          .toString()
+          .includes(sep.toString()) &&
+          (listItem.vaccinated
+          .toString()
+          .includes(vacc.toString()) &&
+          listItem.medicated
+          .toString()
+          .includes(med.toString())
+          ) &&
+          listItem.bred
+          .toString()
+          .includes(Bred.toString())
+          )
+    );
+  }
   return (
     <div>
       <Header
@@ -68,7 +103,11 @@ export default function Animal() {
                 alignItems: "center",
                 color:COLORS.white,
                 marginLeft:30
-              }}>
+              }}
+              onClick={()=>{
+                setSearch(!search)
+              }}
+              >
                 <img src={IMAGES.search} alt={"back"}
                 style={{
                   height: 25,
@@ -80,13 +119,46 @@ export default function Animal() {
           </>
         }
       />
+      {
+        search?
+      <InputForm
+      prependComponent={
+        <img
+          src={IMAGES.searchb}
+          style={{
+            height: 25,
+            width: 25,
+            margin: 10,
+            alignSelf: "center",
+          }}
+        />
+      }
+      value={searched}
+      placeholder={"Search..."}
+      onChange={(event)=>{
+        setSearched(event.target.value)
+      }}
+      appendComponent={
+          <img
+            src={IMAGES.filter}
+            style={{
+              height: 25,
+              width: 25,
+              margin: 10,
+              alignSelf: "center",
+            }}
+          />
+      }
+      />
+      :null
+      }
       <ul style={{
           paddingInlineStart:0,
           left:"0px"
       }}>
         <FlatList
 
-          list={data.data}
+          list={filterList(data.data)}
           keyExtractor={item => `${item.id}`}
           renderItem={(item, index) => {
             return (

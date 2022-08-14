@@ -32,6 +32,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import RootNav from './RootNav';
 import { getFcat, getFinance, getHerds, getSpecies, getTags, UserData } from '../Store/actions';
+import WeightPage from '../Screens/Report/WeightPage';
 
 export default function HomeNav() {
   const dispatch = useDispatch()
@@ -66,6 +67,8 @@ export default function HomeNav() {
       <Route path='/children' element={<ProtectedRoute Component={Children} access={access} />} />
       <Route path='/medhistory' element={<ProtectedRoute Component={History} access={access} />} />
       <Route path='/reportop' element={<ProtectedRoute Component={ReportOP} access={access} />} />
+      <Route path='/weightHist' element={<ProtectedRoute Component={WeightPage} access={access} />} />
+
       <Route path='/out' element={<RootNav />} />
     </Routes>
   )

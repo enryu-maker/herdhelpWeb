@@ -6,6 +6,7 @@ export const IMAGES={
     cancel:require("../assets/Logo/cancel.png"),
     login:require("../assets/Logo/profile-user.png"),
     search:require("../assets/Logo/search.png"),
+    searchb:require("../assets/Logo/searchb.png"),
     filter:require("../assets/Logo/filter.png"),
     menu1:require("../assets/Logo/menu.png"),
     bread:require("../assets/animal_logo/newborn.png"),
