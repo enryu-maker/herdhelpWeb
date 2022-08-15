@@ -85,16 +85,59 @@ export default function LoadFinance() {
               </div>
             </div></>
             : <>
+            <div style={{ margin:'auto',}}>
             <div style={{
                 // position: "sticky",
+                margin:'auto',
                 // top: '0px',
                 // marginTop: "50px",
                 // marginLeft:"50px"
-
-                width:'50%',
+              //  right:0,
+                width:'60%',
+                
                 
               }}>
                 <AddFinance />
+              </div>
+
+              <div style={{
+                display: "flex",
+                height: "48vh",
+                overflowY: 'scroll',
+                // width: "43%",
+                overflowX: "hidden",
+                alignSelf: "center",
+                backgroundColor:COLORS.layout,
+                
+  
+  
+              }}>
+                <ul style={{
+                  paddingInlineStart: 0,
+                  margin:'auto',
+                  // height: "100vh"
+                }}>
+                  <FlatList
+                    list={finance}
+                    keyExtractor={item => `${item.id}`}
+                    displayRow
+                    renderItem={(item, index) => {
+                      return (
+                        <Feedcard
+                        key={item.id} 
+                          Feedname={item.category}
+                          FeedQty={item.quantity}
+                          Feeddate={item.added_date}
+                          Feedprice={item.price}
+                        />
+                      )
+                    }
+                    }
+                    renderWhenEmpty={() => <div>List is empty!</div>}
+                  />
+                </ul>
+              </div>
+
               </div>
             </>
             }
