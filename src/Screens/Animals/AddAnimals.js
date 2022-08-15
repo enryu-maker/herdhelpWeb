@@ -181,7 +181,6 @@ export default function AddAnimals() {
     }
   }
 
-
   function renderForm() {
     return (
       <div style={{
@@ -235,9 +234,9 @@ export default function AddAnimals() {
                     margin: 10,
                     alignSelf: "center",
                   }}
-                />
-              }
-              type={"text"}
+                  />
+
+                }
               value={name}
               label={"Name*"}
               onChange={(event) => {
@@ -246,7 +245,9 @@ export default function AddAnimals() {
             />
             <DropDown
               value={valueMS}
-              setValue={setValueMS}
+              onPress={(x)=>{
+                setValueMS(x.label)
+              }}
               label={"Species*"}
               // options={checking}
               options={species}
@@ -260,7 +261,9 @@ export default function AddAnimals() {
           >
             <DropDown
               value={valueBS}
-              setValue={setValueBS}
+              onPress={(x)=>{
+                setValueMS(x.type)
+              }}
               label={"Gender*"}
               options={finder(gender,valueMS)}
             />

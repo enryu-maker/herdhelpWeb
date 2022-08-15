@@ -87,13 +87,18 @@ export default function Parents() {
           >
             <DropDown
               value={valueMS}
-              setValue={setValueMS}
+              onPress={(x)=>{
+                setValueMS(x.label)
+              }}
               label={"Species*"}
+              // options={checking}
               options={species}
             />
             <DropDown
               value={valueBS}
-              setValue={setValueBS}
+              onPress={(x)=>{
+                setValueBS(x.label)
+              }}
               label={"Tags*"}
               // options={checking}
               options={finder(tags, valueMS)}

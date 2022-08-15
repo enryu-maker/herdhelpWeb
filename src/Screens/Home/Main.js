@@ -30,7 +30,8 @@ export default function Main() {
     dispatch(getTags())
     dispatch(UserData())
     dispatch(getSubs())
-    dispatch(getOverview(),getGender())
+    dispatch(getOverview())
+    dispatch(getGender())
   }, [])
   const animal = useSelector(state => state.Reducers.herds)
   return (

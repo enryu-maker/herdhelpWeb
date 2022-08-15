@@ -119,7 +119,7 @@ export const WeightUnit = (cond) => {
   }
   export const getGender = () => {
     return async dispatch => {
-      let {data} = await axiosIns.get('getanimaltypes/');
+      let {data} = await axiosIns.get('getanimaltypes');
       dispatch({
         type: 'GENDER',
         payload:data

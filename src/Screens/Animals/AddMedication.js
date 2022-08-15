@@ -78,6 +78,9 @@ export default function AddMedication() {
     });
     return dataValue;
   }
+  {
+    console.log(valueBS)
+  }
   function renderForm() {
     return (
       <div style={{
@@ -104,7 +107,9 @@ export default function AddMedication() {
           >
                 <DropDown
                 value={valueMS}
-                setValue={setValueMS}
+                onPress={(x)=>{
+                  setValueMS(x.label)
+                }}
                 label={"Species*"}
                 // options={checking}
                 options={spec}
@@ -112,7 +117,9 @@ export default function AddMedication() {
   
               <DropDown
                 value={valueBS}
-                setValue={setValueBS}
+                onPress={(x)=>{
+                  setValueBS(x.label)
+                }}
                 label={"Tags*"}
                 // options={checking}
                 options={finder(tags,valueMS)}
