@@ -67,9 +67,7 @@ export default function DropDown({
         ...FONTS.h3
       }}
       value={value}
-      onChange={event=>{
-        setValue(event.value)
-      }}
+      onChange={onPress}
       placeholder={value}
       options={options}
       />

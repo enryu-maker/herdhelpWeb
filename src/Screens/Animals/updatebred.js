@@ -145,7 +145,9 @@ export default function Updatebred() {
             >
               <DropDown
                 value={valueMS}
-                setValue={setValueMS}
+                onPress={(x)=>{
+                  setValueMS(x.label)
+                }}
                 label={"Species*"}
                 // options={checking}
                 options={species}

@@ -120,15 +120,21 @@ export default function Flaganimal() {
             >
               <DropDown
                 value={valueMS}
-                setValue={setValueMS}
+                onPress={(x)=>{
+                  setValueMS(x.label)
+                }}
                 label={"Species*"}
+                // options={checking}
                 options={species}
               />
+  
               <DropDown
                 value={valueBS}
-                setValue={setValueBS}
+                onPress={(x)=>{
+                  valueBS(x.value)
+                }}
                 label={"Tags*"}
-                options={finder(tags, valueMS)}
+                options={finder(tags,valueMS)}
               />
 
               <InputForm
