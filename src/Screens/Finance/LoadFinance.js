@@ -85,30 +85,49 @@ export default function LoadFinance() {
               </div>
             </div></>
             : <>
-            <div style={{ margin:'auto',}}>
+              <div style={{ 
+                   
+                  position:'absolute' , 
+                  right:10 , 
+                  marginTop:0,
+                  background:'none' , 
+                  cursor:'pointer', 
+                  border:'none' , 
+                  borderRadius:20 }}>  
+
+                  <TextButton label={"Add Finance"}
+            icon={IMAGES.add}
+            onPress={()=>{
+              document.getElementById('Addfinance').style.display = "block"
+            }}
+            />
+            </div>
             <div style={{
-                // position: "sticky",
-                margin:'auto',
+                position: 'relative',
                 // top: '0px',
-                // marginTop: "50px",
+                marginTop: "70px",
                 // marginLeft:"50px"
-              //  right:0,
-                width:'60%',
-                
-                
-              }}>
+                width:400,
+              margin:'auto',
+              display:'none'
+              }} id='Addfinance'>
                 <AddFinance />
               </div>
+            
+              
+            <div style={{ margin:'auto',display:'flow'}}>
+            
 
               <div style={{
+                position:'relative',
                 display: "flex",
-                height: "48vh",
+                height: "auto",
                 overflowY: 'scroll',
                 // width: "43%",
                 overflowX: "hidden",
                 alignSelf: "center",
                 backgroundColor:COLORS.layout,
-                
+                marginTop:60
   
   
               }}>
@@ -116,6 +135,7 @@ export default function LoadFinance() {
                   paddingInlineStart: 0,
                   margin:'auto',
                   // height: "100vh"
+                
                 }}>
                   <FlatList
                     list={finance}

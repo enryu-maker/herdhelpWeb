@@ -39,7 +39,7 @@ export default function Sidenav({
   }
 
   const matches = useMediaQuery('(min-width:810px)')
-  // const matches_mobile = useMediaQuery('(min-width:390px)')
+  
 
 
   function Sidemenu({ img, label, path, onPress }) {
@@ -96,6 +96,11 @@ export default function Sidenav({
   
   return (
     <>
+        {matches ? null :
+        <button style={{width:50 , height:50 , position:'absolute' , border:'none' , borderRadius:20 , margin:10 , backgroundColor:COLORS.Primary , cursor:'pointer'}} onClick={()=> {
+          document.getElementById("Sidenav").style.left = '0px'
+          
+        }} > <img alt='' src={IMAGES.menuios} style={{width:35 , height:35  }}/></button>}
         
         <div style={{
           position: 'fixed',
@@ -103,21 +108,42 @@ export default function Sidenav({
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
           cursor:"pointer",
-          position:"sticky",
+          position: matches ? "sticky" : 'relative' ,
           display: 'flex',
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
           cursor:"pointer",
-          width:matches ? "250px" :  "200px" 
+          width:250  ,
+          left:'-100%'
         }}
-        
+        id='Sidenav'
         >
-
+{matches ? null : <button style={{  width:50 , 
+                  height:50 , 
+                  position:'absolute' , 
+                  right:0 , 
+                  background:'none' , 
+                  cursor:'pointer', 
+                  border:'1px solid black' , 
+                  borderRadius:20 }} 
+onClick={()=> {
+          document.getElementById("Sidenav").style.left = '-250px'
+          }} > <img alt='' src={IMAGES.close} /> </button>}
   
-         
+{/* <button style={{  width:50 , 
+                  height:50 , 
+                  position:'absolute' , 
+                  right:0 , 
+                  background:'none' , 
+                  cursor:'pointer', 
+                  border:'1px solid black' , 
+                  borderRadius:20 }} 
+onClick={()=> {
+          document.getElementById("Sidenav").style.left = '-250px'
+          }} > <img alt='' src={IMAGES.close} /> </button> */}
         
-        <Link to={'/profile'}>
-          <div style={{ height: 100,width:0 }}>
+        <Link to={'/profile'} style={{width:250, height:100 , position:'absolute' , top:matches ? 0 : 40 }}>
+          <div style={{ height: 100,width:207 ,  position: 'absolute', top:matches? 0 : 0, display:'flex' , justifyContent:'space-evenly'  }}>
             <img
               src={user?.profile_picture==null?`https://ui-avatars.com/api/?name=${user?.username}`: user?.profile_picture}
               alt={"Pro"}
@@ -132,14 +158,17 @@ export default function Sidenav({
               }}
             />
             <div style={{
-              lineheight: 26,
+              // lineheight: 26,
               display: 'flex',
               flexDirection:"column",
               alignitems: 'center',
               textalign: 'center',
               texttransform: 'capitalize',
               textAlign: 'left',
-              width: 'fit-content',
+              width: 250,
+              height:50,
+              // backgroundColor :COLORS.layout
+
               // width: 'fit-content',
             }}>
               <p style={{
@@ -171,10 +200,11 @@ export default function Sidenav({
             </div>
           </div>
           </Link>
+          
 
           <div style={{
             flexDirection:"column",
-            marginTop:100,
+            marginTop:matches ? 100 : 130, 
             paddingLeft:'15px',
           }}>
 

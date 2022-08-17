@@ -5,6 +5,7 @@ import { IMAGES } from "../../Theme/Image";
 import { COLORS, FONTS } from "../../Theme/Theme";
 import "./Navbar.css";
 import { useSelector } from "react-redux";
+import Sidenav from "./sidenav";
 
 
 
@@ -13,7 +14,9 @@ function NavBarMain({
   navStyle
 }) {
   const user = useSelector(state => state.Reducers.userData)
-  // function Sidemenu({ img, label, path }) {
+
+ 
+   // function Sidemenu({ img, label, path }) {
   //   return (
   //     <>
   //       <Link to={path} style={{ textDecoration: 'none', margin: 0, left: 20 }}>
@@ -82,6 +85,7 @@ function NavBarMain({
       <div style={{ width: '100%', top: 0 }}>
         <div style={{ display: 'flex', width: '100%' }}>
           <div>
+            
           </div>
 
           <nav style={{

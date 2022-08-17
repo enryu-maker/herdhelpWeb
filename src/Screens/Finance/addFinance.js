@@ -117,7 +117,8 @@ export default function AddFinance() {
               label={"Add Finance"}
               icon={IMAGES.update}
               onPress={() => {
-                postfinance()
+                postfinance();
+                document.getElementById('Addfinance').style.display = 'none'
               }}
             />
           </div>
