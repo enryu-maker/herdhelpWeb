@@ -1,12 +1,17 @@
 import React from 'react'
 import Header from '../../Component/Header'
-import { COLORS, FONTS, formatter } from '../../Theme/Theme'
+import { COLORS, FONTS, formatter, SIZES } from '../../Theme/Theme'
 import InfoCard from '../../Component/InfoCard'
 import { useNavigate, useLocation } from 'react-router-dom';
 import { baseURL } from '../../helpers/helpers';
 import { IMAGES } from '../../Theme/Image';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAnimal, getMedical } from '../../Store/actions';
+import ImageUploading from 'react-images-uploading';
+import AlertCard from '../../Component/AlertCard';
+import axios from 'axios';
+import { useAlert } from 'react-alert';
+import Loading from '../../Component/Loading';
 export default function Info({
 }) {
   let navigate = useNavigate()
@@ -17,8 +22,46 @@ export default function Info({
     dispatch(getAnimal(data.tag_number))
     dispatch(getMedical(data.tag_number))
   }, [])
+  const alert = useAlert()
   const med = useSelector(state => state.Reducers.med)
   const animal = useSelector(state => state.Reducers.animal)
+  const token = useSelector(state => state.Reducers.authToken)
+
+  const unit = useSelector(state => state.Reducers.unit)
+  const [profile_pic, setprofile_pic] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
+
+  const onChange = (imageList) => {
+    setprofile_pic(imageList);
+  };
+  const updateProfile=()=>{
+    setLoading(true)
+    const formData = new FormData();
+    formData.append('animal_image', profile_pic.length===0? [] : profile_pic[0]['file']);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "multipart/form-data",
+      },
+    };
+    axios.patch(baseURL + `/animals/${animal?.tag_number}`, formData, config)
+        .then(response => {
+          if (response.status == 200) {
+            setLoading(false);
+            dispatch(getAnimal(data.tag_number))
+            alert.success(<AlertCard msg={"Profile Pic Sucessfully"} type={true} />)
+          }
+          else {
+            alert.error(<AlertCard msg={"Internal server error"} type={false} />)
+            setLoading(false);
+          }
+        })
+        .catch(err => {
+          setLoading(false);
+          alert.error(<AlertCard msg={err} type={false} />)
+        });
+  }
+
   return (
     <div>
       <Header
@@ -50,7 +93,7 @@ export default function Info({
         rightcomponent={
           <>
             {
-              cond==false ?
+              cond == false ?
                 <div></div> :
                 <div style={{
                   display: "flex",
@@ -78,8 +121,8 @@ export default function Info({
       />
       <div style={{
         // overflowY: 'scroll',
-        paddingInlineStart:0,
-        marginBottom:"30px"
+        paddingInlineStart: 0,
+        marginBottom: "30px"
       }}>
         {/* Imagecontent */}
         <div style={{
@@ -87,8 +130,10 @@ export default function Info({
           width: "100%",
           justifyContent: "center",
           alignItems: "center",
-          marginBottom: "15px"
+          marginBottom: "15px",
+          flexDirection:"column"
         }}>
+
           <div style={{
             display: "flex",
             justifyContent: "center",
@@ -98,17 +143,16 @@ export default function Info({
           }}>
             {
               cond ?
-                <img src={animal?.animal_image != null ? animal?.animal_image : animal?.image} alt={animal?.tag_number}
+                <img src={profile_pic.length==0?animal?.animal_image != null ? animal?.animal_image : animal?.image:profile_pic[0]['dataURL']} alt={animal?.tag_number}
                   style={{
                     height: 120,
                     width: 120,
                     alignSelf: "center",
                     borderRadius: 60,
                     border: '2px solid rgba(0, 0, 0)',
-                  }} /> 
-                  :
-
-                <img src={animal?.animal_image != null ? baseURL + animal?.animal_image : baseURL + animal?.image} alt={animal?.tag_number}
+                  }} />
+                :
+                <img src={profile_pic.length==0?animal?.animal_image != null ? baseURL + animal?.animal_image : baseURL + animal?.image:profile_pic[0]['dataURL']} alt={animal?.tag_number}
                   style={{
                     height: 120,
                     width: 120,
@@ -117,7 +161,64 @@ export default function Info({
                     border: '2px solid rgba(0, 0, 0)',
                   }} />
             }
+            
           </div>
+          <ImageUploading
+              value={profile_pic}
+              onChange={onChange}
+              maxNumber={69}
+              resolutionWidth={300}
+              resolutionHeight={300}
+            >
+              {({
+                imageList,
+                onImageUpload,
+                onImageRemoveAll,
+              }) => (
+                <div className="upload__image-wrapper">
+                  {
+                    loading?<Loading/>:
+                    <>
+                    
+              {
+                profile_pic.length==0?
+                  <button
+                    style={{
+                      backgroundColor: COLORS.yellow,
+                      color: COLORS.black,
+                      ...FONTS.h3,
+                      borderRadius: SIZES.base,
+                      border: "none"
+                    }}
+                    onClick={onImageUpload}
+                  >
+                    EDIT
+                  </button>:
+                  <>
+                  <button style={{
+                    backgroundColor:COLORS.Primary,
+                    color: COLORS.white,
+                    ...FONTS.h3,
+                    borderRadius: SIZES.base,
+                    border: "none"
+                  }} onClick={updateProfile}>Update</button>
+                  &nbsp;
+                  <button style={{
+                    backgroundColor: COLORS.red,
+                    color: COLORS.white,
+                    ...FONTS.h3,
+                    borderRadius: SIZES.base,
+                    border: "none"
+                  }} onClick={onImageRemoveAll}>Remove</button>
+                  </>
+                }
+                  
+                  
+                  </>
+                  }
+                </div>
+              )}
+            </ImageUploading>
         </div>
         {/* Middle animal */}
 
@@ -132,18 +233,18 @@ export default function Info({
             backgroundColor: COLORS.lightGray2,
             borderRadius: 25,
             padding: 10,
-            height: animal?.gender=="Female"?300:250,
+            height: animal?.gender == "Female" ? 300 : 250,
 
           }}>
             <InfoCard label={"Name"} value={animal?.name} />
-            <InfoCard label={"Gender"} value={animal?.gender} />
+            <InfoCard label={"Gender"} value={animal?.gender_name} />
             {
-            
-            animal?.gender=="Female"?
-            <InfoCard label={"Bred"} value={animal?.bred ? "Yes" : "No"} />:null
+
+              animal?.gender == "Female" ?
+                <InfoCard label={"Bred"} value={animal?.bred ? "Yes" : "No"} /> : null
             }
             <InfoCard label={"Tag Number"} value={animal?.support_tag} />
-            <InfoCard label={"Weight"} value={animal?.weight} withDivider={false} />
+            <InfoCard label={"Weight"} value={unit ? `${animal?.weight} Lbs` : `${animal?.weight_kg} Kg`} withDivider={false} />
           </div>
           <div style={{
             backgroundColor: COLORS.white,
@@ -324,22 +425,22 @@ export default function Info({
         </div>
         {/* last button */}
         {
-          data.flagged?<div style={{
+          data.flagged ? <div style={{
             display: "flex",
             flexDirection: "column",
             marginLeft: "85px",
-            bottom:"75px",
+            bottom: "75px",
             backgroundColor: COLORS.lightGray2,
             borderRadius: 25,
             padding: 15,
             width: 400,
-            position:"fixed",
+            position: "fixed",
           }}>
             <InfoCard label={"Flagged?"} value={"Yes"} />
             <InfoCard label={"Description"} value={data.flag_desc} />
-          </div>:null
+          </div> : null
         }
-        
+
       </div>
     </div>
 

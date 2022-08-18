@@ -78,11 +78,11 @@ export default function Report() {
           width:"90%",
           float:"right",
         }}>
-          <NavBarMain/>
-          <Header
+          <NavBarMain page={"report"}/>
+          {/* <Header
           title={"Reports Section"}
          
-        />
+        /> */}
         <ul style={{
           overflowY: 'scroll',
           height: "80vh",

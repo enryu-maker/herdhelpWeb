@@ -208,11 +208,11 @@ onClick={()=> {
             paddingLeft:'15px',
           }}>
 
-          <Sidemenu
+          {/* <Sidemenu
             img={IMAGES.file}
             label={'Report'}
             path={'/report'}
-          />
+          /> */}
           <Sidemenu
             img={IMAGES.subs}
             label={'Subscription'}
