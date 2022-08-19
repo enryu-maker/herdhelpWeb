@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import TextButton from '../../Component/TextButton'
 import axiosIns from '../../helpers/helpers'
 import { getFinance } from '../../Store/actions'
+import useMediaQuery from '../../Component/useMediaQuery'
 export default function AddFinance() {
   const [cat, setCat] = React.useState(1);
   const [Qty, setQty] = React.useState("");
@@ -25,6 +26,8 @@ export default function AddFinance() {
     quantity: Qty,
   });
   const dispatch = useDispatch()
+
+  const matches = useMediaQuery('(max-width:810px)')
   async function postfinance() {
     // setLoading(true)
     if (price != "" && Qty != "") {
@@ -62,6 +65,7 @@ export default function AddFinance() {
           flexDirection: "column",
           justifyContent: "center",
           alignSelf: "center",
+          marginTop: matches ? 30 : 0,
         }}>
           <div style={{
             backgroundColor: COLORS.lightGray2,

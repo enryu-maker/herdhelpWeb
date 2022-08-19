@@ -38,7 +38,7 @@ export default function Sidenav({
     
   }
 
-  const matches = useMediaQuery('(min-width:810px)')
+  const matches = useMediaQuery('(max-width:810px)')
   
 
 
@@ -96,11 +96,11 @@ export default function Sidenav({
   
   return (
     <>
-        {matches ? null :
+        {matches ? 
         <button style={{width:50 , height:50 , position:'absolute' , border:'none' , borderRadius:20 , margin:10 , backgroundColor:COLORS.Primary , cursor:'pointer'}} onClick={()=> {
           document.getElementById("Sidenav").style.left = '0px'
           
-        }} > <img alt='' src={IMAGES.menuios} style={{width:35 , height:35  }}/></button>}
+        }} > <img alt='' src={IMAGES.menuios} style={{width:35 , height:35  }}/></button> : null }
         
         <div style={{
           position: 'fixed',
@@ -108,7 +108,7 @@ export default function Sidenav({
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
           cursor:"pointer",
-          position: matches ? "sticky" : 'relative' ,
+          position: matches ?  'relative' :"sticky"  ,
           display: 'flex',
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
@@ -118,7 +118,7 @@ export default function Sidenav({
         }}
         id='Sidenav'
         >
-{matches ? null : <button style={{  width:50 , 
+{matches ? <button style={{  width:50 , 
                   height:50 , 
                   position:'absolute' , 
                   right:0 , 
@@ -128,7 +128,7 @@ export default function Sidenav({
                   borderRadius:20 }} 
 onClick={()=> {
           document.getElementById("Sidenav").style.left = '-250px'
-          }} > <img alt='' src={IMAGES.close} /> </button>}
+          }} > <img alt='' src={IMAGES.close} /> </button> : null }
   
 {/* <button style={{  width:50 , 
                   height:50 , 
@@ -142,7 +142,7 @@ onClick={()=> {
           document.getElementById("Sidenav").style.left = '-250px'
           }} > <img alt='' src={IMAGES.close} /> </button> */}
         
-        <Link to={'/profile'} style={{width:250, height:100 , position:'absolute' , top:matches ? 0 : 40 }}>
+        <Link to={'/profile'} style={{width:250, height:100 , position:'absolute' , top:matches ? 40 : 0 }}>
           <div style={{ height: 100,width:207 ,  position: 'absolute', top:matches? 0 : 0, display:'flex' , justifyContent:'space-evenly'  }}>
             <img
               src={user?.profile_picture==null?`https://ui-avatars.com/api/?name=${user?.username}`: user?.profile_picture}
@@ -204,7 +204,7 @@ onClick={()=> {
 
           <div style={{
             flexDirection:"column",
-            marginTop:matches ? 100 : 130, 
+            marginTop:matches ? 130 : 100, 
             paddingLeft:'15px',
           }}>
 

@@ -8,26 +8,55 @@ import { useSelector, useDispatch } from 'react-redux';
 import FlatList from 'flatlist-react';
 import Feedcard from './FinanceCard';
 import AddFinance from './addFinance';
-import Sidenav from '../../Component/Nav/sidenav';
+import Header from '../../Component/Header';
 import useMediaQuery from '../../Component/useMediaQuery';
+import { useNavigate } from "react-router-dom";
 export default function LoadFinance() {
   const finance = useSelector(state => state.Reducers.finance)
   const matches = useMediaQuery('(min-width:810px)')
+  const navigate = useNavigate()
   return (
     <>
+        <Header leftcomponent={
+         <>
+           <div style={{
+             display: "flex",
+             justifyContent: "center",
+             height: 40,
+             width: 40,
+             backgroundColor: COLORS.Primary,
+             alignSelf: "center",
+             borderRadius: 20
+           }}
+             onClick={() => {
+               navigate(-1)
+             }}
+           >
+             <img src={IMAGES.back} alt={"back"}
+               style={{
+                 height: 25,
+                 width: 25,
+                 alignSelf: "center",
+               }} />
+           </div>
+         </>
+       } 
+       rightcomponent={
+        <div></div>
+      }
+       title={"Finance"} />
       <div style={{
         display: "flex",
         // justifyContent:"center",
         height: "100vh",
         width: "100%"
       }}>
-        <Sidenav />
         <div style={{
-          width: "90%",
-          // float: "right",
-
+          margin:'auto'
+          
         }}>
-          <NavBarMain page={"finance"} />
+          
+          
           
         
             {
@@ -36,7 +65,7 @@ export default function LoadFinance() {
                 display:'flex',
                 flexDirection: "row",
                 justifyContent: "space-evenly",
-                width: "100%",
+                width: "175vh",
                 // height: "100vh",
               }}
             >
@@ -87,7 +116,7 @@ export default function LoadFinance() {
             : <>
               <div style={{ 
                    
-                  position:'absolute' , 
+                  position:'relative' , 
                   right:10 , 
                   marginTop:0,
                   background:'none' , 
@@ -105,7 +134,7 @@ export default function LoadFinance() {
             <div style={{
                 position: 'relative',
                 // top: '0px',
-                marginTop: "70px",
+                marginTop: "80px",
                 // marginLeft:"50px"
                 width:400,
               margin:'auto',
