@@ -28,7 +28,7 @@ export default function Feedcard({
           shadowOpacity: 0.5,
           shadowRadius: 10,
           elevation: 2,
-          width: matches ? '70vh' : "45vh",
+          width: matches ? '60vh' : "45vh",
           alignItems:"center",
           paddingInline:"20px",
           // marginInline:20,

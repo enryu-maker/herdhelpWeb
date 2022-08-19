@@ -55,6 +55,7 @@ export default function WeightHistory() {
       
       finalData.push(dict)
     })
+    console.log(finalData)
     return finalData;
   }
   const updateWeight = async () => {
@@ -144,7 +145,8 @@ export default function WeightHistory() {
             label={"History"}
             icon={IMAGES.weight}
             onPress={() => {
-              updateWeight().then(final => {
+              updateWeight()
+              .then(final => {
                 navigate('/weightHist',{
                   state: { data: final }
                 })

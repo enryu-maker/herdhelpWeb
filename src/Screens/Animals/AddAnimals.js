@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 
 import { baseURL } from "../../helpers/helpers";
-import { getHerds, getOverview, getTags } from "../../Store/actions";
+import { getGender, getHerds, getOverview, getSpecies, getTags } from "../../Store/actions";
 import ImageUploading from 'react-images-uploading';
 import Loading from "../../Component/Loading";
 import axios from "axios";
@@ -23,6 +23,7 @@ export default function AddAnimals() {
   const [bred, setBred] = useState(false);
   const [valueMS, setValueMS] = useState("");
   const [valueBS, setValueBS] = useState("");
+  const [valueBST, setValueBST] = useState("");
   const [age, setAge] = useState(0);
   const [Breed, setBreed] = useState("");
   const [tag, setTag] = useState("");
@@ -61,8 +62,23 @@ export default function AddAnimals() {
     setName('');
   };
 
+  React.useEffect(()=>{
+    dispatch(getHerds())
+    dispatch(getSpecies())
+    dispatch(getGender())
+  },[])
   const matches = useMediaQuery('(min-width:810px)')
-
+  function findertype(list, value, type,setValue) {
+    list?.map(a => {
+      if (value == a.label) {
+        a.data.map(a => {
+      if (type == a.label) {
+        setValue(a.type)
+      }
+    });
+      }
+    });
+  }
 
   function isEnableSignIn() {
     return true
@@ -90,6 +106,7 @@ export default function AddAnimals() {
     formData.append('registration', registration);
     formData.append('support_tag', tag);
     formData.append('gender', valueBS);
+    formData.append('gender_name', valueBST);
     formData.append('species', valueMS);
     if (bought == "No") {
       formData.append('birth_date', dobt);
@@ -148,7 +165,7 @@ export default function AddAnimals() {
     formData.append('price', price);
     formData.append('bought', bought == "Yes" ? true : false);
     formData.append('status', 'Alive');
-    formData.append('animal_image', profile_pic[0]['file']==[]?null:profile_pic[0]['file']);
+    formData.append('animal_image', profile_pic.length==0? [] : profile_pic[0]['file']);
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -172,7 +189,7 @@ export default function AddAnimals() {
         })
         .catch(err => {
           setLoading(false);
-          alert.error(<AlertCard msg={err.msg} type={false} />)
+          alert.error(<AlertCard msg={err} type={false} />)
         });
     } else {
       alert.error(<AlertCard msg={"Invalid Input"} type={false} />)
@@ -260,16 +277,19 @@ export default function AddAnimals() {
             }}
           >
             <DropDown
-              value={valueBS}
+              value={valueBST}
               onPress={(x)=>{
-                setValueMS(x.type)
+                setValueBST(x.label)
+                setValueBS(x.type)
               }}
               label={"Gender*"}
               options={finder(gender,valueMS)}
             />
             <DropDown
               value={bought}
-              setValue={setBought}
+              onPress={(x)=>{
+                setBought(x.label)
+              }}
               label={"Purchased*"}
               options={checking}
             />
@@ -359,13 +379,17 @@ export default function AddAnimals() {
                 >
                   <DropDown
                     value={bred}
-                    setValue={setBred}
+                    onPress={(x)=>{
+                      setBred(x.label)
+                    }}
                     label={"Bred"}
                     options={checking}
                   />
                   <DropDown
                     value={vaccinated}
-                    setValue={setVaccinated}
+                    onPress={(x)=>{
+                      setVaccinated(x.label)
+                    }}
                     label={"Vaccinated"}
                     options={checking}
                   />
@@ -768,7 +792,6 @@ export default function AddAnimals() {
               icon={IMAGES.add}
               onPress={() => {
                 postAnimal()
-                // alert(dobt)
               }}
               buttonContainerStyle={{
                 marginTop: "20px"
