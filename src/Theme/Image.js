@@ -80,6 +80,7 @@ export const IMAGES={
     img1:require("../assets/Logo/splash.png"),
     img2:require("../assets/Logo/log1.png"),
     setImg:require("../assets/Logo/Combined-Shape.png"),
+    chart:require("../assets/Logo/trend.png"),
     plus1:require("../assets/Add/plus1.png"),
     sideback:require("../assets/Logo/play-arrow.png"),
     lbs:require("../assets/Add/lb.png"),

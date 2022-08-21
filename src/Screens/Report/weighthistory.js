@@ -55,7 +55,6 @@ export default function WeightHistory() {
       
       finalData.push(dict)
     })
-    console.log(finalData)
     return finalData;
   }
   const updateWeight = async () => {

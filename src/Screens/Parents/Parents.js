@@ -11,7 +11,9 @@ import { useSelector } from 'react-redux';
 import TextButton from '../../Component/TextButton';
 import axiosIns from '../../helpers/helpers';
 import useMediaQuery from '../../Component/useMediaQuery';
+import Loading from '../../Component/Loading';
 export default function Parents() {
+
   const [valueMS, setValueMS] = useState("");
   const [valueBS, setValueBS] = useState("");
   const [data, setData] = useState(null);
@@ -35,13 +37,19 @@ export default function Parents() {
     setLoading(true);
     try {
       let { data } = await axiosIns.get(
-        `reports/getchildren/${id}${valueMS}${valueBS}`,
+        `babiesbydate/${id}${valueMS}${valueBS}`,
       );
-      if (data.length > 0 && data != undefined) {
+      // console.log(data)
+      if (data) {
+        console.log(true)
         setValueBS('')
         setValueMS('')
         setLoading(false);
-        return data;
+        navigate('/parentop',{
+          state:{
+            data:data
+          }
+        })
       } else {
         setValueBS('')
         setValueMS('')
@@ -87,7 +95,7 @@ export default function Parents() {
           >
             <DropDown
               value={valueMS}
-              onPress={(x)=>{
+              onPress={(x) => {
                 setValueMS(x.label)
               }}
               label={"Species*"}
@@ -96,7 +104,7 @@ export default function Parents() {
             />
             <DropDown
               value={valueBS}
-              onPress={(x)=>{
+              onPress={(x) => {
                 setValueBS(x.label)
               }}
               label={"Tags*"}
@@ -105,19 +113,24 @@ export default function Parents() {
             />
           </div>
         </div>
-        <TextButton
-          label={"Search"}
-          icon={IMAGES.parents}
-          onPress={() => {
-            findChildren(data => {
-              setData(data)
-            })
-          }}
-          buttonContainerStyle={{
-            marginTop: "30px",
-          }}
+        {
+          loading ? <Loading />
+            :
+            <TextButton
+              label={"Search"}
+              icon={IMAGES.parents}
+              onPress={() => {
+                findChildren(data => {
+                  // console.log(data)
+                  // setData(data)
+                })
+              }}
+              buttonContainerStyle={{
+                marginTop: "30px",
+              }}
 
-        />
+            />
+        }
       </div>
     </div>
   )

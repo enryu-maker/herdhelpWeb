@@ -3,13 +3,15 @@ import useMediaQuery from "../../Component/useMediaQuery";
 import { baseURL } from "../../helpers/helpers";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
-
+import { useSelector } from "react-redux";
 export default function AnimalCard({
     data,
     onPress,
 }) {
 
     const matches = useMediaQuery('(min-width:810px)')
+    const unit = JSON.parse(useSelector(state => state.Reducers.unit))
+
     return (
         <>
             <button
@@ -81,7 +83,7 @@ export default function AnimalCard({
                     }}>{data.name}</p>
                     <p style={{
                         ...FONTS.h3
-                    }}>{data.weight}</p>
+                    }}>{unit?`${data.weight} Lbs`:`${data.weight_kg} Kg`}</p>
 
                  </div>
                  {/* lastcontent */}

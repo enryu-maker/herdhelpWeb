@@ -33,6 +33,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import RootNav from './RootNav';
 import { getFcat, getFinance, getHerds, getSpecies, getTags, UserData } from '../Store/actions';
 import WeightPage from '../Screens/Report/WeightPage';
+import ParentOP from '../Screens/Parents/ParentOP';
+import P from '../Screens/Parents/P';
 
 export default function HomeNav() {
   const dispatch = useDispatch()
@@ -68,6 +70,8 @@ export default function HomeNav() {
       <Route path='/medhistory' element={<ProtectedRoute Component={History} access={access} />} />
       <Route path='/reportop' element={<ProtectedRoute Component={ReportOP} access={access} />} />
       <Route path='/weightHist' element={<ProtectedRoute Component={WeightPage} access={access} />} />
+      <Route path='/parentop' element={<ProtectedRoute Component={ParentOP} access={access} />} />
+      <Route path='/parentopp' element={<ProtectedRoute Component={P} access={access} />} />
 
       <Route path='/out' element={<RootNav />} />
     </Routes>
