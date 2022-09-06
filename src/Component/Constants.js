@@ -8,6 +8,7 @@ export const checking = [
         label:"No"
     }
 ];
+
 export const gender = [
     {
         value:"Male",
@@ -45,3 +46,14 @@ export const species = [
         label:"Sheep"
     },
 ]
+
+export const Statusad = [
+    {
+        value:"Alive",
+        label:"Alive"
+    },
+    {
+        value:"Dead",
+        label:"Dead"
+    }
+];

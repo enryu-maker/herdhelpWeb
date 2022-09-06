@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from '../../Component/Header'
 import { COLORS, FONTS, formatter, SIZES } from '../../Theme/Theme'
 import InfoCard from '../../Component/InfoCard'
@@ -12,6 +12,11 @@ import AlertCard from '../../Component/AlertCard';
 import axios from 'axios';
 import { useAlert } from 'react-alert';
 import Loading from '../../Component/Loading';
+import useMediaQuery from '../../Component/useMediaQuery';
+import { checking, Statusad } from "../../Component/Constants";
+import DropDown from '../../Component/DropDown/DropDown';
+import InputForm from '../../Component/InputForm';
+
 export default function Info({
 }) {
   let navigate = useNavigate()
@@ -30,6 +35,8 @@ export default function Info({
   const unit = useSelector(state => state.Reducers.unit)
   const [profile_pic, setprofile_pic] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
+  const [valueS, setValueS] = useState("");
+  const [valueF, setValueF] = useState("");
 
   const onChange = (imageList) => {
     setprofile_pic(imageList);
@@ -61,6 +68,8 @@ export default function Info({
           alert.error(<AlertCard msg={err} type={false} />)
         });
   }
+  const matches = useMediaQuery('(max-width:810px)')
+  
 
   return (
     <div>
@@ -100,19 +109,33 @@ export default function Info({
                   alignSelf: "center",
                   marginRight: -100
                 }}>
-                  <p style={{
-                    ...FONTS.h2,
-                    color: COLORS.Primary
-                  }}>
-                    EDIT
-                  </p>
-                  <p style={{
+                  <button style={{
                     ...FONTS.h2,
                     color: COLORS.Primary,
-                    marginLeft: 30
+                    border:'none',
+                    background:'none',
+                    cursor:'pointer',
+                    width:100,
+                    height:50
                   }}>
+                    EDIT
+                  </button>
+                  <button style={{
+                    ...FONTS.h2,
+                    color: COLORS.Primary,
+                    marginLeft: 30,
+                    border:'none',
+                    background:'none',
+                    cursor:'pointer',
+                    width:100,
+                    height:50
+                  }}
+                  onClick={()=>{
+                    document.getElementById("Status").style.display = 'block'
+                  }}
+                  >
                     STATUS
-                  </p>
+                  </button>
 
                 </div>
             }
@@ -223,7 +246,7 @@ export default function Info({
         {/* Middle animal */}
 
         <div style={{
-          display: "flex",
+          display: matches ? "grid" : "flex",
           justifyContent: "space-evenly",
           // alignItems: "center"
         }}>
@@ -256,7 +279,8 @@ export default function Info({
               backgroundColor: COLORS.lightGray2,
               borderRadius: 25,
               padding: 10,
-              paddingBottom: 15
+              paddingBottom: 15,
+              marginTop:  matches ? 15 : null,
             }}>
               {
                 animal.bought ? (
@@ -281,7 +305,7 @@ export default function Info({
           </div>
           <div style={{
             // height: 300,
-            width: 350,
+            width: matches ? null : 350,
             backgroundColor: COLORS.white,
             display: "flex",
             flexDirection: "column",
@@ -298,7 +322,7 @@ export default function Info({
               borderRadius: 25,
               paddingBottom: 15,
               padding: 15,
-              marginBottom: 10
+              marginBottom: matches ? 20 :10 ,
             }}>
               <InfoCard label={"Registration"} value={animal?.registration} />
               <InfoCard label={"Breed"} value={animal?.breed} withDivider={false} />
@@ -326,6 +350,7 @@ export default function Info({
               justifyContent: "space-evenly",
               alignSelf: "center",
               height: 120,
+              marginTop: matches ? 20 : null,
             }}>
               <div style={{
                 display: "flex",
@@ -426,20 +451,101 @@ export default function Info({
         {/* last button */}
         {
           data.flagged ? <div style={{
-            display: "flex",
+            display: matches ? 'inline-grid' : "flex" ,
             flexDirection: "column",
-            marginLeft: "85px",
+            marginLeft: matches ? 0 : "85px",
             bottom: "75px",
             backgroundColor: COLORS.lightGray2,
             borderRadius: 25,
-            padding: 15,
-            width: 400,
-            position: "fixed",
+            padding: matches ? 0 : 15,
+            // width: 400,
+            position: matches ? 'relative' : "fixed",
+            top:matches ? -10 : null,
           }}>
             <InfoCard label={"Flagged?"} value={"Yes"} />
             <InfoCard label={"Description"} value={data.flag_desc} />
           </div> : null
         }
+
+
+        <div style={{width:400 , 
+                      height:600 , 
+                      background:COLORS.lightGray2 , 
+                      position:'fixed', 
+                      top:10 , 
+                      margin: '10px 0px', 
+                      display:'none',
+                      right:100,
+                      borderRadius:SIZES.radius }}  id={'Status'}>
+          <>
+          <div style={{
+            display: "flex",
+            justifyContent: "center",
+            height: 40,
+            width: 40,
+            backgroundColor: COLORS.Primary,
+            alignSelf: "center",
+            borderRadius: 20,
+            margin:30
+          }}
+            onClick={() => {
+              document.getElementById("Status").style.display = 'none'
+            }}
+          >
+            <img src={IMAGES.close2} alt={"back"}
+              style={{
+                height: 25,
+                width: 25,
+                alignSelf: "center",
+              }} />
+          </div>
+          </>
+          
+          
+          <div style={{padding:20,}}>
+          <DropDown
+              value={valueS}
+              onPress={(y)=>{
+                setValueS(y.label)
+              }}
+              label={"Status* "}
+              // options={checking}
+              options={Statusad}
+            />
+
+          <DropDown
+              value={valueF}
+              onPress={(x)=>{
+                setValueF(x.label)
+              }}
+              label={"Flagged* "}
+              // options={checking}
+              options={checking}
+              
+            />
+            <>
+            <InputForm
+                    prependComponent={
+                      <img
+                        src={IMAGES.plus1}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          margin: 10,
+                          alignSelf: "center",
+                        }}
+                      />
+                    }
+                    type={Text}
+                    value={'Fence Problem'}
+                    label={"Description"}
+                    // onChange={(event) => {
+                    //   setWeight30(event.target.value);
+                    // }}
+                  />
+            </>
+          </div>
+        </div>
 
       </div>
     </div>

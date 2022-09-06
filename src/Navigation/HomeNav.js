@@ -35,6 +35,8 @@ import { getFcat, getFinance, getHerds, getSpecies, getTags, UserData } from '..
 import WeightPage from '../Screens/Report/WeightPage';
 import ParentOP from '../Screens/Parents/ParentOP';
 import P from '../Screens/Parents/P';
+import Edit from '../Screens/Home/Edit';
+import Status from '../Screens/Home/Status';
 
 export default function HomeNav() {
   const dispatch = useDispatch()
@@ -61,6 +63,8 @@ export default function HomeNav() {
       <Route path='/terms-and-condition' element={<Terms />} />
       <Route path='/setting' element={<ProtectedRoute Component={Setting} access={access} />} />
       <Route path='/info' element={<ProtectedRoute Component={Info} access={access} />} />
+      <Route path='/edit' element={<Edit/>} />
+      <Route path='/status' element={<Status/>} />
       <Route path='/animal' element={<ProtectedRoute Component={Animal} access={access} />} />
       {/* <Route path='/forgetpassword' element={<ForgetPass/>} />  */}
       <Route path='/Flag' element={<Flag />} />
