@@ -39,7 +39,7 @@ export default function Sidenav({
   }
 
   const matches = useMediaQuery('(max-width:810px)')
-  
+  const mobile = useMediaQuery('(min-width:350px)')  
 
 
   function Sidemenu({ img, label, path, onPress }) {
@@ -96,11 +96,15 @@ export default function Sidenav({
   
   return (
     <>
-        {matches ? 
-        <button style={{width:50 , height:50 , position:'absolute' , border:'none' , borderRadius:20 , margin:10 , backgroundColor:COLORS.Primary , cursor:'pointer'}} onClick={()=> {
-          document.getElementById("Sidenav").style.left = '0px'
-          
-        }} > <img alt='' src={IMAGES.menuios} style={{width:35 , height:35  }}/></button> : null }
+        {
+          mobile ? 
+          matches ? <button style={{width:50 , height:50 , position:'absolute' , border:'none' , borderRadius:20 , margin:10 , backgroundColor:COLORS.Primary , cursor:'pointer'}} onClick={()=> {
+            document.getElementById("Sidenav").style.left = '0px'
+            
+          }} > <img alt='' src={IMAGES.menuios} style={{width:35 , height:35  }}/></button> : null
+          : 
+          'none'
+        }
         
         <div style={{
           position: 'fixed',

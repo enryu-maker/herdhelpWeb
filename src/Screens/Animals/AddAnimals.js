@@ -68,6 +68,7 @@ export default function AddAnimals() {
     dispatch(getGender())
   },[])
   const matches = useMediaQuery('(min-width:810px)')
+
   function findertype(list, value, type,setValue) {
     list?.map(a => {
       if (value == a.label) {

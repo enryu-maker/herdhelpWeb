@@ -469,10 +469,10 @@ export default function Info({
 
 
         <div style={{width:400 , 
-                      height:600 , 
+                      height:500 , 
                       background:COLORS.lightGray2 , 
                       position:'fixed', 
-                      top:10 , 
+                      top: matches ? 80 : 10 , 
                       margin: '10px 0px', 
                       display:'none',
                       right:100,
@@ -499,6 +499,12 @@ export default function Info({
                 alignSelf: "center",
               }} />
           </div>
+          </>
+          <>
+          <p style={{...FONTS.h2,
+                    color: COLORS.Primary,}}>
+            Status
+          </p>
           </>
           
           

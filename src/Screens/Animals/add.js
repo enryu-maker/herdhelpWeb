@@ -8,6 +8,7 @@ import FlatList from 'flatlist-react'
 import Sidenav from '../../Component/Nav/sidenav'
 import { useDispatch } from 'react-redux'
 import { getSpecies, getTags } from '../../Store/actions'
+import useMediaQuery from '../../Component/useMediaQuery'
 export default function Add() {
   const data = [
     {
@@ -43,6 +44,11 @@ export default function Add() {
     },
   ]
   const dispatch = useDispatch()
+  
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:350px)') 
+
+
   React.useEffect(()=>{
     dispatch(getSpecies())
     dispatch(getTags())
@@ -98,9 +104,8 @@ export default function Add() {
           </button></Link>
       </>)
   }
-
-  return (
-    <>
+  function Adds(){
+    return(
       <div style={{
         display: "flex",
         height: "100vh",
@@ -139,10 +144,68 @@ export default function Add() {
             />
           </div>
         </div>
-      </div>
+      </div>  
+    )
+  }
 
+  return (
+    <>
+    {
+      mobile ? matches ? 
+       
+       <>
+       <Adds/>
+       </>
+       
+       :
+       <>
+       <Adds/>
+       </>
+       
+        : <>
+        
+        {/* <div style={{
+        display: "flex",
+        height: "100vh",
+        width: "100%"
+      }}> */}
 
-    </>
+        {/* <Sidenav /> */}
+        <div style={{
+          width: "auto",
+          float: "right"
+        }}>
+          <NavBarMain page={'add'} />
+          <div style={{
+            overflowY: 'scroll',
+            height:"90vh",
+            paddingInlineStart:0,
+            marginBottom:"50px"
+        }}>
+            <FlatList
+              list={data}
+              keyExtractor={item => `${item.id}`}
+              renderItem={(item, index) => {
+                return (
+                  <>
+                    <Cards
+                    key={item.id} 
+                      img={item.image}
+                      Name={item.label}
+                      Path={item.nav}
+                    />
+                  </>
+                )
+              }
+              }
+              renderWhenEmpty={() => <div>List is empty!</div>}
+            />
+          </div>
+        </div>
+      {/* </div>   */}
+        </>
+    }
+        </>
   )
 }
 

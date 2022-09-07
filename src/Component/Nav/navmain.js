@@ -6,6 +6,7 @@ import { COLORS, FONTS } from "../../Theme/Theme";
 import "./Navbar.css";
 import { useSelector } from "react-redux";
 import Sidenav from "./sidenav";
+import useMediaQuery from "../useMediaQuery";
 
 
 
@@ -14,9 +15,12 @@ function NavBarMain({
   navStyle
 }) {
   const user = useSelector(state => state.Reducers.userData)
+  
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:350px)') 
   return (
     <>
-      <div style={{ width: '100%', top: 0 }}>
+      <div style={{ width: '100%', top: 0  , display:mobile ? matches ? 'block' : null : 'none'}}>
         <div style={{ display: 'flex', width: '100%' }}>
           <div>
             
