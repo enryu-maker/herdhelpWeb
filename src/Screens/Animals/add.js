@@ -9,6 +9,7 @@ import Sidenav from '../../Component/Nav/sidenav'
 import { useDispatch } from 'react-redux'
 import { getSpecies, getTags } from '../../Store/actions'
 import useMediaQuery from '../../Component/useMediaQuery'
+import Modal_side from '../../Component/Nav/Modal_side'
 export default function Add() {
   const data = [
     {
@@ -46,7 +47,7 @@ export default function Add() {
   const dispatch = useDispatch()
   
   const matches = useMediaQuery('(max-width:810px)')
-  const mobile = useMediaQuery('(min-width:350px)') 
+  const mobile = useMediaQuery('(min-width:400px)') 
 
 
   React.useEffect(()=>{
@@ -65,7 +66,7 @@ export default function Add() {
           <button
             style={{
               backgroundColor: COLORS.lightGray2,
-              height: 250,
+              height: mobile ? matches ? 250  : 250 :  130,
               margin: SIZES.padding,
               borderRadius: SIZES.radius,
               // flexDirection:"column",
@@ -76,19 +77,27 @@ export default function Add() {
               shadowOpacity: 0.5,
               shadowRadius: 10,
               elevation: 2,
-              width: 230,
+              width: mobile ? matches ? 250  : 250 :  120 ,
               cursor: 'pointer',
               boxShadow: '0px 0px 15px -4px #888181',
             }}
             onClick={onPress}
           >
             {/* <img src={IMAGES.rightone} style={{ height: 20, width: 20,alignSelf:"center",marginLeft:200,marginTop:10 }} /> */}
-            <img src={img} alt={Name} style={{ height: 100, width: 100, alignSelf: "center" }} />
+            <img src={img} alt={Name} 
+                        style={{ marginTop :mobile ? matches ? 0  : 0 :  10  ,
+                                  height: mobile ? matches ? 100  : 100 :  40 , 
+                                  width: mobile ? matches ? 100  : 100 :  40 , 
+                                  alignSelf: "center" }} />
             <div>
               <div style={{
                 textAlign: 'center'
               }}>
-                <p style={{ ...FONTS.h3, margin: 20 }}>{Name}</p>
+                {
+                  mobile ? matches ?  <p style={{ ...FONTS.h3, margin: 20 }}>{Name}</p> : 
+                                      <p style={{ ...FONTS.h3, margin: 20 }}>{Name}</p> :  
+                                      <p style={{ ...FONTS.h5, margin: 20 }}>{Name}</p>
+                }
                 {/* <p style={{...FONTS.h4}}>{global.unit?`${Weight} lbs`:`${weight_kg} kg`}</p> */}
               </div>
               <div style={{
@@ -164,13 +173,15 @@ export default function Add() {
        
         : <>
         
-        {/* <div style={{
+        <div style={{
         display: "flex",
         height: "100vh",
         width: "100%"
-      }}> */}
+      }}>
 
         {/* <Sidenav /> */}
+
+        <Modal_side/>
         <div style={{
           width: "auto",
           float: "right"
@@ -202,7 +213,7 @@ export default function Add() {
             />
           </div>
         </div>
-      {/* </div>   */}
+      </div>  
         </>
     }
         </>

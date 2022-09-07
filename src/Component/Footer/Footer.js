@@ -2,9 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { IMAGES } from '../../Theme/Image';
 import { COLORS, FONTS } from "../../Theme/Theme";
+import useMediaQuery from '../useMediaQuery';
 
 
 function Footer() {
+  const mobile = useMediaQuery('(min-width:400px)') 
   return (
     <>
       <footer style={{
@@ -13,7 +15,7 @@ function Footer() {
         position: "fixed",
         bottom: 0,
         width: "100%",
-        display: 'flex',
+        display: mobile ? 'flex' : 'none',
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",

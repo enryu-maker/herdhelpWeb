@@ -1,5 +1,6 @@
 import React from "react";
 import { COLORS, SIZES, FONTS } from "../Theme/Theme";
+import useMediaQuery from "./useMediaQuery";
 export default function InputForm({
   containerStyle,
   inputContainerStyle,
@@ -20,6 +21,10 @@ export default function InputForm({
   onPressIn,
   type,
 }) {
+
+
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
   return (
     <>
       <div
@@ -44,7 +49,11 @@ export default function InputForm({
             height: 20,
           }}
         >
-          <text style={{ color: COLORS.black, ...FONTS.body4 }}>{label}</text>
+          {
+            mobile ? matches ? <text style={{ color: COLORS.black, ...FONTS.body4 }}>{label}</text> : 
+            <text style={{ color: COLORS.black, ...FONTS.body4 }}>{label}</text>: 
+            <text style={{ color: COLORS.black, ...FONTS.body5 }}>{label}</text>
+          }
           <text style={{ color: COLORS.red, ...FONTS.body4 }}>{errorMsg}</text>
         </div>
         <div

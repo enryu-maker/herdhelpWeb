@@ -67,7 +67,8 @@ export default function AddAnimals() {
     dispatch(getSpecies())
     dispatch(getGender())
   },[])
-  const matches = useMediaQuery('(min-width:810px)')
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
 
   function findertype(list, value, type,setValue) {
     list?.map(a => {
@@ -219,8 +220,8 @@ export default function AddAnimals() {
         >
           <div
             style={{
-              display: matches ? "flex" : 'grid',
-              justifyContent: matches ? "space-evenly" : 'space-around'
+              display: mobile ?  matches ? 'grid' :  "flex":  'grid' ,
+              justifyContent: mobile ?  matches ? 'space-around':  "space-evenly" : 'space-around',
             }}
           >
             <InputForm
@@ -273,8 +274,8 @@ export default function AddAnimals() {
           </div>
           <div
             style={{
-              display: "flex",
-              justifyContent: "space-evenly"
+              display: mobile ?  matches ? 'grid' :  "flex":  'grid' ,
+              justifyContent: mobile ?  matches ? 'space-around':  "space-evenly" : 'space-around',
             }}
           >
             <DropDown
@@ -310,8 +311,8 @@ export default function AddAnimals() {
               <>
                 <div
                   style={{
-                    display: matches ? "flex" : 'grid',
-                    justifyContent: matches ? "space-evenly" : 'space-around'
+                    display: mobile ?  matches ? 'grid' :  "flex":  'grid' ,
+              justifyContent: mobile ?  matches ? 'space-around':  "space-evenly" : 'space-around',
                   }}
                 >
                   <InputForm
@@ -374,8 +375,8 @@ export default function AddAnimals() {
                 </div>
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "space-evenly"
+                    display: mobile ?  matches ? 'grid' :  "flex":  'grid' ,
+              justifyContent: mobile ?  matches ? 'space-around':  "space-evenly" : 'space-around',
                   }}
                 >
                   <DropDown
@@ -420,8 +421,8 @@ export default function AddAnimals() {
                 </div>
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "space-evenly"
+                    display: mobile ?  matches ? 'grid' :  "flex":  'grid' ,
+                    justifyContent: mobile ?  matches ? 'space-around':  "space-evenly" : 'space-around',
                   }}
                 >
                   <InputForm
@@ -467,8 +468,8 @@ export default function AddAnimals() {
               <>
                 <div
                   style={{
-                    display: matches ? "flex" : 'grid',
-                    justifyContent: matches ? "space-evenly" : 'space-around'
+                    display: mobile ?  matches ? 'grid' :  "flex":  'grid' ,
+              justifyContent: mobile ?  matches ? 'space-around':  "space-evenly" : 'space-around',
                   }}
                 >
                   <InputForm
@@ -532,8 +533,8 @@ export default function AddAnimals() {
                 </div>
                 <div
                   style={{
-                    display: matches ? "flex" : 'grid',
-                    justifyContent: matches ? "space-evenly" : 'space-around'
+                    display: mobile ?  matches ? 'grid' :  "flex":  'grid' ,
+                    justifyContent: mobile ?  matches ? 'space-around':  "space-evenly" : 'space-around',
                   }}
                 >
                   <InputForm
@@ -596,8 +597,8 @@ export default function AddAnimals() {
                 </div>
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "space-evenly"
+                    display: mobile ?  matches ? 'grid' :  "flex":  'grid' ,
+              justifyContent: mobile ?  matches ? 'space-around':  "space-evenly" : 'space-around',
                   }}
                 >
                   <InputForm
@@ -651,8 +652,8 @@ export default function AddAnimals() {
                 </div>
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent: "space-evenly"
+                    display: mobile ?  matches ? 'grid' :  "flex":  'grid' ,
+              justifyContent: mobile ?  matches ? 'space-around':  "space-evenly" : 'space-around',
                   }}
                 >
                   <InputForm

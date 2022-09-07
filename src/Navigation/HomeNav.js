@@ -37,6 +37,7 @@ import ParentOP from '../Screens/Parents/ParentOP';
 import P from '../Screens/Parents/P';
 import Edit from '../Screens/Home/Edit';
 import Status from '../Screens/Home/Status';
+import Modal_side from '../Component/Nav/Modal_side';
 
 export default function HomeNav() {
   const dispatch = useDispatch()
@@ -76,6 +77,8 @@ export default function HomeNav() {
       <Route path='/weightHist' element={<ProtectedRoute Component={WeightPage} access={access} />} />
       <Route path='/parentop' element={<ProtectedRoute Component={ParentOP} access={access} />} />
       <Route path='/parentopp' element={<ProtectedRoute Component={P} access={access} />} />
+
+      <Route path='/Modal' element={<Modal_side />} />
 
       <Route path='/out' element={<RootNav />} />
     </Routes>
