@@ -84,4 +84,5 @@ export const IMAGES={
     plus1:require("../assets/Add/plus1.png"),
     sideback:require("../assets/Logo/play-arrow.png"),
     lbs:require("../assets/Add/lb.png"),
+    splash : require("../assets/splash.png")
 }

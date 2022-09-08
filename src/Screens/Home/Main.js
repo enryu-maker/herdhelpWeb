@@ -62,6 +62,7 @@ export default function Main() {
             paddingInlineStart:0,
             marginBottom:"50px",
             marginTop: mobile ? matches ? 0 : 0 : 50,
+            backgroundColor : mobile ? matches ? null : null : COLORS.white 
         }}>
           <FlatList
             list={animal}

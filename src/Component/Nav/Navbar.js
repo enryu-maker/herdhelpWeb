@@ -2,17 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, FONTS } from "../../Theme/Theme";
+import useMediaQuery from "../useMediaQuery";
 import "./Navbar.css";
 
 function NavBar({
   page,
   navStyle
 }) {
+
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
   return (
     <>
       <nav style={{
-        paddingInline:30,
-        display:"flex",justifyContent:'space-between',
+        paddingInline: mobile ? matches ? 30  : 30 : 0,
+        display:"flex",
+        justifyContent:'space-between',
         backgroundColor:COLORS.white,
         alignSelf:"center",
         height:60,
@@ -23,9 +28,12 @@ function NavBar({
           <img
             src={IMAGES.herdhelp}
             alt="logo"
-            style={{ height: 60, 
-              width: 200,
-              alignSelf:"center"
+            style={{ height: mobile ? matches ? 60 : 60 : 40, 
+              width: mobile ? matches ? 200 : 200 : 125,
+              margin:mobile ? matches ? 0 : 0 : '10%',
+              alignSelf:"center",
+              justifyContent:'space-around',
+              display:'flex'
             }}
           />
         </Link>

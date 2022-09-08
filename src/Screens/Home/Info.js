@@ -69,7 +69,8 @@ export default function Info({
         });
   }
   const matches = useMediaQuery('(max-width:810px)')
-  
+  const mobile = useMediaQuery('(min-width:400px)') 
+
 
   return (
     <div>
@@ -105,9 +106,9 @@ export default function Info({
               cond == false ?
                 <div></div> :
                 <div style={{
-                  display: "flex",
+                  display: mobile ? matches ? "flex" : 'flex' : 'grid', 
                   alignSelf: "center",
-                  marginRight: -100
+                  marginRight: mobile ? matches ? -100 : -100 : 0
                 }}>
                   <button style={{
                     ...FONTS.h2,
@@ -123,7 +124,7 @@ export default function Info({
                   <button style={{
                     ...FONTS.h2,
                     color: COLORS.Primary,
-                    marginLeft: 30,
+                    marginLeft: mobile ? matches ? 30 : 30 :0 ,
                     border:'none',
                     background:'none',
                     cursor:'pointer',

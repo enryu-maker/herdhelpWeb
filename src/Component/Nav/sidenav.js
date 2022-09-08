@@ -117,15 +117,15 @@ export default function Sidenav({
     <>
         {
           
-          matches ? <button style={{width:50 , 
-                                    height:50 , 
+          matches ? <button style={{width:40 , 
+                                    height:40 , 
                                     position:'absolute' , 
                                     border:'none' , 
                                     borderRadius:20 , 
                                     margin:10 , 
                                     backgroundColor:COLORS.Primary , 
                                     cursor:'pointer'}} 
-                  onClick={openModal} > <img alt='' src={IMAGES.menuios} style={{width:35 , height:35  }}/></button> : 
+                  onClick={openModal} > <img alt='' src={IMAGES.menuios} style={{width:22 , height:22  }}/></button> : 
                   <div style={{
                     position: 'fixed',
                     height:'100%',
@@ -142,8 +142,8 @@ export default function Sidenav({
                   }}
                   id='Sidenav'
                   >
-          {matches ? <button style={{  width:50 , 
-                            height:50 , 
+          {matches ? <button style={{  width:40 , 
+                            height:40 , 
                             position:'absolute' , 
                             right:0 , 
                             background:'none' , 
@@ -321,8 +321,8 @@ export default function Sidenav({
         }}
         id='Sidenav'
         >
-{matches ? <button style={{  width:50 , 
-                  height:50 , 
+{matches ? <button style={{  width:40 , 
+                  height:40 , 
                   position: mobile ? matches ? 'absolute' : null : 'fixed' , 
                   right: mobile ? matches ? 0 : null : 20 , 
                   background:'none' , 
@@ -408,36 +408,7 @@ onClick={()=> {
             marginTop:matches ? 130 : 100, 
             paddingLeft:'15px',
           }}>
-
-          {/* <Sidemenu
-            img={IMAGES.file}
-            label={'Report'}
-            path={'/report'}
-          /> */}
-          <Sidemenu
-            img={IMAGES.subs}
-            label={'Subscription'}
-            path={'/subscription'}
-          />
-          {/* <hr style={{
-            border: '1px solid black' ,
-            top: '1%',
-            position: 'relative',
-            width: '100%',
-          }}>
-          </hr> */}
-
-          <Sidemenu
-            img={IMAGES.weight}
-            label={'Weight History'}
-            path={'/weighthistory'}
-          />
-          <Sidemenu
-            img={IMAGES.parents}
-            label={'Parents'}
-            path={'/parents'}
-          />
-          {
+{
             mobile ? matches ? null : null : <>
             <LineDivider/>
             <Sidemenu
@@ -461,9 +432,27 @@ onClick={()=> {
             path={'/report'}
           />
 
-<LineDivider/>
             </>
           }
+         
+<LineDivider/>
+          <Sidemenu
+            img={IMAGES.subs}
+            label={'Subscription'}
+            path={'/subscription'}
+          />
+
+          <Sidemenu
+            img={IMAGES.weight}
+            label={'Weight History'}
+            path={'/weighthistory'}
+          />
+          <Sidemenu
+            img={IMAGES.parents}
+            label={'Parents'}
+            path={'/parents'}
+          />
+          
 
 
           <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>

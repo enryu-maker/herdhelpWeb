@@ -4,6 +4,7 @@ import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
 import TextButton from "../../Component/TextButton";
 import { IMAGES } from "../../Theme/Image";
 import { Link } from 'react-router-dom';
+import useMediaQuery from '../../Component/useMediaQuery';
 
 
 
@@ -14,15 +15,14 @@ export default function Home() {
   // const [bought, setBought] = useState(false);
   // 
 
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
 
 
-
-
-
+function Desktop_tab(){
   return (
     <>
-      <NavBar page={'/'} />
-      <div style={{ backgroundColor: COLORS.white, }}>
+    <div style={{ backgroundColor: COLORS.white, }}>
         <div style={{
           display: 'inline-flex',
           justifyContent: 'space-between',
@@ -147,6 +147,113 @@ export default function Home() {
         {/*  */}
 
       </div>
+    </>
+  )
+}
+
+
+
+  return (
+    <>
+      <NavBar page={'/'} />
+      {
+        mobile ? matches ? <> <Desktop_tab/> </> :  <> <Desktop_tab/> </> :
+        <>
+        <div style={{display:'grid', background :'linear-gradient(149.42deg, #D3F3D2 6.44%,rgba(5, 255, 0, 0.58) 58.02%, rgba(114, 242, 111, 0.81) 89.24%, rgba(4, 200, 0, 0.46) 136.74%);' }}>
+        <div style={{width:'100%' , height : '45vh' , display:'flex' }}>
+          <div style={{width:'50%' , display:'flex' , left:0 , position:'absolute'}}>
+          <h3 style={{
+              position: 'absolute',
+              width: 400,
+              color: COLORS.Primary,
+              textAlign: 'left',
+              top: 60,
+              ...FONTS.h2,
+              fontSize: 20,
+              left:10
+            }}>Herd's <br/> Management Tool
+            </h3>
+          <h5 style={{
+              position: 'absolute',
+              width: 200,
+              color: COLORS.black,
+              textAlign: 'left',
+              top: 150,
+              ...FONTS.h4,
+              fontSize: 13,
+              left:10
+            }}>Herdhelp is an online herd Management<br /> tool used for management of animals it is an overall solution to your farm problems
+            </h5>
+
+          </div>
+          <div style={{width:'50%' , height:'50vh' , display:'flex' , right:0 ,position:'absolute', padding:10 , border:'1px soild black' , borderRadius:SIZES.radius}}>
+<img src={IMAGES.img1} alt='' style={{width : 100 , borderRadius:9 , height : 250  , margin : 10 , right : 10 , top : 50 , position:'absolute'}} />
+<img src={IMAGES.splash} alt='' style={{width : 100 , borderRadius:9 , height : 250  , margin : 10 , right : 60 , top : 20 , position:'absolute'}} />
+</div>
+
+        </div>
+
+       
+          {/* <h3>Douwnload for Android and Ios</h3> */}
+        
+        {/* <button style={{display:'flex' ,justifyContent:'space-around' }}>
+              <img src={IMAGES.playstore} alt="" style={{width:30 , height:30 }} />
+             <h3 style={{...FONTS.h3}}>Playstore</h3>
+            </button>
+
+            <button style={{width: 150 , height:50,display:'flex'}}>
+              <img src={IMAGES.appstore} alt="" />
+            Appstore
+            </button> */}
+              <h3 style={{
+                position: 'absolute', top: 350 , left:10 , color: COLORS.Primary,
+                ...FONTS.h1,
+              }}><img src={IMAGES.down} alt="" style={{width:30 }} /> Download From </h3>
+            <div>
+              <button style={{
+                position: 'absolute',
+                top: 430,
+                left: 10,
+                // border: 'none',
+                background: COLORS.white,
+                borderRadius: 20,
+                width: 150,
+                height: 62,
+                fontSize: 18,
+                cursor: 'pointer',
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'center', gap: 10,
+                ...FONTS.h2,
+                border: '1px solid black',
+              }}>
+                <img src={IMAGES.appstore} alt={''}
+                  style={{ width: 40 }} />
+                App Store</button>
+              <button style={{
+                position: 'absolute',
+                top: 430,
+                left: 170,
+                border: 'none',
+                background: COLORS.white,
+                border: '1px solid black',
+                borderRadius: 20,
+                width: 150,
+                height: 62,
+                fontSize: 18,
+                cursor: 'pointer',
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'center', gap: 10,
+                ...FONTS.h2,
+              }}><img src={IMAGES.playstore} alt={''}
+                style={{ width: 35 }} />Play Store</button>
+            </div>
+        
+        </div>
+        </>
+      }
+      
     </>
   )
 }
