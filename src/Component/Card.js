@@ -100,8 +100,10 @@ function Allcards(){
            <button
            style={{
              backgroundColor: COLORS.lightGray2,
-             height: 80,
-             margin: SIZES.padding,
+             height: 200,
+            //  margin: SIZES.padding,
+            margin: 15,
+            marginBottom:30,
              borderRadius: SIZES.radius,
              // flexDirection:"column",
              borderWidth: 0,
@@ -111,19 +113,19 @@ function Allcards(){
              shadowOpacity: 0.5,
              shadowRadius: 10,
              elevation: 2,
-             width: 80,
+             width: 135,
              cursor:'pointer',
              boxShadow: '0px 0px 15px -4px #888181',
            }}
            onClick={onPress}
          >
              {/* <img src={IMAGES.rightone} style={{ height: 20, width: 20,alignSelf:"center",marginLeft:200,marginTop:10 }} /> */}
-             <img src={img} alt={Name} style={{ height: 100, width: 100,alignSelf:"center"}} />
+             <img src={img} alt={Name} style={{ height: 40, width: 40,alignSelf:"center"}} />
            <div>
                <div style={{
                textAlign:'center'
            }}>
-           <p style={{...FONTS.h3 , margin:20}}>{Name}</p>
+           <p style={{...FONTS.h3 , margin:30}}>{Name}</p>
            <p style={{...FONTS.h3 , 
            
                width:70,
@@ -133,8 +135,8 @@ function Allcards(){
                display: 'block ruby',
                textAlign: 'center',
                display: 'flex',
-               margin:'auto',
-               marginTop:10,
+              //  margin:'auto',
+               marginTop:'-20px',
                padding:'5px 30px',
    
                alignItems:'center',

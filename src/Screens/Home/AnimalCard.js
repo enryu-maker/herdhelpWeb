@@ -9,7 +9,8 @@ export default function AnimalCard({
     onPress,
 }) {
 
-    const matches = useMediaQuery('(min-width:810px)')
+    const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
     const unit = JSON.parse(useSelector(state => state.Reducers.unit))
 
     return (
@@ -26,7 +27,7 @@ export default function AnimalCard({
                     shadowOpacity: 0.5,
                     shadowRadius: 10,
                     elevation: 2,
-                    width: matches ?   "25%" : "50%",
+                    width: mobile ?  matches ?   "50%" : "25%" : "70%",
                     cursor: 'pointer',
                     alignSelf: "center",
                     padding:"5px"

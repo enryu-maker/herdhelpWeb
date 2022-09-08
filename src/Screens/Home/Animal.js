@@ -6,6 +6,7 @@ import FlatList from 'flatlist-react';
 import AnimalCard from './AnimalCard';
 import { IMAGES } from '../../Theme/Image';
 import InputForm from '../../Component/InputForm';
+import useMediaQuery from '../../Component/useMediaQuery';
 export default function Animal() {
   let navigate = useNavigate()
   const [search,setSearch] = React.useState(false)
@@ -14,6 +15,9 @@ export default function Animal() {
   const [vacc, setVacc] = React.useState('')
   const [med, setMed] = React.useState('')
   const [Bred, setBred] = React.useState('')
+
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
 
   const { state } = useLocation();
   const { data } = state;
@@ -75,9 +79,9 @@ export default function Animal() {
         rightcomponent={
           <>
             <div style={{
-              display: "flex",
+              display: mobile ? matches ? 'flex' : 'flex' : 'grid',
               alignSelf: "center",
-              marginRight: -100
+              marginRight: mobile ? matches ? -100 : -100 : 0
             }}>
               <p style={{
                 ...FONTS.h2,
@@ -102,7 +106,7 @@ export default function Animal() {
                 justifyContent: "center",
                 alignItems: "center",
                 color:COLORS.white,
-                marginLeft:30
+                marginLeft:mobile ? matches ? 30 : 30 : 0
               }}
               onClick={()=>{
                 setSearch(!search)

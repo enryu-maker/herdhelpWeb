@@ -20,7 +20,7 @@ import { transitions, positions,types , Provider as AlertProvider } from 'react-
 import useMediaQuery from '../useMediaQuery'
 import Modal from 'react-modal';
 
-
+// Modal.setAppElement('HERDHELPWEB');
 export default function Sidenav({
   active
 }) {
@@ -40,6 +40,7 @@ export default function Sidenav({
   function closeModal() {
     setIsOpen(false);
   }
+
   // 
   const dispatch =useDispatch()
   React.useEffect(()=>{
@@ -57,7 +58,7 @@ export default function Sidenav({
   }
 
   const matches = useMediaQuery('(max-width:810px)')
-  const mobile = useMediaQuery('(min-width:350px)')  
+  const mobile = useMediaQuery('(min-width:400px)')  
 
 
   function Sidemenu({ img, label, path, onPress }) {
@@ -115,7 +116,7 @@ export default function Sidenav({
   return (
     <>
         {
-          mobile ? 
+          
           matches ? <button style={{width:50 , 
                                     height:50 , 
                                     position:'absolute' , 
@@ -246,7 +247,7 @@ export default function Sidenav({
                       label={'Parents'}
                       path={'/parents'}
                     />
-                    <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
+                    <div style={{ position: 'absolute', bottom: 40, width: '100%' }}>
                     <LineDivider/>
                     <Sidemenu
                         img={IMAGES.setting}
@@ -265,8 +266,7 @@ export default function Sidenav({
                     <LineDivider/>
                   </div>
                   </div>
-          : 
-          'none'
+          
         }
         {/* <button >Open Modal</button> */}
         {/*  */}
@@ -284,7 +284,9 @@ export default function Sidenav({
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundColor: 'rgba(255, 255, 255, 0.75)'
+              backgroundColor: 'rgba(255, 255, 255, 0.75)',
+              margin : mobile ? matches ? -40 : null : -40,
+              display :  mobile ? matches ? 'block' : 'none' : 'block'
             },
             content: {
               position: 'absolute',
@@ -292,12 +294,12 @@ export default function Sidenav({
             //   left: '40px',
             //   right: '800px',
             //   bottom: '40px',
-            width:'250px',
+            width:  mobile ? matches ? 250 : null : '100%',
               border: '1px solid transparent',
               background: COLORS.Primary,
             //   overflow: 'auto',
             //   WebkitOverflowScrolling: 'touch',
-              borderRadius: '4px',
+              borderRadius: '0 4px 4px 0',
               outline: 'none',
               
             }
@@ -321,8 +323,8 @@ export default function Sidenav({
         >
 {matches ? <button style={{  width:50 , 
                   height:50 , 
-                  position:'absolute' , 
-                  right:0 , 
+                  position: mobile ? matches ? 'absolute' : null : 'fixed' , 
+                  right: mobile ? matches ? 0 : null : 20 , 
                   background:'none' , 
                   cursor:'pointer', 
                   border:'1px solid black' , 
@@ -435,6 +437,35 @@ onClick={()=> {
             label={'Parents'}
             path={'/parents'}
           />
+          {
+            mobile ? matches ? null : null : <>
+            <LineDivider/>
+            <Sidemenu
+            img={IMAGES.herd}
+            label={'Herds'}
+            path={'/'}
+          />
+           <Sidemenu
+            img={IMAGES.add}
+            label={'Add'}
+            path={'/add'}
+          />
+           <Sidemenu
+            img={IMAGES.money}
+            label={'Finance'}
+            path={'/finance'}
+          />
+           <Sidemenu
+            img={IMAGES.add}
+            label={'Report'}
+            path={'/report'}
+          />
+
+<LineDivider/>
+            </>
+          }
+
+
           <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
           <LineDivider/>
           <Sidemenu

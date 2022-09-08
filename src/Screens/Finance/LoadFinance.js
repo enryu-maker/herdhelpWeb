@@ -13,7 +13,9 @@ import useMediaQuery from '../../Component/useMediaQuery';
 import { useNavigate } from "react-router-dom";
 export default function LoadFinance() {
   const finance = useSelector(state => state.Reducers.finance)
-  const matches = useMediaQuery('(min-width:810px)')
+  // const matches = useMediaQuery('(min-width:810px)')
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
   const navigate = useNavigate()
   return (
     <>
@@ -60,60 +62,8 @@ export default function LoadFinance() {
           
         
             {
-              matches ? <>
-              <div style={{
-                display:'flex',
-                flexDirection: "row",
-                justifyContent: "space-evenly",
-                width: "175vh",
-                // height: "100vh",
-              }}
-            >
-              <div style={{
-                display: "flex",
-                height: "85vh",
-                overflowY: 'scroll',
-                width: "43%",
-                overflowX: "hidden",
-                alignSelf: "center",
-  
-  
-              }}>
-                <ul style={{
-                  paddingInlineStart: 0,
-  
-                  // height: "100vh"
-                }}>
-                  <FlatList
-                    list={finance}
-                    keyExtractor={item => `${item.id}`}
-                    displayRow
-                    renderItem={(item, index) => {
-                      return (
-                        <Feedcard
-                        key={item.id} 
-                          Feedname={item.category}
-                          FeedQty={item.quantity}
-                          Feeddate={item.added_date}
-                          Feedprice={item.price}
-                        />
-                      )
-                    }
-                    }
-                    renderWhenEmpty={() => <div>List is empty!</div>}
-                  />
-                </ul>
-              </div>
-              <div style={{
-                position: "sticky",
-                top: '0px',
-                marginTop: "50px",
-                // marginLeft:"50px"
-              }}>
-                <AddFinance />
-              </div>
-            </div></>
-            : <>
+              matches ? 
+              <>
               <div style={{ 
                    
                   position:'relative' , 
@@ -136,7 +86,7 @@ export default function LoadFinance() {
                 // top: '0px',
                 marginTop: "80px",
                 // marginLeft:"50px"
-                width:400,
+                width:mobile ? matches ? 400 : 400 : 350,
               margin:'auto',
               display:'none'
               }} id='Addfinance'>
@@ -189,6 +139,60 @@ export default function LoadFinance() {
 
               </div>
             </>
+            :
+            <>
+            <div style={{
+              display:'flex',
+              flexDirection: "row",
+              justifyContent: "space-evenly",
+              width: "175vh",
+              // height: "100vh",
+            }}
+          >
+            <div style={{
+              display: "flex",
+              height: "85vh",
+              overflowY: 'scroll',
+              width: "43%",
+              overflowX: "hidden",
+              alignSelf: "center",
+
+
+            }}>
+              <ul style={{
+                paddingInlineStart: 0,
+
+                // height: "100vh"
+              }}>
+                <FlatList
+                  list={finance}
+                  keyExtractor={item => `${item.id}`}
+                  displayRow
+                  renderItem={(item, index) => {
+                    return (
+                      <Feedcard
+                      key={item.id} 
+                        Feedname={item.category}
+                        FeedQty={item.quantity}
+                        Feeddate={item.added_date}
+                        Feedprice={item.price}
+                      />
+                    )
+                  }
+                  }
+                  renderWhenEmpty={() => <div>List is empty!</div>}
+                />
+              </ul>
+            </div>
+            <div style={{
+              position: "sticky",
+              top: '0px',
+              marginTop: "50px",
+              // marginLeft:"50px"
+            }}>
+              <AddFinance />
+            </div>
+          </div></>
             }
             </div>
       </div>

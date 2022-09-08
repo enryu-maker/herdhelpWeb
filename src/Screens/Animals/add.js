@@ -66,7 +66,7 @@ export default function Add() {
           <button
             style={{
               backgroundColor: COLORS.lightGray2,
-              height: mobile ? matches ? 250  : 250 :  130,
+              height: mobile ? matches ? 250  : 250 :  150,
               margin: SIZES.padding,
               borderRadius: SIZES.radius,
               // flexDirection:"column",
@@ -77,7 +77,7 @@ export default function Add() {
               shadowOpacity: 0.5,
               shadowRadius: 10,
               elevation: 2,
-              width: mobile ? matches ? 250  : 250 :  120 ,
+              width: mobile ? matches ? 250  : 250 :  145 ,
               cursor: 'pointer',
               boxShadow: '0px 0px 15px -4px #888181',
             }}
@@ -96,7 +96,7 @@ export default function Add() {
                 {
                   mobile ? matches ?  <p style={{ ...FONTS.h3, margin: 20 }}>{Name}</p> : 
                                       <p style={{ ...FONTS.h3, margin: 20 }}>{Name}</p> :  
-                                      <p style={{ ...FONTS.h5, margin: 20 }}>{Name}</p>
+                                      <p style={{ ...FONTS.h5, margin: 10 }}>{Name}</p>
                 }
                 {/* <p style={{...FONTS.h4}}>{global.unit?`${Weight} lbs`:`${weight_kg} kg`}</p> */}
               </div>
@@ -179,19 +179,27 @@ export default function Add() {
         width: "100%"
       }}>
 
-        {/* <Sidenav /> */}
+        <Sidenav />
 
-        <Modal_side/>
+      
         <div style={{
-          width: "auto",
+          width: "100%",
           float: "right"
         }}>
-          <NavBarMain page={'add'} />
+        <NavBarMain page={'add'} />
+         
+        {
+  mobile? matches ? null : null: 
+  <>
+  <p style={{...FONTS.h2 , color: COLORS.Primary}}>Add</p>
+  </>
+}
           <div style={{
             overflowY: 'scroll',
             height:"90vh",
             paddingInlineStart:0,
-            marginBottom:"50px"
+            marginBottom:"50px",
+            marginTop:10
         }}>
             <FlatList
               list={data}

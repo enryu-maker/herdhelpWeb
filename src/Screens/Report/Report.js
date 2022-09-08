@@ -13,6 +13,7 @@ import { getReports } from '../../Store/actions';
 import Sidenav from '../../Component/Nav/sidenav';
 import Loading from '../../Component/Loading';
 import Header from '../../Component/Header';
+import useMediaQuery from '../../Component/useMediaQuery';
 
 
 export default function Report() {
@@ -25,6 +26,9 @@ export default function Report() {
   }, []);
   const reports = useSelector(state => state.Reducers.reports)
 
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
+
   function Altcards({
     altname,
     img,
@@ -36,20 +40,22 @@ export default function Report() {
         <button
           style={{
             backgroundColor: 'rgb(227,227,227)',
-            height: 250,
-            margin: SIZES.padding,
+            height: mobile ? matches ? 250 : 250 : 160,
+            margin: mobile ? matches ? SIZES.padding : SIZES.padding : 10,
             borderRadius: SIZES.radius,
             cursor: "pointer",
             borderWidth: 0,
             justifyContent: "space-evenly",
             boxShadow: '0px 0px 15px -4px #888181',
             elevation: 2,
-            width: 230,
+            width: mobile ? matches ? 230 : 230 : 150,
           }}
           onClick={onPress}
         >
           {/* <img src={IMAGES.rightone} style={{ height: 20, width: 20,alignSelf:"center",marginLeft:200,marginTop:10 }} /> */}
-          <img src={img} alt={''} style={{ height: 80, width: 80, alignSelf: "center" }} />
+          <img src={img} alt={''} style={{ height:mobile ? matches ? 80 : 80 : 45, 
+                                          width: mobile ? matches ? 80 : 80 : 45, 
+                                          alignSelf: "center" }} />
           <div style={{
             textAlign: 'center'
           }}>
@@ -75,20 +81,27 @@ export default function Report() {
       }}>
         <Sidenav active={"Report"}/>
         <div style={{
-          width:"90%",
+          width:mobile ? matches ? '90%' : '90%' : '100%',
           float:"right",
         }}>
           <NavBarMain page={"report"}/>
+          {
+            mobile ? matches? null : null : 
+            <>
+            <p style={{...FONTS.h2 , color: COLORS.Primary}}>Report</p>
+            </>
+          }
           {/* <Header
           title={"Reports Section"}
          
         /> */}
         <ul style={{
           overflowY: 'scroll',
-          height: "80vh",
+          height: mobile ? matches ? "80vh" : "80vh" : '100%',
           paddingInlineStart: 0,
           marginInlineStart:"0px",
-          marginBlockStart:"0px"
+          marginBlockStart:"0px",
+          marginTop: mobile ? matches ? 0: 0: 25
         }}>
           <FlatList
             list={reports}

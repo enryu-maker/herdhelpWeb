@@ -27,7 +27,8 @@ export default function WeightHistory() {
   const [err, setErr] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const dispatch =useDispatch()
-  const matches = useMediaQuery('(min-width:810px)')
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
   React.useEffect(()=>{
     dispatch(getTags())
   },[])
@@ -97,7 +98,7 @@ export default function WeightHistory() {
     }}>
       <Sidenav active={"Weight History"} />
       <div style={{
-        width: "90%",
+        width: mobile ? matches ?  "90%" : "90%" : '100%',
         float: "right",
         display: "flex",
         flexDirection: "column",
@@ -109,14 +110,14 @@ export default function WeightHistory() {
           paddingTop: "20px",
           backgroundColor: COLORS.lightGray2,
           alignSelf: "center",
-          width: "80%",
+          width: mobile ? matches ? "80%" : "80%" : '90%',
           borderRadius: SIZES.radius,
           justifyContent: "center"
         }}>
           <div
             style={{
-              display: matches ? "flex" : 'grid',
-              justifyContent: matches ? "space-evenly" : 'space-around'
+              display:mobile ? matches ? 'grid': "flex" : 'grid',
+              justifyContent: mobile ? matches ?  'space-around': "space-evenly" : "space-around"
             }}
           >
             <DropDown

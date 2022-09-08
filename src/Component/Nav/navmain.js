@@ -20,7 +20,7 @@ function NavBarMain({
   const mobile = useMediaQuery('(min-width:400px)') 
   return (
     <>
-      <div style={{ width: '100%', top: 0  , display:mobile ? matches ? 'block' : null : 'none'}}>
+      <div style={{ width: '100%', top: 0 , left:40  , display:mobile ? matches ? 'block' : null : 'none'}}>
         <div style={{ display: 'flex', width: '100%' }}>
           <div>
             

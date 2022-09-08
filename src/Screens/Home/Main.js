@@ -18,6 +18,7 @@ import FlatList from 'flatlist-react';
 import Loading from "../../Component/Loading";
 import Sidenav from "../../Component/Nav/sidenav";
 import { COLORS } from "../../Theme/Theme";
+import useMediaQuery from "../../Component/useMediaQuery";
 export default function Main() {
   const dispatch = useDispatch()
   let navigate = useNavigate()
@@ -34,6 +35,9 @@ export default function Main() {
     dispatch(getGender())
   }, [])
   const animal = useSelector(state => state.Reducers.herds)
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
+
   return (
     <>
       <div style={{
@@ -45,16 +49,19 @@ export default function Main() {
       }}>
         <Sidenav/>
         <div style={{
-          width:"90%",
-          float:"right"
+          width:"100%",
+          float:"right",
+          
         }}>
-        <NavBarMain page={"herds"}/>
+        <NavBarMain style={{left:30,
+          position:'absolute'}} page={"herds"}/>
       
         <div style={{
             overflowY: 'scroll',
             height:"90vh",
             paddingInlineStart:0,
-            marginBottom:"50px"
+            marginBottom:"50px",
+            marginTop: mobile ? matches ? 0 : 0 : 50,
         }}>
           <FlatList
             list={animal}

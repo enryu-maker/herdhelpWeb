@@ -1,4 +1,5 @@
 import React from "react";
+import useMediaQuery from "../../Component/useMediaQuery";
 import { baseURL } from "../../helpers/helpers";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
@@ -7,6 +8,11 @@ export default function ReportCard({
     data,
     onPress,
 }) {
+
+
+    const matches = useMediaQuery('(max-width:810px)')
+    const mobile = useMediaQuery('(min-width:400px)') 
+
     return (
         <>
             <button
@@ -22,7 +28,7 @@ export default function ReportCard({
                     shadowOpacity: 0.5,
                     shadowRadius: 10,
                     elevation: 2,
-                    width: "25%",
+                    width: mobile ? matches ? "50%" : " 25%" : '70% ',
                     cursor: 'pointer',
                     alignSelf: "center",
                     padding:"5px"

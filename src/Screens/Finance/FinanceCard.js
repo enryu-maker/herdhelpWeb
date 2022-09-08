@@ -11,7 +11,8 @@ export default function Feedcard({
     onPress
 }) {
 
-  const matches = useMediaQuery("(min-width:810px)")
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
   return (
     <>
       <button
@@ -28,11 +29,12 @@ export default function Feedcard({
           shadowOpacity: 0.5,
           shadowRadius: 10,
           elevation: 2,
-          width: matches ? '60vh' : "45vh",
+          width: mobile ? matches ? "45vh" : '60vh' : '38vh',
           alignItems:"center",
           paddingInline:"20px",
           // marginInline:20,
-          display:'flex'
+          display:'flex',
+          cursor:'pointer'
         }}
         onClick={onPress}
       >

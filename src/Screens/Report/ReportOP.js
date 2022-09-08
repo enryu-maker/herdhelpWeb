@@ -7,6 +7,7 @@ import ReportCard from './ReportCard';
 import { IMAGES } from '../../Theme/Image';
 import axiosIns from '../../helpers/helpers';
 import Loading from '../../Component/Loading';
+import useMediaQuery from '../../Component/useMediaQuery';
 export default function ReportOP() {
     const [loading, setLoading] = React.useState(false)
     const [Data, setData] = React.useState([])
@@ -27,6 +28,10 @@ export default function ReportOP() {
             setData(data)
         })
     }, [])
+
+
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)')
     return (
         <div>
             <Header
@@ -58,9 +63,9 @@ export default function ReportOP() {
                 rightcomponent={
                     <>
                         <div style={{
-                            display: "flex",
+                            display: mobile ? matches ? 'flex' : 'flex' : 'grid' ,
                             alignSelf: "center",
-                            marginRight: -100
+                            marginRight: mobile ? matches ? -100 : -100 : 0
                         }}>
                             <p style={{
                                 ...FONTS.h2,
@@ -85,7 +90,7 @@ export default function ReportOP() {
                                 justifyContent: "center",
                                 alignItems: "center",
                                 color: COLORS.white,
-                                marginLeft: 30
+                                marginLeft: mobile ? matches ? 30 : 30 : 0
                             }}>
                                 <img src={IMAGES.search} alt={"back"}
                                     style={{
