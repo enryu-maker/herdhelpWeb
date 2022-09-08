@@ -49,7 +49,7 @@ function NavBar({
           <Link to="/" style={{
             color:page === '/' ? COLORS.Primary : 'black',
             marginLeft:2,
-            ...FONTS.h3,
+            ...FONTS.body3,
             textDecoration:'none'
 
           }}>
@@ -58,14 +58,14 @@ function NavBar({
           <Link to="/login" style={{
             color:page === '/login' ? COLORS.Primary : 'black',
             marginLeft:20,
-            ...FONTS.h3,
+            ...FONTS.body3,
             textDecoration:'none'
           }}>
             Login
             </Link>
           <Link to="/signup" style={{
               color:page === '/signup' ? COLORS.Primary : 'black',
-            ...FONTS.h3,
+            ...FONTS.body3,
             marginLeft:20,
             textDecoration:'none'
           }}>

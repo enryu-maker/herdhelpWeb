@@ -47,7 +47,7 @@ export default function HomeNav() {
   const access = useSelector(state => state.Reducers.authToken)
   return (
     <Routes>
-      <Route path="/in" element={<Navigate to="/" />} />
+      <Route path="/in" element={<Navigate to="/main" />} />
       <Route exact path="/main" element={<ProtectedRoute Component={Main} access={access} />} />
       <Route path="/add" element={<Add />} />
       <Route path="/profile" element={<Profile />} />

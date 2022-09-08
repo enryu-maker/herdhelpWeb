@@ -88,7 +88,6 @@ export default function Main() {
 
             }
             }
-            renderWhenEmpty={() => (<Loading/> )}
           />
         </div>
         </div>

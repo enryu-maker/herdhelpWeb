@@ -54,18 +54,19 @@ function Desktop_tab(){
               color: COLORS.black,
               textAlign: 'left',
               top: 250,
-              ...FONTS.h2,
+              ...FONTS.body2,
               fontSize: 20
-            }}>Herdhelp is an online herd Management<br /> tool used for management of animals it is an overall solution to your farm problems
+            }}>
+Herd Help is a farm documentation app that assist you in charting the herds activities. Documentation from insemination to medical records. Herd help does documentation for cows, sheep, goats, pigs, horses and rabbits.This allows you to grow a stronger healthier herd.  Identifying profitable and unprofitable animals is the key to seeing profits.
             </h4>
 
             <div>
               <h3 style={{
-                position: 'absolute', top: 400, color: COLORS.Primary,
+                position: "relative", top: 510, color: COLORS.Primary,
                 ...FONTS.h1,
-              }}>Download From</h3>
+              }}>Available Now</h3>
               <button style={{
-                position: 'absolute',
+                position: "relative",
                 top: 500,
                 left: 0,
                 // border: 'none',
@@ -85,8 +86,8 @@ function Desktop_tab(){
                   style={{ width: 40 }} />
                 App Store</button>
               <button style={{
-                position: 'absolute',
-                top: 500,
+                position: 'relative',
+                top: 440,
                 left: 300,
                 border: 'none',
                 background: COLORS.white,
