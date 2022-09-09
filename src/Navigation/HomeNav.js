@@ -47,8 +47,8 @@ export default function HomeNav() {
   const access = useSelector(state => state.Reducers.authToken)
   return (
     <Routes>
-      <Route path="/in" element={<Navigate to="/main" />} />
-      <Route exact path="/main" element={<ProtectedRoute Component={Main} access={access} />} />
+      <Route path="/in" element={<Navigate to="/" />} />
+      <Route exact path="/" element={<ProtectedRoute Component={Main} access={access} />} />
       <Route path="/add" element={<Add />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/weight" element={<Weight />} />
@@ -77,9 +77,7 @@ export default function HomeNav() {
       <Route path='/weightHist' element={<ProtectedRoute Component={WeightPage} access={access} />} />
       <Route path='/parentop' element={<ProtectedRoute Component={ParentOP} access={access} />} />
       <Route path='/parentopp' element={<ProtectedRoute Component={P} access={access} />} />
-
       <Route path='/Modal' element={<Modal_side />} />
-
       <Route path='/out' element={<RootNav />} />
     </Routes>
   )

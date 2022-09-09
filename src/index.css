@@ -8,28 +8,13 @@ body {
 }
 @font-face {
   font-family: 'Poppins-Regular';
-  src: local('Poppins'), url(./Poppins/Poppins-Light.ttf) format('truetype');
+  src: local('Poppins'), url(./Poppins/Poppins-Regular.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Poppins-Bold';
-  src: local('Poppins'), url(./Poppins/Poppins-SemiBold.ttf) format('truetype');
+  src: local('Poppins'), url(./Poppins/Poppins-Medium.ttf) format('truetype');
 }
-@font-face {
-  font-family: 'mono';
-  src: local('mono'), url(./Poppins/monospace.medium.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'mono-bold';
-  src: local('mono-bold'), url(./Poppins/monospace.bold.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'incon';
-  src: local('incon'), url(./Poppins/Inconsolata-Regular.ttf) format('truetype');
-}
-@font-face {
-  font-family: 'incon-bold';
-  src: local('incon-bold'), url(./Poppins/Inconsolata-Bold.ttf) format('truetype');
-}
+
 
 code {
   font-family: monospace;

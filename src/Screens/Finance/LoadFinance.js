@@ -57,10 +57,7 @@ export default function LoadFinance() {
           margin:'auto'
           
         }}>
-          
-          
-          
-        
+
             {
               matches ? 
               <>

@@ -49,8 +49,8 @@ function Allcards(){
             <div style={{
             textAlign:'center'
         }}>
-        <p style={{...FONTS.h3 , margin:20}}>{Name}</p>
-        <p style={{...FONTS.h3 , 
+        <p style={{...FONTS.body3 , margin:20}}>{Name}</p>
+        <p style={{...FONTS.body3 , 
         
             width:70,
             height:30,
