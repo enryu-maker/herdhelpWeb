@@ -10,7 +10,7 @@ export default function RootNav() {
             <Route path="/out" element={<Navigate to="/" />} />
             <Route exact path="/" element={<Home/>} />
             <Route path="/login" element={<Login/>} />
-            <Route path='/in' element={<HomeNav/>} />
+            <Route path='/in' element={ <HomeNav/>} />
             <Route path='/terms-and-condition' element={<Terms/>} />
             <Route path="/*" element={<Login/>} />
         </Routes>

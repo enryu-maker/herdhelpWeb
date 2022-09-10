@@ -57,7 +57,9 @@ function Desktop_tab(){
               ...FONTS.body2,
               fontSize: 20
             }}>
-Herd Help is a farm documentation app that assist you in charting the herds activities. Documentation from insemination to medical records. Herd help does documentation for cows, sheep, goats, pigs, horses and rabbits.This allows you to grow a stronger healthier herd.  Identifying profitable and unprofitable animals is the key to seeing profits.
+Herd Help is a farm documentation app that assist you in charting the herds activities.<br></br>
+Documentation from insemination to medical records. Herd help does documentation for cows, sheep, goats, pigs, horses and rabbits.<br></br>
+This allows you to grow a stronger healthier herd.  Identifying profitable and unprofitable animals is the key to seeing profits.
             </h4>
 
             <div>
@@ -183,7 +185,11 @@ Herd Help is a farm documentation app that assist you in charting the herds acti
               ...FONTS.h4,
               fontSize: 13,
               left:10
-            }}>Herdhelp is an online herd Management<br /> tool used for management of animals it is an overall solution to your farm problems
+          }}
+            >
+Herd Help is a farm documentation app that assist you in charting the herds activities.<br></br>
+Documentation from insemination to medical records. Herd help does documentation for cows, sheep, goats, pigs, horses and rabbits.<br></br>
+This allows you to grow a stronger healthier herd.  Identifying profitable and unprofitable animals is the key to seeing profits.
             </h5>
 
           </div>
