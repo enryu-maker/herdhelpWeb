@@ -17,7 +17,7 @@ export default function Animal() {
   const [Bred, setBred] = React.useState('')
 
   const matches = useMediaQuery('(max-width:810px)')
-  const mobile = useMediaQuery('(min-width:400px)') 
+  const mobile = useMediaQuery('(min-width:420px)') 
 
   const { state } = useLocation();
   const { data } = state;

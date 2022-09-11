@@ -68,7 +68,7 @@ export default function AddAnimals() {
     dispatch(getGender())
   },[])
   const matches = useMediaQuery('(max-width:810px)')
-  const mobile = useMediaQuery('(min-width:400px)') 
+  const mobile = useMediaQuery('(min-width:420px)') 
 
   function findertype(list, value, type,setValue) {
     list?.map(a => {

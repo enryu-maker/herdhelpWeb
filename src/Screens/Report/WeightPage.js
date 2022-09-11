@@ -9,7 +9,7 @@ import useMediaQuery from '../../Component/useMediaQuery';
 export default function WeightPage() {
   const unit = useSelector(state => state.Reducers.unit)
   const matches = useMediaQuery('(max-width:810px)')
-  const mobile = useMediaQuery('(min-width:400px)') 
+  const mobile = useMediaQuery('(min-width:420px)') 
 
     const navigate = useNavigate()
     const { state } = useLocation();

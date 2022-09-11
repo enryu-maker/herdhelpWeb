@@ -6,7 +6,7 @@ import useMediaQuery from '../useMediaQuery';
 
 
 function Footer() {
-  const mobile = useMediaQuery('(min-width:400px)') 
+  const mobile = useMediaQuery('(min-width:420px)') 
   return (
     <>
       <footer style={{

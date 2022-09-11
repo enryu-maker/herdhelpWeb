@@ -24,7 +24,7 @@ export default function Parents() {
   const [loading, setLoading] = React.useState(false);
   const id = localStorage.getItem('id')
   const matches = useMediaQuery('(max-width:810px)')
-  const mobile = useMediaQuery('(min-width:400px)') 
+  const mobile = useMediaQuery('(min-width:420px)') 
   function finder(list, value) {
     var dataValue;
     list?.map(a => {

@@ -71,7 +71,7 @@ export default function Info({
         });
   }
   const matches = useMediaQuery('(max-width:810px)')
-  const mobile = useMediaQuery('(min-width:400px)') 
+  const mobile = useMediaQuery('(min-width:420px)') 
 // 
 let subtitle;
 const [modalIsOpen, setIsOpen] = React.useState(false);

@@ -17,7 +17,7 @@ function NavBarMain({
   const user = useSelector(state => state.Reducers.userData)
   
   const matches = useMediaQuery('(max-width:810px)')
-  const mobile = useMediaQuery('(min-width:400px)') 
+  const mobile = useMediaQuery('(min-width:420px)') 
   return (
     <>
       <div style={{ width: '100%', top: 0 , left:40  , display:mobile ? matches ? 'block' : null : 'none'}}>
