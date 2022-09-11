@@ -21,6 +21,7 @@ function NavBar({
         backgroundColor:COLORS.white,
         alignSelf:"center",
         height:60,
+        width:"90%",
         maxWidth:"100%",
         ...navStyle
       }}>
@@ -31,7 +32,7 @@ function NavBar({
             style={{ 
               height: mobile ? matches ? 60 : 60 : 40, 
               width: mobile ? matches ? 200 : 200 : 125,
-              margin:mobile ? matches ? 0 : 0 : '12%',
+              margin:mobile ? matches ? 0 : 0 : '10%',
               alignSelf:"center",
               justifyContent:'space-around',
               display:'flex'

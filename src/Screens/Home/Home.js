@@ -163,25 +163,25 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
         mobile ? matches ? <> <Desktop_tab/> </> :  <> <Desktop_tab/> </> :
         <>
         <div style={{display:'grid', }}>
-        <div style={{width:'100%' , height : '45vh' , display:'flex' }}>
-          <div style={{width:'50%' , display:'flex' , left:0 , position:'absolute'}}>
+        {/* <div style={{width:'100%' , height : '45vh' , display:'flex' }}> */}
+          <div style={{width:'90%' , display:'flex' , left:0 , position:'absolute'}}>
           <h3 style={{
               position: 'absolute',
-              width: 400,
+              width: "100%",
               color: COLORS.Primary,
               textAlign: 'left',
               top: 60,
               ...FONTS.h2,
               fontSize: 20,
               left:10
-            }}>Herd's <br/> Management Tool
+            }}>Herd's Management Tool
             </h3>
           <h5 style={{
               position: 'absolute',
-              width: 300,
+              // width: 300,
               color: COLORS.black,
               textAlign: 'left',
-              top: 150,
+              top: 100,
               ...FONTS.h4,
               fontSize: 13,
               left:10
@@ -254,7 +254,7 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
                 style={{ width: 35 }} />Play Store</button>
             </div>
         
-        </div>
+        {/* </div> */}
         </>
       }
       
