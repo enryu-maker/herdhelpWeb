@@ -98,8 +98,7 @@ export default function WeightHistory() {
     }}>
     
       <div style={{
-        width: mobile ? matches ?  "90%" : "90%" : '100%',
-        float: "right",
+        width: mobile ? matches ?  "90%" : "100%" : '100%',
         display: "flex",
         flexDirection: "column",
         alignItems: "center",

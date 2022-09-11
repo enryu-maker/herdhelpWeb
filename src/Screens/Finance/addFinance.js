@@ -25,6 +25,7 @@ export default function AddFinance() {
     category: valueMS,
     quantity: Qty,
   });
+  console.log(data)
   const dispatch = useDispatch()
 
   const matches = useMediaQuery('(max-width:820px)')
@@ -53,7 +54,6 @@ export default function AddFinance() {
     } 
     else {
       console.log("Last div")
-      
     }
   }
 
@@ -75,11 +75,12 @@ export default function AddFinance() {
           }}>
             <DropDown
               value={valueMS}
-              setValue={setValueMS}
+              onPress={(e)=>{
+                setValueMS(e.value)
+              }}
               label={"Category*"}
               options={species}
             />
-
             <InputForm
               prependComponent={
                 <img

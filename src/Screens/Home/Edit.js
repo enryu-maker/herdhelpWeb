@@ -377,11 +377,11 @@ function finder(list, value) {
     </div>
     
     <TextButton
-              label={"Add Animal"}
-              icon={IMAGES.add}
+              label={"Update"}
+              icon={IMAGES.update}
             
               buttonContainerStyle={{
-                marginTop: "20px"
+                marginTop: "20px",
               }}
             />
     </div>

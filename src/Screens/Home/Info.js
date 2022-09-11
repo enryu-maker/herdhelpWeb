@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Header from '../../Component/Header'
 import { COLORS, FONTS, formatter, SIZES } from '../../Theme/Theme'
 import InfoCard from '../../Component/InfoCard'
@@ -18,6 +18,7 @@ import DropDown from '../../Component/DropDown/DropDown';
 import InputForm from '../../Component/InputForm';
 
 import Modal from 'react-modal';
+import TextButton from '../../Component/TextButton';
 
 export default function Info({
 }) {
@@ -43,10 +44,10 @@ export default function Info({
   const onChange = (imageList) => {
     setprofile_pic(imageList);
   };
-  const updateProfile=()=>{
+  const updateProfile = () => {
     setLoading(true)
     const formData = new FormData();
-    formData.append('animal_image', profile_pic.length===0? [] : profile_pic[0]['file']);
+    formData.append('animal_image', profile_pic.length === 0 ? [] : profile_pic[0]['file']);
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -54,42 +55,42 @@ export default function Info({
       },
     };
     axios.patch(baseURL + `/animals/${animal?.tag_number}`, formData, config)
-        .then(response => {
-          if (response.status == 200) {
-            setLoading(false);
-            dispatch(getAnimal(data.tag_number))
-            alert.success(<AlertCard msg={"Profile Pic Sucessfully"} type={true} />)
-          }
-          else {
-            alert.error(<AlertCard msg={"Internal server error"} type={false} />)
-            setLoading(false);
-          }
-        })
-        .catch(err => {
+      .then(response => {
+        if (response.status == 200) {
           setLoading(false);
-          alert.error(<AlertCard msg={err} type={false} />)
-        });
+          dispatch(getAnimal(data.tag_number))
+          alert.success(<AlertCard msg={"Profile Pic Sucessfully"} type={true} />)
+        }
+        else {
+          alert.error(<AlertCard msg={"Internal server error"} type={false} />)
+          setLoading(false);
+        }
+      })
+      .catch(err => {
+        setLoading(false);
+        alert.error(<AlertCard msg={err} type={false} />)
+      });
   }
   const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:420px)') 
-// 
-let subtitle;
-const [modalIsOpen, setIsOpen] = React.useState(false);
+  const mobile = useMediaQuery('(min-width:420px)')
+  // 
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
 
-function openModal() {
-  setIsOpen(true);
-}
+  function openModal() {
+    setIsOpen(true);
+  }
 
-function afterOpenModal() {
-  // references are now sync'd and can be accessed.
-  subtitle.style.color = '#000000c4';
-}
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#000000c4';
+  }
 
-function closeModal() {
-  setIsOpen(false);
-}
+  function closeModal() {
+    setIsOpen(false);
+  }
 
-// 
+  // 
 
   return (
     <div>
@@ -125,39 +126,43 @@ function closeModal() {
               cond == false ?
                 <div></div> :
                 <div style={{
-                  display: mobile ? matches ? "flex" : 'flex' : 'grid', 
+                  display: mobile ? matches ? "flex" : 'flex' : 'grid',
                   alignSelf: "center",
                   marginRight: mobile ? matches ? -100 : -100 : 0,
-                  marginLeft:mobile ? matches ? 0 : 0 : -30
+                  marginLeft: mobile ? matches ? 0 : 0 : -30
                 }}>
                   <button style={{
                     ...FONTS.h2,
                     color: COLORS.Primary,
-                    border:'none',
-                    background:'none',
-                    cursor:'pointer',
-                    width:100,
-                    height:50,
-                    textAlign:'end',
-                    display : mobile ? 'block' : 'none'
-                  }}>
+                    border: 'none',
+                    background: 'none',
+                    cursor: 'pointer',
+                    width: 100,
+                    height: 50,
+                    textAlign: 'end',
+                    display: mobile ? 'block' : 'none'
+                  }}
+                  onClick={()=>{
+                  navigate("/edit")
+                  }}
+                  >
                     EDIT
                   </button>
                   <button style={{
                     ...FONTS.h2,
                     color: COLORS.Primary,
-                    marginLeft: mobile ? matches ? 30 : 30 :0 ,
-                    border:'none',
-                    background:'none',
-                    cursor:'pointer',
-                    width:100,
-                    height:50,
-                    textAlign:'end'
+                    marginLeft: mobile ? matches ? 30 : 30 : 0,
+                    border: 'none',
+                    background: 'none',
+                    cursor: 'pointer',
+                    width: 100,
+                    height: 50,
+                    textAlign: 'end'
                   }}
-                  // onClick={()=>{
-                  //   document.getElementById("Status").style.display = 'block'
-                  // }}
-                  onClick={openModal}
+                    // onClick={()=>{
+                    //   document.getElementById("Status").style.display = 'block'
+                    // }}
+                    onClick={openModal}
                   >
                     STATUS
                   </button>
@@ -179,7 +184,7 @@ function closeModal() {
           justifyContent: "center",
           alignItems: "center",
           marginBottom: "15px",
-          flexDirection:"column"
+          flexDirection: "column"
         }}>
 
           <div style={{
@@ -191,7 +196,7 @@ function closeModal() {
           }}>
             {
               cond ?
-                <img src={profile_pic.length==0?animal?.animal_image != null ? animal?.animal_image : animal?.image:profile_pic[0]['dataURL']} alt={animal?.tag_number}
+                <img src={profile_pic.length == 0 ? animal?.animal_image != null ? animal?.animal_image : animal?.image : profile_pic[0]['dataURL']} alt={animal?.tag_number}
                   style={{
                     height: 120,
                     width: 120,
@@ -200,7 +205,7 @@ function closeModal() {
                     border: '2px solid rgba(0, 0, 0)',
                   }} />
                 :
-                <img src={profile_pic.length==0?animal?.animal_image != null ? baseURL + animal?.animal_image : baseURL + animal?.image:profile_pic[0]['dataURL']} alt={animal?.tag_number}
+                <img src={profile_pic.length == 0 ? animal?.animal_image != null ? baseURL + animal?.animal_image : baseURL + animal?.image : profile_pic[0]['dataURL']} alt={animal?.tag_number}
                   style={{
                     height: 120,
                     width: 120,
@@ -209,64 +214,64 @@ function closeModal() {
                     border: '2px solid rgba(0, 0, 0)',
                   }} />
             }
-            
+
           </div>
           <ImageUploading
-              value={profile_pic}
-              onChange={onChange}
-              maxNumber={69}
-              resolutionWidth={300}
-              resolutionHeight={300}
-            >
-              {({
-                imageList,
-                onImageUpload,
-                onImageRemoveAll,
-              }) => (
-                <div className="upload__image-wrapper">
-                  {
-                    loading?<Loading/>:
+            value={profile_pic}
+            onChange={onChange}
+            maxNumber={69}
+            resolutionWidth={300}
+            resolutionHeight={300}
+          >
+            {({
+              imageList,
+              onImageUpload,
+              onImageRemoveAll,
+            }) => (
+              <div className="upload__image-wrapper">
+                {
+                  loading ? <Loading /> :
                     <>
-                    
-              {
-                profile_pic.length==0?
-                  <button
-                    style={{
-                      backgroundColor: COLORS.yellow,
-                      color: COLORS.black,
-                      ...FONTS.h3,
-                      borderRadius: SIZES.base,
-                      border: "none"
-                    }}
-                    onClick={onImageUpload}
-                  >
-                    EDIT
-                  </button>:
-                  <>
-                  <button style={{
-                    backgroundColor:COLORS.Primary,
-                    color: COLORS.white,
-                    ...FONTS.h3,
-                    borderRadius: SIZES.base,
-                    border: "none"
-                  }} onClick={updateProfile}>Update</button>
-                  &nbsp;
-                  <button style={{
-                    backgroundColor: COLORS.red,
-                    color: COLORS.white,
-                    ...FONTS.h3,
-                    borderRadius: SIZES.base,
-                    border: "none"
-                  }} onClick={onImageRemoveAll}>Remove</button>
-                  </>
+
+                      {
+                        profile_pic.length == 0 ?
+                          <button
+                            style={{
+                              backgroundColor: COLORS.yellow,
+                              color: COLORS.black,
+                              ...FONTS.h3,
+                              borderRadius: SIZES.base,
+                              border: "none"
+                            }}
+                            onClick={onImageUpload}
+                          >
+                            EDIT
+                          </button> :
+                          <>
+                            <button style={{
+                              backgroundColor: COLORS.Primary,
+                              color: COLORS.white,
+                              ...FONTS.h3,
+                              borderRadius: SIZES.base,
+                              border: "none"
+                            }} onClick={updateProfile}>Update</button>
+                            &nbsp;
+                            <button style={{
+                              backgroundColor: COLORS.red,
+                              color: COLORS.white,
+                              ...FONTS.h3,
+                              borderRadius: SIZES.base,
+                              border: "none"
+                            }} onClick={onImageRemoveAll}>Remove</button>
+                          </>
+                      }
+
+
+                    </>
                 }
-                  
-                  
-                  </>
-                  }
-                </div>
-              )}
-            </ImageUploading>
+              </div>
+            )}
+          </ImageUploading>
         </div>
         {/* Middle animal */}
 
@@ -305,7 +310,7 @@ function closeModal() {
               borderRadius: 25,
               padding: 10,
               paddingBottom: 15,
-              marginTop:  matches ? 15 : null,
+              marginTop: matches ? 15 : null,
             }}>
               {
                 animal.bought ? (
@@ -347,7 +352,7 @@ function closeModal() {
               borderRadius: 25,
               paddingBottom: 15,
               padding: 15,
-              marginBottom: matches ? 20 :10 ,
+              marginBottom: matches ? 20 : 10,
             }}>
               <InfoCard label={"Registration"} value={animal?.registration} />
               <InfoCard label={"Breed"} value={animal?.breed} withDivider={false} />
@@ -374,7 +379,7 @@ function closeModal() {
               flexDirection: "column",
               justifyContent: "space-evenly",
               alignSelf: "center",
-              height: mobile ? 120 : 170 ,
+              height: mobile ? 120 : 170,
               marginTop: matches ? 20 : null,
             }}>
               <div style={{
@@ -385,7 +390,7 @@ function closeModal() {
                 borderRadius: 12,
                 justifyContent: "center",
                 justifyContent: "space-evenly",
-                cursor:'pointer'
+                cursor: 'pointer'
               }}
                 onClick={() => {
                   navigate("/medhistory", {
@@ -433,7 +438,7 @@ function closeModal() {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                cursor:'pointer'
+                cursor: 'pointer'
               }}
                 onClick={() => {
                   navigate("/children")
@@ -471,38 +476,45 @@ function closeModal() {
                     animal.children?.length
                   }
                 </p>
-                
+
               </div>
-              
+
             </div>
           </div>
         </div>
         {/* last button */}
         {
           data.flagged ? <div style={{
-            display: matches ? 'inline-grid' : "flex" ,
+            display: matches ? 'inline-grid' : "flex",
             flexDirection: "column",
             marginLeft: matches ? 0 : "85px",
             bottom: "75px",
             backgroundColor: COLORS.lightGray2,
             borderRadius: 25,
             padding: matches ? 15 : 15,
-            width: 350 ,
+            width: 350,
             position: matches ? 'relative' : "fixed",
-            top:matches ? -10 : null,
-            marginBottom: matches ? 30 :null
+            top: matches ? -10 : null,
+            marginBottom: matches ? 30 : null
           }}>
             <InfoCard label={"Flagged?"} value={"Yes"} />
             <InfoCard label={"Description"} value={data.flag_desc} />
           </div> : null
         }
         {
-                mobile ? null : <>
-                <div style={{
+          mobile ? null : <>
+            <div style={{
               display: 'block ruby',
               height: 50,
             }}>
-                <div style={{
+              <TextButton
+              label={"Edit"}
+              onPress={()=>{
+                navigate("/edit")
+              }}
+              icon={IMAGES.update}
+              />
+              {/* <div style={{
                 height: 50,
                 width: 350,
                 backgroundColor: COLORS.Primary,
@@ -511,7 +523,7 @@ function closeModal() {
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
-                cursor:'pointer'
+                cursor: 'pointer'
               }}
                 onClick={() => {
                   navigate("/edit")
@@ -545,22 +557,22 @@ function closeModal() {
                   alignItems: "center"
                 }}
                 >
-                  
-                </p>
-                
-              </div>
-              </div>
-                </>
-              }
 
-{/*  */}
-<Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        // style={customStyles}
-        // contentLabel="Example Modal"
-        style={{
+                </p> */}
+
+              {/* </div> */}
+            </div>
+          </>
+        }
+
+        {/*  */}
+        <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          // style={customStyles}
+          // contentLabel="Example Modal"
+          style={{
             overlay: {
               position: 'fixed',
               top: 0,
@@ -585,105 +597,108 @@ function closeModal() {
               // WebkitOverflowScrolling: 'touch',
               borderRadius: '0 4px 4px 0',
               outline: 'none',
-              height:530,
-              display:'flex',
-              justifyContent:'center'
-              
+              height: 530,
+              display: 'flex',
+              justifyContent: 'center'
+
             }
           }}
         >
-        <div style={{
-                      width:mobile ? matches ? 400  : 400  : 320, 
-                      height:500 , 
-                      background:COLORS.lightGray2 , 
-                      // position:'fixed', 
-                      top: matches ? 80 : 10 , 
-                      margin: '10px 0px', 
-                      display:'flow',
-                      // right:mobile ? matches ? 100 : 100 : 10,
-                      borderRadius:SIZES.radius }}  
-                      // id={'Status'}
-                      >
-          <>
           <div style={{
-            display: "flex",
-            justifyContent: "center",
-            height: 40,
-            width: 40,
-            backgroundColor: COLORS.Primary,
-            alignSelf: "center",
-            borderRadius: 20,
-            margin:10,
-            top:10,
-            position:'relative'
+            width: mobile ? matches ? 400 : 400 : 320,
+            height: 500,
+            background: COLORS.lightGray2,
+            // position:'fixed', 
+            top: matches ? 80 : 10,
+            margin: '10px 0px',
+            display: 'flow',
+            // right:mobile ? matches ? 100 : 100 : 10,
+            borderRadius: SIZES.radius
           }}
-            // onClick={() => {
-            //   document.getElementById("Status").style.display = 'none'
-            // }}
-            onClick={closeModal}
+          // id={'Status'}
           >
-            <img src={IMAGES.close2} alt={"back"}
-              style={{
-                height: 25,
-                width: 25,
-                alignSelf: "center",
-              }} />
-          </div>
-          </>
-          <>
-          <p style={{...FONTS.h2,
-                    color: COLORS.Primary,
-                    display:'flex',
-                    justifyContent:'center'}}>
-            Status
-          </p>
-          </>
-          
-          
-          <div style={{padding:20,}}>
-          <DropDown
-              value={valueS}
-              onPress={(y)=>{
-                setValueS(y.label)
-              }}
-              label={"Status* "}
-              // options={checking}
-              options={Statusad}
-            />
-
-          <DropDown
-              value={valueF}
-              onPress={(x)=>{
-                setValueF(x.label)
-              }}
-              label={"Flagged* "}
-              // options={checking}
-              options={checking}
-              
-            />
             <>
-            <InputForm
-                    prependComponent={
-                      <img
-                        src={IMAGES.plus1}
-                        style={{
-                          height: 25,
-                          width: 25,
-                          margin: 10,
-                          alignSelf: "center",
-                        }}
-                      />
-                    }
-                    type={Text}
-                    value={'Fence Problem'}
-                    label={"Description"}
-                    // onChange={(event) => {
-                    //   setWeight30(event.target.value);
-                    // }}
-                  />
+              <div style={{
+                display: "flex",
+                justifyContent: "center",
+                height: 40,
+                width: 40,
+                backgroundColor: COLORS.Primary,
+                alignSelf: "center",
+                borderRadius: 20,
+                margin: 10,
+                top: 10,
+                position: 'relative'
+              }}
+                // onClick={() => {
+                //   document.getElementById("Status").style.display = 'none'
+                // }}
+                onClick={closeModal}
+              >
+                <img src={IMAGES.close2} alt={"back"}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    alignSelf: "center",
+                  }} />
+              </div>
             </>
+            <>
+              <p style={{
+                ...FONTS.h2,
+                color: COLORS.Primary,
+                display: 'flex',
+                justifyContent: 'center'
+              }}>
+                Status
+              </p>
+            </>
+
+
+            <div style={{ padding: 20, }}>
+              <DropDown
+                value={valueS}
+                onPress={(y) => {
+                  setValueS(y.label)
+                }}
+                label={"Status* "}
+                // options={checking}
+                options={Statusad}
+              />
+
+              <DropDown
+                value={valueF}
+                onPress={(x) => {
+                  setValueF(x.label)
+                }}
+                label={"Flagged* "}
+                // options={checking}
+                options={checking}
+
+              />
+              <>
+                <InputForm
+                  prependComponent={
+                    <img
+                      src={IMAGES.plus1}
+                      style={{
+                        height: 25,
+                        width: 25,
+                        margin: 10,
+                        alignSelf: "center",
+                      }}
+                    />
+                  }
+                  type={Text}
+                  value={'Fence Problem'}
+                  label={"Description"}
+                // onChange={(event) => {
+                //   setWeight30(event.target.value);
+                // }}
+                />
+              </>
+            </div>
           </div>
-        </div>
         </Modal>
 
       </div>
