@@ -19,6 +19,7 @@ export default function ParentCard({
     const navigation = useNavigate()
     const unit = JSON.parse(useSelector(state => state.Reducers.unit))
     const matches = useMediaQuery('(min-width:820px)')
+    const mobile = useMediaQuery('(min-width:420px)') 
     return (
         <>
             <button
@@ -34,7 +35,7 @@ export default function ParentCard({
                     shadowOpacity: 0.5,
                     shadowRadius: 10,
                     elevation: 2,
-                    width: matches ? "25%" : "50%",
+                    width: mobile ? matches ? "25%" : "50%" : '90%',
                     cursor: 'pointer',
                     alignSelf: "center",
                     padding: "5px"

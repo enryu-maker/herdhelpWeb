@@ -8,7 +8,11 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import Loading from '../../Component/Loading'
 import FlatList from 'flatlist-react'
 import ParentCard from './ParentCard'
+import useMediaQuery from '../../Component/useMediaQuery';
 export default function ParentOP() {
+
+    const matches = useMediaQuery('(max-width:820px)')
+  const mobile = useMediaQuery('(min-width:420px)') 
     const [show, setShow] = React.useState(false)
     const navigate = useNavigate()
     const { state } = useLocation();
@@ -98,7 +102,7 @@ export default function ParentOP() {
                     justifyContent: "center",
                     // alignItems:"center"
                 }}>
-                    <LineChart width={1000} height={400} data={DataGen(data)} margin={{ top: 20, right: 20, bottom: 50, left: 20 }} >
+                    <LineChart width={mobile ? matches ? 600 : 1000 : 350} height={400} data={DataGen(data)} margin={{ top: 20, right: 20, bottom: 50, left: 20 }} >
                         <CartesianGrid strokeDasharray="3 3" stroke={COLORS.transparentPrimary} />
                         <XAxis dataKey={"x"} angle={-90} tickMargin={30} style={{
                             ...FONTS.h4
@@ -127,7 +131,7 @@ export default function ParentOP() {
                 </div> :
 
                     <div style={{
-                        display: "flex",
+                        display: mobile ? "flex" : 'grid',
                         flexDirection: "row",
                         justifyContent: "space-evenly"
                     }}>

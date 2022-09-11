@@ -183,7 +183,12 @@ export default function LoadFinance() {
             
           :
           <>
-          <h3 style={{...FONTS.h2}}>Finance</h3>
+          {
+            mobile ? null :
+              <>
+                <p style={{ ...FONTS.h2, color: COLORS.Primary }}>Finance</p>
+              </>
+          }
               <div style={{ 
                    
                   position:'relative' , 

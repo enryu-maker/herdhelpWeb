@@ -5,11 +5,15 @@ import { IMAGES } from '../../Theme/Image'
 import AnimalCard from '../Home/AnimalCard'
 import { useLocation, useNavigate } from 'react-router-dom'
 import FlatList from 'flatlist-react'
+import useMediaQuery from '../../Component/useMediaQuery'
 export default function P({
 }) {
     const navigate = useNavigate()
     const {state} = useLocation()
     const {data, date} = state
+
+    const matches = useMediaQuery('(max-width:820px)')
+  const mobile = useMediaQuery('(min-width:420px)') 
     return (
         <>
         <Header title={`Babies on ${date}`}
@@ -41,6 +45,7 @@ export default function P({
             <div></div>
           }
         />
+        <div style={{display:mobile ? null : 'grid'}}>
             <FlatList
                 list={data}
                 renderItem={(item, index) => {
@@ -58,6 +63,7 @@ export default function P({
                 }
                 renderWhenEmpty={() => <div>List is empty!</div>}
             />
+            </div>
             </>
     )
 }
