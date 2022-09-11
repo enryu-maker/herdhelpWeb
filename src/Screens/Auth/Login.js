@@ -18,6 +18,8 @@ export default function Login() {
   const [password, setPassword] = React.useState("");
   const [showPass, setShowPass] = React.useState(false);
   const [show, setShow] = React.useState(false);
+  const [showqr, setShowqr] = React.useState(false);
+
   const [saveMe, setSaveMe] = React.useState(false);
   const [EmailError, setEmailError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
@@ -94,14 +96,14 @@ export default function Login() {
             marginBottom: 50,
           }}
         >
-          
+
           <p style={{
             ...FONTS.largeTitle,
             alignSelf: 'center',
           }}
-          onClick={()=>{
-            setShow(!show)
-          }}
+            onClick={() => {
+              setShow(!show)
+            }}
           >LOGIN</p>
           <p style={{
             ...FONTS.h2,
@@ -111,7 +113,7 @@ export default function Login() {
             ...FONTS.body3,
             alignSelf: 'center',
           }}>
-            Login account to continue!</p>
+            Scan the QR From <b>HerdHelp</b>  Mobile to continue!</p>
           <p
             style={{
               color: COLORS.red,
@@ -120,7 +122,8 @@ export default function Login() {
           >
             {EmailErr}
           </p>
-          <div style={{ height: "auto", margin: "0 auto", maxWidth:  200, width: "100%" }}>
+          <div style={{ height: "auto", margin: "0 auto", maxWidth: 200, width: "100%" }}>
+
             <QRCode
               size={256}
               style={{ height: "auto", maxWidth: "100%", width: "100%" }}
@@ -128,83 +131,98 @@ export default function Login() {
               viewBox={`0 0 256 256`}
               fgColor={COLORS.black}
             />
+            <p style={{
+              ...FONTS.h2,
+              alignSelf: 'center',
+              color: COLORS.Primary
+            }}>
+              Scan Me
+            </p>
+
           </div>
-          {
-            show?
-            <>
-          <InputForm
-            appendComponent={
-              <img
-                src={IMAGES.correct}
-                style={{
-                  height: 25,
-                  width: 25,
-                  margin: 10,
-                  alignSelf: "center",
-                }}
-              />
-            }
-            type={"email"}
-            value={email}
-            label={"Email*"}
-            errorMsg={EmailError}
-            placeholder={"Enter your email"}
-            onChange={(event) => {
-              utils.validateEmail(event.target.value, setEmailError)
-              setEmail(event.target.value);
+          <img
+            src={IMAGES.scangif}
+            style={{
+              width: "80%",
             }}
           />
-          <InputForm
-            appendComponent={
-              <button onClick={() => {
-                setShowPass(!showPass)
-              }}
-                style={{
-                  borderWidth: 0,
-                  backgroundColor: COLORS.white,
-                  borderRadius: SIZES.radius
-                }}
-              >
-                <img
-                  src={showPass ? IMAGES.eye_close : IMAGES.eye}
-                  style={{
-                    height: 25,
-                    width: 25,
-                    alignSelf: "center",
-                    margin: 3,
+
+          {
+            show ?
+              <>
+                <InputForm
+                  appendComponent={
+                    <img
+                      src={IMAGES.correct}
+                      style={{
+                        height: 25,
+                        width: 25,
+                        margin: 10,
+                        alignSelf: "center",
+                      }}
+                    />
+                  }
+                  type={"email"}
+                  value={email}
+                  label={"Email*"}
+                  errorMsg={EmailError}
+                  placeholder={"Enter your email"}
+                  onChange={(event) => {
+                    utils.validateEmail(event.target.value, setEmailError)
+                    setEmail(event.target.value);
                   }}
                 />
-              </button>
-            }
-            value={password}
-            type={showPass ? "text" : "password"}
-            label={"Password*"}
-            placeholder={"Enter your password"}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-          />
+                <InputForm
+                  appendComponent={
+                    <button onClick={() => {
+                      setShowPass(!showPass)
+                    }}
+                      style={{
+                        borderWidth: 0,
+                        backgroundColor: COLORS.white,
+                        borderRadius: SIZES.radius
+                      }}
+                    >
+                      <img
+                        src={showPass ? IMAGES.eye_close : IMAGES.eye}
+                        style={{
+                          height: 25,
+                          width: 25,
+                          alignSelf: "center",
+                          margin: 3,
+                        }}
+                      />
+                    </button>
+                  }
+                  value={password}
+                  type={showPass ? "text" : "password"}
+                  label={"Password*"}
+                  placeholder={"Enter your password"}
+                  onChange={(event) => {
+                    setPassword(event.target.value);
+                  }}
+                />
 
 
-          {
-            loading ?
-              <Loading /> :
-              <TextButton
-                label={"Login"}
-                icon={IMAGES.log}
-                onPress={() => {
-                  login()
-                }}
-                buttonContainerStyle={{
-                  backgroundColor: isEnableSignIn()
-                    ? COLORS.Primary
-                    : COLORS.transparentPrimary2,
-                }}
+                {
+                  loading ?
+                    <Loading /> :
+                    <TextButton
+                      label={"Login"}
+                      icon={IMAGES.log}
+                      onPress={() => {
+                        login()
+                      }}
+                      buttonContainerStyle={{
+                        backgroundColor: isEnableSignIn()
+                          ? COLORS.Primary
+                          : COLORS.transparentPrimary2,
+                      }}
 
-              />
+                    />
+                }
+              </> : null
           }
-          </>:null
-}
         </div>
       </div>
     </div>
