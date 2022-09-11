@@ -33,22 +33,26 @@ export default function Setting() {
   return (
     <>
       <div style={{
-        // display: "flex",
+        display: "flex",
         height: "100vh",
         // width: "100%",
 
       }}>
+        <Sidenav active={'Setting'}/>
         <div style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          // width: "90%",
+          // display: "flex",
+          // flexDirection: "column",
+          // alignItems: "center",
+          width: "90%",
           // float: "right",
         }}>
-        <Header 
+          <NavBarMain/>
+          <p style={{ ...FONTS.h2, color: COLORS.Primary }}>Setting</p>
+        {/* <Header 
         leftcomponent={
           <>
-              <div style={{
+          <div></div>
+              {/* <div style={{
                   display: "flex",
                   justifyContent: "center",
                   height: 40,
@@ -67,17 +71,17 @@ export default function Setting() {
                           width: 25,
                           alignSelf: "center",
                       }} />
-              </div>
-          </>
+              </div> */}
+          {/* </>
       }
       title={"Setting"}
       rightcomponent={
           <div>
-          </div>
-      }/>
+          </div> */}
+      {/* }/> */} 
           
           <div style={{
-            display:mobile ?  "flex" : 'grid',
+            display:mobile ? matches ? "flex": "flex" : 'grid',
             alignItems: "center",
             justifyContent: "space-evenly"
           }}>
