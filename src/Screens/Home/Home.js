@@ -67,8 +67,13 @@ export default function Home() {
                   position: "relative", top: 510, color: COLORS.Primary,
                   ...FONTS.h1,
                 }}>Download App From</h3>
-                  <img src={IMAGES.appstore} alt={''}
-                  style={{ width: 260,height:50 }}
+                <img src={IMAGES.appstore} alt={''}
+                  style={{
+                    width: 260,
+                    height: 55,
+                    position: "relative",
+                    top: 500,
+                  }}
                   onClick={() => {
                     window.open('https://testflight.apple.com/join/LAn2RBih', '_blank');
                   }}
@@ -77,8 +82,14 @@ export default function Home() {
                   onClick={() => {
                     window.open('https://play.google.com/store/apps/details?id=com.herdhelp', '_blank');
                   }}
-                  style={{ width: 260,height:50 }}
-                  />
+                  style={{ 
+                    width: 260, 
+                    height: 55,
+                    position: 'relative',
+                    top: 500,
+                    left: 50
+                  }}
+                />
               </div>
             </div>
             <div style={{
@@ -182,7 +193,7 @@ export default function Home() {
             Appstore
             </button> */}
 
-{/* <div style={{marginTop:100}}>
+              {/* <div style={{marginTop:100}}>
               {/* <div style={{marginTop:100}}>
 <img src={IMAGES.img1} style={{width:300 , backgroundColor:COLORS.Primary , padding:5 , borderRadius:10}} />
 <img src={IMAGES.img1} style={{width:300 , backgroundColor:COLORS.Primary , padding:5 , borderRadius:10}} />
@@ -194,7 +205,7 @@ export default function Home() {
               }}>Download App From </h3>
               <div style={{ display: 'flex', justifyContent: 'space-between', top: 0, paddingInline: 30 }}>
                 <img src={IMAGES.appstore} alt={''}
-                  style={{ width: 160,height:50 }}
+                  style={{ width: 160, height: 50 }}
                   onClick={() => {
                     window.open('https://testflight.apple.com/join/LAn2RBih', '_blank');
                   }}
@@ -203,8 +214,8 @@ export default function Home() {
                   onClick={() => {
                     window.open('https://play.google.com/store/apps/details?id=com.herdhelp', '_blank');
                   }}
-                  style={{ width: 160,height:50 }}
-                  />
+                  style={{ width: 160, height: 50 }}
+                />
               </div>
 
             </div>
