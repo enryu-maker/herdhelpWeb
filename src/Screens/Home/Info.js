@@ -385,6 +385,7 @@ function closeModal() {
                 borderRadius: 12,
                 justifyContent: "center",
                 justifyContent: "space-evenly",
+                cursor:'pointer'
               }}
                 onClick={() => {
                   navigate("/medhistory", {
@@ -431,7 +432,8 @@ function closeModal() {
                 justifyContent: "space-evenly",
                 display: "flex",
                 flexDirection: "row",
-                alignItems: "center"
+                alignItems: "center",
+                cursor:'pointer'
               }}
                 onClick={() => {
                   navigate("/children")
@@ -481,7 +483,8 @@ function closeModal() {
                 justifyContent: "space-evenly",
                 display: "flex",
                 flexDirection: "row",
-                alignItems: "center"
+                alignItems: "center",
+                cursor:'pointer'
               }}
                 onClick={() => {
                   navigate("/edit")

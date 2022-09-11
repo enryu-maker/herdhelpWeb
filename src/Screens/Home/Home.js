@@ -217,10 +217,10 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
             Appstore
             </button> */}
 
-<div style={{marginTop:100}}>
+{/* <div style={{marginTop:100}}>
 <img src={IMAGES.img1} style={{width:300 , backgroundColor:COLORS.Primary , padding:5 , borderRadius:10}} />
 <img src={IMAGES.img1} style={{width:300 , backgroundColor:COLORS.Primary , padding:5 , borderRadius:10}} />
-</div>
+</div> */}
               <h3 style={{
                 position: 'relative', left:0 , top: 30, color: COLORS.Primary,
                 ...FONTS.h1,

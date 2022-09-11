@@ -77,7 +77,7 @@ export default function Setting() {
       }/>
           
           <div style={{
-            display: "flex",
+            display:mobile ?  "flex" : 'grid',
             alignItems: "center",
             justifyContent: "space-evenly"
           }}>
@@ -102,7 +102,7 @@ export default function Setting() {
                   width: 300,
                   backgroundColor: COLORS.lightGray2,
                   borderRadius: SIZES.padding,
-                  marginLeft: "40px",
+                  marginLeft: mobile ? "40px" : 0,
                   marginTop: "40px",
                   paddingTop: "0px",
                   justifyContent: "center",

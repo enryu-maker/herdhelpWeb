@@ -36,7 +36,7 @@ export default function LoadFinance() {
         // display: "flex",
         // justifyContent:"center",
         height: "100vh",
-        width: "90%"
+        width: "100%"
       }}>
         <div style={{
           margin:'auto'
@@ -130,7 +130,7 @@ export default function LoadFinance() {
               display:'flex',
               flexDirection: "row",
               justifyContent: "space-evenly",
-              width: "175vh",
+              // width: "175vh",
               // height: "100vh",
             }}
           >
