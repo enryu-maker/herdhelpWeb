@@ -25,7 +25,7 @@ export default function Weight() {
   const tags = useSelector(state => state.Reducers.tags)
   const unit = useSelector(state => state.Reducers.unit)
   const id = localStorage.getItem("id")
-  const matches = useMediaQuery('(min-width:810px)')
+  const matches = useMediaQuery('(min-width:820px)')
 
 
   function finder(list, value) {

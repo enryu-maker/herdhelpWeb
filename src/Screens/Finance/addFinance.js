@@ -27,7 +27,7 @@ export default function AddFinance() {
   });
   const dispatch = useDispatch()
 
-  const matches = useMediaQuery('(max-width:810px)')
+  const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:420px)') 
   async function postfinance() {
     // setLoading(true)

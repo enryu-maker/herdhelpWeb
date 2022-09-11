@@ -33,7 +33,7 @@ export default function Updatebred() {
   const tags = useSelector(state => state.Reducers.tags)
   const species = useSelector(state => state.Reducers.cat)
   const id = localStorage.getItem("id")
-  const matches = useMediaQuery('(min-width:810px)')
+  const matches = useMediaQuery('(min-width:820px)')
   function finder(list, value) {
     var dataValue;
     var final_data = [];

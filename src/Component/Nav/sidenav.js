@@ -57,7 +57,7 @@ export default function Sidenav({
     
   }
 
-  const matches = useMediaQuery('(max-width:810px)')
+  const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:420px)')  
 
 
@@ -311,7 +311,7 @@ export default function Sidenav({
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
           cursor:"pointer",
-          width:250  ,
+          width:350  ,
           // left:'-100%'
         }}
         id='Sidenav'
@@ -319,7 +319,7 @@ export default function Sidenav({
 {matches ? <button style={{  width:40 , 
                   height:40 , 
                   position: mobile ? matches ? 'absolute' : null : 'fixed' , 
-                  right: mobile ? matches ? 0 : null : 20 , 
+                  right: mobile ? matches ? 95 : null : 20 , 
                   background:'none' , 
                   cursor:'pointer', 
                   border:'1px solid black' , 
@@ -338,7 +338,7 @@ onClick={()=> {
           document.getElementById("Sidenav").style.left = '-250px'
           }} > <img alt='' src={IMAGES.close} /> </button> */}
         
-        <Link to={'/profile'} style={{width:250, height:100 , position:'absolute' , top:matches ? 40 : 0 }}>
+        <Link to={'/profile'} style={{width:270, height:100 , position:'absolute' , top:matches ? 40 : 0 }}>
           <div style={{ height: 100,width:207 ,  position: 'absolute', top:matches? 0 : 0, display:'flex' , justifyContent:'space-evenly'  }}>
             <img
               src={user?.profile_picture==null?`https://ui-avatars.com/api/?name=${user?.username}`: user?.profile_picture}
@@ -361,7 +361,7 @@ onClick={()=> {
               textalign: 'center',
               texttransform: 'capitalize',
               textAlign: 'left',
-              width: 250,
+              width: 350,
               height:50,
               // backgroundColor :COLORS.layout
 
@@ -400,8 +400,9 @@ onClick={()=> {
 
           <div style={{
             flexDirection:"column",
-            marginTop:matches ? 130 : 100, 
+            marginTop:matches ? 145 : 100, 
             paddingLeft:'15px',
+            width:mobile ? matches ? 300 : null : 300
           }}>
 {
             mobile ? matches ? null : null : <>
@@ -431,11 +432,11 @@ onClick={()=> {
           }
          
 <LineDivider/>
-          <Sidemenu
+          {/* <Sidemenu
             img={IMAGES.subs}
             label={'Subscription'}
             path={'/subscription'}
-          />
+          /> */}
 
           <Sidemenu
             img={IMAGES.weight}
@@ -447,7 +448,7 @@ onClick={()=> {
             label={'Parents'}
             path={'/parents'}
           />
-          
+        <LineDivider/>  
 
 
           <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>

@@ -26,7 +26,7 @@ export default function AddMedication() {
   const [loading, setLoading] = React.useState(false);
   const id = localStorage.getItem("id")
   const dispatch = useDispatch()
-  const matches = useMediaQuery('(min-width:810px)')
+  const matches = useMediaQuery('(min-width:820px)')
 
   const spec = useSelector(state => state.Reducers.cat)
   const tags = useSelector(state=>state.Reducers.tags)

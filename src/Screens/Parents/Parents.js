@@ -23,7 +23,7 @@ export default function Parents() {
   const [err, setErr] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const id = localStorage.getItem('id')
-  const matches = useMediaQuery('(max-width:810px)')
+  const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:420px)') 
   function finder(list, value) {
     var dataValue;

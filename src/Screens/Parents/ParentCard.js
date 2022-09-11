@@ -18,7 +18,7 @@ export default function ParentCard({
 }) {
     const navigation = useNavigate()
     const unit = JSON.parse(useSelector(state => state.Reducers.unit))
-    const matches = useMediaQuery('(min-width:810px)')
+    const matches = useMediaQuery('(min-width:820px)')
     return (
         <>
             <button

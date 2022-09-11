@@ -46,7 +46,7 @@ export default function Add() {
   ]
   const dispatch = useDispatch()
   
-  const matches = useMediaQuery('(max-width:810px)')
+  const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:420px)') 
 
 
@@ -121,9 +121,9 @@ export default function Add() {
         width: "100%"
       }}>
 
-        <Sidenav />
+        <Sidenav  />
         <div style={{
-          width: "90%",
+          width: matches ? '100%' : '90%',
           float: "right"
         }}>
           <NavBarMain page={'add'} />
@@ -179,7 +179,7 @@ export default function Add() {
         width: "100%"
       }}>
 
-        <Sidenav />
+        <Sidenav active={'Add'}/>
 
       
         <div style={{

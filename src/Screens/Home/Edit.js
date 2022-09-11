@@ -10,6 +10,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { checking } from "../../Component/Constants";
 import moment from 'moment';
 import useMediaQuery from '../../Component/useMediaQuery';
+import { getAnimal, getMedical } from '../../Store/actions';
+import { useAlert } from 'react-alert';
+import axios from 'axios';
+import { baseURL } from '../../helpers/helpers';
+import AlertCard from '../../Component/AlertCard';
 
 
 
@@ -31,8 +36,57 @@ export default function Edit() {
     const [vaccinated, setVaccinated] = useState(false);
     const [Breed, setBreed] = useState("");
     const [registration, setRegistration] = React.useState("");
+
+    // const { state } = useLocation();
+    // const { data, cond } = state;
+    // const dispatch = useDispatch()
+    // React.useEffect(() => {
+    //   dispatch(getAnimal(data.tag_number))
+    //   dispatch(getMedical(data.tag_number))
+    // }, [])
+    // const alert = useAlert()
+    // const med = useSelector(state => state.Reducers.med)
+    // const animal = useSelector(state => state.Reducers.animal)
+    // const token = useSelector(state => state.Reducers.authToken)
+  
+   
+    // const [profile_pic, setprofile_pic] = React.useState([]);
+    // const [loading, setLoading] = React.useState(false);
+    // const [valueS, setValueS] = useState("");
+    // const [valueF, setValueF] = useState("");
+  
+    // const onChange = (imageList) => {
+    //   setprofile_pic(imageList);
+    // };
+    // const updateProfile=()=>{
+    //   setLoading(true)
+    //   const formData = new FormData();
+    //   formData.append('animal_image', profile_pic.length===0? [] : profile_pic[0]['file']);
+    //   const config = {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //       "Content-type": "multipart/form-data",
+    //     },
+    //   };
+    //   axios.patch(baseURL + `/animals/${animal?.tag_number}`, formData, config)
+    //       .then(response => {
+    //         if (response.status == 200) {
+    //           setLoading(false);
+    //           dispatch(getAnimal(data.tag_number))
+    //           alert.success(<AlertCard msg={"Profile Pic Sucessfully"} type={true} />)
+    //         }
+    //         else {
+    //           alert.error(<AlertCard msg={"Internal server error"} type={false} />)
+    //           setLoading(false);
+    //         }
+    //       })
+    //       .catch(err => {
+    //         setLoading(false);
+    //         alert.error(<AlertCard msg={err} type={false} />)
+    //       });
+    // }
 //
-const matches = useMediaQuery('(min-width:810px)')
+const matches = useMediaQuery('(min-width:820px)')
 
 // 
 function finder(list, value) {

@@ -70,7 +70,7 @@ export default function Info({
           alert.error(<AlertCard msg={err} type={false} />)
         });
   }
-  const matches = useMediaQuery('(max-width:810px)')
+  const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:420px)') 
 // 
 let subtitle;
@@ -138,7 +138,8 @@ function closeModal() {
                     cursor:'pointer',
                     width:100,
                     height:50,
-                    textAlign:'end'
+                    textAlign:'end',
+                    display : mobile ? 'block' : 'none'
                   }}>
                     EDIT
                   </button>
@@ -373,7 +374,7 @@ function closeModal() {
               flexDirection: "column",
               justifyContent: "space-evenly",
               alignSelf: "center",
-              height: 120,
+              height: mobile ? 120 : 170 ,
               marginTop: matches ? 20 : null,
             }}>
               <div style={{
@@ -468,7 +469,58 @@ function closeModal() {
                     animal.children?.length
                   }
                 </p>
+                
               </div>
+              {
+                mobile ? null : <>
+                <div style={{
+                height: 50,
+                width: 350,
+                backgroundColor: COLORS.Primary,
+                borderRadius: 12,
+                justifyContent: "space-evenly",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center"
+              }}
+                onClick={() => {
+                  navigate("/edit")
+                }}
+              >
+                <img src={IMAGES.back} alt={"back"}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    alignSelf: "center",
+
+                  }} />
+
+                <p style={{
+                  ...FONTS.h2,
+                  alignSelf: "center",
+                  color: COLORS.white
+                }}>
+                  Edit
+                </p>
+                <p style={{
+                  ...FONTS.h2,
+                  height: 30,
+                  width: 30,
+                  // backgroundColor: COLORS.white,
+                  borderRadius: 15,
+                  display: "flex",
+                  alignSelf: "center",
+                  justifyContent: "center",
+                  color: COLORS.Primary,
+                  alignItems: "center"
+                }}
+                >
+                  
+                </p>
+                
+              </div>
+                </>
+              }
             </div>
           </div>
         </div>
@@ -481,10 +533,11 @@ function closeModal() {
             bottom: "75px",
             backgroundColor: COLORS.lightGray2,
             borderRadius: 25,
-            padding: matches ? 0 : 15,
-            // width: 400,
+            padding: matches ? 15 : 15,
+            width: 350 ,
             position: matches ? 'relative' : "fixed",
             top:matches ? -10 : null,
+            marginBottom: matches ? 30 :null
           }}>
             <InfoCard label={"Flagged?"} value={"Yes"} />
             <InfoCard label={"Description"} value={data.flag_desc} />
@@ -523,7 +576,9 @@ function closeModal() {
               // WebkitOverflowScrolling: 'touch',
               borderRadius: '0 4px 4px 0',
               outline: 'none',
-              height:530
+              height:530,
+              display:'flex',
+              justifyContent:'center'
               
             }
           }}

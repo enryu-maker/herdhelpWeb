@@ -59,7 +59,7 @@ const dispatch =useDispatch()
     type: types.SUCCESS,
     
   }
-//   const matches = useMediaQuery('(max-width:810px)')
+//   const matches = useMediaQuery('(max-width:820px)')
 
 
 

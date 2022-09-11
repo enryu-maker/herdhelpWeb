@@ -16,7 +16,7 @@ export default function Animal() {
   const [med, setMed] = React.useState('')
   const [Bred, setBred] = React.useState('')
 
-  const matches = useMediaQuery('(max-width:810px)')
+  const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:420px)') 
 
   const { state } = useLocation();
@@ -79,9 +79,10 @@ export default function Animal() {
         rightcomponent={
           <>
             <div style={{
-              display: mobile ? matches ? 'flex' : 'flex' : 'grid',
+              display: mobile ? matches ? 'flex' : 'flex' : 'flex',
               alignSelf: "center",
-              marginRight: mobile ? matches ? -100 : -100 : 0
+              marginRight: mobile ? matches ? -100 : -100 : 0,
+              gap:mobile ? null : 10
             }}>
               <p style={{
                 ...FONTS.h2,

@@ -67,7 +67,7 @@ export default function AddAnimals() {
     dispatch(getSpecies())
     dispatch(getGender())
   },[])
-  const matches = useMediaQuery('(max-width:810px)')
+  const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:420px)') 
 
   function findertype(list, value, type,setValue) {

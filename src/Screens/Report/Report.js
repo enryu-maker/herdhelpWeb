@@ -26,7 +26,7 @@ export default function Report() {
   }, []);
   const reports = useSelector(state => state.Reducers.reports)
 
-  const matches = useMediaQuery('(max-width:810px)')
+  const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:420px)') 
 
   function Altcards({
@@ -81,7 +81,7 @@ export default function Report() {
       }}>
         <Sidenav active={"Report"}/>
         <div style={{
-          width:mobile ? matches ? '90%' : '90%' : '100%',
+          width:mobile ? matches ? '100%' : '90%' : '100%',
           float:"right",
         }}>
           <NavBarMain page={"report"}/>

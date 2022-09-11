@@ -14,8 +14,8 @@ import { useNavigate } from "react-router-dom";
 import Sidenav from '../../Component/Nav/sidenav';
 export default function LoadFinance() {
   const finance = useSelector(state => state.Reducers.finance)
-  // const matches = useMediaQuery('(min-width:810px)')
-  const matches = useMediaQuery('(max-width:810px)')
+  // const matches = useMediaQuery('(min-width:820px)')
+  const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:420px)') 
   const navigate = useNavigate()
   return (
@@ -25,7 +25,7 @@ export default function LoadFinance() {
           height: "100vh",
           width: "100%"
         }}>
-        <Sidenav />
+        <Sidenav active={'Finance'} />
 
         <div style={{
           width: mobile ? matches ? '100%' : "80%" : '100%',
@@ -69,7 +69,7 @@ export default function LoadFinance() {
                 position: 'relative',
                 // top: '0px',
                 marginTop: "80px",
-                // marginLeft:"50px"
+                // marginLeft:"130px",
               width:mobile ? matches ? 400 : 400 : 350,
               margin:'auto',
               display:'none'
@@ -141,7 +141,7 @@ export default function LoadFinance() {
               width: "43%",
               overflowX: "hidden",
               alignSelf: "center",
-              top:-50,
+              top:0,
               position:'relative'
 
             }}>
@@ -172,7 +172,7 @@ export default function LoadFinance() {
             </div>
             <div style={{
               position: "sticky",
-              top: '0px',
+              top: 50,
               marginTop: "0px",
               position:'relative',
               right:60
@@ -183,6 +183,7 @@ export default function LoadFinance() {
             
           :
           <>
+          <h3 style={{...FONTS.h2}}>Finance</h3>
               <div style={{ 
                    
                   position:'relative' , 
@@ -193,7 +194,7 @@ export default function LoadFinance() {
                   border:'none' , 
                   borderRadius:20,
                   // marginLeft:60,
-                  top:60 }}>  
+                  top:30 }}>  
 
                   <TextButton label={"Add Finance"}
             icon={IMAGES.add}
@@ -205,8 +206,8 @@ export default function LoadFinance() {
             <div style={{
                 position: 'relative',
                 // top: '0px',
-                marginTop: "80px",
-                // marginLeft:"50px"
+                marginTop: "50px",
+                marginLeft:"40px",
               width:mobile ? matches ? 400 : 400 : 350,
               margin:'auto',
               display:'none'

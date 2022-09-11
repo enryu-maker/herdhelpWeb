@@ -11,7 +11,7 @@ export default function Feedcard({
     onPress
 }) {
 
-  const matches = useMediaQuery('(max-width:810px)')
+  const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:420px)') 
   return (
     <>
@@ -29,7 +29,7 @@ export default function Feedcard({
           shadowOpacity: 0.5,
           shadowRadius: 10,
           elevation: 2,
-          width: mobile ? matches ? "45vh" : '60vh' : '38vh',
+          width: mobile ? matches ? "45vh" : '60vh' : '30vh',
           alignItems:"center",
           paddingInline:"20px",
           // marginInline:20,

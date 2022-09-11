@@ -13,7 +13,7 @@ export default function Status() {
   let navigate = useNavigate()
   const [status , setStatus] = useState()
   const [valueMS, setValueMS] = useState("");
-  const matches = useMediaQuery('(min-width:810px)')
+  const matches = useMediaQuery('(min-width:820px)')
 
 
   return (

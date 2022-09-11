@@ -19,6 +19,7 @@ import Loading from "../../Component/Loading";
 import Sidenav from "../../Component/Nav/sidenav";
 import { COLORS, FONTS } from "../../Theme/Theme";
 import useMediaQuery from "../../Component/useMediaQuery";
+import LineDivider from "../../Component/LineDivider";
 export default function Main() {
   const dispatch = useDispatch()
   let navigate = useNavigate()
@@ -35,7 +36,7 @@ export default function Main() {
     dispatch(getGender())
   }, [])
   const animal = useSelector(state => state.Reducers.herds)
-  const matches = useMediaQuery('(max-width:810px)')
+  const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:420px)') 
 
   return (
@@ -47,20 +48,20 @@ export default function Main() {
         width:"100%",
         // justifyContent:"center"
       }}>
-        <Sidenav/>
+        <Sidenav active={'Herds'}/>
         <div style={{
           width:"100%",
           float:"right",
           
         }}>
-        <NavBarMain style={{left:30,
-          position:'absolute'}} page={"herds"}/>
+        <NavBarMain page={"herds"}/>
           {
             mobile ? null : 
             <>
-            <h3 style={{...FONTS.h2}}>Herds</h3>
+             <p style={{...FONTS.h2 , color: COLORS.Primary}}>Herds</p>
             </>
           }
+          
       
         <div style={{
             overflowY: 'scroll',
