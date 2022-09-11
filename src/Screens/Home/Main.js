@@ -37,71 +37,70 @@ export default function Main() {
   }, [])
   const animal = useSelector(state => state.Reducers.herds)
   const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:420px)') 
+  const mobile = useMediaQuery('(min-width:420px)')
 
   return (
     <>
       <div style={{
-        display:"flex",
+        display: "flex",
         // justifyContent:"center",
-        height:"100vh",
-        width:"100%",
+        height: "100vh",
+        width: "100%",
         // justifyContent:"center"
       }}>
-        <Sidenav active={'Herds'}/>
+        <Sidenav active={'Herds'} />
         <div style={{
-          width:"100%",
-          float:"right",
-          
+          width: "100%",
+          float: "right",
         }}>
-        <NavBarMain page={"herds"}/>
+          <NavBarMain page={"herds"} />
           {
-            mobile ? null : 
-            <>
-             <p style={{...FONTS.h2 , color: COLORS.Primary}}>Herds</p>
-            </>
+            mobile ? null :
+              <>
+                <p style={{ ...FONTS.h2, color: COLORS.Primary }}>Herds</p>
+              </>
           }
-          
-      
-        <div style={{
-            overflowY: 'scroll',
-            height:"90vh",
-            paddingInlineStart:0,
-            marginBottom:"50px",
-            marginTop: mobile ? matches ? 0 : 0 : 50,
-            backgroundColor : mobile ? matches ? null : null : COLORS.white 
-        }}>
-          <FlatList
-            list={animal}
-            keyExtractor={item => `${item.id}`}
-            // displayGrid
-            renderItem={(item,index) => {
-              return (
-                <>
-                <Card
-                key={item.id} 
-                  img={baseURL + item.data[0]?.image}
-                  Name={item.label!="Sheep"?`My ${item.label}s`:`My ${item.label}`}
-                  numaninmal={`${item.data?.length}`}
-                  data={item.data}
-                 onPress={()=>{
-                  navigate("/animal",{
-                    state:{data:item}
-                })
-                 }}
-                />
-                </>
-              )
 
-            }
-            }
-          />
-        </div>
+
+          <div style={{
+            overflowY: 'scroll',
+            height: "90vh",
+            paddingInlineStart: 0,
+            marginBottom: "50px",
+            marginTop: mobile ? matches ? 0 : 0 : 50,
+            backgroundColor: mobile ? matches ? null : null : COLORS.white
+          }}>
+            <FlatList
+              list={animal}
+              keyExtractor={item => `${item.id}`}
+              // displayGrid
+              renderItem={(item, index) => {
+                return (
+                  <>
+                    <Card
+                      key={item.id}
+                      img={baseURL + item.data[0]?.image}
+                      Name={item.label != "Sheep" ? `My ${item.label}s` : `My ${item.label}`}
+                      numaninmal={`${item.data?.length}`}
+                      data={item.data}
+                      onPress={() => {
+                        navigate("/animal", {
+                          state: { data: item }
+                        })
+                      }}
+                    />
+                  </>
+                )
+
+              }
+              }
+            />
+          </div>
         </div>
       </div>
-      
-        
-    
+
+
+
 
     </>
 
