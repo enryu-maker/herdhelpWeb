@@ -83,7 +83,12 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
                 justifyContent: 'center', gap: 10,
                 ...FONTS.h2,
                 border: '1px solid black',
-              }}>
+              }}
+              
+              onClick={()=>{
+                window.open('https://testflight.apple.com/join/LAn2RBih', '_blank');
+              }}
+              >
                 <img src={IMAGES.appstore} alt={''}
                   style={{ width: 40 }} />
                 App Store</button>
@@ -103,7 +108,11 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
                 display: 'flex',
                 justifyContent: 'center', gap: 10,
                 ...FONTS.h2,
-              }}><img src={IMAGES.playstore} alt={''}
+              }}
+              onClick={()=>{
+                window.open('https://play.google.com/store/apps/details?id=com.herdhelp', '_blank');
+              }}
+              ><img src={IMAGES.playstore} alt={''}
                 style={{ width: 35 }} />Play Store</button>
             </div>
           </div>
@@ -162,7 +171,7 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
       {
         mobile ? matches ? <> <Desktop_tab/> </> :  <> <Desktop_tab/> </> :
         <>
-        <div style={{display:'grid', }}>
+        <div style={{display:'grid', background :'linear-gradient(149.42deg, #D3F3D2 6.44%,rgba(5, 255, 0, 0.58) 58.02%, rgba(114, 242, 111, 0.81) 89.24%, rgba(4, 200, 0, 0.46) 136.74%);' }}>
         <div style={{width:'100%' , height : '45vh' , display:'flex' }}>
           <div style={{width:'50%' , display:'flex' , left:0 , position:'absolute'}}>
           <h3 style={{
@@ -178,7 +187,7 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
             </h3>
           <h5 style={{
               position: 'absolute',
-              width: 300,
+              width: 200,
               color: COLORS.black,
               textAlign: 'left',
               top: 150,
@@ -193,7 +202,10 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
             </h5>
 
           </div>
-         
+          <div style={{width:'50%' , height:'50vh' , display:'flex' , right:0 ,position:'absolute', padding:10 , border:'1px soild black' , borderRadius:SIZES.radius}}>
+<img src={IMAGES.img1} alt='' style={{width : 100 , borderRadius:9 , height : 250  , margin : 10 , right : 10 , top : 50 , position:'absolute'}} />
+<img src={IMAGES.splash} alt='' style={{width : 100 , borderRadius:9 , height : 250  , margin : 10 , right : 60 , top : 20 , position:'absolute'}} />
+</div>
 
         </div>
 
@@ -230,7 +242,11 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
                 justifyContent: 'center', gap: 10,
                 ...FONTS.h2,
                 border: '1px solid black',
-              }}>
+              }}
+              onClick={()=>{
+                window.open('https://testflight.apple.com/join/LAn2RBih', '_blank');
+              }}
+              >
                 <img src={IMAGES.appstore} alt={''}
                   style={{ width: 40 }} />
                 App Store</button>
@@ -250,7 +266,11 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
                 display: 'flex',
                 justifyContent: 'center', gap: 10,
                 ...FONTS.h2,
-              }}><img src={IMAGES.playstore} alt={''}
+              }}
+              onClick={()=>{
+                window.open('https://play.google.com/store/apps/details?id=com.herdhelp', '_blank');
+              }}
+              ><img src={IMAGES.playstore} alt={''}
                 style={{ width: 35 }} />Play Store</button>
             </div>
         

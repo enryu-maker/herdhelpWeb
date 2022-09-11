@@ -12,10 +12,12 @@ import { useDispatch } from 'react-redux'
 import { storeID } from "../../Store/actions";
 import { Login_Function } from "../../Store/actions";
 import Loading from "../../Component/Loading";
+import QRCode from "react-qr-code";
 export default function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [showPass, setShowPass] = React.useState(false);
+  const [show, setShow] = React.useState(false);
   const [saveMe, setSaveMe] = React.useState(false);
   const [EmailError, setEmailError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
@@ -86,17 +88,21 @@ export default function Login() {
           style={{
             // backgroundColor: COLORS.lightGray2,
             minHeight: 300,
-            width: 450,
-            padding: 20,
+            width: "90%",
             borderRadius: SIZES.radius,
-            marginTop: 50,
+            // marginTop: 50,
             marginBottom: 50,
           }}
         >
+          
           <p style={{
             ...FONTS.largeTitle,
             alignSelf: 'center',
-          }}>LOGIN</p>
+          }}
+          onClick={()=>{
+            setShow(!show)
+          }}
+          >LOGIN</p>
           <p style={{
             ...FONTS.h2,
             alignSelf: 'center',
@@ -114,6 +120,18 @@ export default function Login() {
           >
             {EmailErr}
           </p>
+          <div style={{ height: "auto", margin: "0 auto", maxWidth:  200, width: "100%" }}>
+            <QRCode
+              size={256}
+              style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+              value={"www.nerdtech.com"}
+              viewBox={`0 0 256 256`}
+              fgColor={COLORS.black}
+            />
+          </div>
+          {
+            show?
+            <>
           <InputForm
             appendComponent={
               <img
@@ -169,46 +187,24 @@ export default function Login() {
 
 
           {
-            loading ? 
-            <Loading /> :
-          <TextButton
-            label={"Login"}
-            icon={IMAGES.log}
-            onPress={()=>{
-              login()
-            }}
-            buttonContainerStyle={{
-              backgroundColor: isEnableSignIn()
-                ? COLORS.Primary
-                : COLORS.transparentPrimary2,
-            }}
+            loading ?
+              <Loading /> :
+              <TextButton
+                label={"Login"}
+                icon={IMAGES.log}
+                onPress={() => {
+                  login()
+                }}
+                buttonContainerStyle={{
+                  backgroundColor: isEnableSignIn()
+                    ? COLORS.Primary
+                    : COLORS.transparentPrimary2,
+                }}
 
-          />
+              />
           }
-          <p style={{ color: COLORS.darkGray, ...FONTS.body3 }}>
-            Don't have an account?{" "}
-            <Link
-              to="/register"
-              style={{
-                color: COLORS.Primary,
-              }}
-            >
-              SIGNUP
-            </Link>
-            <br />
-            <Link
-              to="/"
-              style={{
-                // position:'absolute',
-                alignSelf: "center",
-                // display:'flex',
-                marginTop: '13px',
-                color: COLORS.Primary,
-              }}
-            >
-              Forget Password
-            </Link>
-          </p>
+          </>:null
+}
         </div>
       </div>
     </div>
