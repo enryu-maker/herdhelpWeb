@@ -1,11 +1,48 @@
 import React, { useState }  from 'react'
+import Header from '../../Component/Header';
 import NavBarMain from "../../Component/Nav/navmain";
 import { COLORS, FONTS } from '../../Theme/Theme';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { IMAGES } from '../../Theme/Image';
 
 export default  function Terms() {
+    let navigate = useNavigate()
   
 function renderHeader(){
-  return<NavBarMain/>;
+   
+  return(
+    <>
+    <Header
+        leftcomponent={
+          <>
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              height: 40,
+              width: 40,
+              backgroundColor: COLORS.Primary,
+              alignSelf: "center",
+              borderRadius: 20
+            }}
+              onClick={() => {
+                navigate(-1)
+              }}
+            >
+              <img src={IMAGES.back} alt={"back"}
+                style={{
+                  height: 25,
+                  width: 25,
+                  alignSelf: "center",
+                }} />
+            </div>
+          </>
+        }
+        rightcomponent={
+          <div></div>
+        }
+        title={"Terms and Services"} />
+    </>
+  );
 }
 
 function renderForm(){
@@ -143,7 +180,7 @@ function renderForm(){
           flex: 1,
         }}
       >
-        <NavBarMain/>
+       {renderHeader()}
         <div
           style={{
             display: "flex",

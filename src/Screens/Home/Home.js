@@ -199,11 +199,11 @@ export default function Home() {
 <img src={IMAGES.img1} style={{width:300 , backgroundColor:COLORS.Primary , padding:5 , borderRadius:10}} />
 </div> */}
               <h3 style={{
-                position: 'relative', left: 0, top: 0,
+                position: 'relative', left: 0, top: 60,
                 color: COLORS.Primary,
                 ...FONTS.body2,
               }}>Download App From </h3>
-              <div style={{ display: 'flex', justifyContent: 'space-between', top: 0, paddingInline: 30 }}>
+              <div style={{ position:'relative', display: 'flex', justifyContent: 'space-between', top: 60, paddingInline: 30 }}>
                 <img src={IMAGES.appstore} alt={''}
                   style={{ width: 160, height: 50 }}
                   onClick={() => {
