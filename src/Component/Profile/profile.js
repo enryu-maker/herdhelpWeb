@@ -186,14 +186,44 @@ function closeModal() {
        }}
      >
       {/* <InputForm/> */}
-
+     
 <div style={{backgroundColor:COLORS.layout ,
               width:mobile ? matches ? '50vh' : '50vh' : '40vh' ,
               borderRadius:SIZES.radius, 
               display:'grid', 
               padding:30,
               justifyItems:'center' }} >
-<p style={{ ...FONTS.h2, color: COLORS.Primary }}>Edit Account</p>
+                <Header
+        leftcomponent={
+          <>
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              height: 40,
+              width: 40,
+              backgroundColor: COLORS.Primary,
+              alignSelf: "center",
+              borderRadius: 20
+            }}
+              onClick={closeModal}
+            >
+              <img src={IMAGES.close2} alt={"back"}
+                style={{
+                  height: 25,
+                  width: 25,
+                  alignSelf: "center",
+                }} />
+            </div>
+          </>
+        }
+        title={"Edit Account"}
+       rightcomponent={
+        <>
+        <div></div>
+        </>
+       }
+       />
+<div>
 
 <InputForm
               type={"Text"}
@@ -228,6 +258,7 @@ function closeModal() {
 icon={IMAGES.update}
 label={"Save"}
 onPress={closeModal}/>
+</div>
 </div>
 
      </Modal>
