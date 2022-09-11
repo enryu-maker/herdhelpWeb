@@ -5,10 +5,13 @@ import { IMAGES } from '../../Theme/Image'
 import { useNavigate, useLocation } from 'react-router-dom'
 import Loading from '../../Component/Loading'
 import FlatList from 'flatlist-react'
+import useMediaQuery from '../../Component/useMediaQuery'
 export default function History() {
   const navigate = useNavigate()
   const { state } = useLocation();
   const { data } = state;
+  const matches = useMediaQuery('(max-width:820px)')
+  const mobile = useMediaQuery('(min-width:420px)') 
   function MedCard({
     problem,
     solution,
@@ -127,7 +130,8 @@ export default function History() {
                 justifyContent: "center",
                 alignItems: "center",
                 color:COLORS.white,
-                marginRight: -80
+                marginRight: mobile ? -80 : 0,
+                marginTop:mobile ? null : 55
               }}>
                 <img src={IMAGES.plus} style={{
                   height:20,
@@ -147,7 +151,7 @@ export default function History() {
         }}
         />
       <div style={{
-        display: "flex",
+        display: mobile ? matches ? "flex" : "flex" : 'grid',
         justifyContent: "center",
         overflowY: 'scroll',
         paddingInlineStart: 0,

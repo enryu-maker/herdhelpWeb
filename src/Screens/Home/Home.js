@@ -173,21 +173,22 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
         <>
         <div style={{display:'grid', background :'linear-gradient(149.42deg, #D3F3D2 6.44%,rgba(5, 255, 0, 0.58) 58.02%, rgba(114, 242, 111, 0.81) 89.24%, rgba(4, 200, 0, 0.46) 136.74%);' }}>
         <div style={{width:'100%' , height : '45vh' , display:'flex' }}>
-          <div style={{width:'50%' , display:'flex' , left:0 , position:'absolute'}}>
-          <h3 style={{
+          <div style={{width:'100%' , display:'flex' , left:0 , position:'relative'}}>
+          <h2 style={{
               position: 'absolute',
               width: 400,
               color: COLORS.Primary,
               textAlign: 'left',
-              top: 60,
-              ...FONTS.h2,
-              fontSize: 20,
+              top: 40,
+              // ...FONTS.body1,
+              fontFamily:'sans-serif',
+              fontSize: 30,
               left:10
             }}>Herd's <br/> Management Tool
-            </h3>
+            </h2>
           <h5 style={{
-              position: 'absolute',
-              width: 200,
+              position: 'relative',
+              width: 350,
               color: COLORS.black,
               textAlign: 'left',
               top: 150,
@@ -200,13 +201,7 @@ Herd Help is a farm documentation app that assist you in charting the herds acti
 Documentation from insemination to medical records. Herd help does documentation for cows, sheep, goats, pigs, horses and rabbits.<br></br>
 This allows you to grow a stronger healthier herd.  Identifying profitable and unprofitable animals is the key to seeing profits.
             </h5>
-
           </div>
-          <div style={{width:'50%' , height:'50vh' , display:'flex' , right:0 ,position:'absolute', padding:10 , border:'1px soild black' , borderRadius:SIZES.radius}}>
-<img src={IMAGES.img1} alt='' style={{width : 100 , borderRadius:9 , height : 250  , margin : 10 , right : 10 , top : 50 , position:'absolute'}} />
-<img src={IMAGES.splash} alt='' style={{width : 100 , borderRadius:9 , height : 250  , margin : 10 , right : 60 , top : 20 , position:'absolute'}} />
-</div>
-
         </div>
 
        
@@ -221,15 +216,20 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
               <img src={IMAGES.appstore} alt="" />
             Appstore
             </button> */}
+
+<div style={{marginTop:100}}>
+<img src={IMAGES.img1} style={{width:300 , backgroundColor:COLORS.Primary , padding:5 , borderRadius:10}} />
+<img src={IMAGES.img1} style={{width:300 , backgroundColor:COLORS.Primary , padding:5 , borderRadius:10}} />
+</div>
               <h3 style={{
-                position: 'absolute', top: 350 , left:10 , color: COLORS.Primary,
+                position: 'relative', left:0 , top: 30, color: COLORS.Primary,
                 ...FONTS.h1,
               }}><img src={IMAGES.down} alt="" style={{width:30 }} /> Download From </h3>
-            <div>
+            <div style={{ display:'flex' ,justifyContent: 'space-between', top:10 , paddingInline:30}}>
               <button style={{
-                position: 'absolute',
-                top: 430,
-                left: 10,
+                position: 'relative',
+                // top: 460,
+                // left: 10,
                 // border: 'none',
                 background: COLORS.white,
                 borderRadius: 20,
@@ -251,9 +251,9 @@ This allows you to grow a stronger healthier herd.  Identifying profitable and u
                   style={{ width: 40 }} />
                 App Store</button>
               <button style={{
-                position: 'absolute',
-                top: 430,
-                left: 170,
+                position: 'relative',
+                // top: 460,
+                // left: 40,
                 border: 'none',
                 background: COLORS.white,
                 border: '1px solid black',

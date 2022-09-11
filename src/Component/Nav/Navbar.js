@@ -41,17 +41,19 @@ function NavBar({
         </Link>
         <div
           style={{
-            display: "flex",
-            flexFlow: "row",
-            justifyContent:"center",
+            // display: "flex",
+            // flexFlow: "row",
+            // justifyContent:"center",
             alignSelf:"center",
+            position:'absolute',
+            right:mobile ? '5%' : -5
             
           }}
         >
           <Link to="/" style={{
             color:page === '/' ? COLORS.Primary : 'black',
-            marginLeft:2,
-            ...FONTS.body3,
+            // marginLeft:2,
+            font: mobile ? FONTS.body2 : FONTS.body3 ,
             textDecoration:'none'
 
           }}>
@@ -59,8 +61,8 @@ function NavBar({
             </Link>
           <Link to="/login" style={{
             color:page === '/login' ? COLORS.Primary : 'black',
-            marginLeft:20,
-            ...FONTS.body3,
+            marginLeft:mobile ? 30  : 20,
+            font: mobile ? FONTS.body2 : FONTS.body3 ,
             textDecoration:'none',
             marginRight:mobile ? matches ? 0 : 0 : 20,
 
