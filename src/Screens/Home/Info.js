@@ -473,8 +473,35 @@ function closeModal() {
                 </p>
                 
               </div>
-              {
+              
+            </div>
+          </div>
+        </div>
+        {/* last button */}
+        {
+          data.flagged ? <div style={{
+            display: matches ? 'inline-grid' : "flex" ,
+            flexDirection: "column",
+            marginLeft: matches ? 0 : "85px",
+            bottom: "75px",
+            backgroundColor: COLORS.lightGray2,
+            borderRadius: 25,
+            padding: matches ? 15 : 15,
+            width: 350 ,
+            position: matches ? 'relative' : "fixed",
+            top:matches ? -10 : null,
+            marginBottom: matches ? 30 :null
+          }}>
+            <InfoCard label={"Flagged?"} value={"Yes"} />
+            <InfoCard label={"Description"} value={data.flag_desc} />
+          </div> : null
+        }
+        {
                 mobile ? null : <>
+                <div style={{
+              display: 'block ruby',
+              height: 50,
+            }}>
                 <div style={{
                 height: 50,
                 width: 350,
@@ -522,30 +549,9 @@ function closeModal() {
                 </p>
                 
               </div>
+              </div>
                 </>
               }
-            </div>
-          </div>
-        </div>
-        {/* last button */}
-        {
-          data.flagged ? <div style={{
-            display: matches ? 'inline-grid' : "flex" ,
-            flexDirection: "column",
-            marginLeft: matches ? 0 : "85px",
-            bottom: "75px",
-            backgroundColor: COLORS.lightGray2,
-            borderRadius: 25,
-            padding: matches ? 15 : 15,
-            width: 350 ,
-            position: matches ? 'relative' : "fixed",
-            top:matches ? -10 : null,
-            marginBottom: matches ? 30 :null
-          }}>
-            <InfoCard label={"Flagged?"} value={"Yes"} />
-            <InfoCard label={"Description"} value={data.flag_desc} />
-          </div> : null
-        }
 
 {/*  */}
 <Modal

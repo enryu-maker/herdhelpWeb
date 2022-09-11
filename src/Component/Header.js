@@ -22,7 +22,7 @@ export default function Header({
       }
       <p style={{
         width: mobile ? null : 200 ,
-        ...FONTS.h1,
+        font : mobile ? FONTS.h1 : FONTS.h2 ,
         titlestyle,
         alignItems:'center',
         display:'flex',

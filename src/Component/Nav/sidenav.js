@@ -122,10 +122,10 @@ export default function Sidenav({
                                     position:'absolute' , 
                                     border:'none' , 
                                     borderRadius:20 , 
-                                    margin:10 , 
+                                    margin:20 , 
                                     backgroundColor:COLORS.Primary , 
                                     cursor:'pointer'}} 
-                  onClick={openModal} > <img alt='' src={IMAGES.menuios} style={{width:22 , height:22  }}/></button> : 
+                  onClick={openModal} > <img alt='' src={IMAGES.menu} style={{width:22 , height:22  }}/></button> : 
                   <div style={{
                     position: 'fixed',
                     height:'100%',

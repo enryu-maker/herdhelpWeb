@@ -35,7 +35,7 @@ export default function History() {
         shadowOpacity: 0.5,
         shadowRadius: 10,
         elevation: 2,
-        width: 330,
+        width: mobile ? 350 : '40vh',
         cursor: 'pointer',
         boxShadow: '0px 0px 15px -4px #888181',
       }}>
@@ -131,7 +131,7 @@ export default function History() {
                 alignItems: "center",
                 color:COLORS.white,
                 marginRight: mobile ? -80 : 0,
-                marginTop:mobile ? null : 55
+                marginTop:mobile ? null : 30
               }}>
                 <img src={IMAGES.plus} style={{
                   height:20,

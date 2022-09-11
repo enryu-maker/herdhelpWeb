@@ -133,7 +133,7 @@ function finder(list, value) {
     title={'Edit'}
     rightcomponent={
         <>
-        <div>
+        <div style={{width:30}}>
 
         </div>
         </>

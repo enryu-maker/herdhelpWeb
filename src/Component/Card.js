@@ -124,26 +124,24 @@ function Allcards(){
            
                
            <p style={{...FONTS.h3 , margin:10, marginTop:25}}>{Name}</p>
-            <div style={{
-              // width:100,
-               height:30,
-               backgroundColor:COLORS.white, 
-               borderRadius:30 ,display:'flow-root' , padding:'3px 0px 3px 0px'}}>
+            
            <p style={{...FONTS.h3 , 
            
-               
+           height:30,
+           backgroundColor:COLORS.white, 
+           borderRadius:30 ,display:'flow-root' , padding:'3px 0px 3px 0px',
                display: 'block',
                textAlign: 'center',
                display: 'flex',
               //  margin:'auto',
-               marginTop:'-20px',
+              //  marginTop:'-20px',
                padding:'2% 26%',
    
                alignItems:'center',
                justifyContent:'space-between',
    
                }}><img src={img} alt={Name} style={{ height: 25, width: 25}}/>X<p>{numaninmal}</p></p>
-               </div>
+              
            {/* <p style={{...FONTS.h4}}>{global.unit?`${Weight} lbs`:`${weight_kg} kg`}</p> */}
            <div style={{
                display:"flex",
