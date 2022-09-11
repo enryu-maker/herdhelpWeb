@@ -89,7 +89,7 @@ export default function Sidenav({
               }} /> 
             <p style={{
               color: label === 'Logout' ? COLORS.red : COLORS.white,
-              ...FONTS.h3,
+              ...FONTS.body3,
               padding: '10px',
 
 
@@ -224,11 +224,6 @@ export default function Sidenav({
                       label={'Report'}
                       path={'/report'}
                     /> */}
-                    <Sidemenu
-                      img={IMAGES.subs}
-                      label={'Subscription'}
-                      path={'/subscription'}
-                    />
                     {/* <hr style={{
                       border: '1px solid black' ,
                       top: '1%',

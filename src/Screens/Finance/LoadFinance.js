@@ -57,10 +57,7 @@ export default function LoadFinance() {
           margin:'auto'
           
         }}>
-          
-          
-          
-        
+
             {
               matches ? 
               <>
@@ -132,7 +129,7 @@ export default function LoadFinance() {
                       )
                     }
                     }
-                    renderWhenEmpty={() => <div>List is empty!</div>}
+                    renderWhenEmpty={() => <div></div>}
                   />
                 </ul>
               </div>
@@ -188,7 +185,6 @@ export default function LoadFinance() {
               position: "sticky",
               top: '0px',
               marginTop: "50px",
-              // marginLeft:"50px"
             }}>
               <AddFinance />
             </div>

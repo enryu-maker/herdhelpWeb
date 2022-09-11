@@ -77,9 +77,7 @@ export default function HomeNav() {
       <Route path='/weightHist' element={<ProtectedRoute Component={WeightPage} access={access} />} />
       <Route path='/parentop' element={<ProtectedRoute Component={ParentOP} access={access} />} />
       <Route path='/parentopp' element={<ProtectedRoute Component={P} access={access} />} />
-
       <Route path='/Modal' element={<Modal_side />} />
-
       <Route path='/out' element={<RootNav />} />
     </Routes>
   )

@@ -11,7 +11,7 @@ export const IMAGES={
     menu1:require("../assets/Logo/menu.png"),
     bread:require("../assets/animal_logo/newborn.png"),
     purchased:require("../assets/animal_logo/cash.png"),
-    menu:require("../assets/Logo/open-menu.png"),
+    menu:require("../assets/Logo/menu.png"),
     back:require("../assets/Logo/previous.png"),
     home:require("../assets/Logo/home.png"),
     add:require("../assets/Logo/pet-care.png"),

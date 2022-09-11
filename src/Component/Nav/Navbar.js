@@ -28,9 +28,10 @@ function NavBar({
           <img
             src={IMAGES.herdhelp}
             alt="logo"
-            style={{ height: mobile ? matches ? 60 : 60 : 40, 
+            style={{ 
+              height: mobile ? matches ? 60 : 60 : 40, 
               width: mobile ? matches ? 200 : 200 : 125,
-              margin:mobile ? matches ? 0 : 0 : '10%',
+              margin:mobile ? matches ? 0 : 0 : '12%',
               alignSelf:"center",
               justifyContent:'space-around',
               display:'flex'
@@ -49,7 +50,7 @@ function NavBar({
           <Link to="/" style={{
             color:page === '/' ? COLORS.Primary : 'black',
             marginLeft:2,
-            ...FONTS.h3,
+            ...FONTS.body3,
             textDecoration:'none'
 
           }}>
@@ -58,18 +59,12 @@ function NavBar({
           <Link to="/login" style={{
             color:page === '/login' ? COLORS.Primary : 'black',
             marginLeft:20,
-            ...FONTS.h3,
-            textDecoration:'none'
+            ...FONTS.body3,
+            textDecoration:'none',
+            marginRight:mobile ? matches ? 0 : 0 : 20,
+
           }}>
             Login
-            </Link>
-          <Link to="/signup" style={{
-              color:page === '/signup' ? COLORS.Primary : 'black',
-            ...FONTS.h3,
-            marginLeft:20,
-            textDecoration:'none'
-          }}>
-            Register
             </Link>
         </div>
         

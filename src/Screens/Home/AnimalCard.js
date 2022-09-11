@@ -75,15 +75,15 @@ export default function AnimalCard({
                     alignSelf:"center"
                 }}>
                     <p style={{
-                        ...FONTS.h3
+                        ...FONTS.body3
                     }}>
                         {data.support_tag}
                     </p>
                     <p style={{
-                        ...FONTS.h3
+                        ...FONTS.body3
                     }}>{data.name}</p>
                     <p style={{
-                        ...FONTS.h3
+                        ...FONTS.body3
                     }}>{unit?`${data.weight} Lbs`:`${data.weight_kg} Kg`}</p>
 
                  </div>
