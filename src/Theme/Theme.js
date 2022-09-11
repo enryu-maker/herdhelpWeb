@@ -14,7 +14,7 @@ export const formatter = new Intl.NumberFormat('en-US', {
       white:"#ffffff",
       lightGray1: "#e6e6e6",
       lightGray2: "#e6e6e6",
-      black:"black",
+      black:"#050511",
       gray: "#898B9A",
       gray2: "#BBBDC1",
       gray3: "#CFD0D7",

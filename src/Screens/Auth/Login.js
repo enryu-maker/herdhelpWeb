@@ -126,6 +126,7 @@ export default function Login() {
               style={{ height: "auto", maxWidth: "100%", width: "100%" }}
               value={"www.nerdtech.com"}
               viewBox={`0 0 256 256`}
+              fgColor={COLORS.black}
             />
           </div>
           {
