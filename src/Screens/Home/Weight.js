@@ -94,7 +94,9 @@ export default function Weight() {
 
           <DropDown
             value={valueMS}
-            setValue={setValueMS}
+            onPress={(e)=>{
+              setValueMS(e.label)
+            }}
             label={"Species*"}
             // options={checking}
             options={species}
@@ -102,12 +104,13 @@ export default function Weight() {
 
           <DropDown
             value={valueBS}
-            setValue={setValueBS}
+            onPress={(e)=>{
+              setValueBS(e.label)
+            }}
             label={"Tags*"}
             // options={checking}
             options={finder(tags, valueMS)}
           />
-
           <InputForm
             prependComponent={
               <img
