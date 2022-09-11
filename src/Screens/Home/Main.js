@@ -17,7 +17,7 @@ import { getFcat, getFinance, getGender, getHerds, getOverview, getSpecies, getS
 import FlatList from 'flatlist-react';
 import Loading from "../../Component/Loading";
 import Sidenav from "../../Component/Nav/sidenav";
-import { COLORS } from "../../Theme/Theme";
+import { COLORS, FONTS } from "../../Theme/Theme";
 import useMediaQuery from "../../Component/useMediaQuery";
 export default function Main() {
   const dispatch = useDispatch()
@@ -55,6 +55,12 @@ export default function Main() {
         }}>
         <NavBarMain style={{left:30,
           position:'absolute'}} page={"herds"}/>
+          {
+            mobile ? null : 
+            <>
+            <h3 style={{...FONTS.h2}}>Herds</h3>
+            </>
+          }
       
         <div style={{
             overflowY: 'scroll',

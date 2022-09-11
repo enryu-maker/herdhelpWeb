@@ -70,7 +70,7 @@ export default function Parents() {
       height: "100vh",
       width: "100%",
     }}>
-      <Sidenav active={"Parents"} />
+     
       <div style={{
         width: mobile ? matches ?  "90%" : "90%" : '100%',
         float: "right",
@@ -78,8 +78,37 @@ export default function Parents() {
         flexDirection: "column",
         alignItems: "center",
       }}>
-        <NavBarMain />
-        <Header title={"Search Parents"} />
+        
+        <Header 
+        leftcomponent={
+          <>
+              <div style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  height: 40,
+                  width: 40,
+                  backgroundColor: COLORS.Primary,
+                  alignSelf: "center",
+                  borderRadius: 20
+              }}
+                  onClick={() => {
+                      navigate(-1)
+                  }}
+              >
+                  <img src={IMAGES.back} alt={"back"}
+                      style={{
+                          height: 25,
+                          width: 25,
+                          alignSelf: "center",
+                      }} />
+              </div>
+          </>
+      }
+        title={"Search Parents"} 
+        rightcomponent={
+          <div>
+          </div>
+      }/>
         <div style={{
           paddingTop: "20px",
           backgroundColor: COLORS.lightGray2,

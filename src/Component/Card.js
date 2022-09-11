@@ -113,7 +113,7 @@ function Allcards(){
              shadowOpacity: 0.5,
              shadowRadius: 10,
              elevation: 2,
-             width: 135,
+             width: 145,
              cursor:'pointer',
              boxShadow: '0px 0px 15px -4px #888181',
            }}
@@ -121,38 +121,37 @@ function Allcards(){
          >
              {/* <img src={IMAGES.rightone} style={{ height: 20, width: 20,alignSelf:"center",marginLeft:200,marginTop:10 }} /> */}
              <img src={img} alt={Name} style={{ height: 40, width: 40,alignSelf:"center"}} />
-           <div>
-               <div style={{
-               textAlign:'center'
-           }}>
-           <p style={{...FONTS.h3 , margin:30}}>{Name}</p>
-           <p style={{...FONTS.h3 , 
            
-               width:70,
+               
+           <p style={{...FONTS.h3 , margin:10, marginTop:25}}>{Name}</p>
+            <div style={{
+              // width:100,
                height:30,
                backgroundColor:COLORS.white, 
-               borderRadius:30 ,
-               display: 'block ruby',
+               borderRadius:30 ,display:'flow-root' , padding:'3px 0px 3px 0px'}}>
+           <p style={{...FONTS.h3 , 
+           
+               
+               display: 'block',
                textAlign: 'center',
                display: 'flex',
               //  margin:'auto',
                marginTop:'-20px',
-               padding:'5px 30px',
+               padding:'2% 26%',
    
                alignItems:'center',
                justifyContent:'space-between',
    
-               }}><img src={img} alt={Name} style={{ height: 30, width: 30}}/>X<p>{numaninmal}</p></p>
+               }}><img src={img} alt={Name} style={{ height: 25, width: 25}}/>X<p>{numaninmal}</p></p>
+               </div>
            {/* <p style={{...FONTS.h4}}>{global.unit?`${Weight} lbs`:`${weight_kg} kg`}</p> */}
-           </div>
            <div style={{
                display:"flex",
-   
                flexFlow:"column"
            }}>
              {/* <img src={Gender=="Male"? IMAGES.male:IMAGES.female} style={{ height: 50, width: 50,marginTop:25}} /> */}
            </div>
-           </div>
+           
            
    
    

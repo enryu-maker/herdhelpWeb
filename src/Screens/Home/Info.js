@@ -17,6 +17,8 @@ import { checking, Statusad } from "../../Component/Constants";
 import DropDown from '../../Component/DropDown/DropDown';
 import InputForm from '../../Component/InputForm';
 
+import Modal from 'react-modal';
+
 export default function Info({
 }) {
   let navigate = useNavigate()
@@ -70,7 +72,24 @@ export default function Info({
   }
   const matches = useMediaQuery('(max-width:810px)')
   const mobile = useMediaQuery('(min-width:400px)') 
+// 
+let subtitle;
+const [modalIsOpen, setIsOpen] = React.useState(false);
 
+function openModal() {
+  setIsOpen(true);
+}
+
+function afterOpenModal() {
+  // references are now sync'd and can be accessed.
+  subtitle.style.color = '#000000c4';
+}
+
+function closeModal() {
+  setIsOpen(false);
+}
+
+// 
 
   return (
     <div>
@@ -108,7 +127,8 @@ export default function Info({
                 <div style={{
                   display: mobile ? matches ? "flex" : 'flex' : 'grid', 
                   alignSelf: "center",
-                  marginRight: mobile ? matches ? -100 : -100 : 0
+                  marginRight: mobile ? matches ? -100 : -100 : 0,
+                  marginLeft:mobile ? matches ? 0 : 0 : -30
                 }}>
                   <button style={{
                     ...FONTS.h2,
@@ -117,7 +137,8 @@ export default function Info({
                     background:'none',
                     cursor:'pointer',
                     width:100,
-                    height:50
+                    height:50,
+                    textAlign:'end'
                   }}>
                     EDIT
                   </button>
@@ -129,11 +150,13 @@ export default function Info({
                     background:'none',
                     cursor:'pointer',
                     width:100,
-                    height:50
+                    height:50,
+                    textAlign:'end'
                   }}
-                  onClick={()=>{
-                    document.getElementById("Status").style.display = 'block'
-                  }}
+                  // onClick={()=>{
+                  //   document.getElementById("Status").style.display = 'block'
+                  // }}
+                  onClick={openModal}
                   >
                     STATUS
                   </button>
@@ -468,16 +491,55 @@ export default function Info({
           </div> : null
         }
 
-
-        <div style={{width:400 , 
+{/*  */}
+<Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        // style={customStyles}
+        // contentLabel="Example Modal"
+        style={{
+            overlay: {
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(255, 255, 255, 0.7)',
+              // margin : mobile ? matches ? -40 : null : -40,
+              // display :  mobile ? matches ? 'block' : 'none' : 'block'
+            },
+            content: {
+              position: 'fixed',
+              top: '20px',
+              left: '20px',
+              right: '20px',
+              bottom: '20px',
+              // width:  mobile ? matches ? '100%' : '100%' : '100%',
+              border: '1px solid transparent',
+              backgroundColor: 'rgba(255, 255, 255, 0.7)',
+              // background: COLORS.Primary,
+              // overflow: 'auto',
+              // WebkitOverflowScrolling: 'touch',
+              borderRadius: '0 4px 4px 0',
+              outline: 'none',
+              height:530
+              
+            }
+          }}
+        >
+        <div style={{
+                      width:mobile ? matches ? 400  : 400  : 320, 
                       height:500 , 
                       background:COLORS.lightGray2 , 
-                      position:'fixed', 
+                      // position:'fixed', 
                       top: matches ? 80 : 10 , 
                       margin: '10px 0px', 
-                      display:'none',
-                      right:100,
-                      borderRadius:SIZES.radius }}  id={'Status'}>
+                      display:'flow',
+                      // right:mobile ? matches ? 100 : 100 : 10,
+                      borderRadius:SIZES.radius }}  
+                      // id={'Status'}
+                      >
           <>
           <div style={{
             display: "flex",
@@ -487,11 +549,14 @@ export default function Info({
             backgroundColor: COLORS.Primary,
             alignSelf: "center",
             borderRadius: 20,
-            margin:30
+            margin:10,
+            top:10,
+            position:'relative'
           }}
-            onClick={() => {
-              document.getElementById("Status").style.display = 'none'
-            }}
+            // onClick={() => {
+            //   document.getElementById("Status").style.display = 'none'
+            // }}
+            onClick={closeModal}
           >
             <img src={IMAGES.close2} alt={"back"}
               style={{
@@ -503,7 +568,9 @@ export default function Info({
           </>
           <>
           <p style={{...FONTS.h2,
-                    color: COLORS.Primary,}}>
+                    color: COLORS.Primary,
+                    display:'flex',
+                    justifyContent:'center'}}>
             Status
           </p>
           </>
@@ -553,6 +620,7 @@ export default function Info({
             </>
           </div>
         </div>
+        </Modal>
 
       </div>
     </div>

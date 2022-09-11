@@ -5,8 +5,11 @@ import { IMAGES } from '../../Theme/Image';
 import { COLORS, FONTS } from '../../Theme/Theme';
 import Header from '../../Component/Header';
 import { useSelector } from 'react-redux';
+import useMediaQuery from '../../Component/useMediaQuery';
 export default function WeightPage() {
   const unit = useSelector(state => state.Reducers.unit)
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
 
     const navigate = useNavigate()
     const { state } = useLocation();
@@ -63,9 +66,10 @@ export default function WeightPage() {
                 display: "flex",
                 height: "100vh",
                 justifyContent: "center",
+                // width:'100vh'
                 // alignItems:"center"
             }}>
-                <LineChart width={1000} height={400} data={data} margin={{ top: 20, right: 20, bottom: 50, left: 20 }} >
+                <LineChart width={mobile ? matches? 550 : 1000 : 345} height={mobile ? matches ? 300 : 400 : 300 } data={data} margin={{ top: 20, right: 20, bottom: 50, left: 20 }} >
                     <CartesianGrid strokeDasharray="3 3" stroke={COLORS.transparentPrimary} />
                     <XAxis dataKey={"x"} angle={-90} tickMargin={30} style={{
                         ...FONTS.h4

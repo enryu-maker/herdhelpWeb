@@ -48,7 +48,7 @@ export default function HomeNav() {
   return (
     <Routes>
       <Route path="/in" element={<Navigate to="/" />} />
-      <Route exact path="/main" element={<ProtectedRoute Component={Main} access={access} />} />
+      <Route exact path="/" element={<ProtectedRoute Component={Main} access={access} />} />
       <Route path="/add" element={<Add />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/weight" element={<Weight />} />

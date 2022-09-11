@@ -1,14 +1,18 @@
 import { type } from '@testing-library/user-event/dist/type'
 import React from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
+import Header from '../../Component/Header'
 import InfoCard from '../../Component/InfoCard'
 import NavBarMain from '../../Component/Nav/navmain'
 import Sidenav from '../../Component/Nav/sidenav'
 import { WeightUnit } from '../../Store/actions'
 import { IMAGES } from '../../Theme/Image'
 import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
+import useMediaQuery from '../../Component/useMediaQuery';
 
 export default function Setting() {
+  const navigate = useNavigate()
   const [active, setActive] = React.useState("")
   const [Type, setType] = React.useState([])
   const unit = useSelector(state => state.Reducers.unit)
@@ -23,23 +27,55 @@ export default function Setting() {
       value: false
     }
   ]
+
+  const matches = useMediaQuery('(max-width:810px)')
+  const mobile = useMediaQuery('(min-width:400px)') 
   return (
     <>
       <div style={{
-        display: "flex",
+        // display: "flex",
         height: "100vh",
-        width: "100%",
+        // width: "100%",
 
       }}>
-        <Sidenav active={"Setting"} />
         <div style={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          width: "90%",
-          float: "right",
+          // width: "90%",
+          // float: "right",
         }}>
-          <NavBarMain />
+        <Header 
+        leftcomponent={
+          <>
+              <div style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  height: 40,
+                  width: 40,
+                  backgroundColor: COLORS.Primary,
+                  alignSelf: "center",
+                  borderRadius: 20
+              }}
+                  onClick={() => {
+                      navigate(-1)
+                  }}
+              >
+                  <img src={IMAGES.back} alt={"back"}
+                      style={{
+                          height: 25,
+                          width: 25,
+                          alignSelf: "center",
+                      }} />
+              </div>
+          </>
+      }
+      title={"Setting"}
+      rightcomponent={
+          <div>
+          </div>
+      }/>
+          
           <div style={{
             display: "flex",
             alignItems: "center",

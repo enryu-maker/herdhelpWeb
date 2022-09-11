@@ -96,7 +96,7 @@ export default function WeightHistory() {
       height: "100vh",
       width: "100%",
     }}>
-      <Sidenav active={"Weight History"} />
+    
       <div style={{
         width: mobile ? matches ?  "90%" : "90%" : '100%',
         float: "right",
@@ -104,8 +104,36 @@ export default function WeightHistory() {
         flexDirection: "column",
         alignItems: "center",
       }}>
-        <NavBarMain />
-        <Header title={"Weight History"} />
+        
+        <Header
+        leftcomponent={<>
+          <div style={{
+              display: "flex",
+              justifyContent: "center",
+              height: 40,
+              width: 40,
+              backgroundColor: COLORS.Primary,
+              alignSelf: "center",
+              borderRadius: 20
+          }}
+              onClick={() => {
+                  navigate(-1)
+              }}
+          >
+              <img src={IMAGES.back} alt={"back"}
+                  style={{
+                      height: 25,
+                      width: 25,
+                      alignSelf: "center",
+                  }} />
+          </div>
+      </>} 
+         title={"Weight History"}
+         rightcomponent={
+          <div>
+          </div>
+      }
+         />
         <div style={{
           paddingTop: "20px",
           backgroundColor: COLORS.lightGray2,

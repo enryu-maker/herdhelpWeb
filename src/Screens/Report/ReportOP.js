@@ -37,6 +37,12 @@ export default function ReportOP() {
             <Header
                 leftcomponent={
                     <>
+                    <div style={{
+                            display: mobile ? matches ? 'flex' : 'flex' : 'grid' ,
+                            alignSelf: "center",
+                            marginRight: mobile ? matches ? -100 : -100 : 0
+                        }}>
+
                         <div style={{
                             display: "flex",
                             height: 40,
@@ -46,9 +52,9 @@ export default function ReportOP() {
                             borderRadius: 20,
                             justifyContent: "center"
                         }}
-                            onClick={() => {
-                                navigate(-1)
-                            }}
+                        onClick={() => {
+                            navigate(-1)
+                        }}
                         >
                             <img src={IMAGES.back} alt={"back"}
                                 style={{
@@ -56,6 +62,9 @@ export default function ReportOP() {
                                     width: 25,
                                     alignSelf: "center",
                                 }} />
+                        </div>
+                        
+
                         </div>
                     </>
                 }
@@ -65,7 +74,8 @@ export default function ReportOP() {
                         <div style={{
                             display: mobile ? matches ? 'flex' : 'flex' : 'grid' ,
                             alignSelf: "center",
-                            marginRight: mobile ? matches ? -100 : -100 : 0
+                            marginRight: mobile ? matches ? -100 : -100 : 0,
+                            
                         }}>
                             <p style={{
                                 ...FONTS.h2,
