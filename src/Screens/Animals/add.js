@@ -149,7 +149,7 @@ export default function Add() {
                 )
               }
               }
-              renderWhenEmpty={() => <div>List is empty!</div>}
+              renderWhenEmpty={() => <div></div>}
             />
           </div>
         </div>
@@ -217,7 +217,7 @@ export default function Add() {
                 )
               }
               }
-              renderWhenEmpty={() => <div>List is empty!</div>}
+              renderWhenEmpty={() => <div></div>}
             />
           </div>
         </div>

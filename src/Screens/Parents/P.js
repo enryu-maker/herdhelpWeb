@@ -61,7 +61,7 @@ export default function P({
 
                 }
                 }
-                renderWhenEmpty={() => <div>List is empty!</div>}
+                renderWhenEmpty={() => <div></div>}
             />
             </div>
             </>
