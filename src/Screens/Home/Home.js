@@ -87,7 +87,7 @@ export default function Home() {
                     height: 55,
                     position: 'relative',
                     top: 500,
-                    left: matches ? 50 :0,
+                    left: mobile ? matches ? 0 :50 : 0,
                   }}
                 />
               </div>
