@@ -202,7 +202,7 @@ export default function LoadFinance() {
                               )
                             }
                             }
-                            renderWhenEmpty={() => <div>List is empty!</div>}
+                            renderWhenEmpty={() => <div></div>}
                           />
                         </ul>
                       </div>
