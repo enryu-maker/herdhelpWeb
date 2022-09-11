@@ -72,9 +72,10 @@ export default function ReportOP() {
                 rightcomponent={
                     <>
                         <div style={{
-                            display: mobile ? matches ? 'flex' : 'flex' : 'grid' ,
+                            display: mobile ? matches ? 'flex' : 'flex' : 'flex' ,
                             alignSelf: "center",
                             marginRight: mobile ? matches ? -100 : -100 : 0,
+                            gap:5
                             
                         }}>
                             <p style={{
