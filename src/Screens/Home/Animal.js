@@ -178,7 +178,7 @@ export default function Animal() {
 
           }
           }
-          renderWhenEmpty={() => <div>List is empty!</div>}
+          renderWhenEmpty={() => <div></div>}
         />
       </ul>
     </div>
