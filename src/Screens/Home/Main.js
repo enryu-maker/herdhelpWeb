@@ -50,7 +50,7 @@ export default function Main() {
       }}>
         <Sidenav active={'Herds'} />
         <div style={{
-          width: "80%",
+          width: mobile ? matches ? "100%" : '80%' : "100%",
           float: "right",
         }}>
           <NavBarMain page={"herds"} />

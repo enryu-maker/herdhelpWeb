@@ -82,7 +82,7 @@ export default function Animal() {
               display: mobile ? matches ? 'flex' : 'flex' : 'flex',
               alignSelf: "center",
               marginRight: mobile ? matches ? -100 : -100 : 0,
-              gap:mobile ? null : 10
+              gap: 10
             }}>
               <p style={{
                 ...FONTS.h2,
