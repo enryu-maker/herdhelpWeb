@@ -148,7 +148,7 @@ export default function ParentOP() {
                                 )
                             }
                             }
-                            renderWhenEmpty={() => (<Loading />)}
+                            renderWhenEmpty={() => (<></>)}
                         />
                     </div>}
         </div>

@@ -169,7 +169,7 @@ export default function History() {
 
           }
           }
-          renderWhenEmpty={() => (<Loading />)}
+          renderWhenEmpty={() => (<></>)}
         />
       </div>
     </div>

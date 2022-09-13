@@ -83,7 +83,7 @@ export default function ParentCard({
                             )
                         }
                         }
-                        renderWhenEmpty={() => (<Loading />)}
+                        renderWhenEmpty={() => (<></>)}
                     />
                     </ul>
                 </div>

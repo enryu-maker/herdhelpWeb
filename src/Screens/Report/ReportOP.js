@@ -135,7 +135,7 @@ export default function ReportOP() {
                         )
                     }
                     }
-                    renderWhenEmpty={() =><Loading/>}
+                    renderWhenEmpty={() =><></>}
                 />
             </ul>
         </div>
