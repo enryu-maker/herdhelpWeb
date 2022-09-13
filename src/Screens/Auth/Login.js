@@ -13,17 +13,21 @@ import { storeID } from "../../Store/actions";
 import { Login_Function } from "../../Store/actions";
 import Loading from "../../Component/Loading";
 import QRCode from "react-qr-code";
+import { useSelector } from "react-redux";
 export default function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [showPass, setShowPass] = React.useState(false);
   const [show, setShow] = React.useState(false);
   const [showqr, setShowqr] = React.useState(false);
-
+  const [count, setCount] = useState(0);
   const [saveMe, setSaveMe] = React.useState(false);
   const [EmailError, setEmailError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [EmailErr, setEmailErr] = React.useState("");
+  const [qrURL, setqrUrl] = React.useState("");
+  const [valUrl, setvalUrl] = React.useState("");
+  const auth = useSelector(state => state.Reducers.authToken)
   let navi = useNavigate()
   const dispatch = useDispatch()
   function isEnableSignIn() {
@@ -69,7 +73,39 @@ export default function Login() {
       setLoading(false);
     }
   }
+  async function getQr() {
+    setLoading(true)
+    let data = await axios.get(baseURL + "/getqr")
+    return (data.data)
+  }
+   function valQr(link) {
+     axios.get(link).then((Response)=>{
+      if(Response.status===200){
+        dispatch(Login_Function(Response.data.access))
+        dispatch(storeID(Response.data.userid))
+        navi("/in")
+      }
+      else{
+        console.log("Issue")
+      }
+     }).catch((e)=>{
+      console.log(e)
+     })
+    
 
+  }
+  React.useEffect(() => {
+    getQr().then(data => {
+      setqrUrl(data.qr_link)
+      setvalUrl(data.validate_link)
+      setLoading(false)
+    })
+  }, [])
+  if (!loading && valUrl != "" && auth === null) {
+    setInterval(()=>{
+     valQr(valUrl)
+    }, 5000)
+  }
 
   return (
     <div style={{
@@ -122,24 +158,28 @@ export default function Login() {
           >
             {EmailErr}
           </p>
-          <div style={{ height: "auto", margin: "0 auto", maxWidth: 200, width: "100%" }}>
+          {
+            loading ? <Loading /> :
+              <div style={{ height: "auto", margin: "0 auto", maxWidth: 200, width: "100%" }}>
 
-            <QRCode
-              size={256}
-              style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-              value={"www.nerdtech.com"}
-              viewBox={`0 0 256 256`}
-              fgColor={COLORS.black}
-            />
-            <p style={{
-              ...FONTS.h2,
-              alignSelf: 'center',
-              color: COLORS.Primary
-            }}>
-              Scan Me
-            </p>
+                <QRCode
+                  size={256}
+                  style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                  value={qrURL}
+                  viewBox={`0 0 256 256`}
+                  fgColor={COLORS.black}
+                />
+                <p style={{
+                  ...FONTS.h2,
+                  alignSelf: 'center',
+                  color: COLORS.Primary
+                }}>
+                  Scan Me
+                </p>
 
-          </div>
+              </div>
+          }
+
           <img
             src={IMAGES.scangif}
             style={{
