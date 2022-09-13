@@ -93,7 +93,9 @@ export default function Main() {
                 )
 
               }
+              
               }
+              renderWhenEmpty={() => <div></div>}
             />
           </div>
         </div>
