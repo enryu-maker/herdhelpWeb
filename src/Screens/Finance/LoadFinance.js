@@ -19,7 +19,7 @@ export default function LoadFinance() {
   const finance = useSelector(state => state.Reducers.finance)
   // const matches = useMediaQuery('(min-width:820px)')
   const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:420px)')
+  const mobile = useMediaQuery('(min-width:460px)')
   const navigate = useNavigate()
   // 
   let subtitle;

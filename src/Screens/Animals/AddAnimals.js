@@ -68,7 +68,7 @@ export default function AddAnimals() {
     dispatch(getGender())
   },[])
   const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:420px)') 
+  const mobile = useMediaQuery('(min-width:460px)') 
 
   function findertype(list, value, type,setValue) {
     list?.map(a => {
@@ -729,7 +729,10 @@ export default function AddAnimals() {
           </>
         }
         rightcomponent={
-          <div></div>
+          <div>
+            <div>
+              </div>s
+          </div>
         }
         title={"Add Animal"} />
       <div style={{

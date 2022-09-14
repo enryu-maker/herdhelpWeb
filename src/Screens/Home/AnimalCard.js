@@ -10,7 +10,7 @@ export default function AnimalCard({
 }) {
 
     const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:420px)') 
+  const mobile = useMediaQuery('(min-width:460px)') 
     const unit = JSON.parse(useSelector(state => state.Reducers.unit))
 
     return (

@@ -29,7 +29,7 @@ export default function AddFinance() {
   const dispatch = useDispatch()
 
   const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:420px)') 
+  const mobile = useMediaQuery('(min-width:460px)') 
   async function postfinance() {
     // setLoading(true)
     if (price != "" && Qty != "") {

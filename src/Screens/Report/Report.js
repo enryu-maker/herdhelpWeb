@@ -27,7 +27,7 @@ export default function Report() {
   const reports = useSelector(state => state.Reducers.reports)
 
   const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:420px)') 
+  const mobile = useMediaQuery('(min-width:460px)') 
 
   function Altcards({
     altname,

@@ -12,7 +12,7 @@ import useMediaQuery from '../../Component/useMediaQuery';
 export default function ParentOP() {
 
     const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:420px)') 
+  const mobile = useMediaQuery('(min-width:460px)') 
     const [show, setShow] = React.useState(false)
     const navigate = useNavigate()
     const { state } = useLocation();

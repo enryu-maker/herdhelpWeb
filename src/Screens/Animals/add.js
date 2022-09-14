@@ -47,7 +47,7 @@ export default function Add() {
   const dispatch = useDispatch()
   
   const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:420px)') 
+  const mobile = useMediaQuery('(min-width:460px)') 
 
 
   React.useEffect(()=>{
