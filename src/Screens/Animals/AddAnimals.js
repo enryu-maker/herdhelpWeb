@@ -730,8 +730,8 @@ export default function AddAnimals() {
         }
         rightcomponent={
           <div>
-            <div>
-              </div>s
+            <div><p style={{color:'transparent'}}>545</p>
+              </div>
           </div>
         }
         title={"Add Animal"} />
@@ -799,7 +799,8 @@ export default function AddAnimals() {
                 postAnimal()
               }}
               buttonContainerStyle={{
-                marginTop: "20px"
+                marginTop: "20px",
+                marginBottom: 50
               }}
             />
         }

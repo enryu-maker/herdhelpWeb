@@ -28,6 +28,8 @@ import Loading from '../Component/Loading';
 import Children from '../Screens/Children/Children';
 import History from '../Screens/Children/History';
 import ReportOP from '../Screens/Report/ReportOP';
+import Genratereport from '../Screens/Report/genratereport';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import RootNav from './RootNav';
@@ -79,6 +81,8 @@ export default function HomeNav() {
       <Route path='/parentopp' element={<ProtectedRoute Component={P} access={access} />} />
       <Route path='/Modal' element={<Modal_side />} />
       <Route path='/out' element={<RootNav />} />
+
+      <Route path='/genratereport' element={<Genratereport/>} />
     </Routes>
   )
 }

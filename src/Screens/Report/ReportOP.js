@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../../Component/Header'
-import { COLORS, FONTS } from '../../Theme/Theme'
+import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
 import { useNavigate, useLocation } from 'react-router-dom';
 import FlatList from 'flatlist-react';
 import ReportCard from './ReportCard';
@@ -8,6 +8,7 @@ import { IMAGES } from '../../Theme/Image';
 import axiosIns from '../../helpers/helpers';
 import Loading from '../../Component/Loading';
 import useMediaQuery from '../../Component/useMediaQuery';
+import TextButton from '../../Component/TextButton';
 export default function ReportOP() {
     const [loading, setLoading] = React.useState(false)
     const [Data, setData] = React.useState([])
@@ -28,6 +29,8 @@ export default function ReportOP() {
             setData(data)
         })
     }, [])
+
+    
 
 
   const matches = useMediaQuery('(max-width:820px)')
@@ -138,6 +141,69 @@ export default function ReportOP() {
                     renderWhenEmpty={() =><></>}
                 />
             </ul>
+            <div style={{display:'grid' , justifyContent:'center', alignItems:'center' , justifyItems:'center'}}>
+            <button style={{
+                        display:"inline-flex",
+                        justifyContent: 'center',
+                        backgroundColor: COLORS.Primary,
+                        borderRadius:SIZES.radius,
+                        borderWidth:0,
+                        height:50,
+                        width:320,
+                        alignSelf:'center',
+                        cursor:"pointer",
+                        marginBottom:50
+                        // ...buttonContainerStyle,
+        }}
+        >
+        <div style={{
+                margin:10
+            }}>
+                <img src={IMAGES.aler} style={{height:25,
+                                                width:25,
+                                                color:COLORS.white,
+                                                alignSelf:"flex-start",
+                                                // ...iconStyle
+                                                }}/> 
+            </div>
+        <p style={{ color: COLORS.white,
+                         ...FONTS.body2, 
+                        //  ...labelStyle,
+                         alignSelf:"center",letterSpacing:1 }}>
+        Generate Report
+        </p>
+        </button>
+{/* {
+    purchesd ? 
+} */}
+        <div style={{
+                        display:"inline-flex",
+                        justifyContent: 'center',
+                        backgroundColor: COLORS.Primary,
+                        borderRadius:SIZES.radius,
+                        borderWidth:0,
+                        height:50,
+                        width:380,
+                        alignSelf:'center',
+                        cursor:"pointer",
+                        marginBottom:50
+                        // ...buttonContainerStyle,
+        }}
+        >
+        <p style={{ color: COLORS.white,
+                         ...FONTS.body2, 
+                        //  ...labelStyle,
+                         alignSelf:"center",letterSpacing:1 }}>
+        Total purchesd = 
+        </p>
+        <p style={{ color: COLORS.white,
+                         ...FONTS.body2, 
+                        //  ...labelStyle,
+                         alignSelf:"center",letterSpacing:1 }}>
+        1234.00 $
+        </p>
+        </div>
+            </div>
         </div>
     )
 }
