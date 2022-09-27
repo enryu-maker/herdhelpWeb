@@ -14,7 +14,7 @@ export const IMAGES={
     menu:require("../assets/Logo/menu.png"),
     back:require("../assets/Logo/previous.png"),
     home:require("../assets/Logo/home.png"),
-    add:require("../assets/Logo/pet-care.png"),
+    addAnimal:require("../assets/Logo/pet-care.png"),
     med:require("../assets/Logo/first-aid-kit.png"),
     weight:require("../assets/Logo/weight-scale.png"),
     tag:require("../assets/Add/price-tag.png"),
