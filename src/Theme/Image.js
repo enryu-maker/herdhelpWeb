@@ -85,6 +85,10 @@ export const IMAGES={
     sideback:require("../assets/Logo/play-arrow.png"),
     lbs:require("../assets/Add/lb.png"),
     splash : require("../assets/splash.png"),
-    scangif : require("../assets/scanner.gif")
+    scangif : require("../assets/scanner.gif"),
+    add : require("../assets/Logo/add.png"),
+    coin : require("../assets/Logo/coin.png")
+
+
 
 }

@@ -322,9 +322,14 @@ export default function Sidenav({
                   right: mobile ? matches ? 95 : null : 20 , 
                   background:'none' , 
                   cursor:'pointer', 
-                  border:'1px solid black' , 
-                  borderRadius:20 }} 
-                  onClick={closeModal} > <img alt='' src={IMAGES.close} /> </button> : null }
+                  border:'none' , 
+                  // borderRadius:20 
+                }} 
+                  onClick={closeModal} > <img alt='' src={IMAGES.close} style={{
+                    width: 25,
+                    height: 25,
+    
+                  }} /> </button> : null }
   
 {/* <button style={{  width:50 , 
                   height:50 , 
@@ -408,7 +413,7 @@ onClick={()=> {
             mobile ? matches ? null : null : <>
             <LineDivider/>
             <Sidemenu
-            img={IMAGES.herd}
+            img={IMAGES.home}
             label={'Herds'}
             path={'/'}
           />
@@ -418,12 +423,12 @@ onClick={()=> {
             path={'/add'}
           />
            <Sidemenu
-            img={IMAGES.money}
+            img={IMAGES.coin}
             label={'Finance'}
             path={'/finance'}
           />
            <Sidemenu
-            img={IMAGES.add}
+            img={IMAGES.file}
             label={'Report'}
             path={'/report'}
           />
