@@ -35,7 +35,88 @@ export default function ReportOP() {
 
   const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:460px)')
-    return (
+
+  function Buttonsgr () {
+    return(
+        <>
+        <div style={{display:'grid' , 
+                    justifyContent:'center', 
+                    alignItems:'center' , 
+                    justifyItems:'center' , 
+                    position:mobile ? matches ? 'relative' : 'relative'  : 'fixed',
+                    bottom:mobile ? matches ? null : null : 0,
+                    backgroundColor : mobile ? matches ? null : null : 'white' ,
+                    width : mobile ? matches ? null: null : '100%',
+                    }}>
+            <button style={{
+                        display:"inline-flex",
+                        justifyContent: 'center',
+                        backgroundColor: COLORS.Primary,
+                        borderRadius:SIZES.radius,
+                        borderWidth:0,
+                        height:50,
+                        width:mobile ? matches ? 380 : 380 : '100%',
+                        alignSelf:'center',
+                        cursor:"pointer",
+                        marginBottom:20
+                        // ...buttonContainerStyle,
+        }}
+        >
+        <div style={{
+                margin:10
+            }}>
+                <img src={IMAGES.aler} style={{height:25,
+                                                width:25,
+                                                color:COLORS.white,
+                                                alignSelf:"flex-start",
+                                                // ...iconStyle
+                                                }}/> 
+            </div>
+        <p style={{ color: COLORS.white,
+                         ...FONTS.body2, 
+                        //  ...labelStyle,
+                         alignSelf:"center",letterSpacing:1 }}>
+        Generate Report
+        </p>
+        </button>
+{/* {
+    purchesd ? 
+} */}
+        <div style={{
+                        display:"inline-flex",
+                        justifyContent: 'center',
+                        backgroundColor: COLORS.Primary,
+                        borderRadius:SIZES.radius,
+                        borderWidth:0,
+                        height:50,
+                        width:mobile ? matches ? 380 : 380 : '100%',
+                        alignSelf:'center',
+                        cursor:"pointer",
+                        marginBottom:mobile ? matches ? 30 :30 : 5
+                        // ...buttonContainerStyle,
+        }}
+        >
+        <p style={{ color: COLORS.white,
+                         ...FONTS.body2, 
+                        //  ...labelStyle,
+                         alignSelf:"center",letterSpacing:1 }}>
+        Total purchesd = 
+        </p>
+        <p style={{ color: COLORS.white,
+                         ...FONTS.body2, 
+                        //  ...labelStyle,
+                         alignSelf:"center",letterSpacing:1 }}>
+        1234.00 $
+        </p>
+        </div>
+            </div>
+        </>
+    )}
+
+
+
+
+  return (
         <div>
             <Header
                 leftcomponent={
@@ -111,14 +192,20 @@ export default function ReportOP() {
                                         height: 25,
                                         width: 25,
                                         alignSelf: "center",
+                                        
                                     }} />
                             </p>
                         </div>
                     </>
                 }
             />
+            {
+                mobile ? matches ?  <Buttonsgr/> : <Buttonsgr/>  : null
+            }
             <ul style={{
                 paddingInlineStart: 0,
+               position : mobile ? matches ? null : null : 'relative',
+               paddingBottom : mobile ? matches ? null : null : 100
             }}>
                 <FlatList
                     list={Data}
@@ -141,69 +228,9 @@ export default function ReportOP() {
                     renderWhenEmpty={() =><></>}
                 />
             </ul>
-            <div style={{display:'grid' , justifyContent:'center', alignItems:'center' , justifyItems:'center'}}>
-            <button style={{
-                        display:"inline-flex",
-                        justifyContent: 'center',
-                        backgroundColor: COLORS.Primary,
-                        borderRadius:SIZES.radius,
-                        borderWidth:0,
-                        height:50,
-                        width:320,
-                        alignSelf:'center',
-                        cursor:"pointer",
-                        marginBottom:50
-                        // ...buttonContainerStyle,
-        }}
-        >
-        <div style={{
-                margin:10
-            }}>
-                <img src={IMAGES.aler} style={{height:25,
-                                                width:25,
-                                                color:COLORS.white,
-                                                alignSelf:"flex-start",
-                                                // ...iconStyle
-                                                }}/> 
-            </div>
-        <p style={{ color: COLORS.white,
-                         ...FONTS.body2, 
-                        //  ...labelStyle,
-                         alignSelf:"center",letterSpacing:1 }}>
-        Generate Report
-        </p>
-        </button>
-{/* {
-    purchesd ? 
-} */}
-        <div style={{
-                        display:"inline-flex",
-                        justifyContent: 'center',
-                        backgroundColor: COLORS.Primary,
-                        borderRadius:SIZES.radius,
-                        borderWidth:0,
-                        height:50,
-                        width:380,
-                        alignSelf:'center',
-                        cursor:"pointer",
-                        marginBottom:50
-                        // ...buttonContainerStyle,
-        }}
-        >
-        <p style={{ color: COLORS.white,
-                         ...FONTS.body2, 
-                        //  ...labelStyle,
-                         alignSelf:"center",letterSpacing:1 }}>
-        Total purchesd = 
-        </p>
-        <p style={{ color: COLORS.white,
-                         ...FONTS.body2, 
-                        //  ...labelStyle,
-                         alignSelf:"center",letterSpacing:1 }}>
-        1234.00 $
-        </p>
-        </div>
-            </div>
+            {
+                mobile ? matches ?  null : null  : <Buttonsgr/>
+            }
         </div>
     )
 }
