@@ -9,6 +9,7 @@ import TextButton from '../../Component/TextButton'
 import axiosIns from '../../helpers/helpers'
 import { getFinance } from '../../Store/actions'
 import useMediaQuery from '../../Component/useMediaQuery'
+import { useAlert } from 'react-alert'
 export default function AddFinance() {
   const [cat, setCat] = React.useState(1);
   const [Qty, setQty] = React.useState("");
@@ -16,16 +17,12 @@ export default function AddFinance() {
   const [valueMS, setValueMS] = useState("");
   const species = useSelector(state => state.Reducers.fcat)
   const token = useSelector(state => state.Reducers.authToken)
-
-  // const clean = () => {
-  //   setQty(''), setPrice('');
-  // };
+  const alert = useAlert()
   const data = JSON.stringify({
     price: price,
     category: valueMS,
     quantity: Qty,
   });
-  console.log(data)
   const dispatch = useDispatch()
 
   const matches = useMediaQuery('(max-width:820px)')
@@ -42,17 +39,22 @@ export default function AddFinance() {
         .then(Response => {
           if (Response.status == 201) {
             dispatch(getFinance(token))
-            // clean();
+            alert.success("Finance Added Sucessfull")
+            setQty('');
+            setPrice('');
           } else {
+            alert.error("Internal Server Error")
             console.log(Response.status)
             // setLoading(false)
           }
         })
         .catch(err => {
+          alert.error(err)
           console.log(err)
         })
     } 
     else {
+      alert.error("Required Fields cannot be empty")
       console.log("Last div")
     }
   }
@@ -121,7 +123,7 @@ export default function AddFinance() {
             />
             <TextButton
               label={"Add Finance"}
-              icon={IMAGES.update}
+              icon={IMAGES.add}
               onPress={() => {
                 postfinance();
                 document.getElementById('Addfinance').style.display = 'none'

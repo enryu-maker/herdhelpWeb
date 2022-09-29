@@ -15,7 +15,7 @@ export default function Add() {
     {
       'id': 1,
       'label': 'Add Animals',
-      'image': IMAGES.add,
+      'image': IMAGES.addAnimal,
       'nav': '/animals'
     },
     {

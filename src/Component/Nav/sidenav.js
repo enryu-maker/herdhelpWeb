@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { IMAGES } from '../../Theme/Image'
-import { COLORS, FONTS  } from '../../Theme/Theme'
+import { COLORS, FONTS } from '../../Theme/Theme'
 import './Navbar.css'
 import { useDispatch, useSelector } from "react-redux";
 import FlatList from 'flatlist-react'
@@ -13,7 +13,7 @@ import { getSpecies, getTags, UserData } from '../../Store/actions'
 
 // import { useAlert } from 'react-alert'
 // import { render } from 'react-dom'
-import { transitions, positions,types , Provider as AlertProvider } from 'react-alert'
+import { transitions, positions, types, Provider as AlertProvider } from 'react-alert'
 
 // import Media from 'react-responsive'
 
@@ -42,23 +42,23 @@ export default function Sidenav({
   }
 
   // 
-  const dispatch =useDispatch()
-  React.useEffect(()=>{
-    dispatch(getSpecies(),getTags(),UserData())
-  },[])
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch(getSpecies(), getTags(), UserData())
+  }, [])
   const user = useSelector(state => state.Reducers.userData)
-  const overview = useSelector(state => state.Reducers.overview)  
+  const overview = useSelector(state => state.Reducers.overview)
   const options = {
     offset: '30px',
     position: positions.TOP_CENTER,
     timeout: 0,
     transition: transitions.SCALE,
     type: types.SUCCESS,
-    
+
   }
 
   const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:460px)')  
+  const mobile = useMediaQuery('(min-width:460px)')
 
 
   function Sidemenu({ img, label, path, onPress }) {
@@ -71,14 +71,14 @@ export default function Sidenav({
             width: '100%',
             height: 45,
             display: 'flex',
-            flexDirection:"row",
+            flexDirection: "row",
             background: 'none',
             border: 'none',
             cursor: 'pointer',
-            alignItems:"center",
+            alignItems: "center",
 
           }}
-          onClick={onPress}
+            onClick={onPress}
           >
             <img src={img}
               alt="logo"
@@ -86,7 +86,7 @@ export default function Sidenav({
                 width: 25,
                 height: 25,
 
-              }} /> 
+              }} />
             <p style={{
               color: label === 'Logout' ? COLORS.red : COLORS.white,
               ...FONTS.body3,
@@ -95,238 +95,252 @@ export default function Sidenav({
 
             }}>{label}</p>
             {
-              active==label?
-            
-            <img src={IMAGES.sideback}
-              alt="logo"
-              style={{
-                width: 25,
-                height: 25,
-                marginLeft:195,
-                position:"fixed",
-                justifyContent:"center"
-              }} /> :null}
-            </button></Link>
+              active == label ?
+
+                <img src={IMAGES.sideback}
+                  alt="logo"
+                  style={{
+                    width: 25,
+                    height: 25,
+                    marginLeft: 195,
+                    position: "fixed",
+                    justifyContent: "center"
+                  }} /> : null}
+          </button></Link>
       </>
     )
   }
 
- 
-  
+
+
   return (
     <>
-        {
-          
-          matches ? <button style={{width:40 , 
-                                    height:40 , 
-                                    position:'absolute' , 
-                                    border:'none' , 
-                                    borderRadius:20 , 
-                                    margin:20 , 
-                                    backgroundColor:COLORS.Primary , 
-                                    cursor:'pointer'}} 
-                  onClick={openModal} > <img alt='' src={IMAGES.menu} style={{width:22 , height:22  }}/></button> : 
-                  <div style={{
-                    position: 'fixed',
-                    height:'100%',
-                    backgroundColor: COLORS.Primary,
-                    textDecorationColor: COLORS.black,
-                    cursor:"pointer",
-                    position: matches ?  'relative' :"sticky"  ,
-                    display: 'flex',
-                    backgroundColor: COLORS.Primary,
-                    textDecorationColor: COLORS.black,
-                    cursor:"pointer",
-                    width:250  ,
-                    // left:'-100%'
+      {
+
+        matches ? <button style={{
+          width: 40,
+          height: 40,
+          position: 'absolute',
+          border: 'none',
+          borderRadius: 20,
+          margin: 20,
+          backgroundColor: COLORS.Primary,
+          cursor: 'pointer'
+        }}
+          onClick={openModal} > <img alt='' src={IMAGES.menu} style={{ width: 22, height: 22 }} /></button> :
+          <div style={{
+            position: 'fixed',
+            height: '100%',
+            backgroundColor: COLORS.Primary,
+            textDecorationColor: COLORS.black,
+            cursor: "pointer",
+            position: matches ? 'relative' : "sticky",
+            display: 'flex',
+            backgroundColor: COLORS.Primary,
+            textDecorationColor: COLORS.black,
+            cursor: "pointer",
+            width: 250,
+            // left:'-100%'
+          }}
+            id='Sidenav'
+          >
+            {matches ? <button style={{
+              width: 40,
+              height: 40,
+              position: 'absolute',
+              right: 0,
+              background: 'none',
+              cursor: 'pointer',
+              border: '1px solid black',
+              borderRadius: 20
+            }}
+              onClick={closeModal} > <img alt='' src={IMAGES.close} /> </button> : null}
+
+
+            <Link to={'/profile'} style={{ width: 250, height: 100, position: 'absolute', top: matches ? 40 : 0 }}>
+              <div style={{ height: 100, width: 207, position: 'absolute', top: matches ? 0 : 0, display: 'flex', justifyContent: 'space-evenly' }}>
+                <img
+                  src={user?.profile_picture == null ? `https://ui-avatars.com/api/?name=${user?.username}` : user?.profile_picture}
+                  alt={"Pro"}
+                  style={{
+                    position: 'absolute',
+                    width: 60,
+                    height: 60,
+                    left: 10,
+                    top: 19,
+                    borderRadius: 30
+
                   }}
-                  id='Sidenav'
-                  >
-          {matches ? <button style={{  width:40 , 
-                            height:40 , 
-                            position:'absolute' , 
-                            right:0 , 
-                            background:'none' , 
-                            cursor:'pointer', 
-                            border:'1px solid black' , 
-                            borderRadius:20 }} 
-                            onClick={closeModal} > <img alt='' src={IMAGES.close} /> </button> : null }
-            
-                  
-                  <Link to={'/profile'} style={{width:250, height:100 , position:'absolute' , top:matches ? 40 : 0 }}>
-                    <div style={{ height: 100,width:207 ,  position: 'absolute', top:matches? 0 : 0, display:'flex' , justifyContent:'space-evenly'  }}>
-                      <img
-                        src={user?.profile_picture==null?`https://ui-avatars.com/api/?name=${user?.username}`: user?.profile_picture}
-                        alt={"Pro"}
-                        style={{
-                          position: 'absolute',
-                          width: 60,
-                          height: 60,
-                          left: 10,
-                          top: 19,
-                          borderRadius:30
-          
-                        }}
-                      />
-                      <div style={{
-                        // lineheight: 26,
-                        display: 'flex',
-                        flexDirection:"column",
-                        alignitems: 'center',
-                        textalign: 'center',
-                        texttransform: 'capitalize',
-                        textAlign: 'left',
-                        width: 250,
-                        height:50,
-                        // backgroundColor :COLORS.layout
-          
-                        // width: 'fit-content',
-                      }}>
-                        <p style={{
-                          position: 'absolute',
-                          height: 26,
-                          left: 85,
-                          top: 5,
-                          ...FONTS.h3,
-                          color:COLORS.white
-                        }} >{user?.fullname}</p>
-                        <p style={{
-                          position: 'absolute',
-                          // width: 100,
-                          height: 26,
-                          left: 85,
-                          top: 24,
-                          ...FONTS.h3,
-                          color:COLORS.white
-                        }} >{user?.farm_name}</p>
-                        <p style={{
-                          position: 'absolute',
-                          // width: 65,
-                          height: 26,
-                          left: 85,
-                          top: 45,
-                          ...FONTS.h3,
-                          color:COLORS.white
-                        }} >@{user?.username}</p>
-                      </div>
-                    </div>
-                    </Link>
-                    
-          
-                    <div style={{
-                      flexDirection:"column",
-                      marginTop:matches ? 130 : 100, 
-                      paddingLeft:'15px',
-                    }}>
-          
-                    {/* <Sidemenu
+                />
+                <div style={{
+                  // lineheight: 26,
+                  display: 'flex',
+                  flexDirection: "column",
+                  alignitems: 'center',
+                  textalign: 'center',
+                  texttransform: 'capitalize',
+                  textAlign: 'left',
+                  width: 250,
+                  height: 50,
+                  // backgroundColor :COLORS.layout
+
+                  // width: 'fit-content',
+                }}>
+                  <p style={{
+                    position: 'absolute',
+                    height: 26,
+                    left: 85,
+                    top: 5,
+                    ...FONTS.h3,
+                    color: COLORS.white
+                  }} >{user?.fullname}</p>
+                  <p style={{
+                    position: 'absolute',
+                    // width: 100,
+                    height: 26,
+                    left: 85,
+                    top: 24,
+                    ...FONTS.h3,
+                    color: COLORS.white
+                  }} >{user?.farm_name}</p>
+                  <p style={{
+                    position: 'absolute',
+                    // width: 65,
+                    height: 26,
+                    left: 85,
+                    top: 45,
+                    ...FONTS.h3,
+                    color: COLORS.white
+                  }} >@{user?.username}</p>
+                </div>
+              </div>
+            </Link>
+
+
+            <div style={{
+              flexDirection: "column",
+              marginTop: matches ? 130 : 100,
+              paddingLeft: '15px',
+            }}>
+
+              {/* <Sidemenu
                       img={IMAGES.file}
                       label={'Report'}
                       path={'/report'}
                     /> */}
-                    {/* <hr style={{
+              {/* <hr style={{
                       border: '1px solid black' ,
                       top: '1%',
                       position: 'relative',
                       width: '100%',
                     }}>
                     </hr> */}
-          
-                    <Sidemenu
-                      img={IMAGES.weight}
-                      label={'Weight History'}
-                      path={'/weighthistory'}
-                    />
-                    <Sidemenu
-                      img={IMAGES.parents}
-                      label={'Parents'}
-                      path={'/parents'}
-                    />
-                    <div style={{ position: 'absolute', bottom: 40, width: '100%' }}>
-                    <LineDivider/>
-                    <Sidemenu
-                        img={IMAGES.setting}
-                        label={'Setting'}
-                        path={'/setting'}
-                      />
-                      <Sidemenu
-                        img={IMAGES.logout}
-                        label={'Logout'}
-                        path={'/out'}
-                        onPress={()=>{
-                          localStorage.clear()
-                        }}
-                      />
-                    </div>
-                    <LineDivider/>
-                  </div>
-                  </div>
-          
-        }
-        {/* <button >Open Modal</button> */}
-        {/*  */}
+              <Sidemenu
+                img={IMAGES.file}
+                label={'Report'}
+                path={'/report'}
+              />
+              <Sidemenu
+                img={IMAGES.weight}
+                label={'Weight History'}
+                path={'/weighthistory'}
+              />
+              <Sidemenu
+                img={IMAGES.parents}
+                label={'Parents'}
+                path={'/parents'}
+              />
+              <div style={{ position: 'absolute', bottom: 40, width: '100%' }}>
+                <LineDivider />
+                <Sidemenu
+                  img={IMAGES.setting}
+                  label={'Setting'}
+                  path={'/setting'}
+                />
+                <Sidemenu
+                  img={IMAGES.logout}
+                  label={'Logout'}
+                  path={'/out'}
+                  onPress={() => {
+                    localStorage.clear()
+                  }}
+                />
+              </div>
+              <LineDivider />
+            </div>
+          </div>
 
-        <Modal
+      }
+      {/* <button >Open Modal</button> */}
+      {/*  */}
+
+      <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         // style={customStyles}
         // contentLabel="Example Modal"
         style={{
-            overlay: {
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(255, 255, 255, 0.75)',
-              margin : mobile ? matches ? -40 : null : -40,
-              display :  mobile ? matches ? 'block' : 'none' : 'block'
-            },
-            content: {
-              position: 'absolute',
+          overlay: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(255, 255, 255, 0.75)',
+            margin: mobile ? matches ? -40 : null : -40,
+            display: mobile ? matches ? 'block' : 'none' : 'block'
+          },
+          content: {
+            position: 'absolute',
             //   top: '40px',
             //   left: '40px',
             //   right: '800px',
             //   bottom: '40px',
-            width:  mobile ? matches ? 250 : null : '100%',
-              border: '1px solid transparent',
-              background: COLORS.Primary,
+            width: mobile ? matches ? 250 : null : '100%',
+            border: '1px solid transparent',
+            background: COLORS.Primary,
             //   overflow: 'auto',
             //   WebkitOverflowScrolling: 'touch',
-              borderRadius: '0 4px 4px 0',
-              outline: 'none',
-              
-            }
-          }}
-        >
+            borderRadius: '0 4px 4px 0',
+            outline: 'none',
+
+          }
+        }}
+      >
         <div style={{
           position: 'fixed',
-          height:'100%',
+          height: '100%',
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
-          cursor:"pointer",
-          position: matches ?  'relative' :"sticky"  ,
+          cursor: "pointer",
+          position: matches ? 'relative' : "sticky",
           display: 'flex',
           backgroundColor: COLORS.Primary,
           textDecorationColor: COLORS.black,
-          cursor:"pointer",
-          width:350  ,
+          cursor: "pointer",
+          width: 350,
           // left:'-100%'
         }}
-        id='Sidenav'
+          id='Sidenav'
         >
-{matches ? <button style={{  width:40 , 
-                  height:40 , 
-                  position: mobile ? matches ? 'absolute' : null : 'fixed' , 
-                  right: mobile ? matches ? 95 : null : 20 , 
-                  background:'none' , 
-                  cursor:'pointer', 
-                  border:'1px solid black' , 
-                  borderRadius:20 }} 
-                  onClick={closeModal} > <img alt='' src={IMAGES.close} /> </button> : null }
-  
-{/* <button style={{  width:50 , 
+          {matches ? <button style={{
+            width: 40,
+            height: 40,
+            position: mobile ? matches ? 'absolute' : null : 'fixed',
+            right: mobile ? matches ? 95 : null : 20,
+            background: 'none',
+            cursor: 'pointer',
+            border: 'none',
+            // borderRadius:20 
+          }}
+            onClick={closeModal} > <img alt='' src={IMAGES.close} style={{
+              width: 25,
+              height: 25,
+
+            }} /> </button> : null}
+
+          {/* <button style={{  width:50 , 
                   height:50 , 
                   position:'absolute' , 
                   right:0 , 
@@ -337,142 +351,142 @@ export default function Sidenav({
 onClick={()=> {
           document.getElementById("Sidenav").style.left = '-250px'
           }} > <img alt='' src={IMAGES.close} /> </button> */}
-        
-        <Link to={'/profile'} style={{width:270, height:100 , position:'absolute' , top:matches ? 40 : 0 }}>
-          <div style={{ height: 100,width:207 ,  position: 'absolute', top:matches? 0 : 0, display:'flex' , justifyContent:'space-evenly'  }}>
-            <img
-              src={user?.profile_picture==null?`https://ui-avatars.com/api/?name=${user?.username}`: user?.profile_picture}
-              alt={"Pro"}
-              style={{
-                position: 'absolute',
-                width: 60,
-                height: 60,
-                left: 10,
-                top: 19,
-                borderRadius:30
 
-              }}
-            />
-            <div style={{
-              // lineheight: 26,
-              display: 'flex',
-              flexDirection:"column",
-              alignitems: 'center',
-              textalign: 'center',
-              texttransform: 'capitalize',
-              textAlign: 'left',
-              width: 350,
-              height:50,
-              // backgroundColor :COLORS.layout
+          <Link to={'/profile'} style={{ width: 270, height: 100, position: 'absolute', top: matches ? 40 : 0 }}>
+            <div style={{ height: 100, width: 207, position: 'absolute', top: matches ? 0 : 0, display: 'flex', justifyContent: 'space-evenly' }}>
+              <img
+                src={user?.profile_picture == null ? `https://ui-avatars.com/api/?name=${user?.username}` : user?.profile_picture}
+                alt={"Pro"}
+                style={{
+                  position: 'absolute',
+                  width: 60,
+                  height: 60,
+                  left: 10,
+                  top: 19,
+                  borderRadius: 30
 
-              // width: 'fit-content',
-            }}>
-              <p style={{
-                position: 'absolute',
-                height: 26,
-                left: 85,
-                top: 5,
-                ...FONTS.h3,
-                color:COLORS.white
-              }} >{user?.fullname}</p>
-              <p style={{
-                position: 'absolute',
-                // width: 100,
-                height: 26,
-                left: 85,
-                top: 24,
-                ...FONTS.h3,
-                color:COLORS.white
-              }} >{user?.farm_name}</p>
-              <p style={{
-                position: 'absolute',
-                // width: 65,
-                height: 26,
-                left: 85,
-                top: 45,
-                ...FONTS.h3,
-                color:COLORS.white
-              }} >@{user?.username}</p>
+                }}
+              />
+              <div style={{
+                // lineheight: 26,
+                display: 'flex',
+                flexDirection: "column",
+                alignitems: 'center',
+                textalign: 'center',
+                texttransform: 'capitalize',
+                textAlign: 'left',
+                width: 350,
+                height: 50,
+                // backgroundColor :COLORS.layout
+
+                // width: 'fit-content',
+              }}>
+                <p style={{
+                  position: 'absolute',
+                  height: 26,
+                  left: 85,
+                  top: 5,
+                  ...FONTS.h3,
+                  color: COLORS.white
+                }} >{user?.fullname}</p>
+                <p style={{
+                  position: 'absolute',
+                  // width: 100,
+                  height: 26,
+                  left: 85,
+                  top: 24,
+                  ...FONTS.h3,
+                  color: COLORS.white
+                }} >{user?.farm_name}</p>
+                <p style={{
+                  position: 'absolute',
+                  // width: 65,
+                  height: 26,
+                  left: 85,
+                  top: 45,
+                  ...FONTS.h3,
+                  color: COLORS.white
+                }} >@{user?.username}</p>
+              </div>
             </div>
-          </div>
           </Link>
-          
+
 
           <div style={{
-            flexDirection:"column",
-            marginTop:matches ? 145 : 100, 
-            paddingLeft:'15px',
-            width:mobile ? matches ? 300 : null : 300
+            flexDirection: "column",
+            marginTop: matches ? 145 : 100,
+            paddingLeft: '15px',
+            width: mobile ? matches ? 300 : null : 300
           }}>
-{
-            mobile ? matches ? null : null : <>
-            <LineDivider/>
-            <Sidemenu
-            img={IMAGES.herd}
-            label={'Herds'}
-            path={'/'}
-          />
-           <Sidemenu
-            img={IMAGES.add}
-            label={'Add'}
-            path={'/add'}
-          />
-           <Sidemenu
-            img={IMAGES.money}
-            label={'Finance'}
-            path={'/finance'}
-          />
-           <Sidemenu
-            img={IMAGES.add}
-            label={'Report'}
-            path={'/report'}
-          />
+            {
+              mobile ? matches ? null : null : <>
+                <LineDivider />
+                <Sidemenu
+                  img={IMAGES.home}
+                  label={'Herds'}
+                  path={'/'}
+                />
+                <Sidemenu
+                  img={IMAGES.add}
+                  label={'Add'}
+                  path={'/add'}
+                />
+                <Sidemenu
+                  img={IMAGES.coin}
+                  label={'Finance'}
+                  path={'/finance'}
+                />
+                <Sidemenu
+                  img={IMAGES.file}
+                  label={'Report'}
+                  path={'/report'}
+                />
 
-            </>
-          }
-         
-<LineDivider/>
-          {/* <Sidemenu
+              </>
+            }
+
+            <LineDivider />
+            {/* <Sidemenu
             img={IMAGES.subs}
             label={'Subscription'}
             path={'/subscription'}
           /> */}
 
-          <Sidemenu
-            img={IMAGES.weight}
-            label={'Weight History'}
-            path={'/weighthistory'}
-          />
-          <Sidemenu
-            img={IMAGES.parents}
-            label={'Parents'}
-            path={'/parents'}
-          />
-        <LineDivider/>  
-
-
-          <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
-          <LineDivider/>
-          <Sidemenu
-              img={IMAGES.setting}
-              label={'Setting'}
-              path={'/setting'}
+            <Sidemenu
+              img={IMAGES.weight}
+              label={'Weight History'}
+              path={'/weighthistory'}
             />
             <Sidemenu
-              img={IMAGES.logout}
-              label={'Logout'}
-              path={'/out'}
-              onPress={()=>{
-                localStorage.clear()
-              }}
+              img={IMAGES.parents}
+              label={'Parents'}
+              path={'/parents'}
             />
+            <LineDivider />
+
+
+            <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
+              <LineDivider />
+              <Sidemenu
+                img={IMAGES.setting}
+                label={'Setting'}
+                path={'/setting'}
+              />
+              <Sidemenu
+                img={IMAGES.logout}
+                label={'Logout'}
+                path={'/out'}
+                onPress={() => {
+                  localStorage.clear()
+                }}
+              />
+            </div>
+            <LineDivider />
           </div>
-          <LineDivider/>
-        </div>
         </div>
 
-        </Modal>
-      </>
+      </Modal>
+    </>
 
   )
 }

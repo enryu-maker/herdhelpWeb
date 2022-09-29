@@ -71,13 +71,13 @@ function NavBarMain({
               }}>
                 Add
               </Link>
-              <Link to="/report" style={{
-                color: page === 'report' ? COLORS.Primary : "black",
+              <Link to="/alerts" style={{
+                color: page === 'alerts' ? COLORS.Primary : "black",
                 marginInline: '2%',
                 textDecoration: 'none',
                 ...FONTS.body2,
               }}>
-                Report
+                Alerts
               </Link>
             </div>
           </nav>

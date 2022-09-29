@@ -74,36 +74,36 @@ export default function Login() {
     }
   }
   async function getQr() {
-    setLoading(true)
     let data = await axios.get(baseURL + "/getqr")
     return (data.data)
   }
-   function valQr(link) {
-     axios.get(link).then((Response)=>{
-      if(Response.status===200){
+  function valQr(link) {
+    axios.get(link).then((Response) => {
+      if (Response.status === 200) {
         dispatch(Login_Function(Response.data.access))
         dispatch(storeID(Response.data.userid))
         navi("/in")
       }
-      else{
+      else {
         console.log("Issue")
       }
-     }).catch((e)=>{
+    }).catch((e) => {
       console.log(e)
-     })
-    
+    })
+
 
   }
   React.useEffect(() => {
     getQr().then(data => {
       setqrUrl(data.qr_link)
       setvalUrl(data.validate_link)
-      setLoading(false)
     })
   }, [])
-  if (!loading && valUrl != "" && auth === null) {
-    setInterval(()=>{
-     valQr(valUrl)
+  console.log(loading)
+  if (valUrl != "" && auth === null) {
+    console.log(!loading && valUrl != "" && auth === null)
+    setInterval(() => {
+      valQr(valUrl)
     }, 5000)
   }
 

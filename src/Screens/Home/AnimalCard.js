@@ -75,7 +75,7 @@ export default function AnimalCard({
                     alignSelf:"center"
                 }}>
                     <p style={{
-                        ...FONTS.body3
+                        ...FONTS.h3
                     }}>
                         {data.support_tag}
                     </p>
