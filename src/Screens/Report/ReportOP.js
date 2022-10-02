@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../../Component/Header'
-import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
+import { COLORS, FONTS, formatter, SIZES } from '../../Theme/Theme'
 import { useNavigate, useLocation } from 'react-router-dom';
 import FlatList from 'flatlist-react';
 import ReportCard from './ReportCard';
@@ -27,127 +27,153 @@ export default function ReportOP() {
         setLable(label)
         getData(api).then(data => {
             setData(data)
+            console.log(data)
         })
     }, [])
+    function totalmoney(Data) {
+        var price = 0
+        Data.map(a => {
+            if (Label == 'Purchased Animals') {
+                price += a.price
+            }
+            else {
+                price += a.soldprice
+            }
+        })
+        return price
+    }
+    const matches = useMediaQuery('(max-width:820px)')
+    const mobile = useMediaQuery('(min-width:460px)')
 
-    
-
-
-  const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:460px)')
-
-  function Buttonsgr () {
-    return(
-        <>
-        <div style={{display:'grid' , 
-                    justifyContent:'center', 
-                    alignItems:'center' , 
-                    justifyItems:'center' , 
-                    position:mobile ? matches ? 'relative' : 'relative'  : 'fixed',
-                    bottom:mobile ? matches ? null : null : 0,
-                    backgroundColor : mobile ? matches ? null : null : 'white' ,
-                    width : mobile ? matches ? null: null : '100%',
-                    }}>
-            <button style={{
-                        display:"inline-flex",
+    function Buttonsgr({ amount }) {
+        return (
+            <>
+                <div style={{
+                    display: mobile ? matches ? 'grid' : 'flex' : 'grid',
+                    justifyContent: 'space-evenly',
+                    flexDirection: "row",
+                    alignItems: 'center',
+                    justifyItems: 'center',
+                    position: mobile ? matches ? 'relative' : 'relative' : 'fixed',
+                    bottom: mobile ? matches ? null : null : 0,
+                    backgroundColor: mobile ? matches ? null : null : 'white',
+                    width: mobile ? matches ? null : null : '100%',
+                }}>
+                    <button style={{
+                        display: "inline-flex",
                         justifyContent: 'center',
                         backgroundColor: COLORS.Primary,
-                        borderRadius:SIZES.radius,
-                        borderWidth:0,
-                        height:50,
-                        width:mobile ? matches ? 380 : 380 : '100%',
-                        alignSelf:'center',
-                        cursor:"pointer",
-                        marginBottom:20
+                        borderRadius: SIZES.radius,
+                        borderWidth: 0,
+                        height: 50,
+                        width: mobile ? matches ? 380 : 380 : '100%',
+                        alignSelf: 'center',
+                        cursor: "pointer",
+                        marginBottom: 5
+                        // marginBottom: 28
                         // ...buttonContainerStyle,
-        }}
-        >
-        <div style={{
-                margin:10
-            }}>
-                <img src={IMAGES.aler} style={{height:25,
-                                                width:25,
-                                                color:COLORS.white,
-                                                alignSelf:"flex-start",
-                                                // ...iconStyle
-                                                }}/> 
-            </div>
-        <p style={{ color: COLORS.white,
-                         ...FONTS.body2, 
-                        //  ...labelStyle,
-                         alignSelf:"center",letterSpacing:1 }}>
-        Generate Report
-        </p>
-        </button>
-{/* {
-    purchesd ? 
-} */}
-        <div style={{
-                        display:"inline-flex",
-                        justifyContent: 'center',
-                        backgroundColor: COLORS.Primary,
-                        borderRadius:SIZES.radius,
-                        borderWidth:0,
-                        height:50,
-                        width:mobile ? matches ? 380 : 380 : '100%',
-                        alignSelf:'center',
-                        cursor:"pointer",
-                        marginBottom:mobile ? matches ? 30 :30 : 5
-                        // ...buttonContainerStyle,
-        }}
-        >
-        <p style={{ color: COLORS.white,
-                         ...FONTS.body2, 
-                        //  ...labelStyle,
-                         alignSelf:"center",letterSpacing:1 }}>
-        Total purchesd = 
-        </p>
-        <p style={{ color: COLORS.white,
-                         ...FONTS.body2, 
-                        //  ...labelStyle,
-                         alignSelf:"center",letterSpacing:1 }}>
-        1234.00 $
-        </p>
-        </div>
-            </div>
-        </>
-    )}
+                    }}
+                    >
+                        <div style={{
+                            margin: 10
+                        }}>
+                            <img src={IMAGES.file} style={{
+                                height: 25,
+                                width: 25,
+                                color: COLORS.white,
+                                alignSelf: "flex-start",
+                                // ...iconStyle
+                            }} />
+                        </div>
+                        <p style={{
+                            color: COLORS.white,
+                            ...FONTS.body2,
+                            //  ...labelStyle,
+                            alignSelf: "center", letterSpacing: 1
+                        }}>
+                            Generate Report
+                        </p>
+                    </button>
+                    {
+                        Label == 'Lost Animals' ||
+                            Label == 'Sold Animals' ||
+                            Label == 'Purchased Animals' ?
+                            <div style={{
+                                display: "inline-flex",
+                                justifyContent: 'center',
+                                backgroundColor: COLORS.Primary,
+                                borderRadius: SIZES.radius,
+                                borderWidth: 0,
+                                height: 50,
+                                width: mobile ? matches ? 380 : 380 : '100%',
+                                alignSelf: 'center',
+                                cursor: "pointer",
+                                marginBottom: 5,
+
+                                // marginBottom: mobile ? matches ? 28 : 28 : 5,
+                                paddingInline:2
+                                // ...buttonContainerStyle,
+                            }}
+                            >
+                                <p style={{
+                                    color: COLORS.white,
+                                    ...FONTS.body2,
+                                    //  ...labelStyle,
+                                    alignSelf: "center", letterSpacing: 1
+                                }}>
+                                    {Label}=
+                                </p>
+                                <p style={{
+                                    color: COLORS.white,
+                                    ...FONTS.body2,
+                                    //  ...labelStyle,
+                                    alignSelf: "center", letterSpacing: 1
+                                }}>
+                                    {formatter.format(totalmoney(Data))}
+                                </p>
+                            </div> : null
+
+                    }
+                </div>
+            </>
+        )
+    }
 
 
 
 
-  return (
+    return (
         <div>
             <Header
                 leftcomponent={
                     <>
-                    <div style={{
-                            display: mobile ? matches ? 'flex' : 'flex' : 'grid' ,
+                        <div style={{
+                            display: mobile ? matches ? 'flex' : 'flex' : 'grid',
                             alignSelf: "center",
                             marginRight: mobile ? matches ? -100 : -100 : 0
                         }}>
 
-                        <div style={{
-                            display: "flex",
-                            height: 40,
-                            width: 40,
-                            backgroundColor: COLORS.Primary,
-                            alignSelf: "center",
-                            borderRadius: 20,
-                            justifyContent: "center"
-                        }}
-                        onClick={() => {
-                            navigate(-1)
-                        }}
-                        >
-                            <img src={IMAGES.back} alt={"back"}
-                                style={{
-                                    height: 25,
-                                    width: 25,
-                                    alignSelf: "center",
-                                }} />
-                        </div>
-                        
+                            <div style={{
+                                display: "flex",
+                                height: 40,
+                                width: 40,
+                                backgroundColor: COLORS.Primary,
+                                alignSelf: "center",
+                                borderRadius: 20,
+                                justifyContent: "center"
+                            }}
+                                onClick={() => {
+                                    navigate(-1)
+                                }}
+                            >
+                                <img src={IMAGES.back} alt={"back"}
+                                    style={{
+                                        height: 25,
+                                        width: 25,
+                                        alignSelf: "center",
+                                    }} />
+                            </div>
+
 
                         </div>
                     </>
@@ -156,11 +182,11 @@ export default function ReportOP() {
                 rightcomponent={
                     <>
                         <div style={{
-                            display: mobile ? matches ? 'flex' : 'flex' : 'flex' ,
+                            display: mobile ? matches ? 'flex' : 'flex' : 'flex',
                             alignSelf: "center",
                             marginRight: mobile ? matches ? -100 : -100 : 0,
-                            gap:5
-                            
+                            gap: 5
+
                         }}>
                             <p style={{
                                 ...FONTS.h2,
@@ -192,7 +218,7 @@ export default function ReportOP() {
                                         height: 25,
                                         width: 25,
                                         alignSelf: "center",
-                                        
+
                                     }} />
                             </p>
                         </div>
@@ -200,12 +226,12 @@ export default function ReportOP() {
                 }
             />
             {
-                mobile ? matches ?  <Buttonsgr/> : <Buttonsgr/>  : null
+                mobile ? matches ? <Buttonsgr /> : <Buttonsgr /> : null
             }
             <ul style={{
                 paddingInlineStart: 0,
-               position : mobile ? matches ? null : null : 'relative',
-               paddingBottom : mobile ? matches ? null : null : 100
+                position: mobile ? matches ? null : null : 'relative',
+                paddingBottom: mobile ? matches ? null : null : 100
             }}>
                 <FlatList
                     list={Data}
@@ -213,23 +239,24 @@ export default function ReportOP() {
                     renderItem={(item, index) => {
                         return (
                             <>
-                                <ReportCard 
-                                key={item.id} 
-                                data={item} 
-                                onPress={() => {
-                                    navigate("/info", {
-                                        state: { data: item, cond:false }
-                                    })
-                                }} />
+                                <ReportCard
+                                    key={item.id}
+                                    data={item}
+                                    onPress={() => {
+                                        navigate("/info", {
+                                            state: { data: item, cond: false }
+                                        })
+                                    }} />
                             </>
                         )
                     }
                     }
-                    renderWhenEmpty={() =><></>}
+                    renderWhenEmpty={() => <></>}
                 />
             </ul>
             {
-                mobile ? matches ?  null : null  : <Buttonsgr/>
+                mobile ? matches ? null : null :
+                    <Buttonsgr />
             }
         </div>
     )
