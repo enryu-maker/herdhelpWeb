@@ -16,7 +16,7 @@ import useMediaQuery from '../../Component/useMediaQuery';
 import { checking, Statusad } from "../../Component/Constants";
 import DropDown from '../../Component/DropDown/DropDown';
 import InputForm from '../../Component/InputForm';
-
+import axiosIns from '../../helpers/helpers';
 import Modal from 'react-modal';
 import TextButton from '../../Component/TextButton';
 
@@ -34,7 +34,7 @@ export default function Info({
   const med = useSelector(state => state.Reducers.med)
   const animal = useSelector(state => state.Reducers.animal)
   const token = useSelector(state => state.Reducers.authToken)
-
+  console.log(animal)
   const unit = useSelector(state => state.Reducers.unit)
   const [profile_pic, setprofile_pic] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
@@ -70,6 +70,29 @@ export default function Info({
         setLoading(false);
         alert.error(<AlertCard msg={err} type={false} />)
       });
+  }
+  async function findChildren() {
+    
+    setLoading(true);
+    try {
+      let { data } = await axiosIns.get(
+        `babiesbydate/${animal.tag_number}`,
+      );
+      // console.log(data)
+      if (data) {
+        console.log(true)
+        setLoading(false);
+        navigate('/parentop',{
+          state:{
+            data:data
+          }
+        })
+      } else {
+        setLoading(false);
+      }
+    } catch (e) {
+      setLoading(false);
+    }
   }
   const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:460px)')
@@ -441,7 +464,7 @@ export default function Info({
                 cursor: 'pointer'
               }}
                 onClick={() => {
-                  navigate("/children")
+                  findChildren()
                 }}
               >
                 <img src={IMAGES.back} alt={"back"}
