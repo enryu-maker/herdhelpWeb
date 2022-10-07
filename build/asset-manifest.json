@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.ec0bcc4e.css",
-    "main.js": "/static/js/main.45b5dfb5.js",
+    "main.js": "/static/js/main.be479d4c.js",
     "static/js/787.bc3f44c4.chunk.js": "/static/js/787.bc3f44c4.chunk.js",
     "static/media/scanner.gif": "/static/media/scanner.fe71b87aa0aef69e12c1.gif",
     "static/media/splash.png": "/static/media/splash.15c334a584b7b73749d7.png",
@@ -35,6 +35,7 @@
     "static/media/pet-care.png": "/static/media/pet-care.0b4b7c024899df1ba465.png",
     "static/media/bird.png": "/static/media/bird.322782e9951a2831e930.png",
     "static/media/down.png": "/static/media/down.49711722576479c26ae4.png",
+    "static/media/exclamation.png": "/static/media/exclamation.c4946987438670b3e888.png",
     "static/media/speed-limit.png": "/static/media/speed-limit.07f3be2cfe862f826a98.png",
     "static/media/add-user.png": "/static/media/add-user.a5c6ae51810f726594ac.png",
     "static/media/goat.png": "/static/media/goat.9f1cd049f16444aaa1cc.png",
@@ -58,11 +59,11 @@
     "static/media/name.png": "/static/media/name.0ed74d529e75a8a2fd14.png",
     "index.html": "/index.html",
     "main.ec0bcc4e.css.map": "/static/css/main.ec0bcc4e.css.map",
-    "main.45b5dfb5.js.map": "/static/js/main.45b5dfb5.js.map",
+    "main.be479d4c.js.map": "/static/js/main.be479d4c.js.map",
     "787.bc3f44c4.chunk.js.map": "/static/js/787.bc3f44c4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.ec0bcc4e.css",
-    "static/js/main.45b5dfb5.js"
+    "static/js/main.be479d4c.js"
   ]
 }
