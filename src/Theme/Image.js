@@ -87,7 +87,10 @@ export const IMAGES={
     splash : require("../assets/splash.png"),
     scangif : require("../assets/scanner.gif"),
     add : require("../assets/Logo/add.png"),
-    coin : require("../assets/Logo/coin.png")
+    coin : require("../assets/Logo/coin.png"),
+    issue : require("../assets/Logo/exclamation.png"),
+    what : require("../assets/Logo/question.png"),
+
 
 
 

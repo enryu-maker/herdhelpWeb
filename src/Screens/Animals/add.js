@@ -45,15 +45,15 @@ export default function Add() {
     },
   ]
   const dispatch = useDispatch()
-  
+
   const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:460px)') 
+  const mobile = useMediaQuery('(min-width:460px)')
 
 
-  React.useEffect(()=>{
+  React.useEffect(() => {
     dispatch(getSpecies())
     dispatch(getTags())
-  },[])
+  }, [])
   function Cards({
     Name,
     img,
@@ -66,7 +66,7 @@ export default function Add() {
           <button
             style={{
               backgroundColor: COLORS.lightGray2,
-              height: mobile ? matches ? 250  : 250 :  150,
+              height: mobile ? matches ? 250 : 250 : 150,
               margin: SIZES.padding,
               borderRadius: SIZES.radius,
               // flexDirection:"column",
@@ -77,26 +77,28 @@ export default function Add() {
               shadowOpacity: 0.5,
               shadowRadius: 10,
               elevation: 2,
-              width: mobile ? matches ? 250  : 250 :  145 ,
+              width: mobile ? matches ? 230 : 230 : 145,
               cursor: 'pointer',
               boxShadow: '0px 0px 15px -4px #888181',
             }}
             onClick={onPress}
           >
             {/* <img src={IMAGES.rightone} style={{ height: 20, width: 20,alignSelf:"center",marginLeft:200,marginTop:10 }} /> */}
-            <img src={img} alt={Name} 
-                        style={{ marginTop :mobile ? matches ? 0  : 0 :  10  ,
-                                  height: mobile ? matches ? 100  : 100 :  40 , 
-                                  width: mobile ? matches ? 100  : 100 :  40 , 
-                                  alignSelf: "center" }} />
+            <img src={img} alt={Name}
+              style={{
+                marginTop: mobile ? matches ? 0 : 0 : 10,
+                height: mobile ? matches ? 100 : 100 : 40,
+                width: mobile ? matches ? 100 : 100 : 40,
+                alignSelf: "center"
+              }} />
             <div>
               <div style={{
                 textAlign: 'center'
               }}>
                 {
-                  mobile ? matches ?  <p style={{ ...FONTS.h3, margin: 20 }}>{Name}</p> : 
-                                      <p style={{ ...FONTS.h3, margin: 20 }}>{Name}</p> :  
-                                      <p style={{ ...FONTS.h5, margin: 10 }}>{Name}</p>
+                  mobile ? matches ? <p style={{ ...FONTS.h3, margin: 20 }}>{Name}</p> :
+                    <p style={{ ...FONTS.h3, margin: 20 }}>{Name}</p> :
+                    <p style={{ ...FONTS.h5, margin: 10 }}>{Name}</p>
                 }
                 {/* <p style={{...FONTS.h4}}>{global.unit?`${Weight} lbs`:`${weight_kg} kg`}</p> */}
               </div>
@@ -113,26 +115,26 @@ export default function Add() {
           </button></Link>
       </>)
   }
-  function Adds(){
-    return(
+  function Adds() {
+    return (
       <div style={{
         display: "flex",
         height: "100vh",
         width: "100%"
       }}>
 
-        <Sidenav  />
+        <Sidenav />
         <div style={{
-          width: matches ? '100%' : '90%',
+          width: matches ? '100%' : '80%',
           float: "right"
         }}>
           <NavBarMain page={'add'} />
           <div style={{
             overflowY: 'scroll',
-            height:"90vh",
-            paddingInlineStart:0,
-            marginBottom:"50px"
-        }}>
+            height: "90vh",
+            paddingInlineStart: 0,
+            marginBottom: "50px"
+          }}>
             <FlatList
               list={data}
               keyExtractor={item => `${item.id}`}
@@ -140,7 +142,7 @@ export default function Add() {
                 return (
                   <>
                     <Cards
-                    key={item.id} 
+                      key={item.id}
                       img={item.image}
                       Name={item.label}
                       Path={item.nav}
@@ -153,78 +155,75 @@ export default function Add() {
             />
           </div>
         </div>
-      </div>  
+      </div>
     )
   }
 
   return (
     <>
-    {
-      mobile ? matches ? 
-       
-       <>
-       <Adds/>
-       </>
-       
-       :
-       <>
-       <Adds/>
-       </>
-       
-        : <>
-        
-        <div style={{
-        display: "flex",
-        height: "100vh",
-        width: "100%"
-      }}>
+      {
+        mobile ? matches ?
 
-        <Sidenav active={'Add'}/>
+          <>
+            <Adds />
+          </>
 
-      
-        <div style={{
-          width: "100%",
-          float: "right"
-        }}>
-        <NavBarMain page={'add'} />
-         
-        {
-  mobile? matches ? null : null: 
-  <>
-  <p style={{...FONTS.h2 , color: COLORS.Primary}}>Add</p>
-  </>
-}
-          <div style={{
-            overflowY: 'scroll',
-            height:"90vh",
-            paddingInlineStart:0,
-            marginBottom:"50px",
-            marginTop:10
-        }}>
-            <FlatList
-              list={data}
-              keyExtractor={item => `${item.id}`}
-              renderItem={(item, index) => {
-                return (
-                  <>
-                    <Cards
-                    key={item.id} 
-                      img={item.image}
-                      Name={item.label}
-                      Path={item.nav}
-                    />
-                  </>
-                )
-              }
-              }
-              renderWhenEmpty={() => <div></div>}
-            />
-          </div>
-        </div>
-      </div>  
-        </>
-    }
-        </>
+          :
+          <>
+            <Adds />
+          </>
+
+          : <>
+
+            <div style={{
+              display: "flex",
+              height: "100vh",
+              width: "100%"
+            }}>
+              <Sidenav />
+              <div style={{
+                width: "80%",
+                float: "right"
+              }}>
+                <NavBarMain page={'add'} />
+
+                {
+                  mobile ? matches ? null : null :
+                    <>
+                      <p style={{ ...FONTS.h2, color: COLORS.Primary }}>Add</p>
+                    </>
+                }
+                <div style={{
+                  overflowY: 'scroll',
+                  height: "90vh",
+                  paddingInlineStart: 0,
+                  marginBottom: "50px",
+                  marginTop: 10
+                }}>
+                  <FlatList
+                    list={data}
+                    keyExtractor={item => `${item.id}`}
+                    renderItem={(item, index) => {
+                      return (
+                        <>
+                          <Cards
+                            key={item.id}
+                            img={item.image}
+                            Name={item.label}
+                            Path={item.nav}
+                          />
+                        </>
+                      )
+                    }
+                    }
+                    renderWhenEmpty={() => <div></div>}
+                  />
+                </div>
+              </div>
+            </div>
+          </>
+      }
+    </>
   )
 }
 

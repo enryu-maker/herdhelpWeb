@@ -13,7 +13,7 @@ import NavBarMain from "../../Component/Nav/navmain";
 import Card from "../../Component/Card";
 import { IMAGES } from "../../Theme/Image";
 import { useSelector, useDispatch } from 'react-redux';
-import { getFcat, getFinance, getGender, getHerds, getOverview, getSpecies, getSubs, getTags, UserData } from '../../Store/actions';
+import { getAlerts, getFcat, getFinance, getGender, getHerds, getOverview, getSpecies, getSubs, getTags, UserData } from '../../Store/actions';
 import FlatList from 'flatlist-react';
 import Loading from "../../Component/Loading";
 import Sidenav from "../../Component/Nav/sidenav";
@@ -34,6 +34,8 @@ export default function Main() {
     dispatch(getSubs())
     dispatch(getOverview())
     dispatch(getGender())
+    dispatch(getAlerts())
+
   }, [])
   const animal = useSelector(state => state.Reducers.herds)
   const matches = useMediaQuery('(max-width:820px)')
