@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, Component } from 'react'
 import NavBar from '../../Component/Nav/Navbar'
 import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
 import TextButton from "../../Component/TextButton";
@@ -6,7 +6,12 @@ import { IMAGES } from "../../Theme/Image";
 import { Link } from 'react-router-dom';
 import useMediaQuery from '../../Component/useMediaQuery';
 
+import ReactPlayer from 'react-player/lazy'
 
+
+import ReactDOM from 'react-dom';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 
 
@@ -14,7 +19,6 @@ export default function Home() {
   // 
   // const [bought, setBought] = useState(false);
   // 
-
   const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:460px)')
 
@@ -135,6 +139,46 @@ export default function Home() {
           {/*  */}
 
         </div>
+
+        <div style={{ top: 100 ,
+            marginBottom :100,
+            display:"flex",
+            justifyContent: "center",
+            height:450 ,
+            width:700,
+            position:'relative'}}>
+
+<Carousel infiniteLoop useKeyboardArrows showArrows 
+
+ >
+
+
+          <div style={{display:"flex",
+            justifyContent: "center",}}>
+          <ReactPlayer 
+          url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
+          // playing={true}
+          />
+          </div>
+          <div style={{display:"flex",
+            justifyContent: "center",}}>
+          <ReactPlayer 
+          url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
+          // playing={true}
+          />
+          </div>
+          <div style={{display:"flex",
+            justifyContent: "center",}}>
+          <ReactPlayer 
+          url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
+          // playing={true}
+          />
+          </div>
+
+
+          </Carousel>
+
+          </div>
       </>
     )
   }

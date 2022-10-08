@@ -85,12 +85,12 @@ export default function Report() {
           float:"right",
         }}>
           <NavBarMain page={"report"}/>
-          {
-            mobile ? matches? null : null : 
+          
+            
             <>
             <p style={{...FONTS.h2 , color: COLORS.Primary}}>Report</p>
             </>
-          }
+          
           {/* <Header
           title={"Reports Section"}
          
