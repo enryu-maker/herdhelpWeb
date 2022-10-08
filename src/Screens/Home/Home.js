@@ -5,23 +5,45 @@ import TextButton from "../../Component/TextButton";
 import { IMAGES } from "../../Theme/Image";
 import { Link } from 'react-router-dom';
 import useMediaQuery from '../../Component/useMediaQuery';
-
+import FlatList from 'flatlist-react';
 import ReactPlayer from 'react-player/lazy'
-
+import axiosIns from '../../helpers/helpers';
 
 import ReactDOM from 'react-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-
+import { useAlert } from 'react-alert';
 
 
 export default function Home() {
   // 
   // const [bought, setBought] = useState(false);
-  // 
+  const alert = useAlert()
   const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:460px)')
+  const [videos, setVideo] = React.useState([])
+  const [loading, setLoading] = React.useState(false)
+  const getVideos = async () => {
+    setLoading(true)
+    await axiosIns.get("/gettutorials").then((Response) => {
+      if (Response.status == 200) {
+        setVideo(Response.data)
+        setLoading(false)
+      }
+      else {
+        alert.error("SOmething went Wrong")
+        setLoading(false)
 
+      }
+    }).catch((e) => {
+      alert.error("SOmething went Wrong")
+      setLoading(false)
+
+    })
+  }
+  React.useEffect(() => {
+    getVideos()
+  }, [])
 
   function Desktop_tab() {
     return (
@@ -86,12 +108,12 @@ export default function Home() {
                   onClick={() => {
                     window.open('https://play.google.com/store/apps/details?id=com.herdhelp', '_blank');
                   }}
-                  style={{ 
-                    width: 260, 
+                  style={{
+                    width: 260,
                     height: 55,
                     position: 'relative',
                     top: 500,
-                    left: mobile ? matches ? 0 :50 : 0,
+                    left: mobile ? matches ? 0 : 50 : 0,
                   }}
                 />
               </div>
@@ -140,45 +162,63 @@ export default function Home() {
 
         </div>
 
-        <div style={{ top: 100 ,
-            marginBottom :100,
-            display:"flex",
-            justifyContent: "center",
-            height:450 ,
-            width:700,
-            position:'relative'}}>
+        {/* <div style={{
+          top: 100,
+          marginBottom: 200,
+          display: "flex",
+          flexDirection:"row",
+          justifyContent: "space-evenly",
+          // height: "100%",
+          // width: "100%",
+          // alignSelf:"center",
+          alignItems:"center",
+          position: 'relative',
+          // margin:20
+        }}> */}
+        <p style={{
+          ...FONTS.h1,
+          marginTop: 80,
+          color: COLORS.Primary
+        }}>{"Tutorial Videos"}</p>
+        <ul style={{
+          paddingInlineStart:0,
+          left:"0px",
+          display: "flex",
+          marginBottom: 80,
+          overflowX: 'scroll',
+          justifyContent:"space-evenly",
+          alignSelf:"center"
+        }}>
+          <FlatList
+            list={videos}
+            keyExtractor={item => `${item.id}`}
+            renderItem={(item, index) => {
+              return (
+                <div style={{
+                  margin: 5,
+                  width: '80%',
+                  alignSelf:"center",
+                  alignItems:"center"
+                }}>
+                  <p style={{
+                    ...FONTS.h3,
+                    color: COLORS.Primary,
+                    alignSelf:"center"
+                  }}>{item.title}</p>
+                  <ReactPlayer
+                    url={item.link}
+                  />
 
-<Carousel infiniteLoop useKeyboardArrows showArrows 
-
- >
-
-
-          <div style={{display:"flex",
-            justifyContent: "center",}}>
-          <ReactPlayer 
-          url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
-          // playing={true}
+                </div>
+              )
+            }
+            }
+            renderWhenEmpty={() => <div></div>}
           />
-          </div>
-          <div style={{display:"flex",
-            justifyContent: "center",}}>
-          <ReactPlayer 
-          url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
-          // playing={true}
-          />
-          </div>
-          <div style={{display:"flex",
-            justifyContent: "center",}}>
-          <ReactPlayer 
-          url='https://www.youtube.com/watch?v=ysz5S6PUM-U'
-          // playing={true}
-          />
-          </div>
+        </ul>
 
 
-          </Carousel>
-
-          </div>
+        {/* </div> */}
       </>
     )
   }
@@ -242,26 +282,26 @@ export default function Home() {
 <img src={IMAGES.img1} style={{width:300 , backgroundColor:COLORS.Primary , padding:5 , borderRadius:10}} />
 <img src={IMAGES.img1} style={{width:300 , backgroundColor:COLORS.Primary , padding:5 , borderRadius:10}} />
 </div> */}
-          <div style={{paddingInline:25}}>
-              <h3 style={{
-                position: 'relative', left: 0, top: 60,
-                color: COLORS.Primary,
-                ...FONTS.body2,
-              }}>Download App From </h3>
-              <div style={{ position:'relative', display: 'flex', justifyContent: 'space-between', top: 60 }}>
-                <img src={IMAGES.appstore} alt={''}
-                  style={{ width: 160, height: 50 }}
-                  onClick={() => {
-                    window.open('https://testflight.apple.com/join/LAn2RBih', '_blank');
-                  }}
-                />
-                <img src={IMAGES.playstore} alt={''}
-                  onClick={() => {
-                    window.open('https://play.google.com/store/apps/details?id=com.herdhelp', '_blank');
-                  }}
-                  style={{ width: 160, height: 50 }}
-                />
-              </div>
+              <div style={{ paddingInline: 25 }}>
+                <h3 style={{
+                  position: 'relative', left: 0, top: 60,
+                  color: COLORS.Primary,
+                  ...FONTS.body2,
+                }}>Download App From </h3>
+                <div style={{ position: 'relative', display: 'flex', justifyContent: 'space-between', top: 60 }}>
+                  <img src={IMAGES.appstore} alt={''}
+                    style={{ width: 160, height: 50 }}
+                    onClick={() => {
+                      window.open('https://testflight.apple.com/join/LAn2RBih', '_blank');
+                    }}
+                  />
+                  <img src={IMAGES.playstore} alt={''}
+                    onClick={() => {
+                      window.open('https://play.google.com/store/apps/details?id=com.herdhelp', '_blank');
+                    }}
+                    style={{ width: 160, height: 50 }}
+                  />
+                </div>
               </div>
             </div>
           </>
