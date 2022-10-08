@@ -11,6 +11,7 @@ import DropDown from "../../Component/DropDown/DropDown";
 import { checking} from "../../Component/Constants";
 import { useSelector } from 'react-redux'
 import Modal from 'react-modal';
+import AddMedication from '../Animals/AddMedication'
 export default function History() {
   const navigate = useNavigate()
   const { state } = useLocation();
@@ -213,6 +214,9 @@ let subtitle;
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
+        appElement={null}
+        ariaHideApp={false}
+        contentLabel="Example Modal"
         style={{
           overlay: {
             position: 'fixed',
@@ -238,11 +242,12 @@ let subtitle;
             //   WebkitOverflowScrolling: 'touch',
             // borderRadius: '0 4px 4px 0',
             outline: 'none',
+            padding:0
 
           }
         }}
       >
-<Header
+<Header style={{marginTop:0}}
         leftcomponent={
           <>
             <div style={{
