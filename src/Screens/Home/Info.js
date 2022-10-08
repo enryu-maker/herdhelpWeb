@@ -34,7 +34,6 @@ export default function Info({
   const med = useSelector(state => state.Reducers.med)
   const animal = useSelector(state => state.Reducers.animal)
   const token = useSelector(state => state.Reducers.authToken)
-  console.log(animal)
   const unit = useSelector(state => state.Reducers.unit)
   const [profile_pic, setprofile_pic] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
@@ -80,7 +79,6 @@ export default function Info({
       );
       // console.log(data)
       if (data) {
-        console.log(true)
         setLoading(false);
         navigate('/parentop',{
           state:{
