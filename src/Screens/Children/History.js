@@ -6,10 +6,13 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import Loading from '../../Component/Loading'
 import FlatList from 'flatlist-react'
 import useMediaQuery from '../../Component/useMediaQuery'
+import { useSelector } from 'react-redux'
 export default function History() {
   const navigate = useNavigate()
   const { state } = useLocation();
   const { data } = state;
+  const med = useSelector(state => state.Reducers.med) 
+
   const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:460px)') 
   function MedCard({
@@ -119,8 +122,8 @@ export default function History() {
           </>
         }
         rightcomponent={
-          <div>
-            <p style={{
+          <div style={{display:'flex' , alignItems:'center'}}>
+            <button style={{
                 ...FONTS.h2,
                 height: 40,
                 width: 100,
@@ -131,8 +134,13 @@ export default function History() {
                 alignItems: "center",
                 color:COLORS.white,
                 marginRight: mobile ? -80 : 0,
-                marginTop:mobile ? null : 30
-              }}>
+                marginTop:mobile ? null : 30,
+                border:'none'
+              }} 
+              onClick={() => navigate('../medication' , {
+                state: { data: med }
+              }) }
+              >
                 <img src={IMAGES.plus} style={{
                   height:20,
                   width:20
@@ -142,7 +150,7 @@ export default function History() {
                 }}>
                    Med
                 </p>
-              </p>
+              </button>
           </div>
         }
         title={"Medical History"} 

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import NavBarMain from '../../Component/Nav/navmain'
 import Sidenav from '../../Component/Nav/sidenav'
 import DropDown from '../../Component/DropDown/DropDown'
-import { COLORS, SIZES } from '../../Theme/Theme';
+import { COLORS, FONTS, SIZES } from '../../Theme/Theme';
 import { IMAGES } from '../../Theme/Image';
 import InputForm from '../../Component/InputForm';
 import Header from '../../Component/Header';
@@ -96,50 +96,20 @@ export default function WeightHistory() {
       height: "100vh",
       width: "100%",
     }}>
-    
+    <Sidenav active={"Weight History"}/>
       <div style={{
-        width: mobile ? matches ?  "90%" : "100%" : '100%',
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
+       width:mobile ? matches ? '100%' : '90%' : '100%',
+       float:"right",
       }}>
-        
-        <Header
-        leftcomponent={<>
-          <div style={{
-              display: "flex",
-              justifyContent: "center",
-              height: 40,
-              width: 40,
-              backgroundColor: COLORS.Primary,
-              alignSelf: "center",
-              borderRadius: 20
-          }}
-              onClick={() => {
-                  navigate(-1)
-              }}
-          >
-              <img src={IMAGES.back} alt={"back"}
-                  style={{
-                      height: 25,
-                      width: 25,
-                      alignSelf: "center",
-                  }} />
-          </div>
-      </>} 
-         title={"Weight History"}
-         rightcomponent={
-          <div>
-          </div>
-      }
-         />
+        <NavBarMain />
+        <p style={{ ...FONTS.h2, color: COLORS.Primary }}>Weight History</p>
         <div style={{
           paddingTop: "20px",
           backgroundColor: COLORS.lightGray2,
-          alignSelf: "center",
           width: mobile ? matches ? "80%" : "80%" : '90%',
           borderRadius: SIZES.radius,
-          justifyContent: "center"
+          marginTop:30,
+          marginLeft:'10%'
         }}>
           <div
             style={{
