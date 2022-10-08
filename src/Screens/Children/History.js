@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../../Component/Header'
 import { FONTS, COLORS, SIZES } from '../../Theme/Theme'
 import { IMAGES } from '../../Theme/Image'
@@ -6,15 +6,43 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import Loading from '../../Component/Loading'
 import FlatList from 'flatlist-react'
 import useMediaQuery from '../../Component/useMediaQuery'
+import InputForm from "../../Component/InputForm";
+import DropDown from "../../Component/DropDown/DropDown";
+import { checking} from "../../Component/Constants";
 import { useSelector } from 'react-redux'
+import Modal from 'react-modal';
 export default function History() {
   const navigate = useNavigate()
   const { state } = useLocation();
   const { data } = state;
   const med = useSelector(state => state.Reducers.med) 
-
+  const [medicine, setmedicine] = useState("");
+  const [medicationR, setmedicationR] = useState("");
+  const [dosage, setdosage] = useState("");
+  const [vaccinateddate, setVaccinateddate] = useState("");
+  const [withdrawal_date, setwithdrawal_date] = useState(null);
+  const [withdrawal, setwithdrawal] = useState(null);
   const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:460px)') 
+//
+let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#000000c4';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+//
+
+
   function MedCard({
     problem,
     solution,
@@ -135,11 +163,11 @@ export default function History() {
                 color:COLORS.white,
                 marginRight: mobile ? -80 : 0,
                 marginTop:mobile ? null : 30,
-                border:'none'
+                border:'none',
+                cursor:'pointer'
               }} 
-              onClick={() => navigate('../medication' , {
-                state: { data: med }
-              }) }
+              // onClick={() => navigate('./addmedhist') }
+              onClick={openModal}
               >
                 <img src={IMAGES.plus} style={{
                   height:20,
@@ -180,6 +208,202 @@ export default function History() {
           renderWhenEmpty={() => (<></>)}
         />
       </div>
+<>
+<Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={{
+          overlay: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(255, 255, 255, 0.75)',
+            // margin: mobile ? matches ? -40 : null : -40,
+            // display: mobile ? matches ? 'block' : 'none' : 'block'
+          },
+          content: {
+            position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+            // width: mobile ? matches ? '100%' : null : '100%',
+            // border: '1px solid transparent',
+            height:'100vh',
+            background: COLORS.white,
+            //   overflow: 'auto',
+            //   WebkitOverflowScrolling: 'touch',
+            // borderRadius: '0 4px 4px 0',
+            outline: 'none',
+
+          }
+        }}
+      >
+<Header
+        leftcomponent={
+          <>
+            <div style={{
+              display: "flex",
+              justifyContent: "center",
+              height: 40,
+              width: 40,
+              backgroundColor: COLORS.Primary,
+              alignSelf: "center",
+              borderRadius: 20
+            }}
+              onClick={closeModal}
+            >
+              <img src={IMAGES.back} alt={"back"}
+                style={{
+                  height: 25,
+                  width: 25,
+                  alignSelf: "center",
+                }} />
+            </div>
+          </>
+        }
+        rightcomponent={
+          <div></div>
+        }
+        title={"Add Medication"} 
+        titlestyle={{
+          // marginRight:160
+        }}
+        />
+        <div  style={{
+              display: matches ? 'grid' : 'grid',
+              justifyContent: matches ? "space-evenly" : 'space-around'
+            }}>
+        {/* <p style={{...FONTS.h2 , color: COLORS.Primary}}>Add Medication</p> */}
+        <div style={{backgroundColor:COLORS.layout , padding:32 , borderRadius:SIZES.radius}}>
+        <div
+            style={{
+              display: matches ? 'grid' : 'grid',
+              justifyContent: matches ? "space-evenly" : 'space-around'
+            }}
+          >
+ <InputForm
+              prependComponent={
+                <img
+                  src={IMAGES.disease}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    margin: 10,
+                    alignSelf: "center",
+                  }}
+                />
+              }
+              type={"text"}
+              value={medicationR}
+              label={"Reason for Medication"}
+              onChange={(event) => {
+                setmedicationR(event.target.value);
+              }}
+            />
+
+            <InputForm
+              prependComponent={
+                <img
+                  src={IMAGES.medicines}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    margin: 10,
+                    alignSelf: "center",
+                  }}
+                />
+              }
+              type={"text"}
+              value={medicine}
+              label={"Medicine"}
+              onChange={(event) => {
+                setmedicine(event.target.value);
+              }}
+            />
+            <InputForm
+              prependComponent={
+                <img
+                  src={IMAGES.calender}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    margin: 10,
+                    alignSelf: "center",
+                  }}
+                />
+              }
+              type={"date"}
+              value={vaccinateddate}
+              label={"Medication Date"}
+              onChange={(event) => {
+                setVaccinateddate(event.target.value);
+              }}
+            />
+
+            <InputForm
+              prependComponent={
+                <img
+                  src={IMAGES.dropper}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    margin: 10,
+                    alignSelf: "center",
+                  }}
+                />
+              }
+              type={"text"}
+              value={dosage}
+              label={"Dosage"}
+              onChange={(event) => {
+                setdosage(event.target.value);
+              }}
+            />
+          </div>
+        <div
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly"
+            }}
+          >
+            <DropDown
+              value={withdrawal}
+              setValue={setwithdrawal}
+              label={"Withdrawal"}
+              options={checking}
+            />
+            {
+              withdrawal=="Yes"?<InputForm
+              prependComponent={
+                <img
+                  src={IMAGES.calender}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    margin: 10,
+                    alignSelf: "center",
+                  }}
+                />
+              }
+              type={"date"}
+              value={withdrawal_date}
+              label={"Withdrawal Date"}
+              onChange={(event) => {
+                setwithdrawal_date(event.target.value);
+              }}
+            />:null
+            }
+
+          </div>
+          </div>
+        </div>
+      </Modal>
+</>
+
     </div>
   )
 }
