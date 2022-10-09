@@ -21,6 +21,7 @@ export default function Animal() {
 
   const { state } = useLocation();
   const { data } = state;
+  
   function filterList(list) {
     return list.filter(
       (listItem) =>
