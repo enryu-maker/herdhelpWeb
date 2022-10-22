@@ -190,6 +190,7 @@ export default function AddAnimals() {
           }
         })
         .catch(err => {
+          console.log(err)
           setLoading(false);
           alert.error(<AlertCard msg={err} type={false} />)
         });
