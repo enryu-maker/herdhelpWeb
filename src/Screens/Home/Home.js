@@ -101,7 +101,7 @@ export default function Home() {
                     top: 500,
                   }}
                   onClick={() => {
-                    window.open('https://testflight.apple.com/join/LAn2RBih', '_blank');
+                    window.open('https://apps.apple.com/in/app/herdhelp/id1627766617', '_blank');
                   }}
                 />
                 <img src={IMAGES.playstore} alt={''}
