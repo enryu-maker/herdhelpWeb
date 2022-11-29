@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c93943e3.css",
-    "main.js": "/static/js/main.7a8932c0.js",
+    "main.css": "/static/css/main.e1adab1f.css",
+    "main.js": "/static/js/main.abc9eba8.js",
     "reactPlayerYouTube.js": "/static/js/reactPlayerYouTube.4cfe0eef.chunk.js",
     "reactPlayerSoundCloud.js": "/static/js/reactPlayerSoundCloud.8b365dcc.chunk.js",
     "reactPlayerVimeo.js": "/static/js/reactPlayerVimeo.dfe0ccf2.chunk.js",
@@ -16,6 +16,9 @@
     "reactPlayerFilePlayer.js": "/static/js/reactPlayerFilePlayer.b4c1df2e.chunk.js",
     "reactPlayerPreview.js": "/static/js/reactPlayerPreview.a832a173.chunk.js",
     "static/js/787.bc3f44c4.chunk.js": "/static/js/787.bc3f44c4.chunk.js",
+    "static/media/banner-01.jpg": "/static/media/banner-01.2d8e2ed8a5f770aa8f60.jpg",
+    "static/media/banner-02.jpg": "/static/media/banner-02.dba664f633f346144383.jpg",
+    "static/media/banner-03.jpg": "/static/media/banner-03.7480526a706b1a028c46.jpg",
     "static/media/scanner.gif": "/static/media/scanner.fe71b87aa0aef69e12c1.gif",
     "static/media/splash.png": "/static/media/splash.15c334a584b7b73749d7.png",
     "static/media/log1.png": "/static/media/log1.75ee11f17168c8873719.png",
@@ -25,10 +28,17 @@
     "static/media/family.png": "/static/media/family.2ca053bd5a18a4bfd027.png",
     "static/media/playstore.png": "/static/media/playstore.433c47f4611d0f2d6b2e.png",
     "static/media/app-store.png": "/static/media/app-store.e8161a8abbdee3c691ae.png",
+    "static/media/About.jpg": "/static/media/About.c0230c964be29e9db53a.jpg",
+    "static/media/Babies.jpg": "/static/media/Babies.6fd4eaac9c14dff92d66.jpg",
+    "static/media/Health.jpg": "/static/media/Health.35eb9ae0eb2bc1f67627.jpg",
     "static/media/paid.png": "/static/media/paid.e4efeb413f694920647e.png",
+    "static/media/Weight.jpg": "/static/media/Weight.a26eb33f509d318f8a10.jpg",
+    "static/media/Profit.jpg": "/static/media/Profit.9062839b5bfc6dbfa815.jpg",
     "static/media/settings.png": "/static/media/settings.25e8168330c98d7eab06.png",
     "static/media/closegif.gif": "/static/media/closegif.bd13bea28c04d166ae54.gif",
+    "static/media/Alert.jpg": "/static/media/Alert.3d37a462cd90f91a73d4.jpg",
     "static/media/coin.png": "/static/media/coin.0fabb26d80d5b54c0963.png",
+    "static/media/Finance.jpg": "/static/media/Finance.fa38e356f74373cbbcf2.jpg",
     "static/media/money.png": "/static/media/money.ec3917a0c7597e6f28f1.png",
     "static/media/bred.png": "/static/media/bred.c26267182457945c84d5.png",
     "static/media/add.png": "/static/media/add.7223bc152ef6df67b582.png",
@@ -71,8 +81,8 @@
     "static/media/file.png": "/static/media/file.aaee278810ba38026e82.png",
     "static/media/name.png": "/static/media/name.0ed74d529e75a8a2fd14.png",
     "index.html": "/index.html",
-    "main.c93943e3.css.map": "/static/css/main.c93943e3.css.map",
-    "main.7a8932c0.js.map": "/static/js/main.7a8932c0.js.map",
+    "main.e1adab1f.css.map": "/static/css/main.e1adab1f.css.map",
+    "main.abc9eba8.js.map": "/static/js/main.abc9eba8.js.map",
     "reactPlayerYouTube.4cfe0eef.chunk.js.map": "/static/js/reactPlayerYouTube.4cfe0eef.chunk.js.map",
     "reactPlayerSoundCloud.8b365dcc.chunk.js.map": "/static/js/reactPlayerSoundCloud.8b365dcc.chunk.js.map",
     "reactPlayerVimeo.dfe0ccf2.chunk.js.map": "/static/js/reactPlayerVimeo.dfe0ccf2.chunk.js.map",
@@ -89,7 +99,7 @@
     "787.bc3f44c4.chunk.js.map": "/static/js/787.bc3f44c4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c93943e3.css",
-    "static/js/main.7a8932c0.js"
+    "static/css/main.e1adab1f.css",
+    "static/js/main.abc9eba8.js"
   ]
 }
