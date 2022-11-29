@@ -112,8 +112,6 @@ export default function Login() {
       flex: 1,
     }}>
       <NavBar
-        navStyle={{
-        }}
         page={"/login"}
       />
 

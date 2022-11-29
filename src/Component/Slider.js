@@ -3,6 +3,8 @@ import SimpleImageSlider from "react-simple-image-slider";
 const images = [
   { url: require("../assets/banner-01.jpg") },
   { url: require("../assets/banner-02.jpg") },
+  { url: require("../assets/banner-03.jpg") },
+
   //   { url: "images/3.jpg" },
   //   { url: "images/4.jpg" },
   //   { url: "images/5.jpg" },
@@ -15,7 +17,7 @@ export default function Slider() {
     <div>
       <SimpleImageSlider
         width={"100%"}
-        height={504}
+        height={700}
         images={images}
         showBullets={true}
         showNavs={true}
