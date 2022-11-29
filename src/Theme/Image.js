@@ -90,6 +90,15 @@ export const IMAGES={
     coin : require("../assets/Logo/coin.png"),
     issue : require("../assets/Logo/exclamation.png"),
     what : require("../assets/Logo/question.png"),
+    health : require("../assets/Home/Health.jpg"),
+    alert : require("../assets/Home/Alert.jpg"),
+    babies : require("../assets/Home/Babies.jpg"),
+    finance : require("../assets/Home/Finance.jpg"),
+    profit : require("../assets/Home/Profit.jpg"),
+    weight : require("../assets/Home/Weight.jpg"),
+    about : require("../assets/Home/About.jpg"),
+
+
 
 
 

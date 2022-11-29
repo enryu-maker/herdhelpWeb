@@ -13,6 +13,7 @@ import { storeID } from "../../Store/actions";
 import { Login_Function } from "../../Store/actions";
 import Loading from "../../Component/Loading";
 import QRCode from "react-qr-code";
+import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 export default function Login() {
   const [email, setEmail] = React.useState("");
@@ -111,6 +112,13 @@ export default function Login() {
     <div style={{
       flex: 1,
     }}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>HerdHelp :: Login</title>
+        <meta name="description" content="Herd Help is a farm documentation app that assist you in charting the herds activities.
+Documentation from insemination to medical records. Herd help does documentation for cows, sheep, goats, pigs, horses and rabbits.
+This allows you to grow a stronger healthier herd. Identifying profitable and unprofitable animals is the key to seeing profits." />
+      </Helmet>
       <NavBar
         page={"/login"}
       />

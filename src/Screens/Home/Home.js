@@ -8,16 +8,13 @@ import useMediaQuery from "../../Component/useMediaQuery";
 import FlatList from "flatlist-react";
 import ReactPlayer from "react-player/lazy";
 import axiosIns from "../../helpers/helpers";
-
-import ReactDOM from "react-dom";
+import { Helmet } from "react-helmet";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
 import { useAlert } from "react-alert";
 import Slider from "../../Component/Slider";
+import Feature from "./Feature";
 
 export default function Home() {
-  //
-  // const [bought, setBought] = useState(false);
   const alert = useAlert();
   const matches = useMediaQuery("(max-width:820px)");
   const mobile = useMediaQuery("(min-width:460px)");
@@ -48,6 +45,13 @@ export default function Home() {
   function Desktop_tab() {
     return (
       <>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>HerdHelp :: Herd Managament App</title>
+          <meta name="description" content="Herd Help is a farm documentation app that assist you in charting the herds activities.
+Documentation from insemination to medical records. Herd help does documentation for cows, sheep, goats, pigs, horses and rabbits.
+This allows you to grow a stronger healthier herd. Identifying profitable and unprofitable animals is the key to seeing profits." />
+        </Helmet>
         <div style={{ backgroundColor: COLORS.white }}>
           <Slider />
           <div
@@ -55,215 +59,170 @@ export default function Home() {
               display: "inline-flex",
               justifyContent: "space-between",
               alignSelf: "center",
-
               width: "100%",
-              height: 600,
+              // height: 600,
             }}
           >
-            <div
-              style={{
-                // backgroundColor:COLORS.lightGray1,
-                width: "40%",
-                height: "60%",
-                position: "absolute",
-                left: 100,
-              }}
-            >
+            <div style={{
+              display: "flex",
+              flexDirection: "column",
+              // justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+            }}>
               <h3
                 style={{
-                  position: "absolute",
-                  width: 400,
+                  alignSelf: "flex-start",
                   color: COLORS.Primary,
                   textAlign: "left",
-                  top: 80,
-                  fontSize: 40,
+                  paddingInline: 50,
                   ...FONTS.largeTitle,
                 }}
               >
-                Herd's Management Tool
+                HerdHelp Features
               </h3>
-              <h4
-                style={{
-                  position: "absolute",
-                  width: 500,
-                  color: COLORS.black,
-                  textAlign: "left",
-                  top: 250,
-                  ...FONTS.body2,
-                  fontSize: 20,
-                }}
-              >
-                Herd Help is a farm documentation app that assist you in
-                charting the herds activities.<br></br>
-                Documentation from insemination to medical records. Herd help
-                does documentation for cows, sheep, goats, pigs, horses and
-                rabbits.<br></br>
-                This allows you to grow a stronger healthier herd. Identifying
-                profitable and unprofitable animals is the key to seeing
-                profits.
-              </h4>
+              <Feature
+                title={"Herd's Weight"}
+                image={IMAGES.weight}
+                description={"Track your herd's weight and growth"}
+                title2={"Herd's Health"}
+                image2={IMAGES.health}
+                description2={"HerdHelp allows you to keep track of your herd's health. You can keep track of your herd's medical records, vaccinations, and treatments."}
+              />
+              <Feature
+                title2={"Herd's Babies"}
+                image2={IMAGES.babies}
+                description2={"Keep track of your herd's babies"}
+                title={"Set Alerts for your herd"}
+                image={IMAGES.alert}
+                description={"HerdHelp allows you to set alerts for your herd. You can set alerts for your herd's health, weight, and babies."}
+              />
+              <Feature
+                title={"Control your Expenses"}
+                image={IMAGES.finance}
+                description={"Keep track of your herd's expenses"}
+                image2={IMAGES.profit}
+                title2={"Identify Profitable Animals"}
+                description2={"HerdHelp allows you to identify your herd's profitable animals."}
+              />
 
-              <div>
-                <h3
-                  style={{
-                    position: "relative",
-                    top: 510,
-                    color: COLORS.Primary,
-                    ...FONTS.h1,
-                  }}
-                >
-                  Download App From
-                </h3>
-                <img
-                  src={IMAGES.appstore}
-                  alt={""}
-                  style={{
-                    width: 260,
-                    height: 55,
-                    position: "relative",
-                    top: 500,
-                  }}
-                  onClick={() => {
-                    window.open(
-                      "https://apps.apple.com/in/app/herdhelp/id1627766617",
-                      "_blank"
-                    );
-                  }}
-                />
-                <img
-                  src={IMAGES.playstore}
-                  alt={""}
-                  onClick={() => {
-                    window.open(
-                      "https://play.google.com/store/apps/details?id=com.herdhelp",
-                      "_blank"
-                    );
-                  }}
-                  style={{
-                    width: 260,
-                    height: 55,
-                    position: "relative",
-                    top: 500,
-                    left: mobile ? (matches ? 0 : 50) : 0,
-                  }}
-                />
-              </div>
             </div>
-            <div
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              // justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+            }}>
+            <h3
               style={{
-                // backgroundColor:COLORS.lightGray1,
-                width: "40%",
-                height: "100%",
-                right: 0,
-                position: "absolute",
-                right: 0,
+                alignSelf: "flex-start",
+                color: COLORS.Primary,
+                textAlign: "left",
+                paddingInline: 50,
+                ...FONTS.largeTitle,
               }}
             >
-              <div
+              About Us
+            </h3>
+            <div
+
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-evenly",
+                width: "100%",
+              }}>
+            <p
+              style={{
+                color: COLORS.black,
+                textAlign: "left",
+                ...FONTS.body3,
+                width:"40%",
+              }}
+            >
+             My friend and I are both Christians and farmers in South Alabama. We both grew up here and both grew up raising cows. He still has cows and I mainly raise goats now. My background is computer software and technology and recently he has been taking programming classes. So you can tell how the two of us creating an APP to manage your livestock happened. We both understand technology and both understand animal husbandry. I decided to grow my goat herd to a larger scale and I needed the tools to do that in an organized manner. So here we are.
+              As business people, we know what we need to see a profit. With goats and sheep it’s kidding rates and with cows its weight gains. And with any animal that we raise we need healthy animals. If you track all your data you will have the tools to tell you which animals to cull and which animals are out producing the others. We hope that it helps you as much as it helps our farms.
+            </p>
+            <img
+                src={IMAGES.about}
+                alt="feature1"
                 style={{
-                  width: "100%",
-                  height: 800,
-                  display: "inline-flex",
-                  top: 100,
-                  // right:150,
+                height: 350,
+                width: 350,
+                borderRadius: SIZES.radius,
                 }}
-              >
-                <img
-                  src={IMAGES.img1}
-                  style={{
-                    width: 250,
-                    height: 500,
-                    position: "absolute",
-                    top: 30,
-                    backgroundColor: COLORS.layout,
-                    borderRadius: 20,
-                    border: "1px solid transparent",
-                  }}
-                />
-                <img
-                  src={IMAGES.img2}
-                  style={{
-                    width: 250,
-                    height: 500,
-                    left: 190,
-                    top: 70,
-                    border: "1px solid transparent",
-                    position: "absolute",
-                    backgroundColor: COLORS.lightGray1,
-                    borderRadius: 20,
-                  }}
-                />
-              </div>
+            />
             </div>
           </div>
 
-          {/*  */}
         </div>
 
-        {/* <div style={{
-          top: 100,
-          marginBottom: 200,
-          display: "flex",
-          flexDirection:"row",
-          justifyContent: "space-evenly",
-          // height: "100%",
-          // width: "100%",
-          // alignSelf:"center",
-          alignItems:"center",
-          position: 'relative',
-          // margin:20
-        }}> */}
-        <p
+        <div
           style={{
-            ...FONTS.h1,
-            marginTop: 80,
-            color: COLORS.Primary,
-          }}
-        >
-          {"Tutorial Videos"}
-        </p>
-        <ul
-          style={{
-            paddingInlineStart: 0,
-            left: "0px",
             display: "flex",
-            marginBottom: 80,
-            overflowX: "scroll",
-            justifyContent: "space-evenly",
-            alignSelf: "center",
-          }}
-        >
-          <FlatList
-            list={videos}
-            keyExtractor={(item) => `${item.id}`}
-            renderItem={(item, index) => {
-              return (
-                <div
-                  style={{
-                    margin: 5,
-                    width: "80%",
-                    alignSelf: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <p
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            paddingBottom: 50,
+          }}>
+          <h3
+            style={{
+              alignSelf: "flex-start",
+              color: COLORS.Primary,
+              textAlign: "left",
+              paddingInline: 50,
+              ...FONTS.largeTitle,
+            }}
+          >
+            Tutorial videos
+          </h3>
+          <ul style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            flexWrap: "wrap",
+          }}>
+
+            <FlatList
+              list={videos}
+              keyExtractor={(item) => `${item.id}`}
+              renderItem={(item, index) => {
+                return (
+                  <div
                     style={{
-                      ...FONTS.h3,
-                      color: COLORS.Primary,
+                      margin: 5,
+                      // width: "80%",
                       alignSelf: "center",
+                      alignItems: "center",
                     }}
                   >
-                    {item.title}
-                  </p>
-                  <ReactPlayer url={item.link} />
-                </div>
-              );
-            }}
-            renderWhenEmpty={() => <div></div>}
-          />
-        </ul>
+                    <p
+                      style={{
+                        ...FONTS.h3,
+                        color: COLORS.Primary,
+                        alignSelf: "center",
+                      }}
+                    >
+                      {item.title}
+                    </p>
+                    <ReactPlayer
+                      height={250}
+                      width={400}
 
-        {/* </div> */}
+                      url={item.link} />
+                  </div>
+                );
+              }}
+              renderWhenEmpty={() => <div></div>}
+            />
+          </ul>
+        </div>
       </>
     );
   }
@@ -288,8 +247,7 @@ export default function Home() {
           <div
             style={{
               display: "grid",
-              background:
-                "linear-gradient(149.42deg, #D3F3D2 6.44%,rgba(5, 255, 0, 0.58) 58.02%, rgba(114, 242, 111, 0.81) 89.24%, rgba(4, 200, 0, 0.46) 136.74%);",
+              background: "linear-gradient(149.42deg, #D3F3D2 6.44%,rgba(5, 255, 0, 0.58) 58.02%, rgba(114, 242, 111, 0.81) 89.24%, rgba(4, 200, 0, 0.46) 136.74%);",
             }}
           >
             <div style={{ width: "100%", height: "45vh", display: "flex" }}>
@@ -338,24 +296,6 @@ export default function Home() {
                 </h5>
               </div>
             </div>
-
-            {/* <h3>Douwnload for Android and Ios</h3> */}
-
-            {/* <button style={{display:'flex' ,justifyContent:'space-around' }}>
-              <img src={IMAGES.playstore} alt="" style={{width:30 , height:30 }} />
-             <h3 style={{...FONTS.h3}}>Playstore</h3>
-            </button>
-
-            <button style={{width: 150 , height:50,display:'flex'}}>
-              <img src={IMAGES.appstore} alt="" />
-            Appstore
-            </button> */}
-
-            {/* <div style={{marginTop:100}}>
-              {/* <div style={{marginTop:100}}>
-<img src={IMAGES.img1} style={{width:300 , backgroundColor:COLORS.Primary , padding:5 , borderRadius:10}} />
-<img src={IMAGES.img1} style={{width:300 , backgroundColor:COLORS.Primary , padding:5 , borderRadius:10}} />
-</div> */}
             <div style={{ paddingInline: 25 }}>
               <h3
                 style={{

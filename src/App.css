@@ -37,5 +37,12 @@
     transform: rotate(360deg);
   }
 }
+*{
+  -ms-overflow-style: none;
+  transition: .3s ease;
+}
+::-webkit-scrollbar {
+  display: none;
+}
 
 

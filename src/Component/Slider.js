@@ -15,9 +15,10 @@ const images = [
 export default function Slider() {
   return (
     <div>
+
       <SimpleImageSlider
         width={"100%"}
-        height={700}
+        height={680}
         images={images}
         showBullets={true}
         showNavs={true}
