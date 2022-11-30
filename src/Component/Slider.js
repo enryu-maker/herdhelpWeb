@@ -1,4 +1,5 @@
 import SimpleImageSlider from "react-simple-image-slider";
+import useMediaQuery from "./useMediaQuery";
 
 const images = [
   { url: require("../assets/banner-01.jpg") },
@@ -13,12 +14,13 @@ const images = [
 ];
 
 export default function Slider() {
+  const matches = useMediaQuery("(max-width:820px)");
+  const mobile = useMediaQuery("(min-width:460px)");
   return (
     <div>
-
       <SimpleImageSlider
-        width={"100%"}
-        height={680}
+        width={mobile ? (matches ? "100%" : "100%") : "100%"}
+        height={mobile ? (matches ? 680 : 680) : 230}
         images={images}
         showBullets={true}
         showNavs={true}
