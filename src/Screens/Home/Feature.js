@@ -24,17 +24,19 @@ export default function Feature({
         height: "120%",
         alignItems: "baseline",
         margin: "10px auto",
+        paddingInline: mobile ? 0 : "auto",
       }}
     >
       <div
         style={{
           display: "flex",
           flexDirection: mobile ? (matches ? "column" : "column") : "row",
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: mobile ? "center" : "left",
+          alignItems: mobile ? "center" : "left",
           width: "100%",
-          paddingInline: mobile ? 50 : 10,
+          paddingInline: mobile ? 50 : 0,
           width: "90%",
+          margin: 5,
         }}
       >
         <img
@@ -103,11 +105,12 @@ export default function Feature({
         style={{
           display: "flex",
           flexDirection: mobile ? (matches ? "column" : "column") : "row",
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: mobile ? "center" : "left",
+          alignItems: mobile ? "center" : "left",
           width: "100%",
-          paddingInline: mobile ? 50 : 10,
+          paddingInline: mobile ? 50 : 0,
           width: "90%",
+          margin: 5,
         }}
       >
         <img

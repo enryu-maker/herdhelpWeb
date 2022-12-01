@@ -294,9 +294,9 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                     display: "flex",
                     flexDirection: "column",
                     // justifyContent: "center",
-                    alignItems: "center",
+                    alignItems: mobile ? "center" : "left",
                     width: "100%",
-                    alignSelf: "center",
+                    alignSelf: mobile ? "center" : "left",
                   }}
                 >
                   <Feature
