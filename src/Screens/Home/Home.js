@@ -100,7 +100,7 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
               <Feature
                 title2={"Herd's Babies"}
                 image2={IMAGES.babies}
-                description2={"Keep track of your herd's babies"}
+                description2={"Keep track of your herd's babies and births"}
                 title={"Set Alerts for your herd"}
                 image={IMAGES.alert}
                 description={
@@ -252,6 +252,8 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
   return (
     <>
       <NavBar page={"/"} />
+
+
       {mobile ? (
         matches ? (
           <>
@@ -312,7 +314,7 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                   <Feature
                     title2={"Herd's Babies"}
                     image2={IMAGES.babies}
-                    description2={"Keep track of your herd's babies"}
+                    description2={"Keep track of your herd's babies and births"}
                     title={"Set Alerts for your herd"}
                     image={IMAGES.alert}
                     description={

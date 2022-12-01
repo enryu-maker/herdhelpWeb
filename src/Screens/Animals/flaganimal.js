@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import DropDown from '../../Component/DropDown/DropDown'
-import { COLORS, SIZES } from '../../Theme/Theme';
+import { COLORS, SIZES, FONTS } from '../../Theme/Theme';
 import { IMAGES } from '../../Theme/Image';
 import InputForm from '../../Component/InputForm';
 import Header from '../../Component/Header';
@@ -8,13 +8,16 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import TextButton from '../../Component/TextButton';
 import { getHerds } from '../../Store/actions';
+import makeAnimated from 'react-select/animated';
 import axiosIns from '../../helpers/helpers';
 import Loading from '../../Component/Loading';
 import { useAlert } from 'react-alert';
+import Select from 'react-select';
 import AlertCard from '../../Component/AlertCard';
 import useMediaQuery from '../../Component/useMediaQuery';
 export default function Flaganimal() {
   const dispatch = useDispatch()
+  const animatedComponents = makeAnimated();
   const alert = useAlert()
   const [loading, setLoading] = useState(false);
   const [valueMS, setValueMS] = useState("");
@@ -115,27 +118,60 @@ export default function Flaganimal() {
               style={{
                 display: matches ? "flex" : 'grid',
                 justifyContent: matches ? "space-evenly" : 'space-around'
-              
+
               }}
             >
               <DropDown
                 value={valueMS}
-                onPress={(x)=>{
+                onPress={(x) => {
                   setValueMS(x.label)
                 }}
                 label={"Species*"}
                 // options={checking}
                 options={species}
               />
-  
-              <DropDown
-                value={valueBS}
-                onPress={(x)=>{
-                  valueBS(x.value)
-                }}
-                label={"Tags*"}
-                options={finder(tags,valueMS)}
-              />
+
+              <div style={{
+                justifyContent: "center",
+                alignSelf: "center",
+                display: "flex",
+                flexFlow: "column",
+              }}>
+                <div
+                  style={{
+                    width: 284,
+                    justifyContent: "space-between",
+                    display: "flex",
+                    flexFlow: "row",
+                    alignSelf: "center",
+                    height: 20,
+                    
+                  }}
+                >
+                  <text style={{ color: COLORS.black, ...FONTS.body4,marginBottom:60 }}>Tags*</text>
+                </div>
+
+                <div style={{
+                  width: 284,
+                  alignSelf: "center",
+                  marginBottom: 22,
+                  ...FONTS.h3
+                }}>
+                  <Select
+                    components={animatedComponents}
+                    isMulti
+                    name="Tags"
+                    options={finder(tags, valueMS)}
+                    className="basic-multi-select"
+                    classNamePrefix="Tags"
+                    onChange={(e) => {
+                      setValueBS(e)
+                    }}
+                  />
+                </div>
+
+
+              </div>
 
               <InputForm
                 prependComponent={
