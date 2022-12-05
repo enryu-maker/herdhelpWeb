@@ -88,33 +88,33 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                 HerdHelp Features
               </h3>
               <Feature
-                title={"Herd's Weight"}
-                image={IMAGES.weight}
-                description={"Track your herd's weight and growth"}
-                title2={"Herd's Health"}
+                title={"herd Weight"}
+                image={IMAGES.weight1}
+                description={"Track your herd weight and growth"}
+                title2={"herd Health"}
                 image2={IMAGES.health}
                 description2={
-                  "HerdHelp allows you to keep track of your herd's health. You can keep track of your herd's medical records, vaccinations, and treatments."
+                  "HerdHelp allows you to keep track of your herd health. You can keep track of your herd medical records, vaccinations, and treatments."
                 }
               />
               <Feature
-                title2={"Herd's Babies"}
+                title2={"Birthing"}
                 image2={IMAGES.babies}
-                description2={"Keep track of your herd's babies and births"}
+                description2={"Keep track of your herd babies and births"}
                 title={"Set Alerts for your herd"}
                 image={IMAGES.alert}
                 description={
-                  "HerdHelp allows you to set alerts for your herd. You can set alerts for your herd's health, weight, and babies."
+                  "HerdHelp allows you to set alerts for your herd. You can set alerts for your herd health, weight, and babies."
                 }
               />
               <Feature
                 title={"Control your Expenses"}
                 image={IMAGES.finance}
-                description={"Keep track of your herd's expenses"}
+                description={"Keep track of your herd expenses"}
                 image2={IMAGES.profit}
                 title2={"Identify Profitable Animals"}
                 description2={
-                  "HerdHelp allows you to identify your herd's profitable animals."
+                  "HerdHelp allows you to identify your herd profitable animals."
                 }
               />
             </div>
@@ -302,33 +302,33 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                   }}
                 >
                   <Feature
-                    title={"Herd's Weight"}
+                    title={"herd Weight"}
                     image={IMAGES.weight}
-                    description={"Track your herd's weight and growth"}
-                    title2={"Herd's Health"}
+                    description={"Track your herd weight and growth"}
+                    title2={"herd Health"}
                     image2={IMAGES.health}
                     description2={
-                      "HerdHelp allows you to keep track of your herd's health. You can keep track of your herd's medical records, vaccinations, and treatments."
+                      "HerdHelp allows you to keep track of your herd health. You can keep track of your herd medical records, vaccinations, and treatments."
                     }
                   />
                   <Feature
-                    title2={"Herd's Babies"}
+                    title2={"Birthing"}
                     image2={IMAGES.babies}
-                    description2={"Keep track of your herd's babies and births"}
+                    description2={"Keep track of your herd babies and births"}
                     title={"Set Alerts for your herd"}
                     image={IMAGES.alert}
                     description={
-                      "HerdHelp allows you to set alerts for your herd. You can set alerts for your herd's health, weight, and babies."
+                      "HerdHelp allows you to set alerts for your herd. You can set alerts for your herd health, weight, and babies."
                     }
                   />
                   <Feature
                     title={"Control your Expenses"}
                     image={IMAGES.finance}
-                    description={"Keep track of your herd's expenses"}
+                    description={"Keep track of your herd expenses"}
                     image2={IMAGES.profit}
                     title2={"Identify Profitable Animals"}
                     description2={
-                      "HerdHelp allows you to identify your herd's profitable animals."
+                      "HerdHelp allows you to identify your herd profitable animals."
                     }
                   />
                 </div>

@@ -20,12 +20,12 @@ export default function Slider() {
     <div>
       <SimpleImageSlider
         width={mobile ? (matches ? "100%" : "100%") : "100%"}
-        height={mobile ? (matches ? 680 : 680) : 230}
+        height={mobile ? (matches ? 650 : 650) : 230}
         images={images}
         showBullets={true}
         showNavs={true}
         autoPlay={true}
-        autoPlayDelay={2.7}
+        autoPlayDelay={2}
       />
     </div>
   );

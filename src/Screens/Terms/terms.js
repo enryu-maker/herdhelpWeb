@@ -1,197 +1,136 @@
-import React, { useState }  from 'react'
+import react from 'react'
 import Header from '../../Component/Header';
-import NavBarMain from "../../Component/Nav/navmain";
 import { COLORS, FONTS } from '../../Theme/Theme';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { IMAGES } from '../../Theme/Image';
 
-export default  function Terms() {
-    let navigate = useNavigate()
-  
-function renderHeader(){
-   
-  return(
-    <>
-    <Header
-        leftcomponent={
-          <>
-            <div style={{
-              display: "flex",
-              justifyContent: "center",
-              height: 40,
-              width: 40,
-              backgroundColor: COLORS.Primary,
-              alignSelf: "center",
-              borderRadius: 20
-            }}
-              onClick={() => {
-                navigate(-1)
-              }}
-            >
-              <img src={IMAGES.back} alt={"back"}
-                style={{
-                  height: 25,
-                  width: 25,
-                  alignSelf: "center",
-                }} />
-            </div>
-          </>
-        }
-        rightcomponent={
-          <div></div>
-        }
-        title={"Terms and Services"} />
-    </>
-  );
-}
+export default function Terms() {
+  let navigate = useNavigate()
 
-function renderForm(){
-    return(
-        <div style={{
-            margin: 0,
-            // padding:0,
-            minHeight:100,
-            minWidth:100,
-            backgroundColor:COLORS.white,
+  function renderHeader() {
 
-            
-            textAlign:'left',
-            padding:'10px 0px 50px 50px',
-        }}>
-            <div>
-            <h3 style={{
-                ...FONTS.h1
-            }}><b>Herdhelp Privacy Policy</b></h3>
-                <p style={{
-                    ...FONTS.h3
-                }}>
-                This privacy policy discloses the privacy practices for <a href='https://herdhelp.com' style={{textDecoration:"none",color:COLORS.Primary,...FONTS.h3}}> herdhelp.com</a>
-                
-                . This privacy policy applies solely to information collected by this web site. It will notify you of the following:
-                </p>
-
-                <p style={{
-                    ...FONTS.body3,
-                    wordSpacing:2
-                }}>
-                    1. What personally identifiable information is collected from you through the web site, how it is used and with whom it may be shared.<br/>
-                    2. What choices are available to you regarding the use of your data.<br/>
-                    3. The security procedures in place to protect the misuse of your information.<br/>
-                    4. How you can correct any inaccuracies in the information.
-
-                </p>
-                </div>
-
-                <div>
-            <h3 style={{
-                ...FONTS.h2
-            }}><b>Information Collection, Use, and Sharing</b></h3>
-                
-
-                <p style={{
-                    ...FONTS.body3
-                }}>
-                    "We are the sole owners of the information collected on this site. We only have access to/collect information that you voluntarily give us via email or other direct contact from you. We will not sell or rent this information to anyone. We will use your information to respond to you, regarding the reason you contacted us. We will not share your information with any third party outside of our organization, other than as necessary to fulfill your request, e.g. to ship an order. Unless you ask us not to, we may contact you via email in the future to tell you about specials, new products or services, or changes to this privacy policy. 
-
-                </p>
-                </div>
-
-                <div > 
-            <h3 style={{
-                ...FONTS.body2
-            }}><b>Your Access to and Control Over Information</b></h3>
-                
-
-                <p style={{marginLeft:20,
-                    ...FONTS.body3
-                }}>
-    <li>See what data we have about you, if any.</li>              
-    <li> Change/correct any data we have about you.</li>
-    <li> Have us delete any data we have about you.</li>
-    <li> Express any concern you have about our use of your data.</li>
-   
-
-                </p>
-                </div>
-
-                <div>
-            <h3 style={{
-                ...FONTS.h2
-            }}><b>Personal Information / Personally Identifiable Information</b></h3>
-                
-
-                <p style={{
-                    ...FONTS.body3
-                }}>
-                    Without the need for further, repeated consents (aside from the acceptance of this Privacy Policy) by the user, Personal Information, Personally Identifiable Information and/or Financial Information shall be collected by the Herdhelp Platform on an ongoing basis, for one or more of the following reasons: 
-
-                </p>
-
-                <p style={{
-                    ...FONTS.body3,
-                    marginLeft:20
-                }}>
-                   <li>To identify the User, to understand his/her/its needs and resolve disputes, if any; </li>
-                   <li>To set up, manage and facilitate the offer of Products, and to enhance the Services to meet the user’s requirements; </li>
-                   <li>To resolve technical issues and troubleshoot problems; </li>
-                   <li>To meet legal and regulatory requirements; </li>
-                   <li>To provide ongoing service; </li>
-                   <li>To keep users apprised of the Herdhelp Platform’s promotions and offers; </li>
-                   <li>To detect and protect the Herdhelp Platform from error, fraud and other criminal activities; </li>
-                   <li>Other reasons which, prior to being put into effect, shall be communicated to the users through an update carried out to this Privacy Policy. </li>
-                </p>
-                </div>
-                <div>
-            <p style={{
-                ...FONTS.h2
-            }}><b>Policy Updates</b></p>
-                
-
-                <p style={{
-                    ...FONTS.body3
-                }}>
-                  Our Privacy Policy may change from time to time and all updates will be posted on this page. If you feel that we are not abiding by this privacy policy, you should contact us immediately via email <a href='mailto:contact@herdhelp.com' style={{textDecoration:"none",color:COLORS.Primary,...FONTS.body3}}>contact@herdhelp.com </a>
-                </p>
-                </div>
-
-                <div>
-            <h3 style={{
-                ...FONTS.body2
-            }}><b>Contact Us</b></h3>
-                
-
-                <p style={{
-                    ...FONTS.body3
-                }}>
-                  If there are any questions regarding this Privacy Policy, you may contact us using the information below. 
-                </p>
-                <div style={{textDecoration:"none"}}>
-                <li><a href='tel: +1(251) 747-8563' style={{textDecoration:"none",color:COLORS.Primary,...FONTS.h2}} >Tel: +1(251) 747-8563 </a></li>
-                <li><a href='mailto: contact@herdhelp.com' style={{textDecoration:"none",color:COLORS.Primary,...FONTS.h2}} >Email: contact@herdhelp.com </a></li>
-                </div>
-                </div>
-        </div>
-    )}  
-    
-    
     return (
-        <div
+      <>
+        <Header
+          leftcomponent={
+            <>
+              <div style={{
+                display: "flex",
+                justifyContent: "center",
+                height: 40,
+                width: 40,
+                backgroundColor: COLORS.Primary,
+                alignSelf: "center",
+                borderRadius: 20
+              }}
+                onClick={() => {
+                  navigate(-1)
+                }}
+              >
+                <img src={IMAGES.back} alt={"back"}
+                  style={{
+                    height: 25,
+                    width: 25,
+                    alignSelf: "center",
+                  }} />
+              </div>
+            </>
+          }
+          rightcomponent={
+            <div></div>
+          }
+          title={"Terms and Services"} />
+      </>
+    );
+  }
+
+  function renderForm() {
+    return (
+      <div style={{
+        margin: 0,
+        // padding:0,
+        minHeight: 100,
+        minWidth: 100,
+        backgroundColor: COLORS.white,
+
+
+        textAlign: 'left',
+        paddingInline: 20,
+        // padding: '10px 0px 50px 50px',
+      }}>
+        <div>
+          <h3 style={{
+            ...FONTS.h1
+          }}><b>Herdhelp Privacy Policy</b></h3>
+          <p style={{
+            ...FONTS.body3,
+            wordSpacing: 2
+          }}>
+            Herd Help is owned, operated, and maintained by Grace and Peace, LLC. We respect your right to privacy and share your concern about the security of your ranch data when using Herd Help.
+            Information you enter in Herd Help will be securely stored on our servers. The purpose for this is to allow syncing of your ranch data among the devices you authorize and to provide a backup of your ranch data in the event that you lose all your devices. We do not mine, sell, or give away your data unless legally required by law enforcement. We use modern security measures to protect collected data, and limit access to only those employees who require it to perform their jobs.
+            All of your ranch data is on each device you have authorized for Herd Help. If needed, you can remotely wipe your ranch data from a device.
+
+            We use the email addresses associated with your ranch and each user to provide you with important information regarding your Herd Help ranch account and updates to Herd Help. We are careful to limit email only to what is necessary. If you no longer wish to receive emails from us, you can remove your email address from the ranch and user settings window.
+            When you use the referral code given to you by another ranch, we send them a thank you email which mentions the name of your ranch.
+            In the event of a crash, some of your system data may be collected by a third-party service (HockeyApp) in order to help us understand the nature of the crash, leading to a better product.
+            If you enter your CCIA account credentials and ask Herd Help to submit CCIA events, pertinent information will be sent to CCIA on your behalf.
+            We do not collect or store your credit card number, expiration date, or CVC code. When you add funds to your account, your credit card details are routed directly to our credit card processor (Stripe) and are not stored on any of our servers, even temporarily.
+            When handling support requests from you, we collect your email address and any information you provide voluntarily (such as logs or other diagnostic information). This information is collected solely to help resolve your support inquiry. We retain support emails indefinitely in order to have context from previous interactions which may help us answer your future questions more quickly and to identify broad trends in support requests, which may help us identify and solve problems with Herd Help.
+            In short, we do everything we can to keep your ranch data private and secure.
+
+
+            </p>
+            <h3 style={{
+            ...FONTS.body2
+          }}>
+            <b>Subscription</b></h3>
+            <p style={{
+            ...FONTS.body3,
+            wordSpacing: 2
+          }}>
+            When you subscribe to Herd Help Premium, Payments will be charged to your Google Play account. Auto renewal may be turned off at any time. Current price for Herd Help is $6.99 per month. Your first 30 days are free. Herd Help is a tool to track your animals weights, health, treatments, lineage, profits and losses.
+            </p>
+          <h3 style={{
+            ...FONTS.body2,
+          }}><b>Contact Us</b></h3>
+
+
+          <p style={{
+            ...FONTS.body3
+          }}>
+            If there are any questions regarding this Privacy Policy, you may contact us using the information below.
+          </p>
+          <div style={{ textDecoration: "none",
+            paddingBottom:70
+        
+        }}>
+            <li><a href='tel: +1(251) 747-8563' style={{ textDecoration: "none", color: COLORS.Primary, ...FONTS.h2 }} >Tel: +1(251) 747-8563 </a></li>
+            <li><a href='mailto: contact@herdhelp.com' style={{ textDecoration: "none", color: COLORS.Primary, ...FONTS.h2 }} >Email: contact@herdhelp.com </a></li>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+
+  return (
+    <div
+      style={{
+        flex: 1,
+      }}
+    >
+      {renderHeader()}
+      <div
         style={{
-          flex: 1,
+          display: "flex",
+          justifyContent: "center",
+          alignSelf: "center",
         }}
       >
-       {renderHeader()}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignSelf: "center",
-          }}
-        >
-          {renderForm()}
-        </div>
-
+        {renderForm()}
       </div>
+
+    </div>
   )
 }
 

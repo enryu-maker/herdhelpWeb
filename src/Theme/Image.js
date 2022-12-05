@@ -95,7 +95,7 @@ export const IMAGES={
     babies : require("../assets/Home/Babies.jpg"),
     finance : require("../assets/Home/Finance.jpg"),
     profit : require("../assets/Home/Profit.jpg"),
-    weight : require("../assets/Home/Weight.jpg"),
+    weight1 : require("../assets/Home/Weight.jpg"),
     about : require("../assets/Home/About.jpg"),
 
 
