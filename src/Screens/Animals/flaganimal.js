@@ -1,29 +1,35 @@
 import React, { useState } from 'react'
-import DropDown from '../../Component/DropDown/DropDown'
 import { COLORS, SIZES, FONTS } from '../../Theme/Theme';
 import { IMAGES } from '../../Theme/Image';
+import TextButton from '../../Component/TextButton';
+import DropDown from '../../Component/DropDown/DropDown'
+
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 import InputForm from '../../Component/InputForm';
 import Header from '../../Component/Header';
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import TextButton from '../../Component/TextButton';
-import { getHerds } from '../../Store/actions';
-import makeAnimated from 'react-select/animated';
+import { getHerds, getTags } from '../../Store/actions';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import axiosIns from '../../helpers/helpers';
-import Loading from '../../Component/Loading';
+import AnimalCard from '../../Component/AnimalCard';
 import { useAlert } from 'react-alert';
-import Select from 'react-select';
-import AlertCard from '../../Component/AlertCard';
 import useMediaQuery from '../../Component/useMediaQuery';
-export default function Flaganimal() {
-  const dispatch = useDispatch()
+export default function Updatebred() {
   const animatedComponents = makeAnimated();
-  const alert = useAlert()
-  const [loading, setLoading] = useState(false);
   const [valueMS, setValueMS] = useState("");
-  const [valueBS, setValueBS] = useState("");
-  const [Flaggedesp, setFlaggedesp] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const [tag, setTag] = useState([]);
   const navigate = useNavigate()
+  const [dobt, setDobt] = useState(null);
+  const alert = useAlert()
+  const dispatch = useDispatch()
+  React.useEffect(() => {
+    dispatch(getTags())
+  }, [])
+
   const tags = useSelector(state => state.Reducers.tags)
   const species = useSelector(state => state.Reducers.cat)
   const id = localStorage.getItem("id")
@@ -37,35 +43,45 @@ export default function Flaganimal() {
     });
     return dataValue;
   }
+  function axiosRequest(tag) {
+    var ls = []
+    tag.map((a, index) => {
+      const v = `animals/${id}${valueMS}${a.value}`
+      ls.push(v)
+    })
+    return (ls)
+  }
+  axiosRequest(tag)
   async function updateBred() {
-    if (valueBS != "", Flaggedesp != '') {
+    var final_list = axiosRequest(tag)
+    if (tag != "", dobt != '') {
       setLoading(true)
       try {
-        await axiosIns.patch(`animals/${id}${valueMS}${valueBS}`, {
-          flagged: true,
-          flag_desc: Flaggedesp
+        await Promise.all(final_list.map((endpoint) => axiosIns.patch(endpoint, {
+          'flagged': true,
+          'flag_desc': dobt
         }, {
           headers: {
             'Content-Type': 'application/json',
           },
-        }).then((Response) => {
+        }))).then(axios.spread((Response) => {
           if (Response.status == 200) {
-            alert.success(<AlertCard msg={"Flag Added Sucessfully"} type={true} />)
+            alert.success("Flag Updated Sucessfully")
             dispatch(getHerds())
             setLoading(false)
           }
           else {
-            alert.error(<AlertCard msg={"Internal server error"} type={false} />)
+            alert.error(Response.status)
             setLoading(false)
           }
-        })
+        }))
       } catch (err) {
-        alert.error(<AlertCard msg={err.msg} type={false} />)
+        alert.error(err.data)
         setLoading(false)
       }
     }
     else {
-      alert.error(<AlertCard msg={"Invalid Input"} type={false} />)
+      alert.error("Invalid Inputs")
       setLoading(false)
     }
   }
@@ -100,7 +116,7 @@ export default function Flaganimal() {
           rightcomponent={
             <div></div>
           }
-          title={"Flag Animal"} />
+          title={"Update Flag"} />
         <div style={{
           display: "flex",
           alignItems: "center",
@@ -118,19 +134,17 @@ export default function Flaganimal() {
               style={{
                 display: matches ? "flex" : 'grid',
                 justifyContent: matches ? "space-evenly" : 'space-around'
-
               }}
             >
               <DropDown
                 value={valueMS}
-                onPress={(x) => {
+                onPress={(x)=>{
                   setValueMS(x.label)
                 }}
                 label={"Species*"}
                 // options={checking}
                 options={species}
               />
-
               <div style={{
                 justifyContent: "center",
                 alignSelf: "center",
@@ -145,16 +159,15 @@ export default function Flaganimal() {
                     flexFlow: "row",
                     alignSelf: "center",
                     height: 20,
-                    
                   }}
                 >
-                  <text style={{ color: COLORS.black, ...FONTS.body4,marginBottom:60 }}>Tags*</text>
+                  <text style={{ color: COLORS.gray, ...FONTS.body4 }}>Tags</text>
                 </div>
 
                 <div style={{
                   width: 284,
                   alignSelf: "center",
-                  marginBottom: 22,
+                  marginBottom: 20,
                   ...FONTS.h3
                 }}>
                   <Select
@@ -165,18 +178,17 @@ export default function Flaganimal() {
                     className="basic-multi-select"
                     classNamePrefix="Tags"
                     onChange={(e) => {
-                      setValueBS(e)
+                      setTag(e)
                     }}
                   />
                 </div>
 
 
               </div>
-
               <InputForm
                 prependComponent={
                   <img
-                    src={IMAGES.plus1}
+                    src={IMAGES.flag}
                     style={{
                       height: 25,
                       width: 25,
@@ -185,28 +197,27 @@ export default function Flaganimal() {
                     }}
                   />
                 }
-                type={"text"}
-                value={Flaggedesp}
-                label={"Description"}
+                value={dobt}
+                label={"Flag desc*"}
                 onChange={(event) => {
-                  setFlaggedesp(event.target.value);
+                  setDobt(event.target.value);
                 }}
               />
-            </div>
 
+            </div>
           </div>
+
         </div>
-        {
-          loading ? <Loading /> :
-            <TextButton
-              label={"Flag"}
-              icon={IMAGES.update}
-              onPress={() => { updateBred() }}
-              buttonContainerStyle={{
-                marginTop: "30px",
-              }}
-            />
-        }
+        <TextButton
+          label={"Update FLag"}
+          icon={IMAGES.update}
+          onPress={() => {
+            updateBred()
+          }}
+          buttonContainerStyle={{
+            marginTop: "30px",
+          }}
+        />
       </>
     </>
   )

@@ -72,23 +72,22 @@ export default function Updatebred() {
           },
         }))).then(axios.spread((Response) => {
           if (Response.status == 200) {
-            alert.success(<AnimalCard msg={"Bred Updated Sucessfully"} type={true} />)
+            alert.success("Bred Updated Sucessfully")
             dispatch(getHerds())
-            alert("done")
             setLoading(false)
           }
           else {
-            alert.error(<AnimalCard msg={"Wrong Format"} type={false} />)
+            alert.error("Wrong Format")
             setLoading(false)
           }
         }))
       } catch (err) {
-        alert.error(<AnimalCard msg={err.data} type={false} />)
+        alert.error(err.data)
         setLoading(false)
       }
     }
     else {
-      alert.error(<AnimalCard msg={"Invalid Inputs"} type={false} />)
+      alert.error("Invalid Inputs")
       setLoading(false)
     }
   }
