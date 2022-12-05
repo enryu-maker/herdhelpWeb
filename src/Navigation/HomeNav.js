@@ -63,7 +63,7 @@ export default function HomeNav() {
       <Route path='/parents' element={<ProtectedRoute Component={Parents} access={access} />} />
       <Route path='/weighthistory' element={<ProtectedRoute Component={Weighthistory} access={access} />} />
       <Route path='/subscription' element={<ProtectedRoute Component={Subscription} access={access} />} />
-      <Route path='/terms-and-condition' element={<Terms />} />
+      <Route path='/privacy' element={<Terms />} />
       <Route path='/setting' element={<ProtectedRoute Component={Setting} access={access} />} />
       <Route path='/info' element={<ProtectedRoute Component={Info} access={access} />} />
       <Route path='/edit' element={<Edit/>} />
