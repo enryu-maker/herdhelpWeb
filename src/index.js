@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter} from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
-import {store} from "./Store"
+import { store } from "./Store"
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 import { COLORS } from "./Theme/Theme";
@@ -18,11 +18,13 @@ const options = {
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <AlertProvider template={AlertTemplate} {...options}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-    </AlertProvider>
+      <BrowserRouter>
+
+        <AlertProvider template={AlertTemplate} {...options}>
+          <App />
+        </AlertProvider>
+      </BrowserRouter>
+
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

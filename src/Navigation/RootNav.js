@@ -7,12 +7,12 @@ import HomeNav from './HomeNav';
 export default function RootNav() {
     return (
         <Routes>
-            <Route path="/out" element={<Navigate to="/" />} />
+            <Route path="out" element={<Navigate to="/" />} />
             <Route exact path="/" element={<Home/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path='/in' element={ <HomeNav/>} />
-            <Route path='/terms' element={<Terms />} />
-            <Route path="/*" element={<Login/>} />
+            <Route path="login" element={<Login/>} />
+            <Route path='in' element={ <HomeNav/>} />
+            <Route path='terms' element={<Terms />} />
+            <Route path="*" element={<Navigate to="not-found"/>} />
         </Routes>
     )
 }
