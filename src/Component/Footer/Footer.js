@@ -25,7 +25,7 @@ function Footer() {
           paddingLeft: "10px",
         }} />
         <p style={{ ...FONTS.body4, paddingRight: "10px", }}>
-          &copy;{new Date().getFullYear()} <a target="_blank"  style={{ textDecoration: 'none', color: COLORS.black }} >Grace and Peace LLC (AL) | All right reserved |</a><Link to={'/privacy'} style={{ textDecoration: 'none', color: COLORS.black }} > Terms & Service | Privacy</Link>
+          &copy;{new Date().getFullYear()} <a target="_blank"  style={{ textDecoration: 'none', color: COLORS.black }} >Grace and Peace LLC (AL) | All right reserved |</a><Link to={'/terms'} style={{ textDecoration: 'none', color: COLORS.black }} > Terms & Service | Privacy</Link>
         </p>
 
       </footer></>
