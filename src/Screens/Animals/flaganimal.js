@@ -13,7 +13,6 @@ import { getHerds, getTags } from '../../Store/actions';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import axiosIns from '../../helpers/helpers';
-import AnimalCard from '../../Component/AnimalCard';
 import { useAlert } from 'react-alert';
 import useMediaQuery from '../../Component/useMediaQuery';
 export default function Updatebred() {
