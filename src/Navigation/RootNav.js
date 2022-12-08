@@ -11,7 +11,7 @@ export default function RootNav() {
             <Route exact path="/" element={<Home/>} />
             <Route path="/login" element={<Login/>} />
             <Route path='/in' element={ <HomeNav/>} />
-            <Route path='/privacy' element={<Terms/>} />
+            <Route path='/privacy' element={<Terms />} />
             <Route path="/*" element={<Login/>} />
         </Routes>
     )
