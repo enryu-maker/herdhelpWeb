@@ -2,7 +2,7 @@ import React from 'react'
 import Login from '../Screens/Auth/Login'
 import Home from '../Screens/Home/Home'
 import { Routes, Route, Navigate } from "react-router-dom";
-import Terms from '../Screens/Terms/terms';
+import Terms from '../Screens/Terms/Terms';
 import HomeNav from './HomeNav';
 export default function RootNav() {
     return (
@@ -11,7 +11,7 @@ export default function RootNav() {
             <Route exact path="/" element={<Home/>} />
             <Route path="login" element={<Login/>} />
             <Route path='in' element={ <HomeNav/>} />
-            <Route path='terms' element={<Terms />} />
+            <Route path='terms' element={<Terms/>} />
             <Route path="*" element={<Navigate to="not-found"/>} />
         </Routes>
     )

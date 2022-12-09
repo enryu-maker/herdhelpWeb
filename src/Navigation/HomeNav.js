@@ -1,5 +1,4 @@
 import React from 'react'
-import Login from '../Screens/Auth/Login';
 import { Routes, Route, Navigate } from "react-router-dom";
 import Main from '../Screens/Home/Main';
 import Weight from '../Screens/Home/Weight';
@@ -7,18 +6,15 @@ import AddAnimals from '../Screens/Animals/AddAnimals';
 import LoadAlerts from '../Screens/Alerts/LoadAlerts';
 import LoadFinance from '../Screens/Finance/LoadFinance';
 import AddFinance from '../Screens/Finance/addFinance';
-import Herds from '../Screens/Home/Herds';
 import AddMedication from '../Screens/Animals/AddMedication';
 import Profile from '../Component/Profile/profile';
 import Report from '../Screens/Report/Report';
 import Parents from '../Screens/Parents/Parents';
 import Subscription from '../Component/Subscription/Subscription';
 import Weighthistory from '../Screens/Report/weighthistory';
-import Terms from '../Screens/Terms/terms';
+import Terms from '../Screens/Terms/Terms';
 import Add from '../Screens/Animals/add';
 import Setting from '../Screens/Setting/Setting';
-// import ForgetPass from '../Screens/ForgetPass/forgetPass';
-
 import ProtectedRoute from '../Protection/Protected';
 import Info from '../Screens/Home/Info';
 import Animal from '../Screens/Home/Animal';
@@ -63,7 +59,7 @@ export default function HomeNav() {
       <Route path='parents' element={<ProtectedRoute Component={Parents} access={access} />} />
       <Route path='weighthistory' element={<ProtectedRoute Component={Weighthistory} access={access} />} />
       <Route path='subscription' element={<ProtectedRoute Component={Subscription} access={access} />} />
-      <Route path='terms' element={<Terms />} />
+      <Route path='terms' element={<Terms/>} />
       <Route path='setting' element={<ProtectedRoute Component={Setting} access={access} />} />
       <Route path='info' element={<ProtectedRoute Component={Info} access={access} />} />
       <Route path='edit' element={<Edit/>} />
