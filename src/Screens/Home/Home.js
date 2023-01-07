@@ -88,10 +88,10 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                 HerdHelp Features
               </h3>
               <Feature
-                title={"herd Weight"}
+                title={"Herd Weight"}
                 image={IMAGES.weight1}
                 description={"Track your herd weight and growth"}
-                title2={"herd Health"}
+                title2={"Herd Health"}
                 image2={IMAGES.health}
                 description2={
                   "HerdHelp allows you to keep track of your herd health. You can keep track of your herd medical records, vaccinations, and treatments."
@@ -271,6 +271,7 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
           <>
             <div style={{ backgroundColor: COLORS.white, marginTop: 50 }}>
               <Slider />
+
               <div
                 style={{
                   display: "flow",
@@ -280,6 +281,84 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                   // height: 600,
                 }}
               >
+                <h3
+                  style={{
+                    alignSelf: "flex-start",
+                    color: COLORS.Primary,
+                    textAlign: "left",
+                    paddingInline: 10,
+                    ...FONTS.h1,
+                  }}
+                >
+                  Download Now!
+                </h3>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    width: "100%",
+                    alignSelf: "center"
+                  }}
+                >
+                  <div>
+                  <img
+                src={IMAGES.play}
+                alt={""}
+                onClick={() => {
+                  window.open(
+                    "https://play.google.com/store/apps/details?id=com.herdhelp",
+                    "_blank"
+                  );
+                }}
+                style={{
+                  height: 100,
+                  width: 120,
+                }}
+              />
+              <h3
+                  style={{
+                    alignSelf: "flex-start",
+                    color: COLORS.Primary,
+                    textAlign: "left",
+                    paddingInline: 10,
+                    ...FONTS.h3,
+                    letterSpacing: 1,
+                  }}
+                >
+                  Playstore
+                </h3>
+
+                  </div>
+                  <div>
+              <img
+                src={IMAGES.app}
+                alt={""}
+                onClick={() => {
+                  window.open(
+                    "https://apps.apple.com/in/app/herdhelp/id1627766617",
+                    "_blank"
+                  );
+                }}
+                style={{
+                  height: 100,
+                  width: 100,
+                }}
+              /><h3
+              style={{
+                alignSelf: "flex-start",
+                color: COLORS.Primary,
+                textAlign: "left",
+                paddingInline: 10,
+                ...FONTS.h3,
+                letterSpacing: 1,
+              }}
+            >
+              Appstore
+            </h3>
+            </div>
+                  
+                </div>
                 <h3
                   style={{
                     alignSelf: "flex-start",
@@ -302,10 +381,10 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                   }}
                 >
                   <Feature
-                    title={"herd Weight"}
-                    image={IMAGES.weight}
+                    title={"Herd Weight"}
+                    image={IMAGES.weight1}
                     description={"Track your herd weight and growth"}
-                    title2={"herd Health"}
+                    title2={"Herd Health"}
                     image2={IMAGES.health}
                     description2={
                       "HerdHelp allows you to keep track of your herd health. You can keep track of your herd medical records, vaccinations, and treatments."

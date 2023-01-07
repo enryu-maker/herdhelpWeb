@@ -97,6 +97,8 @@ export const IMAGES={
     profit : require("../assets/Home/Profit.jpg"),
     weight1 : require("../assets/Home/Weight.jpg"),
     about : require("../assets/Home/About.jpg"),
+    play:require("../assets/play.png"),
+    app:require("../assets/app.png"),
 
 
 
