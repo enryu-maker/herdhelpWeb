@@ -134,7 +134,7 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
             minHeight: 300,
             width: "90%",
             borderRadius: SIZES.radius,
-            // marginTop: 50,
+            marginTop: 20,
             marginBottom: 50,
           }}
         >

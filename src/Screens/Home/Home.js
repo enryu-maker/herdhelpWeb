@@ -88,6 +88,16 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                 HerdHelp Features
               </h3>
               <Feature
+                title2={"Control your Expenses"}
+                image2={IMAGES.finance}
+                description2={"Keep track of your herd expenses"}
+                image={IMAGES.profit}
+                title={"Identify Profitable Animals"}
+                description={
+                  "HerdHelp allows you to identify your herd profitable animals."
+                }
+              />
+              <Feature
                 title={"Herd Weight"}
                 image={IMAGES.weight1}
                 description={"Track your herd weight and growth"}
@@ -101,22 +111,13 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                 title2={"Birthing"}
                 image2={IMAGES.babies}
                 description2={"Keep track of your herd babies and births"}
-                title={"Set Alerts for your herd"}
+                title={"Set Alerts for your Herd"}
                 image={IMAGES.alert}
                 description={
                   "HerdHelp allows you to set alerts for your herd. You can set alerts for your herd health, weight, and babies."
                 }
               />
-              <Feature
-                title={"Control your Expenses"}
-                image={IMAGES.finance}
-                description={"Keep track of your herd expenses"}
-                image2={IMAGES.profit}
-                title2={"Identify Profitable Animals"}
-                description2={
-                  "HerdHelp allows you to identify your herd profitable animals."
-                }
-              />
+              
             </div>
           </div>
           <div
@@ -381,6 +382,16 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                   }}
                 >
                   <Feature
+                title2={"Control your Expenses"}
+                image2={IMAGES.finance}
+                description2={"Keep track of your herd expenses"}
+                image={IMAGES.profit}
+                title={"Identify Profitable Animals"}
+                description={
+                  "HerdHelp allows you to identify your herd profitable animals."
+                }
+              />
+                  <Feature
                     title={"Herd Weight"}
                     image={IMAGES.weight1}
                     description={"Track your herd weight and growth"}
@@ -394,22 +405,13 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                     title2={"Birthing"}
                     image2={IMAGES.babies}
                     description2={"Keep track of your herd babies and births"}
-                    title={"Set Alerts for your herd"}
+                    title={"Set Alerts for your Herd"}
                     image={IMAGES.alert}
                     description={
                       "HerdHelp allows you to set alerts for your herd. You can set alerts for your herd health, weight, and babies."
                     }
                   />
-                  <Feature
-                    title={"Control your Expenses"}
-                    image={IMAGES.finance}
-                    description={"Keep track of your herd expenses"}
-                    image2={IMAGES.profit}
-                    title2={"Identify Profitable Animals"}
-                    description2={
-                      "HerdHelp allows you to identify your herd profitable animals."
-                    }
-                  />
+                  
                 </div>
               </div>
               <div

@@ -108,7 +108,7 @@ export default function Feature({
           justifyContent: mobile ? "center" : "left",
           alignItems: mobile ? "center" : "left",
           width: "100%",
-          paddingInline: mobile ? 50 : 0,
+          // paddingInline: mobile ? 50 : 0,
           width: "90%",
           margin: 5,
         }}
