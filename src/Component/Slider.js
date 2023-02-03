@@ -20,7 +20,7 @@ export default function Slider() {
     <div>
       <SimpleImageSlider
         width={mobile ? (matches ? "100%" : "100%") : "100%"}
-        height={mobile ? (matches ? 650 : 650) : 230}
+        height={mobile ? (matches ? 650 : "88.9vh") : 230}
         images={images}
         showBullets={true}
         showNavs={true}
