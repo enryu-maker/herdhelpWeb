@@ -121,6 +121,93 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
             </div>
           </div>
           <div
+                style={{
+                  display: "flow",
+                  justifyContent: "space-between",
+                  alignSelf: "center",
+                  width: "100%",
+                  // height: 600,
+                }}
+              >
+                <h3
+                  style={{
+                    alignSelf: "flex-start",
+                    color: COLORS.Primary,
+                    textAlign: "left",
+                    paddingInline: 50,
+                    ...FONTS.largeTitle,
+                  }}
+                >
+                  Download Now !
+                </h3>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    width: "100%",
+                    alignSelf: "center"
+                  }}
+                >
+                  <div>
+                    <img
+                      src={IMAGES.play}
+                      alt={""}
+                      onClick={() => {
+                        window.open(
+                          "https://play.google.com/store/apps/details?id=com.herdhelp",
+                          "_blank"
+                        );
+                      }}
+                      style={{
+                        height: 100,
+                        width: 120,
+                      }}
+                    />
+                    <h3
+                      style={{
+                        alignSelf: "flex-start",
+                        color: COLORS.Primary,
+                        textAlign: "left",
+                        paddingInline: 10,
+                        ...FONTS.h3,
+                        letterSpacing: 1,
+                      }}
+                    >
+                      Playstore
+                    </h3>
+
+                  </div>
+                  <div>
+                    <img
+                      src={IMAGES.app}
+                      alt={""}
+                      onClick={() => {
+                        window.open(
+                          "https://apps.apple.com/in/app/herdhelp/id1627766617",
+                          "_blank"
+                        );
+                      }}
+                      style={{
+                        height: 100,
+                        width: 100,
+                      }}
+                    /><h3
+                      style={{
+                        alignSelf: "flex-start",
+                        color: COLORS.Primary,
+                        textAlign: "left",
+                        paddingInline: 10,
+                        ...FONTS.h3,
+                        letterSpacing: 1,
+                      }}
+                    >
+                      Appstore
+                    </h3>
+                  </div>
+                </div>
+              </div>
+          <div
             style={{
               display: "flex",
               flexDirection: "column",
@@ -344,7 +431,6 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                       Appstore
                     </h3>
                   </div>
-
                 </div>
                 <h3
                   style={{
@@ -398,6 +484,93 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                     }
                   />
 
+                </div>
+              </div>
+              <div
+                style={{
+                  display: "flow",
+                  justifyContent: "space-between",
+                  alignSelf: "center",
+                  width: "100%",
+                  // height: 600,
+                }}
+              >
+                <h3
+                  style={{
+                    alignSelf: "flex-start",
+                    color: COLORS.Primary,
+                    textAlign: "left",
+                    paddingInline: 10,
+                    ...FONTS.h1,
+                  }}
+                >
+                  Download Now!
+                </h3>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    width: "100%",
+                    alignSelf: "center"
+                  }}
+                >
+                  <div>
+                    <img
+                      src={IMAGES.play}
+                      alt={""}
+                      onClick={() => {
+                        window.open(
+                          "https://play.google.com/store/apps/details?id=com.herdhelp",
+                          "_blank"
+                        );
+                      }}
+                      style={{
+                        height: 100,
+                        width: 120,
+                      }}
+                    />
+                    <h3
+                      style={{
+                        alignSelf: "flex-start",
+                        color: COLORS.Primary,
+                        textAlign: "left",
+                        paddingInline: 10,
+                        ...FONTS.h3,
+                        letterSpacing: 1,
+                      }}
+                    >
+                      Playstore
+                    </h3>
+
+                  </div>
+                  <div>
+                    <img
+                      src={IMAGES.app}
+                      alt={""}
+                      onClick={() => {
+                        window.open(
+                          "https://apps.apple.com/in/app/herdhelp/id1627766617",
+                          "_blank"
+                        );
+                      }}
+                      style={{
+                        height: 100,
+                        width: 100,
+                      }}
+                    /><h3
+                      style={{
+                        alignSelf: "flex-start",
+                        color: COLORS.Primary,
+                        textAlign: "left",
+                        paddingInline: 10,
+                        ...FONTS.h3,
+                        letterSpacing: 1,
+                      }}
+                    >
+                      Appstore
+                    </h3>
+                  </div>
                 </div>
               </div>
               <div
