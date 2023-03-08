@@ -83,7 +83,8 @@ export default function Login() {
       if (Response.status === 200) {
         dispatch(Login_Function(Response.data.access))
         dispatch(storeID(Response.data.userid))
-        navi("/in")
+        navi("/home")
+        window.location.reload(false);
       }
       else {
         console.log("Issue")
@@ -100,7 +101,6 @@ export default function Login() {
       setvalUrl(data.validate_link)
     })
   }, [])
-  console.log(loading)
   if (valUrl != "" && auth === null) {
     console.log(!loading && valUrl != "" && auth === null)
     setInterval(() => {

@@ -12,7 +12,6 @@ import Report from '../Screens/Report/Report';
 import Parents from '../Screens/Parents/Parents';
 import Subscription from '../Component/Subscription/Subscription';
 import Weighthistory from '../Screens/Report/weighthistory';
-import Terms from '../Screens/Terms/Terms';
 import Add from '../Screens/Animals/add';
 import Setting from '../Screens/Setting/Setting';
 import ProtectedRoute from '../Protection/Protected';
@@ -45,7 +44,7 @@ export default function HomeNav() {
   const access = useSelector(state => state.Reducers.authToken)
   return (
     <Routes>
-      <Route path="in" element={<Navigate to="/" />} />
+      <Route path="home" element={<Navigate to="/" />} />
       <Route exact path="/" element={<ProtectedRoute Component={Main} access={access} />} />
       <Route path="add" element={<Add />} />
       <Route path="profile" element={<Profile />} />
@@ -59,7 +58,6 @@ export default function HomeNav() {
       <Route path='parents' element={<ProtectedRoute Component={Parents} access={access} />} />
       <Route path='weighthistory' element={<ProtectedRoute Component={Weighthistory} access={access} />} />
       <Route path='subscription' element={<ProtectedRoute Component={Subscription} access={access} />} />
-      <Route path='terms' element={<Terms/>} />
       <Route path='setting' element={<ProtectedRoute Component={Setting} access={access} />} />
       <Route path='info' element={<ProtectedRoute Component={Info} access={access} />} />
       <Route path='edit' element={<Edit/>} />
@@ -76,9 +74,8 @@ export default function HomeNav() {
       <Route path='parentop' element={<ProtectedRoute Component={ParentOP} access={access} />} />
       <Route path='parentopp' element={<ProtectedRoute Component={P} access={access} />} />
       <Route path='Modal' element={<Modal_side />} />
-      <Route path='out' element={<RootNav />} />
+      <Route path='logout' element={<RootNav />} />
       <Route path='genratereport' element={<Genratereport/>} />
-      <Route path="*" element={<Navigate to="not-found"/>} />
     </Routes>
   )
 }
