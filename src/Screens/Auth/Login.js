@@ -83,7 +83,7 @@ export default function Login() {
       if (Response.status === 200) {
         dispatch(Login_Function(Response.data.access))
         dispatch(storeID(Response.data.userid))
-        navi("/home")
+        navi("/")
         window.location.reload(false);
       }
       else {

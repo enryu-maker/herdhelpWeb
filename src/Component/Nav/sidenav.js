@@ -260,9 +260,10 @@ export default function Sidenav({
                 <Sidemenu
                   img={IMAGES.logout}
                   label={'Logout'}
-                  path={'/out'}
+                  path={'/'}
                   onPress={() => {
                     localStorage.clear()
+                    window.location.reload(false)
                   }}
                 />
               </div>
@@ -475,8 +476,9 @@ onClick={()=> {
               <Sidemenu
                 img={IMAGES.logout}
                 label={'Logout'}
-                path={'/out'}
+                path={'/'}
                 onPress={() => {
+                  window.location.reload(false)
                   localStorage.clear()
                 }}
               />
