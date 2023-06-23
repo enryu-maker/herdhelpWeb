@@ -35,6 +35,7 @@ import P from '../Screens/Parents/P';
 import Edit from '../Screens/Home/Edit';
 import Status from '../Screens/Home/Status';
 import Modal_side from '../Component/Nav/Modal_side';
+import Download from '../Screens/Report/Download';
 
 export default function HomeNav() {
   const dispatch = useDispatch()
@@ -76,6 +77,9 @@ export default function HomeNav() {
       <Route path='Modal' element={<Modal_side />} />
       <Route path='logout' element={<RootNav />} />
       <Route path='genratereport' element={<Genratereport/>} />
+      <Route path='Download' element={<Download/>} />
+
+
     </Routes>
   )
 }

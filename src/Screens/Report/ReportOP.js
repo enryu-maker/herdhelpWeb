@@ -13,7 +13,6 @@ export default function ReportOP() {
     const [loading, setLoading] = React.useState(false)
     const [Data, setData] = React.useState([])
     const [Label, setLable] = React.useState("")
-
     async function getData(api) {
         setLoading(true)
         let { data } = await axiosIns.get(api)
@@ -27,7 +26,6 @@ export default function ReportOP() {
         setLable(label)
         getData(api).then(data => {
             setData(data)
-            console.log(data)
         })
     }, [])
     function totalmoney(Data) {
@@ -73,6 +71,10 @@ export default function ReportOP() {
                         // marginBottom: 28
                         // ...buttonContainerStyle,
                     }}
+                    onClick={() => {
+                        navigate('/genratereport', { state: { data: Data, label: Label } })
+                    }
+                    }
                     >
                         <div style={{
                             margin: 10
@@ -244,7 +246,9 @@ export default function ReportOP() {
                                     data={item}
                                     onPress={() => {
                                         navigate("/info", {
-                                            state: { data: item, cond: false }
+                                            state: { data: item, cond: false,
+                                                Label: Label
+                                            }
                                         })
                                     }} />
                             </>

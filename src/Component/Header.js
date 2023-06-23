@@ -23,17 +23,19 @@ export default function Header({
       <p style={mobile ? {
         width: mobile ? null : 200,
         ...FONTS.h1,
-        titlestyle,
         alignItems: 'center',
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginLeft: 40,
+        titlestyle,
       } : {
         width: mobile ? null : 200,
         ...FONTS.h2,
-        titlestyle,
         alignItems: 'center',
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        titlestyle,
+
       }}>
         {
           title

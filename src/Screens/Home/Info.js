@@ -24,7 +24,8 @@ export default function Info({
 }) {
   let navigate = useNavigate()
   const { state } = useLocation();
-  const { data, cond } = state;
+  const { data, cond, Label } = state;
+  console.log(Label)
   const dispatch = useDispatch()
   React.useEffect(() => {
     dispatch(getAnimal(data.tag_number))
@@ -337,7 +338,12 @@ export default function Info({
                 animal.bought ? (
                   <>
                     <InfoCard label={"Type"} value={"Purchased"} />
-                    <InfoCard label={"Price"} value={formatter.format(animal?.price)} withDivider={false} />
+                    <InfoCard label={"Price"} value={formatter.format(animal?.price)} withDivider={Label==="Sold Animals"?true : false} />
+                    {
+                      Label==="Sold Animals"?
+                    <InfoCard label={"Sold Price"} value={formatter.format(animal?.soldprice)} withDivider={false} />
+                    :null
+                    }
                   </>
                 ) : (
                   <>
@@ -347,7 +353,12 @@ export default function Info({
                     <InfoCard label={"90"} value={animal?.weight_90} />
                     <InfoCard label={"Date of Birth"} value={animal?.birth_date} />
                     <InfoCard label={"Mother's Tag"} value={animal?.mother_supporttag} />
-                    <InfoCard label={"Father's Tag"} value={animal?.father_supporttag} withDivider={false} />
+                    <InfoCard label={"Father's Tag"} value={animal?.father_supporttag} withDivider={Label==="Sold Animals"?true : false} />
+                    {
+                      Label==="Sold Animals"?
+                    <InfoCard label={"Sold Price"} value={formatter.format(animal?.soldprice)} withDivider={false} />
+                    :null
+                    }
                   </>
                 )
               }

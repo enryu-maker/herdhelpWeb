@@ -62,8 +62,6 @@ export default function LoadAlerts() {
     category: valueMS,
     quantity: Qty,
   });
-  const dispatch = useDispatch()
-
 
   return (
     <>

@@ -17,6 +17,7 @@ export default function Feedcard({
     <>
       <button
         style={{
+          display:'flex',
           backgroundColor: COLORS.lightGray2,
           height: 145,
           margin: SIZES.padding,
@@ -32,8 +33,8 @@ export default function Feedcard({
           width: mobile ? matches ? "45vh" : '60vh' : '32vh',
           alignItems:"center",
           paddingInline:"20px",
+          
           // marginInline:20,
-          display:'flex',
           cursor:'pointer'
         }}
         onClick={onPress}
