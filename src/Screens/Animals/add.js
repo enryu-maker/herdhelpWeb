@@ -9,7 +9,7 @@ import Sidenav from '../../Component/Nav/sidenav'
 import { useDispatch } from 'react-redux'
 import { getSpecies, getTags } from '../../Store/actions'
 import useMediaQuery from '../../Component/useMediaQuery'
-import Modal_side from '../../Component/Nav/Modal_side'
+// import Modal_side from '../../Component/Nav/Modal_side'
 export default function Add() {
   const data = [
     {

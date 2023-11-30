@@ -6,11 +6,13 @@ import FlatList from 'flatlist-react';
 import ReportCard from './ReportCard';
 import { IMAGES } from '../../Theme/Image';
 import axiosIns from '../../helpers/helpers';
-import Loading from '../../Component/Loading';
+// import Loading from '../../Component/Loading';
 import useMediaQuery from '../../Component/useMediaQuery';
-import TextButton from '../../Component/TextButton';
+// import TextButton from '../../Component/TextButton';
 export default function ReportOP() {
-    const [loading, setLoading] = React.useState(false)
+    const [
+        // loading, 
+        setLoading] = React.useState(false)
     const [Data, setData] = React.useState([])
     const [Label, setLable] = React.useState("")
     async function getData(api) {
@@ -31,7 +33,7 @@ export default function ReportOP() {
     function totalmoney(Data) {
         var price = 0
         Data.map(a => {
-            if (Label == 'Purchased Animals') {
+            if (Label === 'Purchased Animals') {
                 price += a.price
             }
             else {
@@ -79,7 +81,7 @@ export default function ReportOP() {
                         <div style={{
                             margin: 10
                         }}>
-                            <img src={IMAGES.file} style={{
+                            <img src={IMAGES.file} alt='' style={{
                                 height: 25,
                                 width: 25,
                                 color: COLORS.white,
@@ -97,9 +99,9 @@ export default function ReportOP() {
                         </p>
                     </button>
                     {
-                        Label == 'Lost Animals' ||
-                            Label == 'Sold Animals' ||
-                            Label == 'Purchased Animals' ?
+                        Label === 'Lost Animals' ||
+                            Label === 'Sold Animals' ||
+                            Label === 'Purchased Animals' ?
                             <div style={{
                                 display: "inline-flex",
                                 justifyContent: 'center',

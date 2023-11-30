@@ -8,7 +8,6 @@ import { Provider } from 'react-redux';
 import { store } from "./Store"
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
-import { COLORS } from "./Theme/Theme";
 const options = {
   position: positions.TOP_CENTER,
   timeout: 5000,

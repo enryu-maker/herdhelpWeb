@@ -1,18 +1,13 @@
-import { type } from '@testing-library/user-event/dist/type'
 import React from 'react'
-import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
-import Header from '../../Component/Header'
 import InfoCard from '../../Component/InfoCard'
 import NavBarMain from '../../Component/Nav/navmain'
 import Sidenav from '../../Component/Nav/sidenav'
 import { WeightUnit } from '../../Store/actions'
-import { IMAGES } from '../../Theme/Image'
 import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
 import useMediaQuery from '../../Component/useMediaQuery';
 
 export default function Setting() {
-  const navigate = useNavigate()
   const [active, setActive] = React.useState("")
   const [Type, setType] = React.useState([])
   const unit = useSelector(state => state.Reducers.unit)
@@ -115,7 +110,7 @@ export default function Setting() {
                 }}>
                   {
                     Type.map(a => (
-                      <InfoCard label={a.label} value={unit == a.value ? "Active" : "Inactive"} onPress={() => {
+                      <InfoCard label={a.label} value={unit === a.value ? "Active" : "Inactive"} onPress={() => {
                         dispatch(WeightUnit(a.value))
                       }} />
                     ))

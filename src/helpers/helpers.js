@@ -1,6 +1,5 @@
 
 import axios from 'axios';
-import { useSelector } from 'react-redux';
 
 
 export const baseURL = 'https://api-nerdtech.herdhelp.com'

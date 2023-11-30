@@ -4,8 +4,6 @@ import Sidenav from '../../Component/Nav/sidenav'
 import DropDown from '../../Component/DropDown/DropDown'
 import { COLORS, FONTS, SIZES } from '../../Theme/Theme';
 import { IMAGES } from '../../Theme/Image';
-import InputForm from '../../Component/InputForm';
-import Header from '../../Component/Header';
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import TextButton from '../../Component/TextButton';
@@ -16,17 +14,14 @@ import useMediaQuery from '../../Component/useMediaQuery';
 export default function WeightHistory() {
   const [valueMS, setValueMS] = useState("");
   const [valueBS, setValueBS] = useState("");
-  const [whist, setWhist] = useState(null);
-
-  const [name, setName] = useState("");
   const navigate = useNavigate()
   const tags = useSelector(state => state.Reducers.tags)
   const species = useSelector(state => state.Reducers.cat)
   const id = localStorage.getItem('id')
   const unit = useSelector(state => state.Reducers.unit)
-  const [err, setErr] = React.useState('');
+  const [ setErr] = React.useState('');
   const [loading, setLoading] = React.useState(false);
-  const dispatch =useDispatch()
+  const dispatch = useDispatch()
   const matches = useMediaQuery('(max-width:820px)')
   const mobile = useMediaQuery('(min-width:460px)') 
   React.useEffect(()=>{
@@ -35,7 +30,7 @@ export default function WeightHistory() {
   function finder(list, value) {
     var dataValue;
     list?.map(a => {
-      if (value == a.label) {
+      if (value === a.label) {
         dataValue = a.data;
       }
     });
@@ -59,13 +54,13 @@ export default function WeightHistory() {
     return finalData;
   }
   const updateWeight = async () => {
-    if (valueBS != '') {
+    if (valueBS !== '') {
       setLoading(true);
       try {
         let { data } = await axiosIns.get(
           `getweighthistory/${id}${valueMS}${valueBS}`,
         );
-        if (data.length > 0 && data != undefined) {
+        if (data.length > 0 && data !== undefined) {
           setValueBS('')
           setValueMS('')
           const final = DataGen(data)

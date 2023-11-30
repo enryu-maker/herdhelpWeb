@@ -19,6 +19,7 @@ function Footer() {
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
+        zIndex:1000
       }}>
         <img src={IMAGES.herdhelp} style={{
           width: 130,

@@ -1,6 +1,6 @@
 import React from "react";
 import useMediaQuery from "../../Component/useMediaQuery";
-import { baseURL } from "../../helpers/helpers";
+// import { baseURL } from "../../helpers/helpers";
 import { IMAGES } from "../../Theme/Image";
 import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 
@@ -82,7 +82,7 @@ export default function ReportCard({
                             alignSelf: "center",
                             marginLeft:60
                         }} />
-                    <img src={data.gender=="Male"?IMAGES.male:IMAGES.female} alt={data.tag_number}
+                    <img src={data.gender==="Male"?IMAGES.male:IMAGES.female} alt={data.tag_number}
                         style={{
                             height: 40,
                             width: 40,

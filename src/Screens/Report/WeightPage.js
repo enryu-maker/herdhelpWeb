@@ -1,6 +1,8 @@
 import React from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Label, ResponsiveContainer, Bar, BarChart } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Label
+    // , ResponsiveContainer, Bar, BarChart
+ } from 'recharts';
 import { IMAGES } from '../../Theme/Image';
 import { COLORS, FONTS } from '../../Theme/Theme';
 import Header from '../../Component/Header';

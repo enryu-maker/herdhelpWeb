@@ -28,10 +28,10 @@ function App() {
   else {
     return (
       <>
-        <div className="App">
-          <header className="App-header">
+        <div className="">
+          <header className="">
               {
-                access == null || access == ""?
+                access === null || access === ""?
                   <RootNav />
                   :
                   <HomeNav/>

@@ -1,7 +1,5 @@
 // import AsyncStorage from "@react-native-async-storage/async-storage";
 import axiosIns from "../helpers/helpers";
-import axios from "axios";
-import { baseURL } from "../helpers/helpers";
 
 
 export const Init = () => {

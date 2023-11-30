@@ -3,7 +3,9 @@ import Header from '../../Component/Header'
 import useMediaQuery from '../../Component/useMediaQuery';
 import { IMAGES } from '../../Theme/Image';
 import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useNavigate, useLocation
+    // , Link 
+} from 'react-router-dom';
 
 export default function Download() {
     const { state } = useLocation();

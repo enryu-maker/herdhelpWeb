@@ -17,7 +17,9 @@ export default function Genratereport() {
     const { state } = useLocation();
     const { label } = state;
     const [data, setData] = React.useState([])
-    const [reportdata, setReportdata] = React.useState({})
+    const [reportdata
+        // , setReportdata
+    ] = React.useState({})
     React.useEffect(() => {
         axiosIns.get("getfields/")
             .then(res => {
@@ -194,7 +196,9 @@ export default function Genratereport() {
                                     color: COLORS.white,
                                     alignSelf: "flex-start",
                                     // ...iconStyle
-                                }} />
+                                }}
+                                alt=''
+                                />
                             </div>
                             <p style={{
                                 color: COLORS.white,

@@ -3,11 +3,11 @@ function isValidEmail(value) {
     return re.test(String(value).toLowerCase());
 }
 
-function isValidNumber(value){
-        const re =/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
-    return re.test(value)
+// function isValidNumber(value){
+//         const re =/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+//     return re.test(value)
     
-}
+// }
 
 function validateEmail(value, setEmailError) {
     if (isValidEmail(value)) {
