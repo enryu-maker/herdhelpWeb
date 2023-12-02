@@ -2,6 +2,7 @@ import React from 'react'
 
 const VideoSection = () => {
   return (
+    <>
     <div className='flex flex-col justify-center items-center py-28 max-md:py-16  w-full bg-[#0D0C0C] text-white'>
         <div className="text-lg font-bold text-[#39B54A]">SEE HOW OUR APP WORKS </div>
         <div className="text-4xl max-md:text-2xl max-md:pt-3 font-semibold text-center">We love what we do, check out <br /> some of our Tutorials</div>
@@ -11,6 +12,7 @@ const VideoSection = () => {
         <iframe width="320" height="192" src="https://www.youtube.com/embed/wnWbbgfSCpc?si=RaCOjOTps2Xyw7Ol" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
+    </>
   )
 }
 
