@@ -18,6 +18,10 @@ body {
   font-family: 'Poppins-Bold';
   src: local('Poppins'), url(./Poppins/Poppins-Medium.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'Poppins-EBold';
+  src: local('Poppins'), url(./Poppins/Poppins-Bold.ttf) format('truetype');
+}
 
 
 code {

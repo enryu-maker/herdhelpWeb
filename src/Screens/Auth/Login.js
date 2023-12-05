@@ -15,6 +15,7 @@ import Loading from "../../Component/Loading";
 import QRCode from "react-qr-code";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
+import Header from "../Home/components/Header";
 export default function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -110,7 +111,9 @@ export default function Login() {
 
   return (
     <div style={{
-      flex: 1,
+      display: "flex",
+      justifyContent: "center",
+      alignSelf: "center"
     }}>
       <Helmet>
         <meta charSet="utf-8" />
@@ -119,51 +122,43 @@ export default function Login() {
 Documentation from insemination to medical records. Herd help does documentation for cows, sheep, goats, pigs, horses and rabbits.
 This allows you to grow a stronger healthier herd. Identifying profitable and unprofitable animals is the key to seeing profits." />
       </Helmet>
-      <NavBar
-        page={"/login"}
-      />
+      <Header />
 
       <div style={{
         display: "flex",
-        justifyContent: "center",
-        alignSelf: "center"
+        justifyContent: "space-evenly",
+        alignSelf: "center",
+        marginTop: 100,
       }}>
         <div
           style={{
-            // backgroundColor: COLORS.lightGray2,
+            display:"flex",
+            flexDirection:"row",
             minHeight: 300,
-            width: "90%",
+            marginTop: 100,
+            width: "88%",
             borderRadius: SIZES.radius,
-            marginTop: 20,
             marginBottom: 50,
+            justifyContent:"space-evenly",
+            alignItems:"center"
           }}
         >
-
+          <div>
           <p style={{
             ...FONTS.largeTitle,
-            alignSelf: 'center',
+            textAlign:"center",
           }}
-            onClick={() => {
-              setShow(!show)
-            }}
           >LOGIN</p>
           <p style={{
             ...FONTS.h2,
-            alignSelf: 'center',
+            textAlign:"center",
           }}>Let's Sign You In</p>
           <p style={{
             ...FONTS.body3,
-            alignSelf: 'center',
+            textAlign:"center",
+            marginBlock:10
           }}>
             Scan the QR From <b>HerdHelp</b>  Mobile to continue!</p>
-          <p
-            style={{
-              color: COLORS.red,
-              ...FONTS.h3,
-            }}
-          >
-            {EmailErr}
-          </p>
           {
             loading ? <Loading /> :
               <div style={{ height: "auto", margin: "0 auto", maxWidth: 200, width: "100%" }}>
@@ -177,98 +172,25 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
                 />
                 <p style={{
                   ...FONTS.h2,
-                  alignSelf: 'center',
-                  color: COLORS.Primary
+                  width:"100%",
+                  textAlign:"center",
+                  // alignSelf: 'center',
+                  color: COLORS.Primary,
+                  marginBlock:10,
                 }}>
                   Scan Me
                 </p>
 
               </div>
           }
+          </div>
 
           <img
             src={IMAGES.scangif}
             style={{
-              width: "80%",
+              width: "50%",
             }}
           />
-
-          {
-            show ?
-              <>
-                <InputForm
-                  appendComponent={
-                    <img
-                      src={IMAGES.correct}
-                      style={{
-                        height: 25,
-                        width: 25,
-                        margin: 10,
-                        alignSelf: "center",
-                      }}
-                    />
-                  }
-                  type={"email"}
-                  value={email}
-                  label={"Email*"}
-                  errorMsg={EmailError}
-                  placeholder={"Enter your email"}
-                  onChange={(event) => {
-                    utils.validateEmail(event.target.value, setEmailError)
-                    setEmail(event.target.value);
-                  }}
-                />
-                <InputForm
-                  appendComponent={
-                    <button onClick={() => {
-                      setShowPass(!showPass)
-                    }}
-                      style={{
-                        borderWidth: 0,
-                        backgroundColor: COLORS.white,
-                        borderRadius: SIZES.radius
-                      }}
-                    >
-                      <img
-                        src={showPass ? IMAGES.eye_close : IMAGES.eye}
-                        style={{
-                          height: 25,
-                          width: 25,
-                          alignSelf: "center",
-                          margin: 3,
-                        }}
-                      />
-                    </button>
-                  }
-                  value={password}
-                  type={showPass ? "text" : "password"}
-                  label={"Password*"}
-                  placeholder={"Enter your password"}
-                  onChange={(event) => {
-                    setPassword(event.target.value);
-                  }}
-                />
-
-
-                {
-                  loading ?
-                    <Loading /> :
-                    <TextButton
-                      label={"Login"}
-                      icon={IMAGES.log}
-                      onPress={() => {
-                        login()
-                      }}
-                      buttonContainerStyle={{
-                        backgroundColor: isEnableSignIn()
-                          ? COLORS.Primary
-                          : COLORS.transparentPrimary2,
-                      }}
-
-                    />
-                }
-              </> : null
-          }
         </div>
       </div>
     </div>

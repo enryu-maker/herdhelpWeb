@@ -36,6 +36,7 @@ import Edit from '../Screens/Home/Edit';
 import Status from '../Screens/Home/Status';
 import Modal_side from '../Component/Nav/Modal_side';
 import Download from '../Screens/Report/Download';
+import Terms from '../Screens/Terms/terms';
 
 export default function HomeNav() {
   const dispatch = useDispatch()
@@ -78,6 +79,7 @@ export default function HomeNav() {
       <Route path='logout' element={<RootNav />} />
       <Route path='genratereport' element={<Genratereport/>} />
       <Route path='Download' element={<Download/>} />
+      <Route path='terms' element={<Terms/>}/>
 
 
     </Routes>
