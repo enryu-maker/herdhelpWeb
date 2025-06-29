@@ -47,11 +47,11 @@ const Footer = () => {
                 fontFamily: "Poppins-Bold"
               }} className='text-white text-lg font-bold pb-10'>SEND US A MESSAGE</h5>
               <div className="flex flex-col gap-5">
-                <input className='bg-[#000000] text-white border-b-2 text-lg font-bold py-2 px-5 outline-none' type="text" placeholder='Name' 
-                value={data.name} 
-                onChange={(text) => {
-                setData({ ...data, name: text.target.value })
-                }} />
+                <input className='bg-[#000000] text-white border-b-2 text-lg font-bold py-2 px-5 outline-none' type="text" placeholder='Name'
+                  value={data.name}
+                  onChange={(text) => {
+                    setData({ ...data, name: text.target.value })
+                  }} />
                 <input className='bg-[#000000] text-white border-b-2 text-lg font-bold py-2 px-5 outline-none' type="text" placeholder='Email'
                   value={data.email}
                   onChange={(text) => {
@@ -70,7 +70,7 @@ const Footer = () => {
                     setData({ ...data, message: text.target.value })
                   }}
                 />
-                <button onClick={()=>{
+                <button onClick={() => {
                   sentMessage(data)
                 }} style={{
                   fontFamily: "Poppins-Bold"
@@ -97,7 +97,7 @@ const Footer = () => {
               </div>
               <div className="flex flex-col py-5 gap-5">
                 <h5 className='text-[#39B54A] text-lg font-bold '>Call Us At</h5>
-                <p className='text-[#eeeeee70] text-base font-medium'>Phone: +1(251) 747-8563</p>
+                <p className='text-[#eeeeee70] text-base font-medium'>Phone: +1 (251) 225-5434</p>
               </div>
             </div>
           </div>
