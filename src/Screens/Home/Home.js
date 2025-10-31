@@ -332,7 +332,7 @@ Documentation from insemination to medical records. Herd help does documentation
 This allows you to grow a stronger healthier herd. Identifying profitable and unprofitable animals is the key to seeing profits."
         />
       </Helmet>
-      <div className="flex flex-col items-center justify-center pt-[60px] pb-[40px] ">
+      <div className="flex flex-col items-center justify-center pt-[3rem] ">
         <Header />
         <Slider />
         <FeatureOne />

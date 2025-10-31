@@ -3,66 +3,84 @@ import arrow from "../../../assets/assets/arrow.png"
 import chart from "../../../assets/assets/bar-chart.png"
 import expenses from "../../../assets/assets/expenses.png"
 import health from "../../../assets/assets/healthcare.png"
-import aos from "../../../assets/assets/AndroidOS.png";
 import ios from "../../../assets/assets/AppleLogo.png";
 
 const DownloadSection = () => {
-  const data = [
-    { title: "Track heath of your animals", icon: chart },
-    { title: "Track animal birthing", icon: health },
-    { title: "Take control of expenses and Profits", icon: arrow },
-    { title: "Identify profitable animals", icon: expenses },
-  ];
+
+const features = [
+  {
+    text: 'Track the health of your animals',
+    iconSrc: chart,
+    iconAlt: 'Growth Icon'
+  },
+  {
+    text: 'Track animal weights',
+    iconSrc: health,
+    iconAlt: 'Healthcare Icon'
+  },
+  {
+    text: 'Track your profits and expenses',
+    iconSrc: arrow,
+    iconAlt: 'Target Icon'
+  },
+  {
+    text: 'Identify profitable animals',
+    iconSrc: expenses,
+    iconAlt: 'Wallet Icon'
+  },
+];
+
   return (
-    <div className='flex max-md:flex-col justify-center items-center py-24 gap-20 max-md:w-full'>
-      <div className="flex flex-col justify-center items-center text-center">
-        <div style={{
-          fontFamily: "Poppins-Bold"
-        }} className="text-lg font-bold text-[#39B54A]">THE ONE APP</div>
-        <div style={{
-          fontFamily: "Poppins-Bold"
-        }} className="text-4xl font-semibold text-center max-md:text-2xl max-md:pt-3">That puts you back in control </div>
-        <hr className=' w-[450px] my-4 pb-7 border-solid border-1 border-black max-md:w-full' />
-        <div className='flex justify-center items-center gap-5'>
-        <div style={{
-          fontFamily: "Poppins-Bold"
-        }} className='flex justify-around flex-row items-center gap-5 bg-[#39B54A] text-2xl font-semibold w-[78px] h-[78px] rounded-full'>
-          <img onClick={() => {
-            window.open(
-              "https://play.google.com/store/apps/details?id=com.herdhelp",
-              "_blank"
-            );
-          }} src={aos} alt="" className='w-[40px] h-[40px] cursor-pointer' />
-          </div>
-          <div style={{
-          fontFamily: "Poppins-Bold"
-        }} className='flex justify-around items-center gap-5 bg-[#39B54A] text-2xl font-semibold w-[78px] h-[78px] rounded-full'>
-          <img onClick={() => {
-            window.open(
-              "https://apps.apple.com/in/app/herdhelp/id1627766617",
-              "_blank"
-            );
-          }} src={ios} alt="" className='w-[40px] h-[40px] cursor-pointer' />
-          
-          </div>
-          </div>
-      </div>
-      <div className="flex flex-col gap-5 justify-center items-center ">
-        {
-          data.map((data) => (
-            <div key={data.id} className="flex justify-start items-center text-center gap-4 text-white bg-[#222222] w-[475px] max-md:w-[85%]  py-4  px-5 rounded-2xl">
-              <div className="bg-[#39B54A] p-3 max-md:w-[60px]  rounded-full">
-                <img src={data.icon} alt="" className='w-[30px] object-contain h-[30px] invert' />
-              </div>
-              <h4 style={{
-                fontFamily: "Poppins-Bold"
-              }} className='text-xl font-semibold text-start max-md:text-lg'>{data.title}</h4>
-            </div>
-          ))
-        }
+    <section className='flex flex-col lg:flex-row justify-center items-center py-12 sm:py-16 lg:py-18 px-4 sm:px-6 lg:px-8 space-y-10 lg:space-y-0 lg:space-x-12'>
+      {/* Left Section */}
+      <div className='flex flex-col justify-center items-center text-center space-y-2 mb-6 sm:mb-10'>
+        <span
+        style={{
+            fontFamily: "Poppins-Bold"
+          }}
+         className='text-base sm:text-lg lg:text-xl text-[#22C55E] f font-semibold'>
+          THE ONE APP
+        </span>
+        <span
+        style={{
+            fontFamily: "Poppins-Bold"
+          }}
+         className='text-2xl sm:text-3xl lg:text-4xl w-full lg:w-[50vw] text-black  font-semibold pb-3 sm:pb-4'>
+          That puts you back in control
+        </span>
+        <div className='border-b border-black w-[50%] sm:w-[40%] lg:w-[25vw] mx-auto'></div>
+
+        <div className='bg-[#39B54A] rounded-full p-3  sm:my-6 md:my-8 flex justify-center items-center'>
+          <img className='w-[12vw] sm:w-[8vw] lg:w-[3vw]' src={ios} alt="iOS Icon" />
+        </div>
       </div>
 
-    </div>
+      {/* Right Section (Features) */}
+      <div className='flex flex-col space-y-4 sm:space-y-6 w-full sm:w-[80%] lg:w-auto'>
+        {features.map((item, index) => (
+          <div 
+            key={index} 
+            className='flex items-center bg-[#222222] py-3 sm:py-4 px-4 sm:px-6 rounded-2xl space-x-3 sm:space-x-6 transition duration-300 hover:shadow-2xl'
+          >
+            <div className='bg-[#39B54A] rounded-full p-2 sm:p-3 flex shrink-0'>
+              <img 
+                className='w-5 sm:w-6 lg:w-[2vw] invert' 
+                src={item.iconSrc} 
+                alt={item.iconAlt} 
+              />
+            </div>
+
+            <div
+            style={{
+            fontFamily: "Poppins-Bold"
+          }}
+             className='text-sm sm:text-lg lg:text-xl text-white font-semibold '>
+              {item.text}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   )
 }
 

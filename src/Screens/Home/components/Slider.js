@@ -10,33 +10,34 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Slider = () => {
   return (
     <div className='w-full' >
-         <Carousel 
-            autoPlay
-            infiniteLoop
-            swipeable={true}
-            stopOnHover={true}
-            showThumbs={false}
-            // showIndicators={false}  
-            showArrows={false}
-            showStatus={false}
-            interval={1500}
-            transitionTime={1000}
-            
-            className=" overflow-hidden flex w-full h-[650px] max-md:h-full"
-            >
-                <div>
-                    <img src={b} className=''  alt='banner-1' />                     
-                </div>               
+      <Carousel
+        autoPlay
+        infiniteLoop
+        interval={4000}
+        showStatus={false}
+        showThumbs={false}
+        showIndicators={true}
+        showArrows={true}
+        swipeable
+        emulateTouch
+        stopOnHover
+        transitionTime={3000}
 
-                <div>
-                    <img src={c} alt='banner-2' />                    
-                </div>
-              
-                <div>
-                    <img src={a} alt='banner-3'/>
-                </div>
-                
-            </Carousel>
+        className=" overflow-hidden flex w-full h-[650px] max-md:h-full"
+      >
+        <div>
+          <img src={b} className='' alt='banner-1' />
+        </div>
+
+        <div>
+          <img src={c} alt='banner-2' />
+        </div>
+
+        <div>
+          <img src={a} alt='banner-3' />
+        </div>
+
+      </Carousel>
     </div>
   )
 }

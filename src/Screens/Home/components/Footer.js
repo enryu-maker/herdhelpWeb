@@ -29,16 +29,16 @@ const Footer = () => {
   }
   return (
     <>
-      <div className='relative flex w-full '>
+      <div className='relative flex w-full'>
         <img src={bg} alt="" className='absolute z-0 inset-0 w-full h-full object-cover' />
         <div className="flex flex-col w-full z-10 justify-center items-center py-16">
           <div style={{
             fontFamily: "Poppins-Bold"
-          }} className="text-lg font-bold text-[#39B54A] pb-5 ">CONTACT US</div>
+          }} className="text-lg font-bold text-[#39B54A] pb-3 md:pb-5 ">CONTACT US</div>
           <div style={{
             fontFamily: "Poppins-Bold"
-          }} className="text-4xl max-md:text-2xl font-semibold text-center text-white pb-10">Reach out for help or just <br /> say hello </div>
-          <hr className=' w-[450px] my-4 pb-7 border-solid border-1 border-white max-md:w-full' />
+          }} className="text-4xl max-md:text-2xl font-semibold text-center text-white pb-2">Reach out for help or just <br /> say hello </div>
+          <div className='border-b border-white my-4 sm:my-6 w-[50%] sm:w-[40%] lg:w-[25vw]'></div>
           <div className="flex justify-start items-start w-[70%] max-md:w-[90%]  py-10 
              max-md:flex-col-reverse 
             ">
@@ -94,10 +94,6 @@ const Footer = () => {
               <div className="flex flex-col py-5 gap-5">
                 <h5 className='text-[#39B54A] text-lg font-bold '>Email Us At</h5>
                 <p className='text-[#eeeeee70] text-base font-medium'>contact@herdhelp.com</p>
-              </div>
-              <div className="flex flex-col py-5 gap-5">
-                <h5 className='text-[#39B54A] text-lg font-bold '>Call Us At</h5>
-                <p className='text-[#eeeeee70] text-base font-medium'>Phone: +1 (251) 225-5434</p>
               </div>
             </div>
           </div>

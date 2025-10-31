@@ -2,22 +2,58 @@ import React from 'react'
 
 const VideoSection = () => {
   return (
-    <>
-      <div className='flex flex-col justify-center items-center py-28 max-md:py-16  w-full bg-[#0D0C0C] text-white'>
-        <div style={{
+    <section className='bg-black w-full py-12 sm:py-16 lg:py-18 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8'>
+      <div
+        style={{
           fontFamily: "Poppins-Bold"
-        }} className="text-lg font-bold text-[#39B54A]">SEE HOW OUR APP WORKS </div>
-        <div style={{
-          fontFamily: "Poppins-Bold"
-        }} className="text-4xl max-md:text-2xl max-md:pt-3 font-semibold text-center">We love what we do, check out <br /> some of our Tutorials</div>
-        <hr className=' w-[450px] my-4 pb-7 border-solid border-1 border-white max-md:w-full' />
-        <div className='flex gap-20 px-5 pt-16 max-md:flex-col max-md:gap-10 max-md:'>
-          <iframe width="320" height="192" src="https://www.youtube.com/embed/4gZZbMJDsqg?si=U1i1ksNWvu7-Nk1l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <iframe width="320" height="192" src="https://www.youtube.com/embed/y3CvZ4nUJRM?si=JofH-_H993LH9stQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <iframe width="320" height="192" src="https://www.youtube.com/embed/wnWbbgfSCpc?si=RaCOjOTps2Xyw7Ol" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        }}
+        className='flex flex-col justify-center items-center text-center space-y-2  mb-8 sm:mb-10'>
+        <span className='text-base sm:text-lg lg:text-xl text-[#22C55E] font-semibold'>
+          SEE HOW OUR APP WORKS
+        </span>
+        <span className='text-2xl sm:text-3xl lg:text-4xl w-full lg:w-[50vw] text-white font-semibold border-b border-white pb-3 sm:pb-4'>
+          We love what we do, check out some of our Tutorials
+        </span>
+      </div>
+
+      <div className="flex flex-col lg:flex-row justify-center items-center space-y-6 lg:space-y-0 lg:space-x-12 xl:space-x-16 my-8 sm:my-12 w-full">
+        <div className="w-full sm:w-[400px] lg:w-[320px] aspect-video">
+          <iframe
+            className="w-full h-full "
+            src="https://www.youtube.com/embed/4gZZbMJDsqg"
+            title="Herd help livestock management app tutorial for cows, sheep, goats, pigs, rabbits and horses"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
+        </div>
+
+        <div className="w-full sm:w-[400px] lg:w-[320px] aspect-video">
+          <iframe
+            className="w-full h-full "
+            src="https://www.youtube.com/embed/y3CvZ4nUJRM"
+            title="Goat  Farm Software Management APP"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
+        </div>
+
+        <div className="w-full sm:w-[400px] lg:w-[320px] aspect-video">
+          <iframe
+            className="w-full h-full "
+            src="https://www.youtube.com/embed/wnWbbgfSCpc"
+            title="Herd Help Livestock Management APP"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          ></iframe>
         </div>
       </div>
-    </>
+    </section>
   )
 }
 
