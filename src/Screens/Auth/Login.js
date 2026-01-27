@@ -16,6 +16,8 @@ import QRCode from "react-qr-code";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import Header from "../Home/components/Header";
+import useMediaQuery from "../../Component/useMediaQuery";
+
 export default function Login() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -32,6 +34,8 @@ export default function Login() {
   const auth = useSelector(state => state.Reducers.authToken)
   let navi = useNavigate()
   const dispatch = useDispatch()
+  const matches = useMediaQuery('(max-width:820px)')
+
   function isEnableSignIn() {
     return email != "" && password != "";
   }
@@ -113,7 +117,10 @@ export default function Login() {
     <div style={{
       display: "flex",
       justifyContent: "center",
-      alignSelf: "center"
+      alignSelf: "center",
+      flexDirection: "column",
+      alignItems: "center",
+      width: "100%",
     }}>
       <Helmet>
         <meta charSet="utf-8" />
@@ -128,67 +135,77 @@ This allows you to grow a stronger healthier herd. Identifying profitable and un
         display: "flex",
         justifyContent: "space-evenly",
         alignSelf: "center",
-        marginTop: 100,
+        marginTop: matches ? 20 : 100,
+        flexDirection: matches ? "column-reverse" : "row",
+        alignItems: "center",
+        width: "100%",
       }}>
         <div
           style={{
-            display:"flex",
-            flexDirection:"row",
+            display: "flex",
+            flexDirection: matches ? "column" : "row",
             minHeight: 300,
-            marginTop: 100,
-            width: "88%",
+            marginTop: matches ? 20 : 100,
+            width: matches ? "95%" : "88%",
             borderRadius: SIZES.radius,
             marginBottom: 50,
-            justifyContent:"space-evenly",
-            alignItems:"center"
+            justifyContent: "space-evenly",
+            alignItems: "center"
           }}
         >
-          <div>
-          <p style={{
-            ...FONTS.largeTitle,
-            textAlign:"center",
-          }}
-          >LOGIN</p>
-          <p style={{
-            ...FONTS.h2,
-            textAlign:"center",
-          }}>Let's Sign You In</p>
-          <p style={{
-            ...FONTS.body3,
-            textAlign:"center",
-            marginBlock:10
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginTop: matches ? 20 : 0,
+            marginBottom: matches ? 30 : 0
           }}>
-            Scan the QR From <b>HerdHelp</b>  Mobile to continue!</p>
-          {
-            loading ? <Loading /> :
-              <div style={{ height: "auto", margin: "0 auto", maxWidth: 200, width: "100%" }}>
+            <p style={{
+              ...FONTS.largeTitle,
+              textAlign: "center",
+            }}
+            >LOGIN</p>
+            <p style={{
+              ...FONTS.h2,
+              textAlign: "center",
+            }}>Let's Sign You In</p>
+            <p style={{
+              ...FONTS.body3,
+              textAlign: "center",
+              marginBlock: 10
+            }}>
+              Scan the QR From <b>HerdHelp</b>  Mobile to continue!</p>
+            {
+              loading ? <Loading /> :
+                <div style={{ height: "auto", margin: "0 auto", maxWidth: 200, width: "100%" }}>
 
-                <QRCode
-                  size={256}
-                  style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                  value={qrURL}
-                  viewBox={`0 0 256 256`}
-                  fgColor={COLORS.black}
-                />
-                <p style={{
-                  ...FONTS.h2,
-                  width:"100%",
-                  textAlign:"center",
-                  // alignSelf: 'center',
-                  color: COLORS.Primary,
-                  marginBlock:10,
-                }}>
-                  Scan Me
-                </p>
+                  <QRCode
+                    size={256}
+                    style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                    value={qrURL}
+                    viewBox={`0 0 256 256`}
+                    fgColor={COLORS.black}
+                  />
+                  <p style={{
+                    ...FONTS.h2,
+                    width: "100%",
+                    textAlign: "center",
+                    // alignSelf: 'center',
+                    color: COLORS.Primary,
+                    marginBlock: 10,
+                  }}>
+                    Scan Me
+                  </p>
 
-              </div>
-          }
+                </div>
+            }
           </div>
 
           <img
             src={IMAGES.scangif}
             style={{
-              width: "50%",
+              width: matches ? "80%" : "50%",
+              marginBottom: matches ? 20 : 0
             }}
           />
         </div>

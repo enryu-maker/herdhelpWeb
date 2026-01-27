@@ -1,98 +1,48 @@
 import React from "react";
-import useMediaQuery from "../../Component/useMediaQuery";
-// import { baseURL } from "../../helpers/helpers";
 import { IMAGES } from "../../Theme/Image";
-import { COLORS, SIZES, FONTS } from "../../Theme/Theme";
 
-export default function ReportCard({
-    data,
-    onPress,
-}) {
-
-
-    const matches = useMediaQuery('(max-width:820px)')
-    const mobile = useMediaQuery('(min-width:460px)') 
-
+export default function ReportCard({ data, onPress }) {
     return (
-        <>
-            <button
-                style={{
-                    backgroundColor: COLORS.lightGray2,
+        <div
+            onClick={onPress}
+            className="bg-white hover:bg-gray-50 cursor-pointer rounded-xl p-3 shadow-sm border border-gray-100 flex flex-col items-center transition-all hover:shadow-md h-full"
+        >
+            {/* Image */}
+            <div className="w-full aspect-square mb-3 relative">
+                <img
+                    src={data.animal_image || data.image}
+                    alt={data.tag_number || "Animal"}
+                    className="w-full h-full rounded-lg object-cover bg-gray-200 absolute top-0 left-0"
+                />
+            </div>
 
-                    margin: SIZES.padding,
-                    borderRadius: SIZES.radius,
-                    borderWidth: 0,
-                    justifyContent: "space-evenly",
-                    shadowColor: COLORS.Primary,
-                    shadowOffset: { width: 0, height: 0 },
-                    shadowOpacity: 0.5,
-                    shadowRadius: 10,
-                    elevation: 2,
-                    width: mobile ? matches ? "50%" : " 25%" : '70% ',
-                    cursor: 'pointer',
-                    alignSelf: "center",
-                    padding:"5px"
-                }}
-                onClick={onPress}
-            >
-                {/* Imagesection */}
-                <div style={{
-                    display:"flex",
-                    flexDirection:"row",
-                    justifyContent:"space-evenly"
-                }}>
-                    <img src={data.animal_image != null ? data.animal_image : data.image} alt={data.tag_number}
-                        style={{
-                            height: 90,
-                            width: 90,
-                            alignSelf: "center",
-                            borderRadius: 15,
-                        }} />
-                 {/* Content section */}
-                 <div 
-                 style={{
-                    display:"flex",
-                    flexDirection:"column",
-                    alignSelf:"center"
-                }}>
-                    <p style={{
-                        ...FONTS.h3
-                    }}>
-                        {data.support_tag}
-                    </p>
-                    <p style={{
-                        ...FONTS.h3
-                    }}>{data.name}</p>
-                    <p style={{
-                        ...FONTS.h3
-                    }}>{data.weight}</p>
+            {/* Info */}
+            <div className="w-full flex flex-col items-center text-center space-y-1">
+                <span className="text-[#009A48] font-bold text-sm truncate w-full">
+                    {data.support_tag}
+                </span>
+                <span className="text-gray-900 font-bold text-base truncate w-full">
+                    {data.name}
+                </span>
+                <span className="text-gray-500 text-xs">
+                    {data.weight} {data.weight ? (typeof data.weight === 'string' && data.weight.includes('kg') ? '' : 'lbs') : ''}
+                </span>
+            </div>
 
-                 </div>
-                 {/* lastcontent */}
-                 <div 
-                 style={{
-                    display:"flex",
-                    flexDirection:"column",
-                    justifyContent:"space-evenly"
-                }}>
-                    <img src={IMAGES.rightone} alt={data.tag_number}
-                        style={{
-                            height: 20,
-                            width: 20,
-                            alignSelf: "center",
-                            marginLeft:60
-                        }} />
-                    <img src={data.gender==="Male"?IMAGES.male:IMAGES.female} alt={data.tag_number}
-                        style={{
-                            height: 40,
-                            width: 40,
-                            alignSelf: "center",
-                        }} />
-                 </div>
-                 </div>
- 
-
-            </button>
-        </>
+            {/* Footer Icons (Gender & Arrow) */}
+            <div className="w-full flex items-center justify-between mt-3 pt-3 border-t border-gray-100">
+                <img
+                    src={data.gender === "Male" ? IMAGES.male : IMAGES.female}
+                    alt={data.gender}
+                    className="w-6 h-6 object-contain opacity-80"
+                />
+                {/* Arrow - optional for grid cards, but keeping for interaction hint */}
+                <img
+                    src={IMAGES.rightone}
+                    alt="arrow"
+                    className="w-4 h-4 opacity-40"
+                />
+            </div>
+        </div>
     );
 }

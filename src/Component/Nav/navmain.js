@@ -1,90 +1,58 @@
-import { hover } from "@testing-library/user-event/dist/hover";
 import React from "react";
 import { Link } from "react-router-dom";
-import { IMAGES } from "../../Theme/Image";
-import { COLORS, FONTS } from "../../Theme/Theme";
+import { COLORS } from "../../Theme/Theme";
 import "./Navbar.css";
-import { useSelector } from "react-redux";
-import Sidenav from "./sidenav";
 import useMediaQuery from "../useMediaQuery";
-
-
 
 function NavBarMain({
   page,
   navStyle
 }) {
-  const user = useSelector(state => state.Reducers.userData)
-  
   const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:460px)') 
+  const mobile = useMediaQuery('(min-width:460px)')
+
+  // If mobile and matches (small screen), we might want to hide this or show a different version
+  // But based on original logic: display: mobile ? matches ? 'block' : null : 'none'
+  // It seems it was shown on mobile? Let's stick to the visible structure but styled better.
+  // Actually, usually side nav handles mobile. Let's make this the desktop top nav.
+
+  if (!mobile || (mobile && matches)) {
+    // If it's a small screen, this top nav might be redundant if the sidebar modal handles it.
+    // However, preserving original logic's intent:
+    return null;
+  }
+
+  const navLinks = [
+    { label: 'Herds', path: '/', id: 'herds' },
+    { label: 'Add', path: '/add', id: 'add' },
+    { label: 'Alerts', path: '/alerts', id: 'alerts' },
+  ];
+
   return (
-    <>
-      <div style={{ width: '100%', top: 0 , left:40  , display:mobile ? matches ? 'block' : null : 'none'}}>
-        <div style={{ display: 'flex', width: '100%' }}>
-          <div>
-            
-          </div>
+    <div className="w-full bg-white border-b border-gray-100 px-8 py-4 sticky top-0 z-40">
+      <div className="flex w-full items-center">
+        {/* Placeholder for left side content if any */}
+        <div className="w-0"></div>
 
-          <nav style={{
-            display: 'flex',
-            paddig: '1% 4%',
-            justifyContent: 'space-between',
-            width: '100%',
-          }}
-            className='nav'
-          //  className={nav ? 'nav active': 'nav'}
-          >
-
-            <div
-              style={{
-                flex: 1,
-                padding: '1%',
-                fontFamily: 'arial'
-              }}
+        <nav className="flex space-x-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.id}
+              to={link.path}
+              className={`
+                text-lg font-medium px-2 py-1 transition-colors duration-200
+                ${page === link.id
+                  ? 'text-[#009A48] border-b-2 border-[#009A48]'
+                  : 'text-gray-500 hover:text-[#009A48]'}
+              `}
+              style={{ textDecoration: 'none' }} // Ensure no default underline
             >
-              <Link to="/" style={{
-                color: page === 'herds' ? COLORS.Primary : "black",
-                // textShadow:page === 'herds' ? '0px 0px 18px black' : 'none',
-                marginInline: '2%',
-                ...FONTS.body2,
-                textDecoration: 'none',
-              }}>
-                Herds
-              </Link>
-              <Link to="/finance" style={{
-                color: page === 'finance' ? COLORS.Primary : "black",
-                // textShadow:page === 'finance' ? '0px 0px 18px black' : 'none',
-                marginInline: '2%',
-                textDecoration: 'none',
-                ...FONTS.body2
-
-              }}>
-                Finance
-              </Link>
-              <Link to="/add" style={{
-                color: page === 'add' ? COLORS.Primary : "black",
-                // textShadow:page === 'add' ? '0px 0px 18px black' : 'none',
-                marginInline: '2%',
-                textDecoration: 'none',
-                ...FONTS.body2
-              }}>
-                Add
-              </Link>
-              <Link to="/alerts" style={{
-                color: page === 'alerts' ? COLORS.Primary : "black",
-                marginInline: '2%',
-                textDecoration: 'none',
-                ...FONTS.body2,
-              }}>
-                Alerts
-              </Link>
-            </div>
-          </nav>
-        </div>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       </div>
-    </>
-      
+    </div>
   );
 }
 

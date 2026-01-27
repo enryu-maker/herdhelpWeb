@@ -18,7 +18,7 @@ import InputForm from '../../Component/InputForm'
 export default function LoadFinance() {
   const finance = useSelector(state => state.Reducers.finance)
   // const matches = useMediaQuery('(min-width:820px)')
-  const matches = useMediaQuery('(max-width:820px)')
+  const matches = useMediaQuery('(max-width:1024px)')
   const mobile = useMediaQuery('(min-width:460px)')
   const navigate = useNavigate()
   // 
@@ -63,7 +63,10 @@ export default function LoadFinance() {
         <Sidenav active={'Finance'} />
 
         <div style={{
-          width: mobile ? matches ? '100%' : "80%" : '100%',
+          width: mobile ? matches ? '100%' : "100%" : '100%',
+          paddingTop: matches ? '64px' : '0',
+          marginLeft: matches ? 0 : 250, // Manual margin for desktop since styled with inline flex
+          transition: 'all 0.3s'
           // float: "right"
         }}>
           <NavBarMain page={'finance'} />
@@ -281,7 +284,7 @@ export default function LoadFinance() {
                           options={species}
                         />
                         {
-                          console.log("c=>",valueMS)
+                          console.log("c=>", valueMS)
                         }
 
                         <InputForm
