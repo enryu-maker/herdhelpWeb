@@ -1,450 +1,269 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import NavBarMain from "../../Component/Nav/navmain";
-import TextButton from '../../Component/TextButton';
-import { IMAGES } from '../../Theme/Image';
-import { COLORS, FONTS, SIZES } from "../../Theme/Theme";
-import { useSelector, useDispatch } from 'react-redux';
-import FlatList from 'flatlist-react';
-import Feedcard from './FinanceCard';
-import AddFinance from './addFinance';
-import Header from '../../Component/Header';
-import useMediaQuery from '../../Component/useMediaQuery';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import Sidenav from '../../Component/Nav/sidenav';
-import Modal from 'react-modal';
-import DropDown from '../../Component/DropDown/DropDown'
-import InputForm from '../../Component/InputForm'
 import moment from 'moment';
+import { useAlert } from 'react-alert';
+
+// Components
+import Sidenav from '../../Component/Nav/sidenav';
+import NavBarMain from "../../Component/Nav/navmain";
+import Loading from "../../Component/Loading";
+// import AlertCardComponent from "../../Component/AlertCard"; // Renamed to avoid conflict if needed, or use inline toast
+
+// Helpers & Store
+import axiosIns from '../../helpers/helpers';
+import { getAlerts, getTags } from '../../Store/actions';
+import { IMAGES } from '../../Theme/Image';
+
+// Reusable Form Components (Tailwind) - Defined OUTSIDE to fix focus bug
+const FormInput = ({ label, value, onChange, placeholder, type = "text", icon }) => (
+  <div className="mb-4">
+    <label className="block text-gray-700 text-sm font-bold mb-2">{label}</label>
+    <div className="relative">
+      <input
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        className="w-full bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-[#009A48] focus:border-[#009A48] block p-3 pl-4 border border-gray-200"
+      />
+      {icon && (
+        <div className="absolute right-3 top-3 opacity-40">
+          <img src={icon} alt="" className="w-5 h-5" />
+        </div>
+      )}
+    </div>
+  </div>
+);
+
+const FormSelect = ({ label, value, onChange, options, placeholder }) => (
+  <div className="mb-4">
+    <label className="block text-gray-700 text-sm font-bold mb-2">{label}</label>
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="w-full bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-[#009A48] focus:border-[#009A48] block p-3 border border-gray-200"
+    >
+      <option value="">{placeholder}</option>
+      {options && options.map((opt, idx) => (
+        <option key={idx} value={opt.label || opt.type}>
+          {opt.label || opt.type}
+        </option>
+      ))}
+    </select>
+  </div>
+);
+
+// Alert Card Component - Defined OUTSIDE
+const AlertCard = ({ item }) => (
+  <div className="bg-gray-50 rounded-xl p-5 mb-4 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+    <div className="flex justify-between items-start mb-2">
+      <div>
+        <h3 className="text-[#009A48] font-bold text-lg">{item.title}</h3>
+        <p className="text-gray-600 text-sm font-medium">Issue: {item.title}</p>
+        {item.content && <p className="text-gray-500 text-sm mt-1">{item.content}</p>}
+      </div>
+      <div className="text-right">
+        <span className="text-gray-400 text-xs block">Date: {item.start_date}</span>
+        {item.support_tag && (
+          <span className="inline-block bg-white border border-gray-200 rounded px-2 py-1 text-xs font-bold text-gray-700 mt-1 shadow-sm">
+            Tag: {item.support_tag}
+          </span>
+        )}
+      </div>
+    </div>
+    {/* Buttons removed as requested */}
+  </div>
+);
+
 export default function LoadAlerts() {
-  const finance = useSelector(state => state.Reducers.alerts)
-  // const matches = useMediaQuery('(min-width:820px)')
-  const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:460px)')
-  const navigate = useNavigate()
-  // 
-  let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const dispatch = useDispatch();
+  const alert = useAlert();
+  const navigate = useNavigate();
 
-  function openModal() {
-    setIsOpen(true);
-  }
+  // Redux State
+  const finance = useSelector(state => state.Reducers.alerts); // Mapped to 'finance' in original but it's alerts
+  const species = useSelector(state => state.Reducers.cat);
+  const tags = useSelector(state => state.Reducers.tags);
 
+  // Local State for Form
+  const [valueMS, setValueMS] = useState(""); // Species Label
+  const [valueBS, setValueBS] = useState(""); // Tag Label
+  const [title, setTitle] = useState(""); // Issue
+  const [content, setContent] = useState(""); // Action
+  const [date, setDate] = useState(""); // Alert Date
+  const [loading, setLoading] = useState(false);
 
-  function finder(list, value) {
-    var dataValue;
+  // Load Data
+  useEffect(() => {
+    dispatch(getAlerts());
+    dispatch(getTags());
+  }, [dispatch]);
+
+  // Helper to filter tags by species
+  function finder(list, speciesLabel) {
+    var dataValue; // Explicitly matching original logic style if needed, though clean version is safer. returning to loose match just in case.
+    if (!speciesLabel) return undefined;
     list?.map(a => {
-      if (value == a.label) {
+      if (speciesLabel == a.label) {
         dataValue = a.data;
       }
     });
     return dataValue;
   }
-  function closeModal() {
-    setIsOpen(false);
-  }
 
-  // 
-  const [Qty, setQty] = React.useState("");
-  const [price, setPrice] = React.useState("");
-  const [valueMS, setValueMS] = useState("");
-  const [valueBS, setValueBS] = useState("");
-  const [Date, setDate] = useState("");
-  const species = useSelector(state => state.Reducers.cat)
-  const tags = useSelector(state => state.Reducers.tags)
-  // const token = useSelector(state => state.Reducers.authToken)
+  // Submit Handler
+  const postAlert = async () => {
+    const id = localStorage.getItem("id");
 
-  // const clean = () => {
-  //   setQty(''), setPrice('');
-  // };
-  const data = JSON.stringify({
-    price: price,
-    category: valueMS,
-    quantity: Qty,
-  });
+    if (title != "" && date != "") {
+      setLoading(true);
+
+      const data = JSON.stringify({
+        "title": title,
+        "content": content,
+        "tag_number": valueBS ? `${id}${valueMS}${valueBS}` : "",
+        "support_tag": valueBS,
+        "start_date": moment(date).format('YYYY-MM-DD'),
+      });
+
+      await axiosIns.post('alerts/', data, {
+        headers: { 'Content-Type': 'application/json' },
+      })
+        .then(Response => {
+          if (Response.status == 201) {
+            dispatch(getAlerts());
+            alert.success("Alert Added Sucessfull"); // Typo match original "Sucessfull"
+            // Reset Form
+            setTitle('');
+            setContent('');
+            setValueBS('');
+            setDate('');
+          } else {
+            alert.error("Internal Server Error");
+          }
+        })
+        .catch(err => {
+          alert.error(err);
+          console.log(err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    } else {
+      alert.error("Required Fields cannot be empty");
+    }
+  };
 
   return (
-    <>
-      <div style={{
-        display: "flex",
-        height: "100vh",
-        width: "100%"
-      }}>
+    <div className="flex h-screen bg-white font-sans overflow-hidden">
+      {/* Sidebar */}
+      <div className="hidden md:block">
         <Sidenav active={'alerts'} />
+      </div>
 
-        <div style={{
-          width: mobile ? matches ? '100%' : "80%" : '100%',
-          // float: "right"
-        }}>
-          <NavBarMain page={'alerts'} />
-          <div style={{
-            // display: "flex",
-            // justifyContent:"center",
-            height: "90vh",
-            width: "100%"
-          }}>
-            <div style={{
-              margin: 'auto'
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col h-screen relative md:ml-64">
+        {/* Using md:ml-64 to offset fixed sidebar if Sidenav is fixed. 
+                 If Sidenav is relative in this new layout, remove marginLeft. 
+                 Based on previous task, Sidenav is fixed. 
+             */}
+        <NavBarMain page={'alerts'} />
 
-            }}>
+        <div className="flex-1 overflow-hidden">
+          <div className="h-full flex flex-col md:flex-row">
 
-              {mobile ?
-                matches ?
-                  <>
-                    <div style={{
+            {/* LEFT COLUMN: ACTIVE ALERTS */}
+            <div className="flex-1 bg-white p-6 overflow-y-auto border-r border-gray-100">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-xl font-bold text-gray-800">Active Alerts</h2>
+                <span className="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full">
+                  {finance ? finance.length : 0} RECORDS FOUND
+                </span>
+              </div>
 
-                      position: 'relative',
-                      // right:10 , 
-                      marginTop: 0,
-                      background: 'none',
-                      cursor: 'pointer',
-                      border: 'none',
-                      borderRadius: 20,
-                      marginLeft: 60,
-                      top: 20
-                    }}>
-
-                      <TextButton label={"Add Alert"}
-                        icon={IMAGES.add}
-                        onPress={() => {
-                          document.getElementById('Addfinance').style.display = "block"
-                        }}
-                      />
-                    </div>
-                    <div style={{
-                      position: 'relative',
-                      // top: '0px',
-                      marginTop: "80px",
-                      // marginLeft:"130px",
-                      width: mobile ? matches ? 400 : 400 : 350,
-                      margin: 'auto',
-                      display: 'none'
-                    }} id='Addfinance'>
-                      <AddFinance />
-                    </div>
-
-
-                    <div style={{ margin: 'auto', display: 'flow' }}>
-
-
-                      <div style={{
-                        position: 'relative',
-                        display: "flex",
-                        height: "auto",
-                        overflowY: 'scroll',
-                        // width: "43%",
-                        overflowX: "hidden",
-                        alignSelf: "center",
-                        backgroundColor: COLORS.layout,
-                        marginTop: 60,
-                        marginLeft: 80
-
-
-                      }}>
-                        <ul style={{
-                          paddingInlineStart: 0,
-                          margin: 'auto',
-                          // height: "100vh"
-
-                        }}>
-                          <FlatList
-                            list={finance}
-                            keyExtractor={item => `${item.id}`}
-                            displayRow
-                            renderItem={(item, index) => {
-                              return (
-                                <Feedcard
-                                  key={item.id}
-                                  Feedname={item.title}
-                                  FeedQty={item.content}
-                                  Feeddate={item.start_date}
-                                  Feedprice={item.support_tag}
-                                />
-                              )
-                            }
-                            }
-                            renderWhenEmpty={() => <div></div>}
-                          />
-                        </ul>
-                      </div>
-
-                    </div>
-                  </>
-                  :
-                  <>
-                    <div style={{
-                      display: 'flex',
-                      flexDirection: "row",
-                      justifyContent: "space-evenly",
-                      // width: "175vh",
-                      // height: "100vh",
-                    }}
-                    >
-                      <div style={{
-                        display: "flex",
-                        height: "85vh",
-                        overflowY: 'scroll',
-                        width: "43%",
-                        overflowX: "hidden",
-                        alignSelf: "center",
-                        top: 0,
-                        position: 'relative'
-
-                      }}>
-                        <ul style={{
-                          paddingInlineStart: 0,
-
-                          // height: "100vh"
-                        }}>
-                          <FlatList
-                            list={finance}
-                            keyExtractor={item => `${item.id}`}
-                            displayRow
-                            renderItem={(item, index) => {
-                              return (
-                                <Feedcard
-                                  key={item.id}
-                                  Feedname={item.title}
-                                  FeedQty={item.content}
-                                  Feeddate={item.start_date}
-                                  Feedprice={item.support_tag}
-                                />
-                              )
-                            }
-                            }
-                            renderWhenEmpty={() => <div></div>}
-                          />
-                        </ul>
-                      </div>
-                      <div style={{
-                        position: "sticky",
-                        top: 50,
-                        marginTop: "0px",
-                        position: 'relative',
-                        right: 60
-                      }}>
-                        <AddFinance />
-                      </div>
-                    </div></>
-
-                :
-                <>
-
-                  <p style={{ ...FONTS.h2, color: COLORS.Primary }}>Finance</p>
-
-
-                  <Modal
-                    isOpen={modalIsOpen}
-                    // onAfterOpen={afterOpenModal}
-                    onRequestClose={closeModal}
-                    // style={customStyles}
-                    // contentLabel="Example Modal"
-                    style={{
-                      overlay: {
-                        position: 'fixed',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        backgroundColor: 'rgba(255, 255, 255, 0.25)',
-                        margin: -40,
-                        // display : 'block'
-                      },
-                      content: {
-                        position: 'absolute',
-                        top: '40px',
-                        left: '40px',
-                        right: '40px',
-                        bottom: '40px',
-                        width: '100%',
-                        backgroundColor: 'rgba(255, 255, 255, 0.25)',
-                        border: '1px solid transparent',
-                        // background: COLORS.Primary,
-                        //   overflow: 'auto',
-                        // WebkitOverflowScrolling: 'touch',
-                        borderRadius: '0 4px 4px 0',
-                        outline: 'none',
-
-                      }
-                    }}
-                  >
-                    <div style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                      alignSelf: "center",
-                      width: '68%',
-                      backgroundColor: COLORS.lightGray2,
-                      padding: "20px",
-                      marginTop: 60,
-                      borderRadius: 10,
-                    }}>
-                      <div style={{
-                        display: 'grid',
-                        justifyItems: 'center'
-                      }}>
-                        <p style={{ ...FONTS.h2, color: COLORS.Primary }}>Add Finance</p>
-                        <DropDown
-                          value={valueMS}
-                          onPress={(e) => {
-                            setValueMS(e.value)
-                          }}
-                          label={"Species*"}
-                          options={species}
-                        />
-                        <DropDown
-                          value={valueBS}
-                          onPress={(x) => {
-                            setValueBS(x.label)
-                          }}
-                          label={"Tags*"}
-                          // options={checking}
-                          options={finder(tags, valueMS)}
-                        />
-                        <InputForm
-                          prependComponent={
-                            <img
-                              src={IMAGES.issue}
-                              style={{
-                                height: 25,
-                                width: 25,
-                                margin: 10,
-                                alignSelf: "center",
-                              }}
-                            />
-                          }
-                          type={"text"}
-                          value={Qty}
-                          label={"Issue?*"}
-                          onChange={(event) => {
-                            setQty(event.target.value);
-                          }}
-                        />
-
-                        <InputForm
-                          prependComponent={
-                            <img
-                              src={IMAGES.what}
-                              style={{
-                                height: 25,
-                                width: 25,
-                                margin: 10,
-                                alignSelf: "center",
-                              }}
-                            />
-                          }
-                          type={"text"}
-                          value={price}
-                          label={"What needs to be Done?*"}
-                          onChange={(event) => {
-                            setPrice(event.target.value);
-                          }}
-                        />
-                        <InputForm
-                          prependComponent={
-                            <img
-                              src={IMAGES.calender}
-                              style={{
-                                height: 25,
-                                width: 25,
-                                margin: 10,
-                                alignSelf: "center",
-                              }}
-                            />
-                          }
-                          type={"date"}
-                          value={Date}
-                          label={"Alert Date*"}
-                          onChange={(event) => {
-                            const d = moment(event.target.value).format("YYYY-MM-DD")
-                            setDate(d);
-                          }}
-                        />
-                        <TextButton
-                          label={"Add Finance"}
-                          icon={IMAGES.update}
-                          onPress={closeModal}
-                        />
-                      </div>
-
-                    </div>
-                  </Modal>
-
-
-
-                  <div style={{ margin: 0, display: 'flow' }}>
-
-
-                    <div style={{
-                      position: 'relative',
-                      display: "flex",
-                      height: "auto",
-                      overflowY: 'scroll',
-                      // width: "43%",
-                      overflowX: "hidden",
-                      alignSelf: "center",
-                      backgroundColor: COLORS.layout,
-                      marginTop: 50,
-                      marginLeft: 0
-
-
-                    }}>
-                      <ul style={{
-                        paddingInlineStart: 0,
-                        margin: 'auto',
-                        // height: "100vh"
-
-                      }}>
-                        <FlatList
-                          list={finance}
-                          keyExtractor={item => `${item.id}`}
-                          displayRow
-                          renderItem={(item, index) => {
-                            return (
-                              <Feedcard
-                                key={item.id}
-                                Feedname={item.title}
-                                FeedQty={item.content}
-                                Feeddate={item.start_date}
-                                Feedprice={item.support_tag}
-                              />
-                            )
-                          }
-                          }
-                          renderWhenEmpty={() => <div></div>}
-                        />
-                      </ul>
-                    </div>
-
+              <div className="space-y-4">
+                {finance && finance.length > 0 ? (
+                  finance.map((item) => (
+                    <AlertCard key={item.id} item={item} />
+                  ))
+                ) : (
+                  <div className="text-center py-20 bg-gray-50 rounded-xl border border-dashed border-gray-200 text-gray-400">
+                    <p>No active alerts found.</p>
                   </div>
-                  <div style={{
+                )}
 
-                    position: 'fixed',
-                    // right:10 , 
-                    marginTop: 0,
-                    background: 'none',
-                    cursor: 'pointer',
-                    border: 'none',
-                    borderRadius: 20,
-                    // marginLeft:60,
-                    bottom: 10,
-                    right: '25%'
-                  }}>
-
-                    <TextButton label={"Add Alerts"}
-                      icon={IMAGES.add}
-                      onPress={openModal}
-                    />
-                  </div>
-                </>
-
-              }
+                {/* Placeholder for "Additional alerts will appear here..." effect */}
+                <div className="h-24 bg-gray-50 rounded-xl border-2 border-dashed border-gray-100 flex items-center justify-center text-gray-300 text-sm italic">
+                  Additional alerts will appear here...
+                </div>
+              </div>
             </div>
+
+            {/* RIGHT COLUMN: SET NEW ALERT */}
+            <div className="w-full md:w-[400px] lg:w-[450px] bg-white p-8 shadow-[-5px_0_30px_-10px_rgba(0,0,0,0.05)] overflow-y-auto z-10">
+              <h2 className="text-xl font-bold text-gray-800 mb-8">Set New Alert</h2>
+
+              <FormSelect
+                label="Species*"
+                placeholder="Select Species"
+                value={valueMS}
+                onChange={(val) => {
+                  setValueMS(val);
+                  setValueBS(""); // Reset tag when species changes
+                }}
+                options={species}
+              />
+
+              <FormSelect
+                label="Tags*"
+                placeholder="Select Animal Tag"
+                value={valueBS}
+                onChange={setValueBS}
+                options={finder(tags, valueMS)}
+              />
+
+              <FormInput
+                label="Issue?*"
+                placeholder="Describe the issue..."
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                icon={IMAGES.issue} // Ensure IMAGES.issue exists or fallback
+              />
+
+              <FormInput
+                label="What needs to be Done?*"
+                placeholder="Required actions..."
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+              />
+
+              <FormInput
+                label="Alert Date*"
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+
+              <button
+                onClick={postAlert}
+                disabled={loading}
+                className="w-full bg-[#009A48] hover:bg-[#007f3b] text-white font-bold py-3 px-4 rounded-lg shadow-md mt-6 flex items-center justify-center transition-all transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading ? <Loading /> : (
+                  <>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+                    </svg>
+                    Add Alert
+                  </>
+                )}
+              </button>
+            </div>
+
           </div>
         </div>
       </div>
-    </>
-
+    </div>
   )
 }
-

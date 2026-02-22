@@ -1,392 +1,235 @@
-import React ,{useState} from 'react'
-import Header from '../../Component/Header'
-import { COLORS, FONTS, formatter, SIZES } from '../../Theme/Theme'
-import { IMAGES } from '../../Theme/Image';
-import { useNavigate, useLocation } from 'react-router-dom';
-import TextButton from '../../Component/TextButton';
-import InputForm from '../../Component/InputForm';
-import DropDown from '../../Component/DropDown/DropDown';
-import { useDispatch, useSelector } from 'react-redux';
-import { checking } from "../../Component/Constants";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import moment from 'moment';
+import { COLORS } from '../../Theme/Theme';
+import { IMAGES } from '../../Theme/Image';
+import { checking } from "../../Component/Constants";
 import useMediaQuery from '../../Component/useMediaQuery';
-import { getAnimal, getMedical } from '../../Store/actions';
-import { useAlert } from 'react-alert';
-import axios from 'axios';
-import { baseURL } from '../../helpers/helpers';
-import AlertCard from '../../Component/AlertCard';
 
-
+// Helper component for Icon + Input/Select
+const InputField = ({ label, icon, type = "text", value, onChange, placeholder, options, disabled, isSelect = false }) => (
+  <div className="flex flex-col space-y-2 w-full">
+    <label className="text-sm font-bold text-gray-700">{label}</label>
+    <div className="relative">
+      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <img src={icon} alt="" className="h-5 w-5 opacity-60" />
+      </div>
+      {isSelect ? (
+        <select
+          value={value}
+          onChange={onChange}
+          disabled={disabled}
+          className="w-full pl-10 pr-8 py-3 bg-white border border-transparent rounded-lg text-gray-700 text-sm focus:ring-2 focus:ring-[#009A48] focus:border-transparent outline-none shadow-sm appearance-none"
+        >
+          <option value="" disabled>Select Option</option>
+          {options && options.map((opt, idx) => (
+            <option key={idx} value={opt.label || opt.value}>{opt.label || opt.value}</option>
+          ))}
+        </select>
+      ) : (
+        <input
+          type={type}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          disabled={disabled}
+          className="w-full pl-10 pr-4 py-3 bg-white border border-transparent rounded-lg text-gray-700 text-sm focus:ring-2 focus:ring-[#009A48] focus:border-transparent outline-none shadow-sm"
+        />
+      )}
+      {isSelect && (
+        <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+          <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+        </div>
+      )}
+    </div>
+  </div>
+);
 
 export default function Edit() {
-    let navigate = useNavigate()
-    // const { state } = useLocation();
-    // const { data, cond } = state;
-    const [name, setName] = useState("");
-    const [valueMS, setValueMS] = useState("");
-    const species = useSelector(state => state.Reducers.cat)
-    const [valueBS, setValueBS] = useState("");
-    const [valueBST, setValueBST] = useState("");
-    const gender = useSelector(state => state.Reducers.gender)
-    const [bought, setBought] = useState('');
-    const [dobt, setDobt] = useState(null);
-    const [price, setPrice] = useState(0);
-    const [weight, setWeight] = useState(0);
-    const unit = useSelector(state => state.Reducers.unit)
-    const [vaccinated, setVaccinated] = useState(false);
-    const [Breed, setBreed] = useState("");
-    const [registration, setRegistration] = React.useState("");
+  const navigate = useNavigate();
 
-    // const { state } = useLocation();
-    // const { data, cond } = state;
-    // const dispatch = useDispatch()
-    // React.useEffect(() => {
-    //   dispatch(getAnimal(data.tag_number))
-    //   dispatch(getMedical(data.tag_number))
-    // }, [])
-    // const alert = useAlert()
-    // const med = useSelector(state => state.Reducers.med)
-    // const animal = useSelector(state => state.Reducers.animal)
-    // const token = useSelector(state => state.Reducers.authToken)
-  
-   
-    // const [profile_pic, setprofile_pic] = React.useState([]);
-    // const [loading, setLoading] = React.useState(false);
-    // const [valueS, setValueS] = useState("");
-    // const [valueF, setValueF] = useState("");
-  
-    // const onChange = (imageList) => {
-    //   setprofile_pic(imageList);
-    // };
-    // const updateProfile=()=>{
-    //   setLoading(true)
-    //   const formData = new FormData();
-    //   formData.append('animal_image', profile_pic.length===0? [] : profile_pic[0]['file']);
-    //   const config = {
-    //     headers: {
-    //       Authorization: `Bearer ${token}`,
-    //       "Content-type": "multipart/form-data",
-    //     },
-    //   };
-    //   axios.patch(baseURL + `/animals/${animal?.tag_number}`, formData, config)
-    //       .then(response => {
-    //         if (response.status == 200) {
-    //           setLoading(false);
-    //           dispatch(getAnimal(data.tag_number))
-    //           alert.success(<AlertCard msg={"Profile Pic Sucessfully"} type={true} />)
-    //         }
-    //         else {
-    //           alert.error(<AlertCard msg={"Internal server error"} type={false} />)
-    //           setLoading(false);
-    //         }
-    //       })
-    //       .catch(err => {
-    //         setLoading(false);
-    //         alert.error(<AlertCard msg={err} type={false} />)
-    //       });
-    // }
-//
-const matches = useMediaQuery('(min-width:820px)')
+  // State
+  const [name, setName] = useState("");
+  const [valueMS, setValueMS] = useState("");
+  const [valueBS, setValueBS] = useState(""); // gender type
+  const [valueBST, setValueBST] = useState(""); // gender label
+  const [bought, setBought] = useState('');
+  const [dobt, setDobt] = useState("");
+  const [price, setPrice] = useState(0);
+  const [weight, setWeight] = useState(0);
+  const [vaccinated, setVaccinated] = useState("");
+  const [Breed, setBreed] = useState("");
+  const [registration, setRegistration] = useState("");
 
-// 
-function finder(list, value) {
-  var dataValue;
-  list?.map(a => {
-    if (value == a.label) {
-      dataValue = a.data;
-    }
-  });
-  return dataValue;
-}
-// 
+  // Redux
+  const species = useSelector(state => state.Reducers.cat);
+  const gender = useSelector(state => state.Reducers.gender);
+  const unit = useSelector(state => state.Reducers.unit);
 
+  const matches = useMediaQuery('(min-width:820px)');
 
-    return (
-    <>
-    <div>
-    <Header
-    
-    leftcomponent={
-        <>
-          <div style={{
-            display: "flex",
-            justifyContent: "center",
-            height: 40,
-            width: 40,
-            backgroundColor: COLORS.Primary,
-            alignSelf: "center",
-            borderRadius: 20
-          }}
-            onClick={() => {
-              navigate(-1)
-            }}
-          >
-            <img src={IMAGES.back} alt={"back"}
-              style={{
-                height: 25,
-                width: 25,
-                alignSelf: "center",
-              }} />
-          </div>
-        </>
+  // Logic for Gender based on Species
+  function finder(list, value) {
+    let dataValue = [];
+    list?.forEach(a => {
+      if (value === a.label) {
+        dataValue = a.data;
       }
-    title={'Edit'}
-    rightcomponent={
-        <>
-        <div style={{width:30}}>
+    });
+    return dataValue || [];
+  }
 
-        </div>
-        </>
-    }
-    />
-    </div>
-
-    <div style={{ display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        marginTop: "5px", 
-        
-        marginBottom:50}}>
-    <div style={{ paddingTop: "20px",
-            backgroundColor: COLORS.lightGray2,
-            width: "80%",
-            borderRadius: SIZES.radius,
-            alignItems: "center"}}>
-
-<div
-     style={{
-            display: matches ? "flex" : 'grid',
-             justifyContent: matches ? "space-evenly" : 'space-around'
-             }}
-                >
-    {/*  */}
-    <InputForm
-              prependComponent={
-                <img
-                  src={IMAGES.name}
-                  style={{
-                    height: 25,
-                    width: 25,
-                    margin: 10,
-                    alignSelf: "center",
-                  }}
-                  />
-
-                }
-              value={name}
-              label={"Name*"}
-              onChange={(event) => {
-                setName(event.target.value);
-              }}
-            />
-
-
-    {/*  */}
-    <DropDown
-              value={valueMS}
-              onPress={(x)=>{
-                setValueMS(x.label)
-              }}
-              label={"Species*"}
-              // options={checking}
-              options={species}
-            />
-
-            </div>
-    {/*  */}
-    <div
-     style={{
-            display: matches ? "flex" : 'grid',
-             justifyContent: matches ? "space-evenly" : 'space-around'
-             }}
-                >
-    <DropDown
-              value={valueBST}
-              onPress={(x)=>{
-                setValueBST(x.label)
-                setValueBS(x.type)
-              }}
-              label={"Gender*"}
-              options={finder(gender,valueMS)}
-            />
-    {/*  */}
-    <DropDown
-              value={bought}
-              onPress={(x)=>{
-                setBought(x.label)
-              }}
-              label={"Purchased*"}
-              options={checking}
-            />
-    </div>
-    {/*  */}
-    <div
-     style={{
-            display: matches ? "flex" : 'grid',
-             justifyContent: matches ? "space-evenly" : 'space-around'
-             }}
-                >
-    <InputForm
-                    prependComponent={
-                      <img
-                        src={IMAGES.money}
-                        style={{
-                          height: 25,
-                          width: 25,
-                          margin: 10,
-                          alignSelf: "center",
-                        }}
-                      />
-                    }
-                    type={"text"}
-                    value={price}
-                    label={"Price"}
-                    onChange={(event) => {
-                      setPrice(event.target.value);
-                    }}
-                  />
-    {/*  */}
-    <InputForm
-                    prependComponent={
-                      <img
-                        src={IMAGES.calender}
-                        style={{
-                          height: 25,
-                          width: 25,
-                          margin: 10,
-                          alignSelf: "center",
-                        }}
-                      />
-                    }
-                    type={"date"}
-                    value={dobt}
-                    label={"Date of Purchased"}
-                    onChange={(event) => {
-                      const d = moment(event.target.value).format("YYYY-MM-DD")
-                      setDobt(d);
-                    }}
-                  />
+  return (
+    <div className="flex h-screen bg-gray-50 flex-col font-sans">
+      {/* Header */}
+      <div className="bg-white px-6 py-4 flex items-center shadow-sm sticky top-0 z-10">
+        <button
+          onClick={() => navigate(-1)}
+          className="h-10 w-10 bg-[#009A48] rounded-full flex items-center justify-center shadow-md hover:bg-[#007f3b] transition-colors mr-4"
+        >
+          <img src={IMAGES.back} alt="back" className="h-6 w-6 brightness-0 invert" style={{ filter: 'brightness(0) invert(1)' }} />
+        </button>
+        <h1 className="text-2xl font-bold text-gray-900">Edit</h1>
       </div>
-    {/*  */}
-    <div
-     style={{
-            display: matches ? "flex" : 'grid',
-             justifyContent: matches ? "space-evenly" : 'space-around'
-             }}
-                >
-    <InputForm
-                    prependComponent={
-                      <img
-                        src={IMAGES.age}
-                        style={{
-                          height: 25,
-                          width: 25,
-                          margin: 10,
-                          alignSelf: "center",
-                        }}
-                      />
-                    }
-                    type={"text"}
-                    value={''}
-                    label={"Age"}
-                    onChange={(event) => {
-                      // setAge(event.target.value);
-                    }}
-                  />
 
-    {/*  */}
-    <InputForm
-                    prependComponent={
-                      <img
-                        src={unit ? IMAGES.lbs : IMAGES.scale}
-                        style={{
-                          height: 25,
-                          width: 25,
-                          margin: 10,
-                          alignSelf: "center",
-                        }}
-                      />
-                    }
-                    type={"number"}
-                    value={weight}
-                    label={"Weight"}
-                    onChange={(event) => {
-                      setWeight(event.target.value);
-                    }}
-                  />
-          </div>
-    {/*  */}
-    <div
-     style={{
-            display: matches ? "flex" : 'grid',
-             justifyContent: matches ? "space-evenly" : 'space-around'
-             }}
-                >
-    <DropDown
-                    value={vaccinated}
-                    onPress={(x)=>{
-                      setVaccinated(x.label)
-                    }}
-                    label={"Vaccinated"}
-                    options={checking}
-                  />
-    {/*  */}
-    <InputForm
-                    prependComponent={
-                      <img
-                        src={IMAGES.dog}
-                        style={{
-                          height: 25,
-                          width: 25,
-                          margin: 10,
-                          alignSelf: "center",
-                        }}
-                      />
-                    }
-                    type={"text"}
-                    value={Breed}
-                    label={"Breed"}
-                    onChange={(event) => {
-                      setBreed(event.target.value);
-                    }}
-                  />
-        </div>
-    {/*  */}
-    
-    <InputForm
-                    prependComponent={
-                      <img
-                        src={IMAGES.name}
-                        style={{
-                          height: 25,
-                          width: 25,
-                          margin: 10,
-                          alignSelf: "center",
-                        }}
-                      />
-                    }
-                    type={"text"}
-                    value={registration}
-                    label={"# Registration"}
-                    onChange={(event) => {
-                      setRegistration(event.target.value);
-                    }}
-                  />  
-    {/*  */}
-    </div>
-    
-    <TextButton
-              label={"Update"}
-              icon={IMAGES.update}
-            
-              buttonContainerStyle={{
-                marginTop: "20px",
+      {/* Content Form */}
+      <div className="flex-1 overflow-y-auto p-4 md:p-8 flex justify-center">
+        <div className="bg-[#EAECEF] w-full max-w-4xl rounded-2xl p-6 md:p-10 shadow-sm h-fit">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+
+            {/* Name */}
+            <InputField
+              label="Name*"
+              icon={IMAGES.name}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+
+            {/* Species */}
+            <InputField
+              label="Species*"
+              icon={IMAGES.dog} // Assuming generic animal icon if species specific not avail
+              isSelect
+              value={valueMS}
+              options={species}
+              onChange={(e) => {
+                setValueMS(e.target.value);
+                setValueBST("");      // Reset gender on species change
+                setValueBS("");
               }}
             />
+
+            {/* Gender */}
+            <InputField
+              label="Gender*"
+              icon={IMAGES.name} // Or specific gender icon if available
+              isSelect
+              value={valueBST}
+              options={finder(gender, valueMS)}
+              onChange={(e) => {
+                const selected = finder(gender, valueMS).find(opt => opt.label === e.target.value);
+                setValueBST(e.target.value);
+                if (selected) setValueBS(selected.type);
+              }}
+            />
+
+            {/* Purchased */}
+            <InputField
+              label="Purchased*"
+              icon={IMAGES.money}
+              isSelect
+              value={bought}
+              options={checking}
+              onChange={(e) => setBought(e.target.value)}
+            />
+
+            {/* Price */}
+            <InputField
+              label="Price"
+              icon={IMAGES.money}
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+
+            {/* Date of Purchased */}
+            <InputField
+              label="Date of Purchased"
+              icon={IMAGES.calender}
+              type="date"
+              value={dobt}
+              onChange={(e) => {
+                const d = moment(e.target.value).format("YYYY-MM-DD");
+                setDobt(d);
+              }}
+            />
+
+            {/* Age */}
+            <InputField
+              label="Age"
+              icon={IMAGES.age}
+              // placeholder="e.g. 2 years"
+              value={""} // Logic from original was empty
+              onChange={() => { }}
+            />
+
+            {/* Weight */}
+            <InputField
+              label="Weight"
+              icon={unit ? IMAGES.lbs : IMAGES.scale}
+              type="number"
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+            />
+
+            {/* Vaccinated */}
+            <InputField
+              label="Vaccinated"
+              icon={IMAGES.name} // Or appropriate icon
+              isSelect
+              value={vaccinated}
+              options={checking}
+              onChange={(e) => setVaccinated(e.target.value)}
+            />
+
+            {/* Breed */}
+            <InputField
+              label="Breed"
+              icon={IMAGES.dog}
+              placeholder="e.g. Angus"
+              value={Breed}
+              onChange={(e) => setBreed(e.target.value)}
+            />
+
+          </div>
+
+          {/* Registration - Full Width */}
+          <div className="mt-8 flex justify-center">
+            <div className="w-full md:w-1/2">
+              <InputField
+                label="# Registration"
+                icon={IMAGES.name} // Or proper icon
+                placeholder="Enter registration number"
+                value={registration}
+                onChange={(e) => setRegistration(e.target.value)}
+              />
+            </div>
+          </div>
+
+          {/* Update Button */}
+          <div className="mt-10 flex justify-center">
+            <button
+              className="bg-[#009A48] hover:bg-[#007f3b] text-white font-bold py-3 px-12 rounded-lg shadow-md flex items-center transition-transform transform hover:-translate-y-1"
+            >
+              <img src={IMAGES.update} alt="update" className="w-5 h-5 mr-3 brightness-0 invert" style={{ filter: 'brightness(0) invert(1)' }} />
+              Update
+            </button>
+          </div>
+
+        </div>
+      </div>
     </div>
-    
-    </>
-  )
+  );
 }
 

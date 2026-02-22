@@ -1,15 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
 import NavBarMain from '../../Component/Nav/navmain'
 import { IMAGES } from '../../Theme/Image'
-import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
-import FlatList from 'flatlist-react'
 import Sidenav from '../../Component/Nav/sidenav'
 import { useDispatch } from 'react-redux'
 import { getSpecies, getTags } from '../../Store/actions'
 import useMediaQuery from '../../Component/useMediaQuery'
-// import Modal_side from '../../Component/Nav/Modal_side'
+
 export default function Add() {
   const data = [
     {
@@ -45,185 +42,68 @@ export default function Add() {
     },
   ]
   const dispatch = useDispatch()
-
   const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:460px)')
-
 
   React.useEffect(() => {
     dispatch(getSpecies())
     dispatch(getTags())
   }, [])
-  function Cards({
-    Name,
-    img,
-    onPress,
-    Path,
-  }) {
-    return (
-      <>
-        <Link to={Path}>
-          <button
-            style={{
-              backgroundColor: COLORS.lightGray2,
-              height: mobile ? matches ? 250 : 250 : 150,
-              margin: SIZES.padding,
-              borderRadius: SIZES.radius,
-              // flexDirection:"column",
-              borderWidth: 0,
-              justifyContent: "space-evenly",
-              shadowColor: COLORS.Primary,
-              shadowOffset: { width: 0, height: 0 },
-              shadowOpacity: 0.5,
-              shadowRadius: 10,
-              elevation: 2,
-              width: mobile ? matches ? 230 : 230 : 145,
-              cursor: 'pointer',
-              boxShadow: '0px 0px 15px -4px #888181',
-            }}
-            onClick={onPress}
-          >
-            {/* <img src={IMAGES.rightone} style={{ height: 20, width: 20,alignSelf:"center",marginLeft:200,marginTop:10 }} /> */}
-            <img src={img} alt={Name}
-              style={{
-                marginTop: mobile ? matches ? 0 : 0 : 10,
-                height: mobile ? matches ? 100 : 100 : 40,
-                width: mobile ? matches ? 100 : 100 : 40,
-                alignSelf: "center"
-              }} />
-            <div>
-              <div style={{
-                textAlign: 'center'
-              }}>
-                {
-                  mobile ? matches ? <p style={{ ...FONTS.h3, margin: 20 }}>{Name}</p> :
-                    <p style={{ ...FONTS.h3, margin: 20 }}>{Name}</p> :
-                    <p style={{ ...FONTS.h5, margin: 10 }}>{Name}</p>
-                }
-                {/* <p style={{...FONTS.h4}}>{global.unit?`${Weight} lbs`:`${weight_kg} kg`}</p> */}
-              </div>
-              <div style={{
-                display: "flex",
-                flexFlow: "column"
-              }}>
-                {/* <img src={Gender=="Male"? IMAGES.male:IMAGES.female} style={{ height: 50, width: 50,marginTop:25}} /> */}
-              </div>
-            </div>
 
+  // Action Card Component
+  const ActionCard = ({ label, image, path }) => (
+    <Link to={path} className="block">
+      <div className="w-48 h-48 bg-gray-50 hover:bg-white border border-gray-100 rounded-3xl flex flex-col items-center justify-center p-4 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer">
+        <div className="relative mb-4">
+          {/* Main Icon */}
+          <img src={image} alt={label} className="w-12 h-12 object-contain opacity-80" />
 
-
-          </button></Link>
-      </>)
-  }
-  function Adds() {
-    return (
-      <div style={{
-        display: "flex",
-        height: "100vh",
-        width: "100%"
-      }}>
-
-        <Sidenav />
-        <div style={{
-          width: matches ? '100%' : '80%',
-          float: "right"
-        }}>
-          <NavBarMain page={'add'} />
-          <div style={{
-            overflowY: 'scroll',
-            height: "90vh",
-            paddingInlineStart: 0,
-            marginBottom: "50px"
-          }}>
-            <FlatList
-              list={data}
-              keyExtractor={item => `${item.id}`}
-              renderItem={(item, index) => {
-                return (
-                  <>
-                    <Cards
-                      key={item.id}
-                      img={item.image}
-                      Name={item.label}
-                      Path={item.nav}
-                    />
-                  </>
-                )
-              }
-              }
-              renderWhenEmpty={() => <div></div>}
-            />
+          {/* Green Plus Badge */}
+          <div className="absolute -bottom-1 -right-1 bg-[#009A48] text-white rounded-full w-5 h-5 flex items-center justify-center border-2 border-white shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clipRule="evenodd" />
+            </svg>
           </div>
         </div>
+        <p className="text-gray-900 font-bold text-center text-sm px-2 leading-tight">
+          {label}
+        </p>
       </div>
-    )
-  }
+    </Link>
+  );
+
+
+  const MainContent = () => (
+    <div className="p-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-wrap gap-8 justify-center lg:justify-start">
+          {data.map((item) => (
+            <ActionCard
+              key={item.id}
+              label={item.label}
+              image={item.image}
+              path={item.nav}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 
   return (
-    <>
-      {
-        mobile ? matches ?
+    <div className="flex h-screen w-full bg-white">
+      {/* Sidebar */}
+      <Sidenav />
 
-          <>
-            <Adds />
-          </>
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col h-screen overflow-hidden lg:ml-64 pt-16 lg:pt-0">
+        <NavBarMain page={'add'} />
 
-          :
-          <>
-            <Adds />
-          </>
-
-          : <>
-
-            <div style={{
-              display: "flex",
-              height: "100vh",
-              width: "100%"
-            }}>
-              <Sidenav />
-              <div style={{
-                width: "80%",
-                float: "right"
-              }}>
-                <NavBarMain page={'add'} />
-
-                {
-                  mobile ? matches ? null : null :
-                    <>
-                      <p style={{ ...FONTS.h2, color: COLORS.Primary }}>Add</p>
-                    </>
-                }
-                <div style={{
-                  overflowY: 'scroll',
-                  height: "90vh",
-                  paddingInlineStart: 0,
-                  marginBottom: "50px",
-                  marginTop: 10
-                }}>
-                  <FlatList
-                    list={data}
-                    keyExtractor={item => `${item.id}`}
-                    renderItem={(item, index) => {
-                      return (
-                        <>
-                          <Cards
-                            key={item.id}
-                            img={item.image}
-                            Name={item.label}
-                            Path={item.nav}
-                          />
-                        </>
-                      )
-                    }
-                    }
-                    renderWhenEmpty={() => <div></div>}
-                  />
-                </div>
-              </div>
-            </div>
-          </>
-      }
-    </>
+        <div className="flex-1 overflow-y-auto bg-white">
+          <MainContent />
+        </div>
+      </div>
+    </div>
   )
 }
+
 

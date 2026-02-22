@@ -1,137 +1,78 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import NavBarMain from "../../Component/Nav/navmain";
-import { IMAGES } from '../../Theme/Image';
-import { COLORS, FONTS, SIZES } from '../../Theme/Theme';
-import './report.css'
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { baseURL } from '../../helpers/helpers';
-import FlatList from 'flatlist-react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { getReports } from '../../Store/actions';
 import Sidenav from '../../Component/Nav/sidenav';
+import NavBarMain from "../../Component/Nav/navmain";
 import Loading from '../../Component/Loading';
-import Header from '../../Component/Header';
-import useMediaQuery from '../../Component/useMediaQuery';
-
 
 export default function Report() {
-  const access = useSelector(state => state.Reducers.authToken)
-  let navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const access = useSelector(state => state.Reducers.authToken);
+  const reports = useSelector(state => state.Reducers.reports);
 
-  React.useEffect(() => {
-    dispatch(getReports(access))
-  }, []);
-  const reports = useSelector(state => state.Reducers.reports)
+  useEffect(() => {
+    dispatch(getReports(access));
+  }, [dispatch, access]);
 
-  const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:460px)') 
-
-  function Altcards({
-    altname,
-    img,
-    onPress,
-    Path,
-  }) {
-    return (
-      <>
-        <button
-          style={{
-            backgroundColor: 'rgb(227,227,227)',
-            height: mobile ? matches ? 250 : 250 : 160,
-            margin: mobile ? matches ? SIZES.padding : SIZES.padding : 10,
-            borderRadius: SIZES.radius,
-            cursor: "pointer",
-            borderWidth: 0,
-            justifyContent: "space-evenly",
-            boxShadow: '0px 0px 15px -4px #888181',
-            elevation: 2,
-            width: mobile ? matches ? 230 : 230 : 150,
-          }}
-          onClick={onPress}
-        >
-          {/* <img src={IMAGES.rightone} style={{ height: 20, width: 20,alignSelf:"center",marginLeft:200,marginTop:10 }} /> */}
-          <img src={img} alt={''} style={{ height:mobile ? matches ? 80 : 80 : 45, 
-                                          width: mobile ? matches ? 80 : 80 : 45, 
-                                          alignSelf: "center" }} />
-          <div style={{
-            textAlign: 'center'
-          }}>
-            <p style={{ ...FONTS.h3, margin: 20 }}>{altname}</p>
-          </div>
-
-
-
-        </button>
-
-      </>
-    )
-  }
-
-
-  return (
-    <>
-      <div style={{
-        display: "flex",
-        height:"100vh",
-        width:"100%",
-        // justifyContent:"center"
-      }}>
-        <Sidenav active={"Report"}/>
-        <div style={{
-          width:mobile ? matches ? '100%' : '90%' : '100%',
-          float:"right",
-        }}>
-          <NavBarMain page={"report"}/>
-          
-            
-            <>
-            <p style={{...FONTS.h2 , color: COLORS.Primary}}>Report</p>
-            </>
-          
-          {/* <Header
-          title={"Reports Section"}
-         
-        /> */}
-        <ul style={{
-          overflowY: 'scroll',
-          height: mobile ? matches ? "80vh" : "80vh" : '100%',
-          paddingInlineStart: 0,
-          marginInlineStart:"0px",
-          marginBlockStart:"0px",
-          marginTop: mobile ? matches ? 0: 0: 25
-        }}>
-          <FlatList
-            list={reports}
-            keyExtractor={item => `${item.id}`}
-            renderItem={(item, index) => {
-              return (
-                <>
-                  <Altcards
-                    key={item.id}
-                    img={item.image}
-                    altname={item.name}
-                    onPress={() => {
-                      navigate('/reportop', {
-                        state: { api: item.api, label: item.name }
-                      })
-                    }}
-                  />
-                </>
-              )
-
-            }
-            }
-            renderWhenEmpty={() => (<Loading/> )}
-
-          />
-        </ul>
-        </div>
+  // Internal Card Component
+  const ReportItem = ({ item }) => (
+    <div
+      onClick={() => {
+        navigate('/reportop', {
+          state: { api: item.api, label: item.name }
+        });
+      }}
+      className="bg-gray-100 hover:bg-gray-200 cursor-pointer rounded-2xl p-6 flex flex-col items-center justify-center aspect-square shadow-sm hover:shadow-md transition-all transform hover:-translate-y-1"
+    >
+      {/* Icon Container */}
+      <div className="flex-1 flex items-center justify-center">
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-16 h-16 md:w-20 md:h-20 object-contain"
+        />
       </div>
 
-    </>
-  )
+      {/* Title */}
+      <div className="mt-4">
+        <h3 className="text-gray-900 font-bold text-base md:text-lg text-center">
+          {item.name}
+        </h3>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="flex h-screen bg-white font-sans overflow-hidden">
+      {/* Sidebar */}
+      <Sidenav active={'Report'} />
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col h-screen relative lg:ml-64 pt-16 lg:pt-0">
+        <NavBarMain page={'report'} />
+
+        <div className="flex-1 overflow-y-auto p-6 md:p-8">
+          <h1 className="text-2xl font-bold text-[#009A48] mb-8">Report</h1>
+
+          {reports && reports.length > 0 ? (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {reports.map((item) => (
+                <ReportItem key={item.id} item={item} />
+              ))}
+            </div>
+          ) : (
+            <div className="h-full w-full flex items-center justify-center">
+              {/* Show loading if strictly empty (or could be empty list). 
+                             Original just showed Loading when empty. */}
+              <Loading />
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
+
 

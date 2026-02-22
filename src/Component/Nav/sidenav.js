@@ -1,495 +1,172 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { IMAGES } from '../../Theme/Image'
-import { COLORS, FONTS } from '../../Theme/Theme'
-import './Navbar.css'
 import { useDispatch, useSelector } from "react-redux";
-import FlatList from 'flatlist-react'
-import { baseURL } from '../../helpers/helpers'
-import LineDivider from '../LineDivider'
-import Loading from '../Loading'
 import { getSpecies, getTags, UserData } from '../../Store/actions'
-
-
-// import { useAlert } from 'react-alert'
-// import { render } from 'react-dom'
-import { transitions, positions, types, Provider as AlertProvider } from 'react-alert'
-
-// import Media from 'react-responsive'
-
-import useMediaQuery from '../useMediaQuery'
 import Modal from 'react-modal';
 
-// Modal.setAppElement('HERDHELPWEB');
 export default function Sidenav({
   active
 }) {
-  // 
-  let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
     setIsOpen(true);
   }
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#000000c4';
-  }
-
   function closeModal() {
     setIsOpen(false);
   }
 
-  // 
   const dispatch = useDispatch()
   React.useEffect(() => {
     dispatch(getSpecies(), getTags(), UserData())
   }, [])
   const user = useSelector(state => state.Reducers.userData)
-  const overview = useSelector(state => state.Reducers.overview)
-  const options = {
-    offset: '30px',
-    position: positions.TOP_CENTER,
-    timeout: 0,
-    transition: transitions.SCALE,
-    type: types.SUCCESS,
 
-  }
-
-  const matches = useMediaQuery('(max-width:820px)')
-  const mobile = useMediaQuery('(min-width:460px)')
-
-
+  // Reusable Side Menu Item Component
   function Sidemenu({ img, label, path, onPress }) {
+    const isActive = active === label;
     return (
-      <>
-
-
-        <Link to={path} style={{ textDecoration: 'none', margin: 0, left: 20 }}>
-          <button style={{
-            width: '100%',
-            height: 45,
-            display: 'flex',
-            flexDirection: "row",
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            alignItems: "center",
-
-          }}
-            onClick={onPress}
-          >
-            <img src={img}
-              alt="logo"
-              style={{
-                width: 25,
-                height: 25,
-
-              }} />
-            <p style={{
-              color: label === 'Logout' ? COLORS.red : COLORS.white,
-              ...FONTS.body3,
-              padding: '10px',
-
-
-            }}>{label}</p>
-            {
-              active == label ?
-
-                <img src={IMAGES.sideback}
-                  alt="logo"
-                  style={{
-                    width: 25,
-                    height: 25,
-                    marginLeft: 195,
-                    position: "fixed",
-                    justifyContent: "center"
-                  }} /> : null}
-          </button></Link>
-      </>
+      <Link to={path} onClick={onPress} className="w-full no-underline block mb-2">
+        <div className={`
+          flex items-center px-6 py-3 cursor-pointer transition-colors duration-200
+          ${isActive ? 'bg-white/20 border-r-4 border-white' : 'hover:bg-white/10'}
+        `}>
+          <img
+            src={img}
+            alt="icon"
+            className="w-6 h-6 object-contain mr-4 brightness-0 invert" // Make icons white
+          />
+          <span className={`text-white font-medium text-base`}>
+            {label}
+          </span>
+        </div>
+      </Link>
     )
   }
 
+  // Sidebar Content Logic
+  const SidebarContent = ({ isMobile }) => (
+    <div className="flex flex-col h-full bg-[#009A48]">
+      {/* Close button for mobile modal */}
+      {isMobile && (
+        <button
+          onClick={closeModal}
+          className="absolute top-4 right-4 p-2 rounded-full hover:bg-white/20 text-white"
+        >
+          <img src={IMAGES.close} alt="close" className="w-6 h-6 brightness-0 invert" />
+        </button>
+      )}
 
+      {/* User Profile Section */}
+      <Link to={'/profile'} className="no-underline">
+        <div className="flex flex-col items-center mt-10 mb-8 px-6">
+          <img
+            src={user?.profile_picture || `https://ui-avatars.com/api/?name=${user?.username || 'User'}`}
+            alt="Profile"
+            className="w-20 h-20 rounded-full border-4 border-white/30 mb-4 object-cover"
+          />
+          <div className="text-center">
+            <h3 className="text-white font-bold text-lg leading-tight">
+              {user?.fullname || 'Guest'}
+            </h3>
+            <p className="text-green-100 text-sm mt-1">
+              {user?.farm_name}
+            </p>
+            <p className="text-green-200 text-xs">
+              @{user?.username}
+            </p>
+          </div>
+        </div>
+      </Link>
+
+      {/* Navigation Links */}
+      <div className="flex-1 overflow-y-auto">
+        {/* Mobile-only Links that are usually in Top Nav */}
+        <div className="lg:hidden">
+          <div className="border-t border-white/20 my-2 mx-6"></div>
+          <Sidemenu img={IMAGES.home} label={'Herds'} path={'/'} />
+          <Sidemenu img={IMAGES.add} label={'Add'} path={'/add'} />
+          <Sidemenu img={IMAGES.coin} label={'Finance'} path={'/finance'} />
+          <Sidemenu img={IMAGES.file} label={'Report'} path={'/report'} />
+        </div>
+
+        <div className="border-t border-white/20 my-2 mx-6"></div>
+        <Sidemenu img={IMAGES.file} label={'Report'} path={'/report'} />
+        <Sidemenu img={IMAGES.weight} label={'Weight History'} path={'/weighthistory'} />
+        <Sidemenu img={IMAGES.parents} label={'Parents'} path={'/parents'} />
+
+        <div className="mt-auto pointer-events-none h-4"></div> {/* Spacer */}
+      </div>
+
+      {/* Bottom Section */}
+      <div className="mt-auto pb-8">
+        <div className="border-t border-white/20 mb-4 mx-6"></div>
+        <Sidemenu img={IMAGES.setting} label={'Setting'} path={'/setting'} />
+        <Sidemenu
+          img={IMAGES.logout}
+          label={'Logout'}
+          path={'/'}
+          onPress={() => {
+            localStorage.clear()
+            window.location.reload(false)
+          }}
+        />
+      </div>
+    </div>
+  );
 
   return (
     <>
-      {
-
-        matches ? <button style={{
-          width: 40,
-          height: 40,
-          position: 'absolute',
-          border: 'none',
-          borderRadius: 20,
-          margin: 20,
-          backgroundColor: COLORS.Primary,
-          cursor: 'pointer'
-        }}
-          onClick={openModal} > <img alt='' src={IMAGES.menu} style={{ width: 22, height: 22 }} /></button> :
-          <div style={{
-            position: 'fixed',
-            height: '100%',
-            backgroundColor: COLORS.Primary,
-            textDecorationColor: COLORS.black,
-            cursor: "pointer",
-            position: matches ? 'relative' : "sticky",
-            display: 'flex',
-            backgroundColor: COLORS.Primary,
-            textDecorationColor: COLORS.black,
-            cursor: "pointer",
-            width: 250,
-            // left:'-100%'
-          }}
-            id='Sidenav'
+      {/* Mobile Header - Visible only on small screens (< lg) */}
+      <div className="fixed top-0 left-0 w-full h-16 bg-[#009A48] z-[60] flex items-center px-4 shadow-md lg:hidden justify-between">
+        <div className="flex items-center">
+          <button
+            onClick={openModal}
+            className="p-2 -ml-2 rounded-full hover:bg-white/10 text-white mr-3 transition-colors"
           >
-            {matches ? <button style={{
-              width: 40,
-              height: 40,
-              position: 'absolute',
-              right: 0,
-              background: 'none',
-              cursor: 'pointer',
-              border: '1px solid black',
-              borderRadius: 20
-            }}
-              onClick={closeModal} > <img alt='' src={IMAGES.close} /> </button> : null}
+            <img src={IMAGES.menu} alt="menu" className="w-6 h-6 brightness-0 invert" />
+          </button>
+          <h1 className="text-white font-bold text-xl tracking-tight">HerdHelp</h1>
+        </div>
+      </div>
 
+      {/* Desktop Fixed Sidebar - Visible only on large screens (>= lg) */}
+      <div className="fixed top-0 left-0 w-64 h-full z-50 shadow-xl hidden lg:block">
+        <SidebarContent isMobile={false} />
+      </div>
 
-            <Link to={'/profile'} style={{ width: 250, height: 100, position: 'absolute', top: matches ? 40 : 0 }}>
-              <div style={{ height: 100, width: 207, position: 'absolute', top: matches ? 0 : 0, display: 'flex', justifyContent: 'space-evenly' }}>
-                <img
-                  src={user?.profile_picture == null ? `https://ui-avatars.com/api/?name=${user?.username}` : user?.profile_picture}
-                  alt={"Pro"}
-                  style={{
-                    position: 'absolute',
-                    width: 60,
-                    height: 60,
-                    left: 10,
-                    top: 19,
-                    borderRadius: 30
-
-                  }}
-                />
-                <div style={{
-                  // lineheight: 26,
-                  display: 'flex',
-                  flexDirection: "column",
-                  alignitems: 'center',
-                  textalign: 'center',
-                  texttransform: 'capitalize',
-                  textAlign: 'left',
-                  width: 250,
-                  height: 50,
-                  // backgroundColor :COLORS.layout
-
-                  // width: 'fit-content',
-                }}>
-                  <p style={{
-                    position: 'absolute',
-                    height: 26,
-                    left: 85,
-                    top: 5,
-                    ...FONTS.h3,
-                    color: COLORS.white
-                  }} >{user?.fullname}</p>
-                  <p style={{
-                    position: 'absolute',
-                    // width: 100,
-                    height: 26,
-                    left: 85,
-                    top: 24,
-                    ...FONTS.h3,
-                    color: COLORS.white
-                  }} >{user?.farm_name}</p>
-                  <p style={{
-                    position: 'absolute',
-                    // width: 65,
-                    height: 26,
-                    left: 85,
-                    top: 45,
-                    ...FONTS.h3,
-                    color: COLORS.white
-                  }} >@{user?.username}</p>
-                </div>
-              </div>
-            </Link>
-
-
-            <div style={{
-              flexDirection: "column",
-              marginTop: matches ? 130 : 100,
-              paddingLeft: '15px',
-            }}>
-
-              {/* <Sidemenu
-                      img={IMAGES.file}
-                      label={'Report'}
-                      path={'/report'}
-                    /> */}
-              {/* <hr style={{
-                      border: '1px solid black' ,
-                      top: '1%',
-                      position: 'relative',
-                      width: '100%',
-                    }}>
-                    </hr> */}
-              <Sidemenu
-                img={IMAGES.file}
-                label={'Report'}
-                path={'/report'}
-              />
-              <Sidemenu
-                img={IMAGES.weight}
-                label={'Weight History'}
-                path={'/weighthistory'}
-              />
-              <Sidemenu
-                img={IMAGES.parents}
-                label={'Parents'}
-                path={'/parents'}
-              />
-              <div style={{ position: 'absolute', bottom: 40, width: '100%' }}>
-                <LineDivider />
-                <Sidemenu
-                  img={IMAGES.setting}
-                  label={'Setting'}
-                  path={'/setting'}
-                />
-                <Sidemenu
-                  img={IMAGES.logout}
-                  label={'Logout'}
-                  path={'/'}
-                  onPress={() => {
-                    localStorage.clear()
-                    window.location.reload(false)
-                  }}
-                />
-              </div>
-              <LineDivider />
-            </div>
-          </div>
-
-      }
-      {/* <button >Open Modal</button> */}
-      {/*  */}
-
+      {/* Mobile Modal */}
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        // style={customStyles}
-        // contentLabel="Example Modal"
         style={{
           overlay: {
             position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(255, 255, 255, 0.75)',
-            margin: mobile ? matches ? -40 : null : -40,
-            display: mobile ? matches ? 'block' : 'none' : 'block'
+            inset: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            zIndex: 100,
           },
           content: {
             position: 'absolute',
-            //   top: '40px',
-            //   left: '40px',
-            //   right: '800px',
-            //   bottom: '40px',
-            width: mobile ? matches ? 250 : null : '100%',
-            border: '1px solid transparent',
-            background: COLORS.Primary,
-            //   overflow: 'auto',
-            //   WebkitOverflowScrolling: 'touch',
-            borderRadius: '0 4px 4px 0',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            width: '80%', // Takes up 80% of screen width on mobile
+            maxWidth: '300px',
+            border: 'none',
+            background: '#009A48',
+            padding: 0,
+            borderRadius: '0 16px 16px 0',
             outline: 'none',
-
           }
         }}
+        ariaHideApp={false}
       >
-        <div style={{
-          position: 'fixed',
-          height: '100%',
-          backgroundColor: COLORS.Primary,
-          textDecorationColor: COLORS.black,
-          cursor: "pointer",
-          position: matches ? 'relative' : "sticky",
-          display: 'flex',
-          backgroundColor: COLORS.Primary,
-          textDecorationColor: COLORS.black,
-          cursor: "pointer",
-          width: 350,
-          // left:'-100%'
-        }}
-          id='Sidenav'
-        >
-          {matches ? <button style={{
-            width: 40,
-            height: 40,
-            position: mobile ? matches ? 'absolute' : null : 'fixed',
-            right: mobile ? matches ? 95 : null : 20,
-            background: 'none',
-            cursor: 'pointer',
-            border: 'none',
-            // borderRadius:20 
-          }}
-            onClick={closeModal} > <img alt='' src={IMAGES.close} style={{
-              width: 25,
-              height: 25,
-
-            }} /> </button> : null}
-
-          {/* <button style={{  width:50 , 
-                  height:50 , 
-                  position:'absolute' , 
-                  right:0 , 
-                  background:'none' , 
-                  cursor:'pointer', 
-                  border:'1px solid black' , 
-                  borderRadius:20 }} 
-onClick={()=> {
-          document.getElementById("Sidenav").style.left = '-250px'
-          }} > <img alt='' src={IMAGES.close} /> </button> */}
-
-          <Link to={'/profile'} style={{ width: 270, height: 100, position: 'absolute', top: matches ? 40 : 0 }}>
-            <div style={{ height: 100, width: 207, position: 'absolute', top: matches ? 0 : 0, display: 'flex', justifyContent: 'space-evenly' }}>
-              <img
-                src={user?.profile_picture == null ? `https://ui-avatars.com/api/?name=${user?.username}` : user?.profile_picture}
-                alt={"Pro"}
-                style={{
-                  position: 'absolute',
-                  width: 60,
-                  height: 60,
-                  left: 10,
-                  top: 19,
-                  borderRadius: 30
-
-                }}
-              />
-              <div style={{
-                // lineheight: 26,
-                display: 'flex',
-                flexDirection: "column",
-                alignitems: 'center',
-                textalign: 'center',
-                texttransform: 'capitalize',
-                textAlign: 'left',
-                width: 350,
-                height: 50,
-                // backgroundColor :COLORS.layout
-
-                // width: 'fit-content',
-              }}>
-                <p style={{
-                  position: 'absolute',
-                  height: 26,
-                  left: 85,
-                  top: 5,
-                  ...FONTS.h3,
-                  color: COLORS.white
-                }} >{user?.fullname}</p>
-                <p style={{
-                  position: 'absolute',
-                  // width: 100,
-                  height: 26,
-                  left: 85,
-                  top: 24,
-                  ...FONTS.h3,
-                  color: COLORS.white
-                }} >{user?.farm_name}</p>
-                <p style={{
-                  position: 'absolute',
-                  // width: 65,
-                  height: 26,
-                  left: 85,
-                  top: 45,
-                  ...FONTS.h3,
-                  color: COLORS.white
-                }} >@{user?.username}</p>
-              </div>
-            </div>
-          </Link>
-
-
-          <div style={{
-            flexDirection: "column",
-            marginTop: matches ? 145 : 100,
-            paddingLeft: '15px',
-            width: mobile ? matches ? 300 : null : 300
-          }}>
-            {
-              mobile ? matches ? null : null : <>
-                <LineDivider />
-                <Sidemenu
-                  img={IMAGES.home}
-                  label={'Herds'}
-                  path={'/'}
-                />
-                <Sidemenu
-                  img={IMAGES.add}
-                  label={'Add'}
-                  path={'/add'}
-                />
-                <Sidemenu
-                  img={IMAGES.coin}
-                  label={'Finance'}
-                  path={'/finance'}
-                />
-                <Sidemenu
-                  img={IMAGES.file}
-                  label={'Report'}
-                  path={'/report'}
-                />
-
-              </>
-            }
-
-            <LineDivider />
-            {/* <Sidemenu
-            img={IMAGES.subs}
-            label={'Subscription'}
-            path={'/subscription'}
-          /> */}
-
-            <Sidemenu
-              img={IMAGES.weight}
-              label={'Weight History'}
-              path={'/weighthistory'}
-            />
-            <Sidemenu
-              img={IMAGES.parents}
-              label={'Parents'}
-              path={'/parents'}
-            />
-            <LineDivider />
-
-
-            <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
-              <LineDivider />
-              <Sidemenu
-                img={IMAGES.setting}
-                label={'Setting'}
-                path={'/setting'}
-              />
-              <Sidemenu
-                img={IMAGES.logout}
-                label={'Logout'}
-                path={'/'}
-                onPress={() => {
-                  window.location.reload(false)
-                  localStorage.clear()
-                }}
-              />
-            </div>
-            <LineDivider />
-          </div>
-        </div>
-
+        <SidebarContent isMobile={true} />
       </Modal>
     </>
-
   )
 }
 

@@ -1,15 +1,9 @@
 import React from 'react'
 import FlatList from 'flatlist-react'
-import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { COLORS, FONTS, SIZES } from '../../Theme/Theme'
-import { IMAGES } from '../../Theme/Image'
-import { baseURL } from '../../helpers/helpers'
-import Card from '../../Component/Card'
-import AnimalCard from '../Home/AnimalCard'
+import { COLORS } from '../../Theme/Theme' // Kept for safety if used elsewhere or color constants needed
 import useMediaQuery from '../../Component/useMediaQuery'
-import Loading from '../../Component/Loading'
-import P from './P'
+
 export default function ParentCard({
     date,
     onPress,
@@ -17,96 +11,56 @@ export default function ParentCard({
     tags
 }) {
     const navigation = useNavigate()
-    const unit = JSON.parse(useSelector(state => state.Reducers.unit))
     const matches = useMediaQuery('(min-width:820px)')
-    const mobile = useMediaQuery('(min-width:460px)') 
+    const mobile = useMediaQuery('(min-width:460px)')
+
     return (
-        <>
-            <button
-                style={{
-                    display: "flex",
-                    backgroundColor: COLORS.lightGray2,
-                    margin: SIZES.padding,
-                    borderRadius: SIZES.radius,
-                    borderWidth: 0,
-                    justifyContent: "space-around",
-                    shadowColor: COLORS.Primary,
-                    shadowOffset: { width: 0, height: 0 },
-                    shadowOpacity: 0.5,
-                    shadowRadius: 10,
-                    elevation: 2,
-                    width: mobile ? matches ? "25%" : "50%" : '90%',
-                    cursor: 'pointer',
-                    alignSelf: "center",
-                    padding: "5px"
-                }}
-                onClick={() => {
-                   navigation("/parentopp",{
-                    state:{
-                        data:data,
-                        date:date
+        <button
+            onClick={() => {
+                navigation("/parentopp", {
+                    state: {
+                        data: data,
+                        date: date
                     }
-                   })
-                }}
-            >
-                <div>
-                    <p style={{
-                        ...FONTS.h2,
-                        color: COLORS.Primary,
-                        textDecorationLine: "underline",
-                        padding: 5
-                    }}>
-                        {date}
-                    </p>
-                    <p style={{
-                        ...FONTS.h3,
-                        color: COLORS.Primary,
-                        // alignSelf: "center",
-                        textDecorationLine: "underline",
-                        padding: 5
-                    }}>
-                        Tag Number
-                    </p>
-                    <ul>
-                    <FlatList
-                        list={tags}
-                        renderItem={(item, index) => {
-                            return (
-                                <li style={{
-                                    ...FONTS.h3,
-                                    color: COLORS.black,
-                                    marginBlockStart:0,
-                                    marginBlockEnd:0
-                                }}>
-                                    {`${item}`}
+                })
+            }}
+            className="group w-full bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 p-5 flex flex-col items-start text-left relative overflow-hidden"
+        >
+            {/* Top Row: Date and Count Badge */}
+            <div className="flex justify-between items-center w-full mb-4">
+                <span className="text-[#009A48] font-bold text-lg border-b-2 border-[#009A48]/20 pb-0.5">
+                    {date}
+                </span>
+
+                <span className="bg-[#009A48] text-white font-bold text-sm h-8 w-8 rounded-full flex items-center justify-center shadow-sm">
+                    {tags.length}
+                </span>
+            </div>
+
+            {/* Tags Section */}
+            <div className="w-full">
+                <p className="text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">
+                    Tag Numbers
+                </p>
+                <div className="bg-gray-50 rounded-lg p-3 w-full">
+                    <ul className="list-disc list-inside space-y-1">
+                        <FlatList
+                            list={tags}
+                            renderItem={(item, index) => (
+                                <li key={index} className="text-gray-700 text-sm font-medium pl-1">
+                                    {item}
                                 </li>
-                            )
-                        }
-                        }
-                        renderWhenEmpty={() => (<></>)}
-                    />
+                            )}
+                            renderWhenEmpty={() => (
+                                <li className="text-gray-400 text-sm italic">No tags listed</li>
+                            )}
+                        />
                     </ul>
                 </div>
-                <div >
-                    <p style={{
-                        ...FONTS.h1,
-                        height: 50,
-                        width: 50,
-                        backgroundColor: COLORS.Primary,
-                        borderRadius: 25,
-                        display: "flex",
-                        alignSelf: "center",
-                        justifyContent: "center",
-                        color: COLORS.white,
-                        alignItems: "center"
-                    }}>
-                        {
-                            tags.length
-                        }
-                    </p>
-                </div>
-            </button>
-            
-        </>
+            </div>
+
+            {/* Hover Decoration */}
+            <div className="absolute right-0 bottom-0 h-16 w-16 bg-[#009A48] opacity-5 rounded-tl-full -mr-4 -mb-4 transition-transform group-hover:scale-150 duration-500"></div>
+        </button>
     )
 }
